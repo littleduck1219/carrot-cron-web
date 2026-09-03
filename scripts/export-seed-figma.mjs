@@ -50,6 +50,14 @@ for (const [cssVar, lightValue] of Object.entries(lightDecls)) {
     (name.startsWith("palette/") ? primitive : semantic)[name] = entry;
 }
 
+// 시맨틱 토큰의 최종 hex를 모드별로 미리 풀어둔다 (Figma 표에 값을 같이 적기 위해).
+for (const entry of Object.values(semantic)) {
+    for (const mode of ["light", "dark"]) {
+        const spec = entry[mode];
+        entry[mode].resolved = spec.value ?? primitive[spec.alias]?.[mode].value ?? "#000000";
+    }
+}
+
 // 2. 숫자 스케일 -------------------------------------------------------------
 const scale = {};
 const scaleGroups = {
@@ -86,9 +94,12 @@ const components = {};
 for (const file of readdirSync(componentDir).filter((f) => f.endsWith(".mjs") && f !== "index.mjs")) {
     const key = file.replace(".mjs", "");
     const src = readFileSync(join(componentDir, file), "utf8");
-    const literal = src.match(/export const vars = ([\s\S]*?);\s*$/)?.[1];
-    if (!literal) continue;
-    components[key] = JSON.parse(literal);
+    const literal = src.slice(src.indexOf("{", src.indexOf("export const vars"))).trim().replace(/;$/, "");
+    try {
+        components[key] = JSON.parse(literal);
+    } catch {
+        /* 형태가 다른 파일은 건너뛴다 */
+    }
 }
 
 // 레시피에서 variant 축 목록을 가져온다 (레시피 자체는 CSS를 import 해서 node로 못 불러온다).

@@ -7,7 +7,9 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "oxlint",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "figma:export": "node scripts/export-seed-figma.mjs",
+    "figma:check": "node scripts/check-figma-plugin.mjs"
   },
   "dependencies": {
     "@seed-design/css": "^2.6.2",
