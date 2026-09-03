@@ -1,0 +1,33 @@
+/* Screen scaffold: app bar pinned under the status bar, body scrolls between the safe areas. */
+.app-screen {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--seed-color-bg-layer-default);
+}
+
+.app-screen-bar {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: var(--seed-dimension-x2);
+  height: calc(var(--seed-safe-area-top) + 56px);
+  padding: var(--seed-safe-area-top) var(--seed-dimension-x4) 0;
+  background: var(--seed-color-bg-layer-default);
+}
+
+.app-screen-bar-title {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.app-screen-body {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding-bottom: calc(var(--seed-safe-area-bottom) + var(--seed-dimension-x6));
+}

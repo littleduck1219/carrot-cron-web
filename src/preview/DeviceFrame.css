@@ -1,0 +1,122 @@
+/* iPhone 16 Pro Max preview shell — all sizes are logical (CSS) px, 1:1 with the device. */
+.stage {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  background: var(--seed-color-bg-layer-basement);
+}
+
+.device {
+  --device-screen-width: 440px;
+  --device-screen-height: 956px;
+  --device-screen-radius: 55px;
+  --device-bezel: 12px;
+  --device-scale: 1;
+
+  /* Absolute + translate keeps the frame centered even when it overflows the viewport. */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(var(--device-scale));
+  padding: var(--device-bezel);
+  border-radius: calc(var(--device-screen-radius) + var(--device-bezel));
+  background: #1c1c1e;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.12),
+    0 24px 70px rgba(0, 0, 0, 0.45);
+}
+
+.device-screen {
+  /* Safe areas of the real device, so seed's `safeArea` paddings behave as on-device. */
+  --seed-safe-area-top: 62px;
+  --seed-safe-area-bottom: 34px;
+
+  position: relative;
+  width: var(--device-screen-width);
+  height: var(--device-screen-height);
+  border-radius: var(--device-screen-radius);
+  overflow: hidden;
+  background: var(--seed-color-bg-layer-default);
+  color: var(--seed-color-fg-neutral);
+  isolation: isolate;
+}
+
+/* Status bar ------------------------------------------------------------- */
+.status-bar {
+  position: absolute;
+  inset: 0 0 auto;
+  z-index: 10;
+  height: var(--seed-safe-area-top);
+  padding: 0 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--seed-color-fg-neutral);
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  pointer-events: none;
+}
+
+.status-bar-icons {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.dynamic-island {
+  position: absolute;
+  top: 11px;
+  left: 50%;
+  translate: -50% 0;
+  z-index: 20;
+  width: 125px;
+  height: 37px;
+  border-radius: 19px;
+  background: #000;
+}
+
+.home-indicator {
+  position: absolute;
+  bottom: 9px;
+  left: 50%;
+  translate: -50% 0;
+  z-index: 20;
+  width: 144px;
+  height: 5px;
+  border-radius: 3px;
+  background: var(--seed-color-fg-neutral);
+  opacity: 0.85;
+  pointer-events: none;
+}
+
+/* Stage toolbar ---------------------------------------------------------- */
+.stage-toolbar {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  display: flex;
+  gap: 2px;
+  padding: 3px;
+  border-radius: var(--seed-radius-r3);
+  background: var(--seed-color-bg-layer-floating);
+  box-shadow: var(--seed-shadow-s2);
+}
+
+.stage-toolbar button {
+  appearance: none;
+  border: 0;
+  cursor: pointer;
+  padding: 6px 12px;
+  border-radius: var(--seed-radius-r2);
+  background: transparent;
+  color: var(--seed-color-fg-neutral-subtle);
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.stage-toolbar button[aria-pressed="true"] {
+  background: var(--seed-color-bg-neutral-weak);
+  color: var(--seed-color-fg-neutral);
+}

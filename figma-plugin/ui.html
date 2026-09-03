@@ -1,0 +1,31 @@
+<style>
+  body { font: 12px -apple-system, system-ui, sans-serif; margin: 0; padding: 12px; color: #1a1c20; }
+  h1 { font-size: 13px; margin: 0 0 4px; }
+  p { color: #868b94; margin: 0 0 12px; }
+  button { display: block; width: 100%; margin-bottom: 6px; padding: 8px; border: 1px solid #dcdee3; border-radius: 6px; background: #fff; font: inherit; cursor: pointer; }
+  button.primary { background: #f60; border-color: #f60; color: #fff; font-weight: 700; }
+  #log { margin-top: 12px; padding: 8px; height: 180px; overflow: auto; background: #f7f8f9; border-radius: 6px; white-space: pre-wrap; color: #555d6d; }
+</style>
+<h1>Seed → Figma</h1>
+<p>토큰을 변수로 만들고 디자인 시스템 보드를 그립니다.</p>
+<button class="primary" data-type="all">전체 실행</button>
+<button data-type="variables">① 변수(컬러·스케일)</button>
+<button data-type="styles">② 텍스트 스타일</button>
+<button data-type="foundation">③ Foundation 페이지</button>
+<button data-type="components">④ Components 페이지</button>
+<div id="log"></div>
+<script>
+  const logEl = document.getElementById("log");
+  for (const button of document.querySelectorAll("button")) {
+    button.onclick = () => {
+      logEl.textContent = "실행 중…\n";
+      parent.postMessage({ pluginMessage: { type: button.dataset.type } }, "*");
+    };
+  }
+  onmessage = (event) => {
+    const msg = event.data.pluginMessage;
+    if (msg.type === "log") logEl.textContent += msg.line + "\n";
+    if (msg.type === "done") logEl.textContent += "완료\n";
+    logEl.scrollTop = logEl.scrollHeight;
+  };
+</script>
