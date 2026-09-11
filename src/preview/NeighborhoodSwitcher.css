@@ -1,0 +1,16 @@
+.neighborhood-switcher { position: relative; color: var(--seed-color-fg-neutral); }
+.neighborhood-trigger { display: flex; align-items: center; gap: 10px; max-width: 280px; min-height: 38px; padding: 8px 12px; border: 1px solid var(--seed-color-stroke-neutral-muted); border-radius: 10px; background: var(--seed-color-bg-layer-floating); color: inherit; font: inherit; font-size: 13px; cursor: pointer; }
+.neighborhood-trigger > span:first-child { color: var(--seed-color-fg-neutral-subtle); flex-shrink: 0; }
+.neighborhood-trigger strong { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.neighborhood-trigger > span:last-child { margin-left: auto; }
+.neighborhood-panel { position: absolute; z-index: 30; top: calc(100% + 10px); left: 0; width: min(320px, calc(100vw - 32px)); box-sizing: border-box; padding: 18px; border: 1px solid var(--seed-color-stroke-neutral-muted); border-radius: 16px; background: var(--seed-color-bg-layer-floating); box-shadow: 0 12px 36px #0005; }
+.neighborhood-panel-heading { display: flex; justify-content: space-between; align-items: center; gap: 8px; font-size: 15px; }
+.neighborhood-panel-heading button { width: 28px; height: 28px; border: 0; background: transparent; color: inherit; font-size: 24px; cursor: pointer; }
+.neighborhood-panel label { display: block; margin-bottom: 8px; font-size: 13px; color: var(--seed-color-fg-neutral-subtle); }
+.neighborhood-switcher :is(button, select):focus-visible { outline: 2px solid #ff6f00; outline-offset: 2px; }
+
+.neighborhood-current { margin: 8px 0 18px; color: var(--seed-color-fg-neutral-subtle); font-size: 13px; line-height: 1.5; }
+.neighborhood-panel select { box-sizing: border-box; width: 100%; margin-bottom: 14px; padding: 10px 12px; border: 1px solid var(--seed-color-stroke-neutral-muted); border-radius: 8px; background: var(--seed-color-bg-layer-default); color: inherit; font: inherit; font-size: 14px; }
+.neighborhood-panel select:disabled { opacity: .45; }
+.neighborhood-selection { margin: 0 0 14px; font-size: 13px; line-height: 1.5; color: var(--seed-color-fg-neutral-subtle); }
+.neighborhood-apply { width: 100%; }

@@ -120,3 +120,14 @@
   background: var(--seed-color-bg-neutral-weak);
   color: var(--seed-color-fg-neutral);
 }
+
+/* Preview controls occupy their own area outside the device frame. */
+.stage-controls { position: absolute; z-index: 30; top: 16px; left: 16px; right: 16px; display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+.stage-controls .stage-toolbar { position: static; flex-shrink: 0; }
+.device-stage { position: absolute; inset: 64px 0 0; }
+@media (max-width: 480px) {
+  .stage-controls { flex-wrap: wrap; }
+  .stage-controls .stage-toolbar { margin-left: auto; }
+  .device-stage { top: 110px; }
+  .neighborhood-trigger { max-width: calc(100vw - 32px); }
+}

@@ -1,0 +1,72 @@
+/* Layout follows the provided 1320 × 2868 mobile screenshot at 3×.
+   SEED components supply primitives; local styles match this captured app version. */
+.home-feed {
+  --feed-bg: #16171b;
+  --feed-fg: #f1f2f3;
+  --feed-muted: #a2a5ad;
+  --feed-orange: #ff6f00;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--feed-bg);
+  color: var(--feed-fg);
+  padding-top: var(--seed-safe-area-top);
+  box-sizing: border-box;
+}
+.home-feed button { cursor: pointer; font-family: inherit; }
+.home-feed button:disabled { cursor: default; opacity: 1; }
+.home-feed button:focus-visible, .feed-scroll:focus-visible { outline: 2px solid var(--feed-orange); outline-offset: -3px; }
+.feed-header { display: flex; align-items: center; flex: none; height: 52px; padding: 0 16px; gap: 10px; }
+.feed-location { display: flex; align-items: center; gap: 2px; margin: 0; font-size: 22px; line-height: 1; font-weight: 750; white-space: nowrap; letter-spacing: -.8px; }
+.feed-location svg { width: 19px; height: 22px; }
+.feed-secondary-location { font-size: 21px; font-weight: 700; color: #757982; white-space: nowrap; letter-spacing: -.8px; }
+.feed-header-actions { display: flex; align-items: center; gap: 17px; margin-left: auto; }
+.feed-icon-button { position: relative; display: grid; place-items: center; padding: 0; width: 28px; height: 40px; border: 0; background: transparent; color: var(--feed-fg); }
+.feed-icon-button svg { width: 26px; height: 26px; }
+.feed-notification::after { content: ""; position: absolute; top: 5px; right: 0; width: 6px; height: 6px; background: var(--feed-orange); border-radius: 50%; }
+.feed-filters { display: flex; flex: none; align-items: center; gap: 8px; height: 64px; padding: 0 16px; overflow-x: auto; scrollbar-width: none; }
+.home-feed .feed-filter { flex: none; min-height: 40px; height: 40px; padding: 0 14px; border: 0; border-radius: 24px; background: #303234; color: #e4e5e7; box-shadow: none; }
+.home-feed .feed-filter [class] { padding: 0; color: inherit; font-size: 15px; font-weight: 500; line-height: 20px; }
+.home-feed .feed-filter[aria-pressed="true"] { background: #f1f2f3; color: #212225; }
+.feed-scroll { flex: 1; min-height: 0; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: none; }
+.feed-scroll::-webkit-scrollbar, .feed-filters::-webkit-scrollbar { display: none; }
+.feed-list { margin: 0; padding: 10px 16px 116px; list-style: none; }
+.feed-item { position: relative; display: flex; gap: 14px; min-height: 128px; padding: 16px 0; border-bottom: 1px solid #25262a; }
+.feed-item:first-child { padding-top: 0; }
+.feed-thumbnail { flex: none; width: 128px; height: 128px; border-radius: 8px; background-image: url('/reference/home-feed.png'); background-repeat: no-repeat; background-size: 440px 956px; background-position: -16px calc(-1 * var(--thumbnail-y)); }
+.feed-item-copy { display: flex; flex-direction: column; align-items: flex-start; flex: 1; min-width: 0; }
+.home-feed .feed-item-title { margin: 0; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; font-size: 16px; font-weight: 400; line-height: 21px; letter-spacing: -.35px; color: var(--feed-fg); padding-right: 14px; }
+.feed-item:first-child .feed-item-title { -webkit-line-clamp: 1; }
+.home-feed .feed-item-meta { margin: 4px 0 0; color: var(--feed-muted); font-size: 13px; line-height: 18px; white-space: nowrap; letter-spacing: -.4px; }
+.home-feed .feed-item-price { margin: 3px 0 0; font-size: 17px; font-weight: 700; line-height: 23px; color: var(--feed-fg); }
+.home-feed .feed-buy-badge { display: inline-flex; align-items: center; gap: 3px; margin-top: 5px; padding: 2px 4px; border-radius: 4px; background: #35251e; color: var(--feed-orange); font-size: 12px; font-weight: 700; line-height: 15px; }
+.feed-buy-badge svg { width: 12px; height: 12px; }
+.feed-item-counts { display: flex; align-items: center; justify-content: flex-end; gap: 5px; align-self: stretch; margin-top: auto; padding-top: 6px; color: var(--feed-muted); font-size: 13px; line-height: 16px; }
+.feed-item-counts span { display: flex; align-items: center; gap: 3px; }
+.feed-item-counts svg { width: 14px; height: 14px; color: #60656f; }
+.feed-item-more { position: absolute; right: -4px; top: 16px; width: 22px; height: 24px; padding: 0; border: 0; background: transparent; color: var(--feed-muted); }
+.feed-item:first-child .feed-item-more { top: 0; }
+.feed-item-more svg { width: 18px; height: 18px; }
+.home-feed .feed-write { position: absolute; z-index: 3; right: 20px; bottom: 103px; height: 48px; min-height: 48px; padding: 0 18px; gap: 7px; border-radius: 28px; background: var(--feed-orange); color: white; font-size: 17px; font-weight: 700; box-shadow: none; }
+.feed-write svg { width: 18px; height: 18px; }
+.feed-navigation { position: absolute; z-index: 4; left: 22px; right: 22px; bottom: 21px; height: 62px; display: flex; align-items: center; padding: 3px; border: 1px solid #3d404b; border-radius: 40px; background: rgb(37 38 44 / 88%); backdrop-filter: blur(20px); }
+.feed-nav-item { flex: 1; min-width: 0; height: 56px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; padding: 0; background: transparent; color: var(--feed-fg); border: 0; border-radius: 32px; }
+.feed-nav-item[aria-current="page"] { background: rgb(255 255 255 / 15%); color: white; }
+.feed-nav-item svg { width: 24px; height: 24px; }
+.feed-nav-item span { font-size: 11px; line-height: 13px; white-space: nowrap; }
+@media (prefers-reduced-motion: reduce) { .feed-scroll { scroll-behavior: auto; } }
+
+/* Partial thumbnail clipping is attached to its source item in HomeScreen. */
+
+
+.feed-price-row { display: flex; align-items: center; gap: 4px; margin-top: 3px; }
+.home-feed .feed-price-row .feed-item-price { margin-top: 0; }
+.home-feed .feed-reserved-badge { padding: 2px 4px; border-radius: 4px; background: #1aaf83; color: #fff; font-size: 12px; line-height: 15px; font-weight: 700; }
+.feed-item-counts .feed-ad-action { gap: 5px; font-size: 14px; line-height: 20px; }
+.feed-ad-action > span { font-size: 22px; line-height: 20px; }
+.feed-location { min-width: 0; }
+.feed-location svg { flex-shrink: 0; }
+.feed-location > span { overflow: hidden; text-overflow: ellipsis; }
+.feed-secondary-location { max-width: 100px; overflow: hidden; text-overflow: ellipsis; flex-shrink: 0; }
+.feed-header-actions { flex-shrink: 0; }

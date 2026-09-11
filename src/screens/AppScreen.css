@@ -30,4 +30,10 @@
   overflow-y: auto;
   overscroll-behavior: contain;
   padding-bottom: calc(var(--seed-safe-area-bottom) + var(--seed-dimension-x6));
+  /* On-device iOS shows no resting scrollbar; the preview shouldn't either. */
+  scrollbar-width: none;
+}
+
+.app-screen-body::-webkit-scrollbar {
+  display: none;
 }

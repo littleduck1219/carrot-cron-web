@@ -1,137 +1,92 @@
-import {
-    ActionButton,
-    Badge,
-    Box,
-    Callout,
-    Divider,
-    HStack,
-    Switch,
-    Text,
-    VStack,
-} from "@seed-design/react";
-import { useState } from "react";
-import { AppScreen } from "./AppScreen";
+import { getSellerDistrict } from "../data/sellers";
+import { ActionButton, Badge, Chip, Text } from "@seed-design/react";
+import type { CSSProperties } from "react";
+import { FeedIcon, type FeedIconName } from "./home/FeedIcon";
+import { homeItems } from "./home/homeItems";
+import "./HomeScreen.css";
+import { isProductId, type ProductId } from "./detail/productData";
 
-const TEXT_STYLES = ["t9Bold", "t7Bold", "t5Medium", "t4Regular", "t3Regular"] as const;
+const filters = ["전체", "중고차 ↗", "중고거래", "가까운 동네", "방금 전"];
+const navigation: { label: string; icon: FeedIconName }[] = [
+    { label: "홈", icon: "home" },
+    { label: "커뮤니티", icon: "community" },
+    { label: "동네지도", icon: "map" },
+    { label: "채팅", icon: "chat" },
+    { label: "나의 당근", icon: "person" },
+];
 
-const SURFACES = [
-    "bg.layerDefault",
-    "bg.layerBasement",
-    "bg.neutralWeak",
-    "bg.brandSolid",
-    "bg.criticalSolid",
-    "bg.positiveSolid",
-] as const;
-
-function Section({ title, children }: { title: string; children: React.ReactNode }) {
+/** Screenshot reproduction only. Destination screens are built in later steps. */
+export function HomeScreen({ onOpenProduct, activeNeighborhood, secondaryNeighborhood }: { onOpenProduct: (id: ProductId) => void; activeNeighborhood: string; secondaryNeighborhood?: string }) {
     return (
-        <VStack paddingX="x4" paddingY="x5" gap="x3">
-            <Text textStyle="t4Bold" color="fg.neutralMuted">
-                {title}
-            </Text>
-            {children}
-        </VStack>
-    );
-}
+        <div className="home-feed">
+            <header className="feed-header">
+                <h1 className="feed-location"><FeedIcon name="pin" /><span>{activeNeighborhood}</span></h1>
+                {secondaryNeighborhood && <span className="feed-secondary-location">{secondaryNeighborhood}</span>}
+                <div className="feed-header-actions">
+                    <button type="button" className="feed-icon-button" aria-label="검색" disabled><FeedIcon name="search" /></button>
+                    <button type="button" className="feed-icon-button feed-notification" aria-label="새 알림 있음" disabled><FeedIcon name="bell" /></button>
+                    <button type="button" className="feed-icon-button" aria-label="전체 메뉴" disabled><FeedIcon name="menu" /></button>
+                </div>
+            </header>
 
-export function HomeScreen() {
-    const [notify, setNotify] = useState(true);
+            <div className="feed-filters" aria-label="홈 피드 필터">
+                {filters.map((label, index) => (
+                    <Chip.Root key={label} size="large" className="feed-filter" aria-pressed={index === 0} disabled={index !== 0}>
+                        <Chip.Label>{label}</Chip.Label>
+                    </Chip.Root>
+                ))}
+            </div>
 
-    return (
-        <AppScreen title="Cron Carrot" actions={<Badge tone="brand">preview</Badge>}>
-            <Section title="Typography">
-                <VStack gap="x2">
-                    {TEXT_STYLES.map((textStyle) => (
-                        <Text key={textStyle} textStyle={textStyle} color="fg.neutral">
-                            {textStyle} · 당근 알림을 예약해요
-                        </Text>
+            <main className="feed-scroll" aria-label="동네 상품 목록" tabIndex={0}>
+                <ul className="feed-list">
+                    {homeItems.map((item) => (
+                        <li className="feed-item" key={item.id}>
+                            {isProductId(item.id) && <a className="feed-item-link" href={`#/product/${item.id}`} aria-label={`${item.title} 상세 보기`} onClick={(event) => {
+                                event.preventDefault();
+                                if (isProductId(item.id)) onOpenProduct(item.id);
+                            }} />}
+                            <div className="feed-thumbnail" role="img" aria-label={item.imageAlt}
+                                style={{
+                                    "--thumbnail-y": `${item.imageY}px`,
+                                    backgroundImage: item.imageSource ? `url("${item.imageSource}")` : undefined,
+                                    height: item.imageHeight ?? 128,
+                                    clipPath: item.imageVisibleHeight ? `inset(0 0 ${(item.imageHeight ?? 128) - item.imageVisibleHeight}px 0)` : undefined,
+                                } as CSSProperties} />
+                            <div className="feed-item-copy">
+                                <Text as="h2" className="feed-item-title">{item.title}</Text>
+                                {(item.sellerId || item.meta) && <Text as="p" className="feed-item-meta">{[item.sellerId ? getSellerDistrict(item.sellerId).label : null, item.meta].filter(Boolean).join(" · ")}</Text>}
+                                {item.price && <div className="feed-price-row">
+                                    {item.reserved && <Badge tone="positive" variant="solid" size="large" className="feed-reserved-badge">예약중</Badge>}
+                                    <Text as="p" className="feed-item-price">{item.price}</Text>
+                                </div>}
+                                {item.directBuy && (
+                                    <Badge tone="brand" variant="weak" size="large" className="feed-buy-badge">
+                                        <FeedIcon name="shopping" />바로구매
+                                    </Badge>
+                                )}
+                                <div className="feed-item-counts">
+                                    {item.adAction && <span className="feed-ad-action">{item.adAction}<span aria-hidden="true">›</span></span>}
+                                    {item.chats !== undefined && <span aria-label={`채팅 ${item.chats}개`}><FeedIcon name="chat" />{item.chats}</span>}
+                                    {item.likes !== undefined && <span aria-label={`관심 ${item.likes}개`}><FeedIcon name="heart" />{item.likes}</span>}
+                                </div>
+                            </div>
+                            <button type="button" className="feed-item-more" aria-label={`${item.title} 더 보기`} disabled><FeedIcon name="more" /></button>
+                        </li>
                     ))}
-                </VStack>
-            </Section>
+                </ul>
+            </main>
 
-            <Divider />
-
-            <Section title="Color">
-                <HStack gap="x2" flexWrap="wrap">
-                    {SURFACES.map((token) => (
-                        <VStack key={token} gap="x1" width="96px">
-                            <Box
-                                height="48px"
-                                background={token}
-                                borderRadius="r3"
-                                borderWidth={1}
-                                borderColor="stroke.neutralMuted"
-                            />
-                            <Text textStyle="t1Regular" color="fg.neutralSubtle">
-                                {token.replace("bg.", "")}
-                            </Text>
-                        </VStack>
-                    ))}
-                </HStack>
-            </Section>
-
-            <Divider />
-
-            <Section title="Action">
-                <VStack gap="x2">
-                    <ActionButton variant="brandSolid" size="large">
-                        일정 만들기
-                    </ActionButton>
-                    <HStack gap="x2">
-                        <ActionButton variant="neutralWeak" size="medium" flexGrow={1}>
-                            나중에
-                        </ActionButton>
-                        <ActionButton variant="neutralOutline" size="medium" flexGrow={1}>
-                            불러오기
-                        </ActionButton>
-                    </HStack>
-                    <ActionButton variant="criticalSolid" size="small" style={{ alignSelf: "flex-start" }}>
-                        삭제
-                    </ActionButton>
-                </VStack>
-            </Section>
-
-            <Divider />
-
-            <Section title="Feedback">
-                <VStack gap="x2">
-                    <Callout.Root tone="informative">
-                        <Callout.Content>
-                            <Callout.Title>매일 오전 9시</Callout.Title>
-                            <Callout.Description>
-                                다음 실행까지 3시간 12분 남았어요.
-                            </Callout.Description>
-                        </Callout.Content>
-                    </Callout.Root>
-                    <Callout.Root tone="warning">
-                        <Callout.Content>
-                            <Callout.Description>
-                                마지막 실행이 실패했어요. 로그를 확인해 주세요.
-                            </Callout.Description>
-                        </Callout.Content>
-                    </Callout.Root>
-                    <HStack gap="x1_5">
-                        <Badge tone="positive">성공</Badge>
-                        <Badge tone="warning">대기</Badge>
-                        <Badge tone="critical">실패</Badge>
-                        <Badge tone="neutral" variant="outline">
-                            초안
-                        </Badge>
-                    </HStack>
-                </VStack>
-            </Section>
-
-            <Divider />
-
-            <Section title="Control">
-                <Switch.Root checked={notify} onCheckedChange={setNotify}>
-                    <Switch.HiddenInput />
-                    <Switch.Label>실행 결과 알림 받기</Switch.Label>
-                    <Switch.Control>
-                        <Switch.Thumb />
-                    </Switch.Control>
-                </Switch.Root>
-            </Section>
-        </AppScreen>
+            <ActionButton className="feed-write" variant="brandSolid" size="large" disabled>
+                <FeedIcon name="plus" />글쓰기
+            </ActionButton>
+            <nav className="feed-navigation" aria-label="하단 내비게이션">
+                {navigation.map(({ label, icon }, index) => (
+                    <button key={label} type="button" className="feed-nav-item" aria-current={index === 0 ? "page" : undefined}
+                        disabled={index !== 0} onClick={index === 0 ? () => document.querySelector(".feed-scroll")?.scrollTo({ top: 0, behavior: "smooth" }) : undefined}>
+                        <FeedIcon name={icon} /><span>{label}</span>
+                    </button>
+                ))}
+            </nav>
+        </div>
     );
 }

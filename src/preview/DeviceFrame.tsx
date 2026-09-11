@@ -34,10 +34,10 @@ function StatusBar() {
 }
 
 /** iPhone 16 Pro Max preview frame, centered in the viewport and scaled to fit. */
-export function DeviceFrame({ children }: { children: ReactNode }) {
+export function DeviceFrame({ children, controls }: { children: ReactNode; controls?: ReactNode }) {
     const stageRef = useRef<HTMLDivElement>(null);
     const deviceRef = useRef<HTMLDivElement>(null);
-    const [mode, setMode] = useState<ColorMode>("system");
+    const [mode, setMode] = useState<ColorMode>("dark-only");
 
     useEffect(() => {
         document.documentElement.dataset.seedColorMode = mode;
@@ -66,7 +66,9 @@ export function DeviceFrame({ children }: { children: ReactNode }) {
     }, []);
 
     return (
-        <div className="stage" ref={stageRef}>
+        <div className="stage">
+            <div className="stage-controls">
+                {controls}
             <div className="stage-toolbar">
                 {MODES.map(({ value, label }) => (
                     <button
@@ -80,6 +82,8 @@ export function DeviceFrame({ children }: { children: ReactNode }) {
                 ))}
             </div>
 
+            </div>
+            <div className="device-stage" ref={stageRef}>
             <div className="device" ref={deviceRef}>
                 <div className="device-screen">
                     <div className="dynamic-island" />
@@ -87,6 +91,7 @@ export function DeviceFrame({ children }: { children: ReactNode }) {
                     {children}
                     <div className="home-indicator" />
                 </div>
+            </div>
             </div>
         </div>
     );
