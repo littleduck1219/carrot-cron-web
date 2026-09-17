@@ -29,9 +29,9 @@
 .home-feed .feed-filter { flex: none; min-height: 40px; height: 40px; padding: 0 14px; border: 0; border-radius: 24px; background: #303234; color: #e4e5e7; box-shadow: none; }
 .home-feed .feed-filter [class] { padding: 0; color: inherit; font-size: 15px; font-weight: 500; line-height: 20px; }
 .home-feed .feed-filter[aria-pressed="true"] { background: #f1f2f3; color: #212225; }
-.feed-scroll { flex: 1; min-height: 0; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: none; }
+.feed-scroll { flex: 1; min-height: 0; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: none; isolation: isolate; }
 .feed-scroll::-webkit-scrollbar, .feed-filters::-webkit-scrollbar { display: none; }
-.feed-list { margin: 0; padding: 10px 16px 116px; list-style: none; }
+.feed-list { margin: 0; padding: 126px 16px 116px; list-style: none; }
 .feed-item { position: relative; display: flex; gap: 14px; min-height: 128px; padding: 16px 0; border-bottom: 1px solid #25262a; }
 .feed-item:first-child { padding-top: 0; }
 .feed-thumbnail { flex: none; width: 128px; height: 128px; border-radius: 8px; background-image: url('/reference/home-feed.png'); background-repeat: no-repeat; background-size: 440px 956px; background-position: -16px calc(-1 * var(--thumbnail-y)); }
@@ -48,14 +48,95 @@
 .feed-item-more { position: absolute; right: -4px; top: 16px; width: 22px; height: 24px; padding: 0; border: 0; background: transparent; color: var(--feed-muted); }
 .feed-item:first-child .feed-item-more { top: 0; }
 .feed-item-more svg { width: 18px; height: 18px; }
-.home-feed .feed-write { position: absolute; z-index: 3; right: 20px; bottom: 103px; height: 48px; min-height: 48px; padding: 0 18px; gap: 7px; border-radius: 28px; background: var(--feed-orange); color: white; font-size: 17px; font-weight: 700; box-shadow: none; }
-.feed-write svg { width: 18px; height: 18px; }
-.feed-navigation { position: absolute; z-index: 4; left: 22px; right: 22px; bottom: 21px; height: 62px; display: flex; align-items: center; padding: 3px; border: 1px solid #3d404b; border-radius: 40px; background: rgb(37 38 44 / 88%); backdrop-filter: blur(20px); }
-.feed-nav-item { flex: 1; min-width: 0; height: 56px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; padding: 0; background: transparent; color: var(--feed-fg); border: 0; border-radius: 32px; }
-.feed-nav-item[aria-current="page"] { background: rgb(255 255 255 / 15%); color: white; }
+.home-feed .feed-write {
+  position: absolute;
+  z-index: 3;
+  right: 20px;
+  /* Keep the bottom edge 24px above the navigation while the button grows. */
+  bottom: 115px;
+  box-sizing: border-box;
+  width: 112px;
+  min-width: 0;
+  height: 48px;
+  min-height: 48px;
+  padding: 0;
+  overflow: hidden;
+  border-radius: 28px;
+  background: var(--feed-orange);
+  color: white;
+  font-size: 17px;
+  font-weight: 700;
+  box-shadow: none;
+  transition: width 280ms cubic-bezier(.22, 1, .36, 1), height 280ms cubic-bezier(.22, 1, .36, 1), background 220ms ease;
+}
+.home-feed .feed-write[data-compact="true"] { width: 52px; height: 52px; }
+.feed-write svg {
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  stroke-width: 1.8;
+  transition: left 280ms cubic-bezier(.22, 1, .36, 1), width 280ms cubic-bezier(.22, 1, .36, 1), height 280ms cubic-bezier(.22, 1, .36, 1), stroke-width 280ms ease, transform 280ms cubic-bezier(.22, 1, .36, 1);
+}
+.feed-write[data-compact="true"] svg { left: 15px; width: 22px; height: 22px; stroke-width: 2.6; }
+.feed-write-label {
+  position: absolute;
+  left: 43px;
+  top: 50%;
+  line-height: 22px;
+  white-space: nowrap;
+  opacity: 1;
+  transform: translate(0, -50%);
+  transition: transform 220ms cubic-bezier(.22, 1, .36, 1), opacity 160ms ease;
+}
+.feed-write[data-compact="true"] .feed-write-label { transform: translate(24px, -50%); opacity: 0; }
+/* Concentric capsules: a 35px outer radius and a uniform 4px inset. */
+.feed-navigation {
+  position: absolute;
+  z-index: 4;
+  left: 22px;
+  right: 22px;
+  bottom: 21px;
+  height: 70px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: stretch;
+  padding: 3px;
+  border: 1px solid rgb(255 255 255 / 16%);
+  border-top-color: rgb(255 255 255 / 25%);
+  border-radius: 35px;
+  background: linear-gradient(165deg, rgb(255 255 255 / 7%), rgb(255 255 255 / 1%) 55%), rgb(32 33 39 / 48%);
+  -webkit-backdrop-filter: blur(24px) saturate(150%);
+  backdrop-filter: blur(24px) saturate(150%);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 6%), inset 0 -1px 0 rgb(255 255 255 / 3%), 0 6px 20px rgb(0 0 0 / 20%);
+}
+.feed-nav-item {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  padding: 0;
+  background: transparent;
+  color: var(--feed-fg);
+  border: 0;
+  border-radius: 31px;
+}
+.feed-nav-item[aria-current="page"] {
+  background: linear-gradient(160deg, rgb(255 255 255 / 5%), transparent 70%), rgb(255 255 255 / 14%);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 9%);
+  color: white;
+}
 .feed-nav-item svg { width: 24px; height: 24px; }
 .feed-nav-item span { font-size: 11px; line-height: 13px; white-space: nowrap; }
-@media (prefers-reduced-motion: reduce) { .feed-scroll { scroll-behavior: auto; } }
+@media (prefers-reduced-motion: reduce) {
+  .feed-scroll { scroll-behavior: auto; }
+  .home-feed .feed-write, .feed-write svg, .feed-write-label { transition: none; }
+}
 
 /* Partial thumbnail clipping is attached to its source item in HomeScreen. */
 
@@ -70,3 +151,45 @@
 .feed-location > span { overflow: hidden; text-overflow: ellipsis; }
 .feed-secondary-location { max-width: 100px; overflow: hidden; text-overflow: ellipsis; flex-shrink: 0; }
 .feed-header-actions { flex-shrink: 0; }
+/* The launcher remains above the dimmed feed and its glass navigation. */
+.write-launcher { position: absolute; z-index: 5; inset: 0; pointer-events: none; }
+.write-launcher > * { pointer-events: auto; }
+.home-feed .feed-write[data-menu-open="true"] { background: #1e2126; }
+.feed-write[data-menu-open="true"] svg { transform: translateY(-50%) rotate(45deg); stroke-width: 2.2; }
+.write-menu-backdrop { position: absolute; inset: 0; width: 100%; height: 100%; padding: 0; border: 0; background: #0009; animation: write-menu-dim 180ms ease both; }
+.write-menu { position: absolute; bottom: 181px; right: 20px; width: 180px; display: grid; gap: 10px; transform-origin: bottom right; animation: write-menu-reveal 220ms cubic-bezier(.22,1,.36,1) both; }
+.write-menu-panel { padding: 8px 0; border-radius: 15px; background: #1e2126; box-shadow: 0 6px 20px #0004; }
+.write-menu-panel button { width: 100%; display: flex; align-items: center; gap: 12px; min-height: 42px; padding: 0 16px; border: 0; background: transparent; color: #f1f2f3; font-size: 16px; text-align: left; }
+.write-menu-panel button:not(:disabled):hover { background: #ffffff0a; }
+.write-menu-icon { display: flex; width: 18px; height: 20px; flex: none; }
+.write-menu-icon svg { width: 20px; height: 20px; }
+.write-menu-icon.job, .write-menu-icon.sell { color: #ff8000; }
+.write-menu-icon.realty { color: #de5fc8; }
+.write-menu-icon.car { color: #388ffc; }
+.write-menu-icon.life { color: #36c3ef; }
+.write-menu-icon.story { color: #fc3d70; }
+@keyframes write-menu-reveal { from { opacity: 0; transform: translateY(8px) scale(.96); } to { opacity: 1; transform: none; } }
+@keyframes write-menu-dim { from { opacity: 0; } to { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .write-menu, .write-menu-backdrop { animation: none; } }
+
+/* Overlay the scrollport so header motion never changes its height or scroll position. */
+.feed-heading-clip { position: absolute; z-index: 2; top: var(--seed-safe-area-top); left: 0; right: 0; height: 116px; overflow: hidden; pointer-events: none; }
+.feed-heading { background: var(--feed-bg); pointer-events: auto; transition: transform 220ms ease; }
+.feed-heading[data-hidden="true"] { transform: translateY(-100%); pointer-events: none; }
+@media (prefers-reduced-motion: reduce) { .feed-heading { transition: none; } }
+
+/* Overlap the header edge so fractional frame scaling cannot expose the feed. */
+.home-feed::before {
+  content: "";
+  position: absolute;
+  z-index: 3;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: calc(var(--seed-safe-area-top) + 1px);
+  background: var(--feed-bg);
+  pointer-events: none;
+}
+
+/* 거래완료 badge before the price, after the captured search results (2026-09-17). */
+.feed-sold-badge { flex: none; padding: 3px 6px; border-radius: 4px; background: #d9dbe0; color: #212225; font-size: 12px; font-weight: 700; line-height: 15px; }

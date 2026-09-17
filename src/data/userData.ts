@@ -1,41 +1,34 @@
-import { districtList, districts, isDistrictId, type District, type DistrictId } from "./neighborhoods";
+import { type District } from "./neighborhoods";
 export interface Neighborhood extends District { isVerified: true }
 export interface PrototypeUser {
-    schemaVersion: 2;
+    schemaVersion: 3;
     id: string;
     nickname: string;
     verifiedNeighborhoods: Neighborhood[];
-    activeNeighborhoodId: DistrictId;
+    activeNeighborhoodId: string;
+    tradePlace: string;
+    pickupAddress: string;
 }
 
-// Every supported district is selectable without actual verification in this prototype.
+// Account regions are fixed province-level fixtures, not GPS distance calculations.
 export const defaultUser: PrototypeUser = {
-    schemaVersion: 2,
-    id: "prototype-user-duck",
-    nickname: "duck",
-    verifiedNeighborhoods: districtList.map((district) => ({ ...district, isVerified: true })),
-    activeNeighborhoodId: "gwanak",
+    schemaVersion: 3,
+    id: "prototype-user-park",
+    nickname: "박경덕",
+    verifiedNeighborhoods: [
+        { id: "seoul", provinceId: "seoul", cityId: null, name: "서울특별시", label: "서울특별시", isVerified: true },
+    ],
+    activeNeighborhoodId: "seoul",
+    tradePlace: "서울특별시",
+    pickupAddress: "서울특별시",
 };
-
-// Keep the existing key so valid earlier selections can migrate to district IDs.
 export const USER_STORAGE_KEY = "re-carrot.prototype-user.v1";
-export function restoreUser(value: unknown): PrototypeUser {
-    if (!value || typeof value !== "object") return defaultUser;
-    const saved = value as Record<string, unknown>;
-    const previous = saved.activeNeighborhoodId;
-    let districtId: DistrictId | undefined;
-    if (isDistrictId(previous)) districtId = previous;
-    else if (previous === "bongcheon") districtId = "gwanak";
-    else if (previous === "seocho1") districtId = "seocho";
-    else if (previous === "custom" && Array.isArray(saved.verifiedNeighborhoods)) {
-        const custom = saved.verifiedNeighborhoods.find((item) => item && item.id === "custom");
-        if (typeof custom?.name === "string") {
-            const name = custom.name.trim();
-            districtId = Object.values(districts).find((item) => item.name === name || item.label === name)?.id;
-            if (name === "봉천동") districtId = "gwanak";
-            if (name === "서초1동") districtId = "seocho";
-        }
-    }
-    // A city-only label cannot identify a district, so do not guess its child district.
-    return { ...defaultUser, activeNeighborhoodId: districtId ?? defaultUser.activeNeighborhoodId };
-}
+
+export const prototypeUsers: PrototypeUser[] = [defaultUser, { ...defaultUser, id: "prototype-user-yoo", nickname: "유주연",
+    verifiedNeighborhoods: [{ id: "gyeongbuk", provinceId: "gyeongbuk", cityId: null, name: "경상북도", label: "경상북도", isVerified: true }],
+    activeNeighborhoodId: "gyeongbuk", tradePlace: "경상북도", pickupAddress: "경상북도",
+}, {
+    // Third-party viewer for checking sold/other-user states (added 2026-09-17). Region unverified: 서울특별시 assumed.
+    ...defaultUser, id: "prototype-user-anon", nickname: "아무개",
+}];
+export const guestUser = prototypeUsers[2];

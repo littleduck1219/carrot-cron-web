@@ -1,7 +1,33 @@
 import type { SellerId } from "../../data/sellers";
-export type ProductId = "backbone" | "mimikyu";
+import { macbookBundle } from "./macbookBundleData";
+export type ProductId = "backbone" | "mimikyu" | "macbook-bundle";
 export type SourceRegion = { source: string; x: number; y: number; width: number; height: number };
-export type ProductCard = { title: string; price: string; photo: SourceRegion; reserved?: boolean; meta?: string };
+export type ProductCard = { title: string; price?: string; photo: SourceRegion; reserved?: boolean; meta?: string; discount?: string; oldPrice?: string };
+export interface ProductDetailData {
+    sellerId: SellerId;
+    directBuy: boolean;
+    title: string;
+    price: string;
+    extraCost?: string;
+    temperature: string;
+    mood: string;
+    category: string;
+    updated: string;
+    chats?: number;
+    likes: number;
+    views: number;
+    initiallyLiked: boolean;
+    photos: SourceRegion[];
+    photoTotal: number;
+    description: string[];
+    contentsAnswer?: string;
+    questions?: { label: string; answered?: boolean }[];
+    similar: ProductCard[];
+    topAds: ProductCard[];
+    bottomAds: ProductCard[];
+    sellerItems: ProductCard[];
+    keyword: string;
+}
 export const region = (source: string, x: number, y: number, width = 199, height = 149): SourceRegion => ({ source: `/reference/detail/${source}.png`, x, y, width, height });
 const card = (source: string, x: number, y: number, title: string, price: string, extra: Partial<ProductCard> = {}): ProductCard => ({ title, price, photo: region(source, x, y), ...extra });
 
@@ -72,7 +98,8 @@ const mimikyuTopAds: ProductCard[] = [
     {title:"리멘트 포켓몬 스윙비네트 컬렉션…",price:"24,400원",meta:"쿠팡",photo:region("224031543",252,160,108,108)},
     mimikyuAds[1],
 ];
-export const productDetails = {
+export const productDetails: Record<ProductId, ProductDetailData> = {
+    "macbook-bundle": macbookBundle,
     backbone: {
         sellerId: "raum" as SellerId, directBuy: false,
         title:"(미개봉백본원 아이폰 게임패드 블랙", price:"50,000원", temperature:"36.8°C", mood:"🙂", category:"디지털기기", updated:"끌올 1주 전", likes:2, views:31, initiallyLiked:true,
@@ -83,7 +110,9 @@ export const productDetails = {
         sellerItems:[card("224029790",16,506,"댄 브라운 비밀의 비밀 1, 2권","8,000원")], keyword:"아이폰 게임패드",
     },
     mimikyu: {
-        sellerId: "dudu" as SellerId, directBuy: true,
+        sellerId: "dudu" as SellerId, directBuy: true, extraCost: "4,282원",
+        contentsAnswer: "탑로더 상태로 입니다",
+        questions: [{ label: "구성품", answered: true }, { label: "개봉, 하자 여부" }, { label: "정품 여부, 에디션" }, { label: "작동 여부" }, { label: "호환 기종, 언어" }],
         title:"아주 귀한 따라큐",price:"31,000원",temperature:"41.8°C",mood:"😚",category:"취미/게임/음반",updated:"끌올 1일 전",likes:10,views:628,initiallyLiked:false,
         // Supplied photos are 1/5 through 4/5. No substitute is invented for 5/5.
         photos:["224030274","224030489","224030688","224030922"].map(source=>region(source,0,0,440,440)),photoTotal:5,
@@ -96,5 +125,5 @@ export const productDetails = {
             card("224032476",225,366,"상태 완벽 정글 피카츄 북미 포켓…","9,000원"),
         ],keyword:"따라큐",
     },
-} satisfies Record<ProductId, unknown>;
-export function isProductId(value: string): value is ProductId { return value === "backbone" || value === "mimikyu"; }
+};
+export function isProductId(value: string): value is ProductId { return Object.hasOwn(productDetails, value); }

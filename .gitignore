@@ -22,3 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Prototype posts saved by the dev server (vite.config.ts)
+data/

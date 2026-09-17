@@ -4,9 +4,12 @@ import { ActionButton, Chip, Text } from "@seed-design/react";
 import { useEffect, useRef, useState } from "react";
 import { FeedIcon } from "../home/FeedIcon";
 import { productDetails, region, type ProductCard, type ProductId, type SourceRegion } from "./productData";
+import { CurrentDirectBuyFlow } from "../checkout/CurrentDirectBuyFlow";
+import { clearPurchase, getCompletedBuyer, isPurchased, markCompleted, markPurchased } from "../checkout/purchases";
+import { ChatRoom } from "../chat/ChatRoom";
 import "./ProductDetail.css";
 
-function DetailIcon({ name }: { name: "back" | "share" | "home" | "heart" | "chevron" }) {
+export function DetailIcon({ name }: { name: "back" | "share" | "home" | "heart" | "chevron" }) {
     return <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         {name === "back" && <path d="m15 3-9 9 9 9" />}
         {name === "share" && <><path d="M12 16V2m-6 6 6-6 6 6M4 14v7h16v-7" /></>}
@@ -17,7 +20,7 @@ function DetailIcon({ name }: { name: "back" | "share" | "home" | "heart" | "che
 }
 
 /** Display a region of the unchanged source; semantic controls overlay the captured hero toolbar. */
-function SourceImage({ photo, label, eager = false }: { photo: SourceRegion; label: string; eager?: boolean }) {
+export function SourceImage({ photo, label, eager = false }: { photo: SourceRegion; label: string; eager?: boolean }) {
     return <div className="detail-source-image" role="img" aria-label={label} style={{ aspectRatio: `${photo.width} / ${photo.height}` }}>
         <img src={photo.source} alt="" aria-hidden="true" draggable={false} loading={eager ? "eager" : "lazy"} fetchPriority={eager ? "high" : "auto"} style={{
             width: `${440 / photo.width * 100}%`, left: `${-photo.x / photo.width * 100}%`, top: `${-photo.y / photo.height * 100}%`,
@@ -25,27 +28,40 @@ function SourceImage({ photo, label, eager = false }: { photo: SourceRegion; lab
     </div>;
 }
 
-function Cards({ items, variant = "grid" }: { items: ProductCard[]; variant?: "grid" | "rail" | "ads" }) {
+export function Cards({ items, variant = "grid" }: { items: ProductCard[]; variant?: "grid" | "rail" | "ads" }) {
     return <div className={`detail-cards detail-cards-${variant}`}>
         {items.map((item, index) => <article className="detail-card" key={`${item.title}-${index}`}>
             <SourceImage photo={item.photo} label={item.title} />
             <Text as="p" className="detail-card-title">{item.reserved && <span className="detail-card-reserved">예약중 </span>}{item.title}</Text>
-            <Text as="p" className="detail-card-price">{item.price}</Text>
+            {item.price && <Text as="p" className="detail-card-price">{item.discount && <span className="detail-card-discount">{item.discount} </span>}{item.price}</Text>}
+            {item.oldPrice && <Text as="p" className="detail-card-old-price">{item.oldPrice}</Text>}
             {item.meta && <Text as="p" className="detail-card-meta">{item.meta}</Text>}
         </article>)}
     </div>;
 }
 
-export function ProductDetail({ productId, onBack, viewerName, activeNeighborhood }: { productId: ProductId; onBack: () => void; viewerName: string; activeNeighborhood: Neighborhood }) {
+export function ProductDetail({ productId, onBack, viewerId, viewerName, viewerAddress, activeNeighborhood, planned = false }: { productId: ProductId; onBack: () => void; viewerId: string; viewerName: string; viewerAddress: string; activeNeighborhood: Neighborhood; planned?: boolean }) {
     const product = productDetails[productId];
     const seller = sellers[product.sellerId];
     const sellerDistrict = getSellerDistrict(product.sellerId);
     const directBuy = product.directBuy;
     // User-approved simplification: compare selected verified region IDs, without a radius.
-    const canChat = activeNeighborhood.isVerified && activeNeighborhood.id === sellerDistrict.id;
+    // A paid direct purchase opens chat even across regions (user rule, 2026-09-17). Both versions pay; the record is per version.
+    const purchaseKey = `${planned ? 'planned' : 'current'}:${productId}`;
+    const [purchased, setPurchased] = useState(() => isPurchased(purchaseKey, viewerId));
+    const canChat = purchased || (activeNeighborhood.isVerified && activeNeighborhood.provinceId === sellerDistrict.provinceId);
+    // Completed deal (set from the chat's hidden control): title gets 거래완료 and only the buyer can still chat.
+    const [completedBuyer, setCompletedBuyer] = useState(() => getCompletedBuyer(purchaseKey));
+    const sold = completedBuyer !== null;
+    const isBuyer = completedBuyer === viewerId || purchased;
     const [liked, setLiked] = useState(product.initiallyLiked);
     const [photoIndex, setPhotoIndex] = useState(0);
     const [atTop, setAtTop] = useState(true);
+    const [checkout, setCheckout] = useState(false);
+    const [chat, setChat] = useState(false);
+    // Leaving slides the screen back out to the right; onBack runs once that animation ends.
+    const [closing, setClosing] = useState(false);
+    const close = () => setClosing(true);
     useEffect(() => { document.title = `${product.title} · RE:carrot`; return () => { document.title = "RE:carrot · 홈 피드"; }; }, [product.title]);
     const galleryRef = useRef<HTMLDivElement>(null);
     const questionsRef = useRef<HTMLElement>(null);
@@ -54,10 +70,12 @@ export function ProductDetail({ productId, onBack, viewerName, activeNeighborhoo
         if (gallery) gallery.scrollTo({ left: index * gallery.clientWidth, behavior: "smooth" });
     };
 
-    return <section className="product-detail" data-at-top={atTop} aria-label={`${product.title} 상세페이지`}>
+    const thumbnail = <SourceImage photo={product.photos[0]} label={`${product.title} 대표 사진`} eager />;
+    return <>
+    <section className="product-detail" data-at-top={atTop} data-closing={closing} inert={closing || checkout || chat} onAnimationEnd={event => { if (event.target === event.currentTarget && closing) onBack(); }} aria-label={`${product.title} 상세페이지`}>
         <header className="detail-bar">
-            <button type="button" aria-label="뒤로 가기" onClick={onBack}><DetailIcon name="back" /></button>
-            <button type="button" aria-label="홈으로" onClick={onBack}><DetailIcon name="home" /></button>
+            <button type="button" aria-label="뒤로 가기" onClick={close}><DetailIcon name="back" /></button>
+            <button type="button" aria-label="홈으로" onClick={close}><DetailIcon name="home" /></button>
             <div className="detail-bar-spacer" />
             <button type="button" aria-label="공유" disabled><DetailIcon name="share" /></button>
             <button type="button" aria-label="게시글 메뉴" disabled><FeedIcon name="more" /></button>
@@ -79,7 +97,7 @@ export function ProductDetail({ productId, onBack, viewerName, activeNeighborhoo
                     <button className="detail-photo-arrow detail-photo-previous" type="button" aria-label="이전 상품 사진" disabled={photoIndex === 0} onClick={() => changePhoto(photoIndex - 1)}>‹</button>
                     <button className="detail-photo-arrow detail-photo-next" type="button" aria-label="다음 상품 사진" disabled={photoIndex === product.photos.length - 1} onClick={() => changePhoto(photoIndex + 1)}>›</button>
                 </>}
-                <span className="detail-photo-count" aria-live="polite">{photoIndex + 1} / {product.photoTotal}</span>
+                {product.photoTotal > 1 && <span className="detail-photo-count" aria-live="polite">{photoIndex + 1} / {product.photoTotal}</span>}
             </div>
 
             {directBuy && <div className="detail-delivery"><FeedIcon name="shopping" /><span>집 앞으로 배송받는 바로구매 물품이에요.</span><DetailIcon name="chevron" /></div>}
@@ -90,21 +108,21 @@ export function ProductDetail({ productId, onBack, viewerName, activeNeighborhoo
             </div>
 
             <article className="detail-description">
-                <Text as="h1" className="detail-title">{product.title}</Text>
-                <div className="detail-price-line"><Text as="p" className="detail-price">{product.price}</Text><span className="detail-pay"><i />●pay</span>
-                    {!directBuy && <button type="button" className="detail-price-offer" disabled>가격 제안하기</button>}
+                <Text as="h1" className="detail-title">{sold && <span className="detail-sold-badge">거래완료</span>}{product.title}</Text>
+                <div className="detail-price-line"><Text as="p" className="detail-price">{product.price}</Text>{!sold && <span className="detail-pay"><i />●pay</span>}
+                    {!directBuy && !sold && <button type="button" className="detail-price-offer" disabled>가격 제안하기</button>}
                 </div>
-                {directBuy && <button type="button" className="detail-cost" disabled>바로구매 이용 시 약 4,282원 추가 <span>⌄</span></button>}
+                {directBuy && product.extraCost && <button type="button" className="detail-cost" disabled>바로구매 이용 시 약 {product.extraCost} 추가 <span>⌄</span></button>}
                 <p className="detail-category"><span>{product.category}</span> · {product.updated}</p>
-                <div className="detail-body-copy">{product.description.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</div>
+                <div className="detail-body-copy">{product.description.map((paragraph, index) => paragraph === "—" ? <hr className="detail-body-divider" key={index} /> : <p key={index}>{paragraph}</p>)}</div>
                 {directBuy ? <>
-                    <p className="detail-contents"><strong>구성품</strong> 탑로더 상태로 입니다</p>
-                    {!canChat && <section className="detail-questions" ref={questionsRef} aria-label="채팅없이 질문하기" tabIndex={-1}>
+                    {product.contentsAnswer && <p className="detail-contents"><strong>구성품</strong> {product.contentsAnswer}</p>}
+                    {!canChat && product.questions && <section className="detail-questions" ref={questionsRef} aria-label="채팅없이 질문하기" tabIndex={-1}>
                         <h2><span className="detail-question-symbol">Q</span> 채팅없이 질문하기</h2>
                         <p>궁금한 점을 선택하면, 공개 답변을 받을 수 있어요</p>
                         <div className="detail-question-chips">
-                            {["구성품", "개봉, 하자 여부", "정품 여부, 에디션", "작동 여부", "호환 기종, 언어"].map((label, index) => <Chip.Root key={label} variant="outlineWeak" size="medium" disabled className={index === 0 ? "detail-question-answered" : ""}>
-                                <Chip.Label>{label}{index === 0 && <small> 답변완료</small>}</Chip.Label>
+                            {product.questions.map(({ label, answered }) => <Chip.Root key={label} variant="outlineWeak" size="medium" disabled className={answered ? "detail-question-answered" : ""}>
+                                <Chip.Label>{label}{answered && <small> 답변완료</small>}</Chip.Label>
                             </Chip.Root>)}
                         </div>
                     </section>}
@@ -113,7 +131,7 @@ export function ProductDetail({ productId, onBack, viewerName, activeNeighborhoo
                     <SourceImage photo={region("224027335",16,272,408,120)} label="파리바게트 거래 희망 장소 지도, 서울대입구역 근처" />
                     <p className="detail-distance">700m 근처에서 거래할 수 있어요</p>
                 </section>}
-                <p className="detail-stats">관심 {product.likes + Number(liked) - Number(product.initiallyLiked)} · 조회 {product.views}</p>
+                <p className="detail-stats">{product.chats !== undefined && <>채팅 {product.chats} · </>}관심 {product.likes + Number(liked) - Number(product.initiallyLiked)} · 조회 {product.views.toLocaleString("ko-KR")}</p>
                 <button type="button" className="detail-report" disabled>이 게시글 신고하기</button>
             </article>
 
@@ -126,12 +144,15 @@ export function ProductDetail({ productId, onBack, viewerName, activeNeighborhoo
 
         <footer className="detail-footer">
             <button type="button" className={`detail-like ${liked ? "is-liked" : ""}`} aria-label="관심 상품" aria-pressed={liked} onClick={() => setLiked(!liked)}><DetailIcon name="heart" /></button>
-            {directBuy ? <>
+            {sold ? <ActionButton variant="brandSolid" size="large" className="detail-primary detail-sold" disabled={!isBuyer} onClick={() => setChat(true)}>채팅하기</ActionButton> : directBuy ? <>
                 {canChat
-                    ? <ActionButton variant="neutralWeak" size="large" className="detail-question-button" disabled>채팅하기</ActionButton>
-                    : <ActionButton variant="neutralWeak" size="large" className="detail-question-button" onClick={() => { questionsRef.current?.scrollIntoView({ behavior: "smooth", block: "start" }); questionsRef.current?.focus({ preventScroll: true }); }}>질문하기</ActionButton>}
-                <ActionButton variant="brandSolid" size="large" className="detail-primary" disabled>바로구매</ActionButton>
-            </> : <ActionButton variant="brandSolid" size="large" className="detail-primary" disabled>채팅하기</ActionButton>}
+                    ? <ActionButton variant="neutralWeak" size="large" className="detail-question-button" onClick={() => setChat(true)}>채팅하기</ActionButton>
+                    : <ActionButton variant="neutralWeak" size="large" className="detail-question-button" disabled={!product.questions} onClick={() => { questionsRef.current?.scrollIntoView({ behavior: "smooth", block: "start" }); questionsRef.current?.focus({ preventScroll: true }); }}>질문하기</ActionButton>}
+                <ActionButton variant="brandSolid" size="large" className="detail-primary" onClick={() => setCheckout(true)}>바로구매</ActionButton>
+            </> : <ActionButton variant="brandSolid" size="large" className="detail-primary" onClick={() => setChat(true)}>채팅하기</ActionButton>}
         </footer>
-    </section>;
+    </section>
+    {checkout && directBuy && <CurrentDirectBuyFlow product={{ title: product.title, price: Number(product.price.replace(/\D/g, '')), category: product.category, thumbnail }} buyerName={viewerName} address={viewerAddress} onClose={() => setCheckout(false)} purchasable initialStep={purchased ? 'status' : 'address'} onPaid={() => { markPurchased(purchaseKey, viewerId); setPurchased(true); }} onCancelled={() => { clearPurchase(purchaseKey); setPurchased(false); }} />}
+    {chat && <ChatRoom partner={{ nickname: seller.nickname, temperature: product.temperature, neighborhood: sellerDistrict.label }} product={{ title: product.title, price: product.price, thumbnail, offers: !directBuy }} viewerName={viewerName} completed={sold || purchased} onComplete={() => { markCompleted(purchaseKey, viewerId); setCompletedBuyer(viewerId); }} onClose={() => setChat(false)} />}
+    </>;
 }

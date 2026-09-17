@@ -3,7 +3,7 @@
   position: fixed;
   inset: 0;
   overflow: hidden;
-  background: var(--seed-color-bg-layer-basement);
+  background: #1a1c20;
 }
 
 .device {
@@ -13,14 +13,18 @@
   --device-bezel: 12px;
   --device-scale: 1;
 
-  /* Absolute + translate keeps the frame centered even when it overflows the viewport. */
+  /* Centered by DeviceFrame's fit(): --device-left/top are snapped so the screen edge lands on a device pixel
+     and the scaled clip edge stays crisp against the slide-in layers. */
+  --device-left: 0px;
+  --device-top: 0px;
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(var(--device-scale));
+  top: var(--device-top);
+  left: var(--device-left);
+  transform-origin: 0 0;
+  transform: scale(var(--device-scale));
   padding: var(--device-bezel);
   border-radius: calc(var(--device-screen-radius) + var(--device-bezel));
-  background: #1c1c1e;
+  background: #000;
   box-shadow:
     0 0 0 1px rgba(255, 255, 255, 0.12),
     0 24px 70px rgba(0, 0, 0, 0.45);
@@ -70,6 +74,9 @@
   left: 50%;
   translate: -50% 0;
   z-index: 20;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
   width: 125px;
   height: 37px;
   border-radius: 19px;
@@ -90,44 +97,28 @@
   pointer-events: none;
 }
 
-/* Stage toolbar ---------------------------------------------------------- */
-.stage-toolbar {
-  position: fixed;
-  top: 16px;
-  right: 16px;
-  display: flex;
-  gap: 2px;
-  padding: 3px;
-  border-radius: var(--seed-radius-r3);
-  background: var(--seed-color-bg-layer-floating);
-  box-shadow: var(--seed-shadow-s2);
+.device-stage { position: absolute; inset: 0; }
+
+.dynamic-island:focus-visible { outline: 2px solid #ff6f00; outline-offset: 3px; }
+
+.dynamic-island[aria-pressed="true"]::after {
+  content: "";
+  position: absolute;
+  right: 36px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #9de64f;
+  pointer-events: none;
 }
 
-.stage-toolbar button {
-  appearance: none;
-  border: 0;
-  cursor: pointer;
-  padding: 6px 12px;
-  border-radius: var(--seed-radius-r2);
-  background: transparent;
-  color: var(--seed-color-fg-neutral-subtle);
-  font: inherit;
-  font-size: 13px;
-  font-weight: 600;
-}
+.status-battery { display: flex; align-items: center; justify-content: center; width: 35px; height: 36px; margin: 0 -4px; padding: 0; border: 0; background: transparent; color: inherit; cursor: pointer; pointer-events: auto; }
+.status-battery:focus-visible { outline: 2px solid #ff6f00; border-radius: 6px; }
+/* Wi-Fi is the 아무개 account control; narrower than the battery hit area. */
+.status-battery.status-wifi { width: 24px; margin: 0; }
+.user-switch-notice { position: absolute; z-index: 100; top: 66px; left: 50%; transform: translateX(-50%); padding: 10px 16px; border-radius: 22px; background: #36373b; color: #fff; font-size: 14px; white-space: nowrap; pointer-events: none; box-shadow: 0 3px 12px #0004; }
 
-.stage-toolbar button[aria-pressed="true"] {
-  background: var(--seed-color-bg-neutral-weak);
-  color: var(--seed-color-fg-neutral);
-}
-
-/* Preview controls occupy their own area outside the device frame. */
-.stage-controls { position: absolute; z-index: 30; top: 16px; left: 16px; right: 16px; display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
-.stage-controls .stage-toolbar { position: static; flex-shrink: 0; }
-.device-stage { position: absolute; inset: 64px 0 0; }
-@media (max-width: 480px) {
-  .stage-controls { flex-wrap: wrap; }
-  .stage-controls .stage-toolbar { margin-left: auto; }
-  .device-stage { top: 110px; }
-  .neighborhood-trigger { max-width: calc(100vw - 32px); }
-}
+/* Checkout captures use their own full-height bottom action area. */
+.device-screen:has(.current-checkout) .home-indicator { display: none; }

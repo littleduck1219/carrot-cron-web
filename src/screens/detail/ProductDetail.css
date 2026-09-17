@@ -1,5 +1,23 @@
-.prototype-home { height: 100%; }
-.product-detail { position: absolute; inset: 0; z-index: 2; color: #f1f2f3; background: #16171b; --detail-orange: #ff6f00; }
+/* The feed stays painted beneath details; isolation keeps its own layers (navigation, launcher) under them. */
+.prototype-home { position: relative; height: 100%; isolation: isolate; }
+/* Native push parallax: the feed drifts a third of the way left and dims while a detail covers it, then returns as it leaves. */
+.prototype-home::after { content: ""; position: absolute; inset: 0; z-index: 10; background: #000; opacity: 0; pointer-events: none; }
+.device-screen:has(.product-detail:not([data-closing="true"])) .prototype-home { animation: home-push 320ms cubic-bezier(.22,1,.36,1) both; }
+.device-screen:has(.product-detail:not([data-closing="true"])) .prototype-home::after { animation: home-dim 320ms cubic-bezier(.22,1,.36,1) both; }
+/* Distinct names: reusing home-push with `reverse` would not restart the finished animation. */
+.device-screen:has(.product-detail[data-closing="true"]) .prototype-home { animation: home-pop 240ms cubic-bezier(.4,0,1,1) both; }
+.device-screen:has(.product-detail[data-closing="true"]) .prototype-home::after { animation: home-undim 240ms cubic-bezier(.4,0,1,1) both; }
+@keyframes home-push { from { transform: none; } to { transform: translateX(-30%); } }
+@keyframes home-pop { from { transform: translateX(-30%); } to { transform: none; } }
+@keyframes home-dim { from { opacity: 0; } to { opacity: .35; } }
+@keyframes home-undim { from { opacity: .35; } to { opacity: 0; } }
+.product-detail { position: absolute; inset: 0; z-index: 2; color: #f1f2f3; background: #16171b; --detail-orange: #ff6f00; animation: detail-slide-in 320ms cubic-bezier(.22,1,.36,1) both; }
+.product-detail[data-closing="true"] { animation: detail-slide-out 240ms cubic-bezier(.4,0,1,1) both; }
+/* Slide-in layers overpaint 6px past their box: at a fractional --device-scale the layer edge and the frame clip edge coincide, and their doubled antialiasing leaves a hairline of the pushed home visible along the left edge. */
+.product-detail, .chat-room, .write-sheet { box-shadow: 0 0 0 6px #16171b; }
+.current-checkout { box-shadow: 0 0 0 6px #000; }
+@keyframes detail-slide-in { from { transform: translateX(100%); } to { transform: none; } }
+@keyframes detail-slide-out { from { transform: none; } to { transform: translateX(100%); } }
 .product-detail button { font-family: inherit; cursor: pointer; }
 .product-detail button:disabled { opacity: 1; cursor: default; }
 .product-detail button:focus-visible, .detail-gallery:focus-visible, .detail-questions:focus-visible { outline: 2px solid var(--detail-orange); outline-offset: -2px; }
@@ -93,11 +111,14 @@
 .detail-like.is-liked svg { fill: currentColor; stroke: currentColor; }
 .product-detail .detail-footer > .detail-primary, .product-detail .detail-footer > .detail-question-button { flex: 1; height: 52px; min-height: 52px; border-radius: 16px; color: #fff; font-size: 18px; font-weight: 700; padding: 0 14px; }
 .product-detail .detail-footer > .detail-primary { background: var(--detail-orange); }
+.product-detail .detail-footer > .detail-sold:disabled { background: #2a2d33; color: #6b6f78; }
+/* Sold: a gray badge inline before the title, matching the feed badge (captured detail, 2026-09-17). */
+.detail-sold-badge { display: inline-block; margin-right: 8px; padding: 3px 7px; border-radius: 5px; background: #d9dbe0; color: #212225; font-size: 14px; font-weight: 700; line-height: 18px; vertical-align: 3px; }
 .product-detail .detail-footer > .detail-question-button { background: #292c33; }
 .feed-item-link { position: absolute; inset: 0; z-index: 1; border-radius: 8px; }
 .feed-item-link:focus-visible { outline: 2px solid #ff6f00; outline-offset: -2px; }
 .feed-item-more { z-index: 2; }
-@media (prefers-reduced-motion: reduce) { .detail-gallery { scroll-behavior: auto; } }
+@media (prefers-reduced-motion: reduce) { .detail-gallery { scroll-behavior: auto; } .product-detail, .product-detail[data-closing="true"], .prototype-home, .prototype-home::after, .current-checkout, .chat-room { animation-duration: 1ms; } }
 
 /* At the top, the original photo includes toolbar/status glyphs. Transparent
    semantic buttons occupy those positions; scrolling switches to native controls. */
@@ -106,3 +127,10 @@
 .product-detail[data-at-top="true"] .detail-bar::before { background: transparent; }
 .product-detail[data-at-top="true"] .detail-bar button > svg { visibility: hidden; }
 .product-detail .detail-footer button > span { font-size: inherit; font-weight: inherit; color: inherit; }
+.detail-body-divider { width: 224px; max-width: 100%; margin: 36px 0; border: 0; border-top: 1px solid #dadddf; }
+.detail-card-discount { color: var(--detail-orange); }
+.product-detail .detail-card-old-price { margin: 3px 0 0; color: #959ba5; font-size: 12px; line-height: 18px; text-decoration: line-through; }
+
+/* Captured details contain their own status icons; keep the account hit target active. */
+.device-screen:has(.product-detail[data-at-top="true"]) .status-battery { visibility: visible; }
+.device-screen:has(.product-detail[data-at-top="true"]) .status-battery > svg { visibility: hidden; }

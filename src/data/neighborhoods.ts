@@ -17,6 +17,7 @@ export const districts = {
     gwanak: { id: "gwanak", name: "관악구", label: "서울특별시 관악구", provinceId: "seoul", cityId: null },
     seocho: { id: "seocho", name: "서초구", label: "서울특별시 서초구", provinceId: "seoul", cityId: null },
     gangnam: { id: "gangnam", name: "강남구", label: "서울특별시 강남구", provinceId: "seoul", cityId: null },
+    yongsan: { id: "yongsan", name: "용산구", label: "서울특별시 용산구", provinceId: "seoul", cityId: null },
     bundang: { id: "bundang", name: "분당구", label: "경기도 성남시 분당구", provinceId: "gyeonggi", cityId: "seongnam" },
 } as const satisfies Record<string, District>;
 export type DistrictId = keyof typeof districts;
