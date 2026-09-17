@@ -7,6 +7,7 @@ import { type PrototypeUser } from "../../data/userData";
 import { PlannedSaleItems } from "./PlannedSaleItems";
 import { restoreSaleItems, type SaleItem } from "./saleItems";
 import { FeedIcon } from "../home/FeedIcon";
+import { publicAsset } from "../../data/publicAsset";
 
 const categories = ["디지털기기", "취미/게임/음반", "삽니다"] as const;
 type Category = typeof categories[number];
@@ -14,12 +15,13 @@ type Category = typeof categories[number];
 type Photo = { id: string; src: string; name: string };
 type Draft = { items?: SaleItem[]; category: Category | null; directBuy: boolean; photos: Photo[]; title: string; description: string; price: string; giveaway: boolean; giveawayRequests: boolean; offers: boolean; secondary: boolean };
 const emptyDraft: Draft = { category: null, directBuy: false, photos: [], title: '', description: '', price: '', giveaway: false, giveawayRequests: false, offers: false, secondary: false };
+const referenceBase = publicAsset('reference/');
 // An explicit demo album, never a scan of the user's device photo library.
 const demoAlbum: Photo[] = [
-    { id: 'mac', src: '/reference/mac.jpg', name: '맥북 사진' },
-    { id: 'write-menu', src: '/reference/write-flow/01.jpg', name: '글쓰기 메뉴 캡처' },
-    ...Array.from({ length: 10 }, (_, i) => ({ id: `macbook-${10 - i}`, src: `/reference/macbook-bundle/${String(10 - i).padStart(2, '0')}.${10 - i >= 9 ? 'png' : 'jpg'}`, name: `맥북 게시글 캡처 ${10 - i}` })),
-    { id: 'home', src: '/reference/home-feed.png', name: '홈 피드 캡처' },
+    { id: 'mac', src: publicAsset('reference/mac.jpg'), name: '맥북 사진' },
+    { id: 'write-menu', src: publicAsset('reference/write-flow/01.jpg'), name: '글쓰기 메뉴 캡처' },
+    ...Array.from({ length: 10 }, (_, i) => ({ id: `macbook-${10 - i}`, src: publicAsset(`reference/macbook-bundle/${String(10 - i).padStart(2, '0')}.${10 - i >= 9 ? 'png' : 'jpg'}`), name: `맥북 게시글 캡처 ${10 - i}` })),
+    { id: 'home', src: publicAsset('reference/home-feed.png'), name: '홈 피드 캡처' },
 ];
 function readDraft(draftKey: string, planned: boolean): Draft {
     const initial = { ...emptyDraft, ...(planned ? { items: restoreSaleItems(undefined) } : {}) };
@@ -35,7 +37,7 @@ function readDraft(draftKey: string, planned: boolean): Draft {
             description: typeof value.description === 'string' ? value.description : '',
             price: typeof value.price === 'string' ? value.price.replace(/\D/g, '').slice(0, 12) : '',
             giveaway: value.giveaway === true, giveawayRequests: value.giveawayRequests === true, offers: value.offers === true, secondary: value.secondary === true,
-            photos: Array.isArray(value.photos) ? value.photos.filter((p): p is Photo => !!p && typeof p.id === 'string' && typeof p.name === 'string' && typeof p.src === 'string' && (p.src.startsWith('/reference/') || p.src.startsWith('data:image/'))).slice(0, 10) : [],
+            photos: Array.isArray(value.photos) ? value.photos.filter((p): p is Photo => !!p && typeof p.id === 'string' && typeof p.name === 'string' && typeof p.src === 'string' && (p.src.startsWith(referenceBase) || p.src.startsWith('data:image/'))).slice(0, 10) : [],
         };
     } catch { return initial; }
 }

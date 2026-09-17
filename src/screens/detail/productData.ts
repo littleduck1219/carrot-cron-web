@@ -1,4 +1,5 @@
 import type { SellerId } from "../../data/sellers";
+import { publicAsset } from "../../data/publicAsset";
 import { macbookBundle } from "./macbookBundleData";
 export type ProductId = "backbone" | "mimikyu" | "macbook-bundle";
 export type SourceRegion = { source: string; x: number; y: number; width: number; height: number };
@@ -28,7 +29,7 @@ export interface ProductDetailData {
     sellerItems: ProductCard[];
     keyword: string;
 }
-export const region = (source: string, x: number, y: number, width = 199, height = 149): SourceRegion => ({ source: `/reference/detail/${source}.png`, x, y, width, height });
+export const region = (source: string, x: number, y: number, width = 199, height = 149): SourceRegion => ({ source: publicAsset(`reference/detail/${source}.png`), x, y, width, height });
 const card = (source: string, x: number, y: number, title: string, price: string, extra: Partial<ProductCard> = {}): ProductCard => ({ title, price, photo: region(source, x, y), ...extra });
 
 export const backboneSimilar: ProductCard[] = [

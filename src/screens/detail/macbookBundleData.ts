@@ -1,9 +1,10 @@
 import type { ProductCard, ProductDetailData, SourceRegion } from "./productData";
+import { publicAsset } from "../../data/publicAsset";
 
 // Original attachments are 589 × 1280; the shared renderer uses 440px coordinates.
 const scale = 440 / 589;
 const photo = (page: number, x: number, y: number, width = 267, height = 200): SourceRegion => ({
-    source: `/reference/macbook-bundle/${String(page).padStart(2, "0")}.${page >= 9 ? "png" : "jpg"}`,
+    source: publicAsset(`reference/macbook-bundle/${String(page).padStart(2, "0")}.${page >= 9 ? "png" : "jpg"}`),
     x: x * scale, y: y * scale, width: width * scale, height: height * scale,
 });
 const card = (page: number, x: number, y: number, title: string, price: string, extra: Partial<ProductCard> = {}): ProductCard => ({
