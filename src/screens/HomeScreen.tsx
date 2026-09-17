@@ -21,7 +21,7 @@ const navigation: { label: string; icon: FeedIconName }[] = [
 ];
 
 /** Screenshot reproduction only. Destination screens are built in later steps. */
-export function HomeScreen({ publishedPosts = [], postsError = false, onOpenPublishedPost, onDeletePost, routePrefix = "", onOpenProduct, onOpenWrite, activeNeighborhood, secondaryNeighborhood }: { publishedPosts?: PublishedPost[]; postsError?: boolean; onOpenPublishedPost: (id: string) => void; onDeletePost: (id: string) => void; routePrefix?: string; onOpenWrite: () => void; onOpenProduct: (id: ProductId) => void; activeNeighborhood: string; secondaryNeighborhood?: string }) {
+export function HomeScreen({ readOnly = false, publishedPosts = [], postsError = false, onOpenPublishedPost, onDeletePost, routePrefix = "", onOpenProduct, onOpenWrite, activeNeighborhood, secondaryNeighborhood }: { readOnly?: boolean; publishedPosts?: PublishedPost[]; postsError?: boolean; onOpenPublishedPost: (id: string) => void; onDeletePost: (id: string) => void; routePrefix?: string; onOpenWrite: () => void; onOpenProduct: (id: ProductId) => void; activeNeighborhood: string; secondaryNeighborhood?: string }) {
     const [isScrolled, setIsScrolled] = useState(false);
     const [headerHidden, setHeaderHidden] = useState(false);
     const lastScrollTop = useRef(0);
@@ -116,7 +116,7 @@ export function HomeScreen({ publishedPosts = [], postsError = false, onOpenPubl
                 </ul>
             </main>
 
-            <div className="write-launcher" ref={menuRef} role={menuOpen ? 'dialog' : undefined} aria-modal={menuOpen ? true : undefined} aria-label={menuOpen ? '글쓰기 메뉴' : undefined}>
+            {!readOnly && <div className="write-launcher" ref={menuRef} role={menuOpen ? 'dialog' : undefined} aria-modal={menuOpen ? true : undefined} aria-label={menuOpen ? '글쓰기 메뉴' : undefined}>
                 {menuOpen && <>
                     <button className="write-menu-backdrop" tabIndex={-1} aria-label="글쓰기 메뉴 닫기" onClick={closeMenu} />
                     <div className="write-menu" id="write-menu-options">
@@ -136,7 +136,7 @@ export function HomeScreen({ publishedPosts = [], postsError = false, onOpenPubl
                 <ActionButton className="feed-write" data-compact={isScrolled || menuOpen} data-menu-open={menuOpen} aria-label={menuOpen ? '글쓰기 메뉴 닫기' : '글쓰기'} aria-expanded={menuOpen} aria-controls={menuOpen ? 'write-menu-options' : undefined} variant="brandSolid" size="large" onClick={() => setMenuOpen(current => !current)}>
                     <FeedIcon name="plus" /><span className="feed-write-label" aria-hidden="true">글쓰기</span>
                 </ActionButton>
-            </div>
+            </div>}
             <nav inert={menuOpen} className="feed-navigation" aria-label="하단 내비게이션">
                 {navigation.map(({ label, icon }, index) => (
                     <button key={label} type="button" className="feed-nav-item" aria-current={index === 0 ? "page" : undefined}

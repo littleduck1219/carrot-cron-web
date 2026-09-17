@@ -8,6 +8,7 @@ import { HomeScreen } from "./screens/HomeScreen";
 import { WritingFlow } from "./screens/write/WritingFlow";
 import { ProductDetail } from "./screens/detail/ProductDetail";
 import { isProductId, type ProductId } from "./screens/detail/productData";
+import { isPublicDemo } from "./data/publicDemo";
 
 function subscribeToRoute(notify: () => void) {
     window.addEventListener("hashchange", notify);
@@ -17,9 +18,10 @@ function getRoute() { return window.location.hash; }
 
 export default function App() {
     const [posts, setPosts] = useState<PublishedPost[]>([]);
-    const [postsLoading, setPostsLoading] = useState(true);
+    const [postsLoading, setPostsLoading] = useState(!isPublicDemo);
     const [postsError, setPostsError] = useState(false);
     useEffect(() => {
+        if (isPublicDemo) return;
         let active = true;
         loadPosts().then(saved => {
             if (active) setPosts(current => [...current, ...saved.filter(post => !current.some(item => item.id === post.id))].sort((a, b) => b.createdAt - a.createdAt));
@@ -37,7 +39,12 @@ export default function App() {
         window.history.scrollRestoration = "manual";
         return () => { window.history.scrollRestoration = previous; };
     }, []);
-    const route = useSyncExternalStore(subscribeToRoute, getRoute);
+    const rawRoute = useSyncExternalStore(subscribeToRoute, getRoute);
+    const blockedWriteRoute = isPublicDemo && (rawRoute === "#/write" || rawRoute === "#/planned/write");
+    const route = blockedWriteRoute ? (rawRoute.startsWith("#/planned") ? "#/planned/" : "#/") : rawRoute;
+    useLayoutEffect(() => {
+        if (blockedWriteRoute) window.location.replace(route);
+    }, [blockedWriteRoute, route]);
     const planned = route.startsWith("#/planned");
     const version = planned ? "planned" : "current";
     const routePrefix = planned ? "/planned" : "";
@@ -83,6 +90,7 @@ export default function App() {
         publishedPending.current = post.id;
     };
     const openWrite = () => {
+        if (isPublicDemo) return;
         returnFocusToWrite.current = true;
         feedScrollPosition.current[version] = homeRef.current?.querySelector(".feed-scroll")?.scrollTop ?? 0;
         openedFromHome.current = true;
@@ -114,6 +122,7 @@ export default function App() {
         window.location.hash = planned ? (publishedId ? "/" : screenRoute.slice(1) || "/") : `/planned${publishedId ? "/" : screenRoute.slice(1) || "/"}`;
     };
     const removePost = (id: string) => {
+        if (isPublicDemo) return;
         setPosts(current => current.filter(post => post.id !== id));
         deletePost(id).catch(() => setPostsError(true));
         if (publishedId === id) { openedFromHome.current = false; window.location.replace(`#${routePrefix}/`); }
@@ -121,9 +130,9 @@ export default function App() {
     return <DeviceFrame userName={user.nickname} onSwitchUser={switchUser} onSwitchGuest={switchGuest} version={version} onSwitchVersion={switchVersion} showHomeIndicator={detailOpen}>
         {/* Keep the feed mounted so returning from a product preserves its scroll position. */}
         <div className="prototype-home" ref={homeRef} inert={detailOpen || writing}>
-            <HomeScreen key={version} publishedPosts={versionPosts} postsError={postsError} onOpenPublishedPost={openPublishedPost} onDeletePost={removePost} routePrefix={routePrefix} onOpenWrite={openWrite} onOpenProduct={openProduct} activeNeighborhood={activeNeighborhood.name} secondaryNeighborhood={user.verifiedNeighborhoods.find((item) => item.id !== activeNeighborhood.id)?.name} />
+            <HomeScreen key={version} readOnly={isPublicDemo} publishedPosts={versionPosts} postsError={postsError} onOpenPublishedPost={openPublishedPost} onDeletePost={removePost} routePrefix={routePrefix} onOpenWrite={openWrite} onOpenProduct={openProduct} activeNeighborhood={activeNeighborhood.name} secondaryNeighborhood={user.verifiedNeighborhoods.find((item) => item.id !== activeNeighborhood.id)?.name} />
         </div>
-        {writing && <WritingFlow user={user} key={version} onPublished={onPublished} planned={planned} draftKey={planned ? "re-carrot.write-draft.planned.v1" : "re-carrot.write-draft.v1"} neighborhood={activeNeighborhood.name} secondaryNeighborhood={user.verifiedNeighborhoods.find(item => item.id !== activeNeighborhood.id)?.name} onClose={closeProduct} />}
+        {!isPublicDemo && writing && <WritingFlow user={user} key={version} onPublished={onPublished} planned={planned} draftKey={planned ? "re-carrot.write-draft.planned.v1" : "re-carrot.write-draft.v1"} neighborhood={activeNeighborhood.name} secondaryNeighborhood={user.verifiedNeighborhoods.find(item => item.id !== activeNeighborhood.id)?.name} onClose={closeProduct} />}
         {publishedId && <PublishedPostDetail planned={planned} viewerId={user.id} viewerName={user.nickname} viewerAddress={user.pickupAddress} viewerProvinceId={activeNeighborhood.provinceId} key={`${publishedId}-${user.id}`} post={versionPosts.find(post => post.id === publishedId)} loading={postsLoading} error={postsError} onBack={closeProduct} onDelete={() => publishedId && removePost(publishedId)} />}
         {productId && <ProductDetail key={`${version}-${productId}`} planned={planned} productId={productId} viewerId={user.id} viewerName={user.nickname} viewerAddress={user.pickupAddress} activeNeighborhood={activeNeighborhood} onBack={closeProduct} />}
     </DeviceFrame>;

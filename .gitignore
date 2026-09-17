@@ -24,4 +24,4 @@ dist-ssr
 *.sw?
 
 # Prototype posts saved by the dev server (vite.config.ts)
-data/
+/data/
