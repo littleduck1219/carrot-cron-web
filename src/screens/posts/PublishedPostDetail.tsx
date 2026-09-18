@@ -12,7 +12,7 @@ import { macbookBundle } from '../detail/macbookBundleData';
 import '../detail/ProductDetail.css';
 import './PublishedPosts.css';
 
-export function PublishedPostDetail({ planned, viewerId, viewerName, viewerAddress, viewerProvinceId, post, loading, error, onBack, onDelete }: { planned: boolean; viewerId: string; viewerName: string; viewerAddress: string; viewerProvinceId: string; post?: PublishedPost; loading: boolean; error: boolean; onBack: () => void; onDelete: () => void }) {
+export function PublishedPostDetail({ planned, viewerId, viewerName, viewerAddress, viewerProvinceId, post, error, onBack, onDelete }: { planned: boolean; viewerId: string; viewerName: string; viewerAddress: string; viewerProvinceId: string; post?: PublishedPost; error: boolean; onBack: () => void; onDelete: () => void }) {
     const isOwnPost = !!post && post.author.id === viewerId;
     const [likedBy, setLikedBy] = useState<string[]>([]);
     const liked = likedBy.includes(viewerId);
@@ -68,7 +68,7 @@ export function PublishedPostDetail({ planned, viewerId, viewerName, viewerAddre
     <section className="product-detail published-post" data-closing={closing} inert={closing || checkout || chat} onAnimationEnd={event => { if (event.target === event.currentTarget && closing) onBack(); }} data-buyer-selection={planned && !isOwnPost && selectedItems.length > 0} data-owner-direct-buy={isOwnPost && post?.directBuy} aria-label={post ? `${post.title} 상세페이지` : '게시글 상세'}>
         <header className="detail-bar"><button type="button" aria-label="뒤로 가기" onClick={close}><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="m15 3-9 9 9 9" fill="none" stroke="currentColor" strokeWidth="1.8" /></svg></button><button type="button" aria-label="홈으로" onClick={close}><FeedIcon name="home" /></button>{post && <><div className="detail-bar-spacer" /><PostMenu label="게시글" onDelete={onDelete} /></>}</header>
         <main className="detail-scroll" tabIndex={0} aria-label="작성한 게시글 내용">
-            {!post ? <p className="published-empty" role="status">{loading ? '게시글을 불러오는 중이에요.' : error ? '게시글을 불러오지 못했어요. 새로고침 후 다시 확인해주세요.' : '이 브라우저에 저장된 게시글이 없어요.'}</p> : <>
+            {!post ? <p className="published-empty" role="status">{error ? '게시글을 불러오지 못했어요. 새로고침 후 다시 확인해주세요.' : '이 브라우저에 저장된 게시글이 없어요.'}</p> : <>
                 {post.photos.length > 0 && <div className="detail-gallery-wrap">
                     <div className="detail-gallery" ref={galleryRef} aria-label="상품 사진" tabIndex={0} onScroll={event => setPhotoIndex(Math.round(event.currentTarget.scrollLeft / event.currentTarget.clientWidth))} onKeyDown={event => {
                         if (event.key === 'ArrowRight') { event.preventDefault(); changePhoto(Math.min(post.photos.length - 1, photoIndex + 1)); }

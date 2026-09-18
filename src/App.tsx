@@ -52,8 +52,12 @@ export default function App() {
     const routeId = screenRoute.replace(/^#\/product\//, "");
     const productId = isProductId(routeId) ? routeId : null;
     const publishedId = screenRoute.startsWith("#/post/") ? screenRoute.slice("#/post/".length) : null;
-    const detailOpen = productId !== null || publishedId !== null;
     const versionPosts = displayPosts.filter(post => post.format === version || (!post.format && planned));
+    const publishedPost = publishedId ? versionPosts.find(post => post.id === publishedId) : undefined;
+    // Keep the feed visible while IndexedDB/API posts load. The detail slides in only when
+    // its data is ready; a completed miss still opens the existing error/empty state.
+    const publishedDetailReady = publishedId !== null && (publishedPost !== undefined || !postsLoading);
+    const detailOpen = productId !== null || publishedDetailReady;
     const writing = screenRoute === "#/write";
     const openedFromHome = useRef(false);
     const homeRef = useRef<HTMLDivElement>(null);
@@ -133,7 +137,7 @@ export default function App() {
             <HomeScreen key={version} readOnly={isPublicDemo} publishedPosts={versionPosts} postsLoading={postsLoading} postsError={postsError} onOpenPublishedPost={openPublishedPost} onDeletePost={removePost} routePrefix={routePrefix} onOpenWrite={openWrite} onOpenProduct={openProduct} activeNeighborhood={activeNeighborhood.name} secondaryNeighborhood={user.verifiedNeighborhoods.find((item) => item.id !== activeNeighborhood.id)?.name} />
         </div>
         {!isPublicDemo && writing && <WritingFlow user={user} key={version} onPublished={onPublished} planned={planned} draftKey={planned ? "re-carrot.write-draft.planned.v1" : "re-carrot.write-draft.v1"} neighborhood={activeNeighborhood.name} secondaryNeighborhood={user.verifiedNeighborhoods.find(item => item.id !== activeNeighborhood.id)?.name} onClose={closeProduct} />}
-        {publishedId && <PublishedPostDetail planned={planned} viewerId={user.id} viewerName={user.nickname} viewerAddress={user.pickupAddress} viewerProvinceId={activeNeighborhood.provinceId} key={`${publishedId}-${user.id}`} post={versionPosts.find(post => post.id === publishedId)} loading={postsLoading} error={postsError} onBack={closeProduct} onDelete={() => publishedId && removePost(publishedId)} />}
+        {publishedDetailReady && publishedId && <PublishedPostDetail planned={planned} viewerId={user.id} viewerName={user.nickname} viewerAddress={user.pickupAddress} viewerProvinceId={activeNeighborhood.provinceId} key={`${publishedId}-${user.id}`} post={publishedPost} error={postsError} onBack={closeProduct} onDelete={() => removePost(publishedId)} />}
         {productId && <ProductDetail key={`${version}-${productId}`} planned={planned} productId={productId} viewerId={user.id} viewerName={user.nickname} viewerAddress={user.pickupAddress} activeNeighborhood={activeNeighborhood} onBack={closeProduct} />}
     </DeviceFrame>;
 }

@@ -54,7 +54,8 @@ export function HomeScreen({ readOnly = false, publishedPosts = [], postsLoading
 
             </div>
             </div>
-            <main inert={menuOpen} className="feed-scroll" aria-label="동네 상품 목록" tabIndex={0}
+            {postsLoading && <div className="feed-posts-loading" role="status" aria-label="작성한 게시글 불러오는 중"><span /></div>}
+            <main inert={menuOpen} className="feed-scroll" aria-label="동네 상품 목록" tabIndex={0} aria-busy={postsLoading}
                 onScroll={(event) => {
                     const element = event.currentTarget;
                     const top = Math.max(0, Math.min(element.scrollTop, element.scrollHeight - element.clientHeight));
@@ -66,7 +67,6 @@ export function HomeScreen({ readOnly = false, publishedPosts = [], postsLoading
                     }
                 }}>
                 <ul className="feed-list">
-                    {postsLoading && <li className="published-load-error" role="status">작성한 게시글을 불러오는 중이에요.</li>}
                     {postsError && <li className="published-load-error" role="status">작성한 게시글을 불러오지 못했어요. 새로고침 후 다시 확인해주세요.</li>}
                     {publishedPosts.map(post => { const sold = getCompletedBuyer(`post:${post.id}`) !== null || (post.format === 'planned' && isSoldOut(`post:${post.id}`, post.items)); return <li className="feed-item" key={post.id}>
                         <a className="feed-item-link" href={`#${routePrefix}/post/${post.id}`} aria-label={`${post.title} 상세 보기`} onClick={event => { event.preventDefault(); onOpenPublishedPost(post.id); }} />
