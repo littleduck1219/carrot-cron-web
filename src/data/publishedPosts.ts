@@ -102,6 +102,17 @@ export async function deletePost(id: string): Promise<void> {
 }
 export async function loadPosts(): Promise<PublishedPost[]> {
     const local = await runPostTransaction<PublishedPost[]>('readonly', store => store.getAll());
-    const remote: PublishedPost[] = await fetch(postsApi).then(response => response.ok ? response.json() : []).catch(() => []);
+    const remote: PublishedPost[] = await fetch(postsApi)
+        .then(async response => {
+            const value: unknown = response.ok ? await response.json() : [];
+            return Array.isArray(value) ? value.filter((post): post is PublishedPost =>
+                typeof post === 'object' && post !== null &&
+                typeof post.id === 'string' && typeof post.createdAt === 'number' &&
+                typeof post.title === 'string' &&
+                Array.isArray(post.photos) && Array.isArray(post.items) &&
+                typeof post.author === 'object' && post.author !== null && typeof post.author.nickname === 'string'
+            ) : [];
+        })
+        .catch(() => []);
     return [...remote, ...local.filter(post => !remote.some(item => item.id === post.id))].sort((a, b) => b.createdAt - a.createdAt);
 }
