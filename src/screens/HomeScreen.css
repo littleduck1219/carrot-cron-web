@@ -195,7 +195,7 @@
 .feed-sold-badge { flex: none; padding: 3px 6px; border-radius: 4px; background: #d9dbe0; color: #212225; font-size: 12px; font-weight: 700; line-height: 15px; }
 
 /* Saved posts load without replacing or shifting the feed. */
-.feed-posts-loading { position: absolute; z-index: 4; top: calc(var(--seed-safe-area-top) + 114px); left: 16px; right: 16px; height: 2px; overflow: hidden; border-radius: 2px; pointer-events: none; }
-.feed-posts-loading > span { display: block; width: 34%; height: 100%; border-radius: inherit; background: var(--feed-orange); animation: feed-posts-loading 850ms ease-in-out infinite; }
-@keyframes feed-posts-loading { from { transform: translateX(-110%); } to { transform: translateX(325%); } }
-@media (prefers-reduced-motion: reduce) { .feed-posts-loading > span { width: 100%; animation: none; opacity: .7; } }
+.feed-posts-loading { position: absolute; z-index: 4; inset: 0; display: grid; place-items: center; pointer-events: none; }
+.feed-posts-loading > span { width: 28px; height: 28px; box-sizing: border-box; border: 3px solid #ffffff38; border-top-color: #f1f2f3; border-radius: 50%; animation: feed-posts-loading 700ms linear infinite; }
+@keyframes feed-posts-loading { to { transform: rotate(1turn); } }
+@media (prefers-reduced-motion: reduce) { .feed-posts-loading > span { animation: none; } }
