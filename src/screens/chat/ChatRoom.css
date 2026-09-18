@@ -42,7 +42,7 @@
 .chat-mine .chat-bubble { background: #ff6f00; color: #fff; }
 .chat-ai { position: sticky; bottom: 0; align-self: flex-start; display: grid; place-items: center; width: 40px; height: 40px; margin-top: 6px; border: 1px solid #3a3d44; border-radius: 50%; background: #16171b; color: #ff8fd0; }
 .chat-ai:disabled { opacity: 1; }
-.chat-composer { flex: none; display: flex; align-items: center; gap: 10px; padding: 8px 12px calc(var(--seed-safe-area-bottom) + 8px); }
+.chat-composer { flex: none; display: flex; align-items: center; gap: 10px; padding: 8px 12px 0; }
 .chat-composer > button { display: grid; place-items: center; width: 36px; height: 36px; border: 0; padding: 0; background: transparent; color: #f1f2f3; font-size: 26px; }
 .chat-composer > button:disabled { opacity: 1; }
 .chat-send { color: #a2a5ad; }
