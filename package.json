@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "VITE_PUBLIC_DEMO=false vite",
     "build": "tsc -b && vite build",
-    "build:public": "tsc -b && VITE_PUBLIC_DEMO=true vite build --base=/re-carrot/",
+    "build:public": "tsc -b && VITE_PUBLIC_DEMO=false vite build --base=/re-carrot/",
     "lint": "oxlint",
     "preview": "vite preview",
     "figma:export": "node scripts/export-seed-figma.mjs",
