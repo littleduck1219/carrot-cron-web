@@ -21,7 +21,7 @@ const navigation: { label: string; icon: FeedIconName }[] = [
 ];
 
 /** Screenshot reproduction only. Destination screens are built in later steps. */
-export function HomeScreen({ readOnly = false, publishedPosts = [], postsError = false, onOpenPublishedPost, onDeletePost, routePrefix = "", onOpenProduct, onOpenWrite, activeNeighborhood, secondaryNeighborhood }: { readOnly?: boolean; publishedPosts?: PublishedPost[]; postsError?: boolean; onOpenPublishedPost: (id: string) => void; onDeletePost: (id: string) => void; routePrefix?: string; onOpenWrite: () => void; onOpenProduct: (id: ProductId) => void; activeNeighborhood: string; secondaryNeighborhood?: string }) {
+export function HomeScreen({ readOnly = false, publishedPosts = [], postsLoading = false, postsError = false, onOpenPublishedPost, onDeletePost, routePrefix = "", onOpenProduct, onOpenWrite, activeNeighborhood, secondaryNeighborhood }: { readOnly?: boolean; publishedPosts?: PublishedPost[]; postsLoading?: boolean; postsError?: boolean; onOpenPublishedPost: (id: string) => void; onDeletePost: (id: string) => void; routePrefix?: string; onOpenWrite: () => void; onOpenProduct: (id: ProductId) => void; activeNeighborhood: string; secondaryNeighborhood?: string }) {
     const [isScrolled, setIsScrolled] = useState(false);
     const [headerHidden, setHeaderHidden] = useState(false);
     const lastScrollTop = useRef(0);
@@ -66,6 +66,7 @@ export function HomeScreen({ readOnly = false, publishedPosts = [], postsError =
                     }
                 }}>
                 <ul className="feed-list">
+                    {postsLoading && <li className="published-load-error" role="status">작성한 게시글을 불러오는 중이에요.</li>}
                     {postsError && <li className="published-load-error" role="status">작성한 게시글을 불러오지 못했어요. 새로고침 후 다시 확인해주세요.</li>}
                     {publishedPosts.map(post => { const sold = getCompletedBuyer(`post:${post.id}`) !== null || (post.format === 'planned' && isSoldOut(`post:${post.id}`, post.items)); return <li className="feed-item" key={post.id}>
                         <a className="feed-item-link" href={`#${routePrefix}/post/${post.id}`} aria-label={`${post.title} 상세 보기`} onClick={event => { event.preventDefault(); onOpenPublishedPost(post.id); }} />
