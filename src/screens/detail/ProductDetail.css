@@ -13,16 +13,12 @@
 @keyframes home-undim { from { opacity: .35; } to { opacity: 0; } }
 .product-detail { position: absolute; inset: 0; z-index: 2; color: #f1f2f3; background: #16171b; --detail-orange: #ff6f00; animation: detail-slide-in 320ms cubic-bezier(.22,1,.36,1) both; }
 .product-detail[data-closing="true"] { animation: detail-slide-out 240ms cubic-bezier(.4,0,1,1) both; }
-/* Slide-in layers overpaint 6px past their box: at a fractional --device-scale the layer edge and the frame clip edge coincide, and their doubled antialiasing leaves a hairline of the pushed home visible along the left edge. */
-.product-detail, .chat-room, .write-sheet { box-shadow: 0 0 0 6px #16171b; }
-.current-checkout { box-shadow: 0 0 0 6px #000; }
 @keyframes detail-slide-in { from { transform: translateX(100%); } to { transform: none; } }
 @keyframes detail-slide-out { from { transform: none; } to { transform: translateX(100%); } }
 .product-detail button { font-family: inherit; cursor: pointer; }
 .product-detail button:disabled { opacity: 1; cursor: default; }
 .product-detail button:focus-visible, .detail-gallery:focus-visible, .detail-questions:focus-visible { outline: 2px solid var(--detail-orange); outline-offset: -2px; }
-.detail-bar { position: absolute; top: var(--seed-safe-area-top); left: 0; right: 0; z-index: 4; height: 48px; display: flex; align-items: center; gap: 16px; padding: 0 16px; background: #16171b; }
-.detail-bar::before { content: ""; position: absolute; bottom: 100%; height: var(--seed-safe-area-top); left: 0; right: 0; background: #16171b; }
+.detail-bar { position: absolute; top: 0; left: 0; right: 0; z-index: 4; box-sizing: border-box; height: calc(var(--seed-safe-area-top) + 48px); display: flex; align-items: center; gap: 16px; padding: var(--seed-safe-area-top) 16px 0; background: #16171b; }
 .detail-bar button { display: grid; place-items: center; width: 30px; height: 40px; padding: 0; border: 0; color: #f4f5f6; background: none; }
 .detail-bar-spacer { flex: 1; }
 .detail-scroll { height: 100%; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: none; box-sizing: border-box; padding-top: 0; padding-bottom: 124px; }
@@ -123,8 +119,7 @@
 /* At the top, the original photo includes toolbar/status glyphs. Transparent
    semantic buttons occupy those positions; scrolling switches to native controls. */
 .device-screen:has(.product-detail[data-at-top="true"]) .status-bar { visibility: hidden; }
-.product-detail[data-at-top="true"] .detail-bar,
-.product-detail[data-at-top="true"] .detail-bar::before { background: transparent; }
+.product-detail[data-at-top="true"] .detail-bar { background: transparent; }
 .product-detail[data-at-top="true"] .detail-bar button > svg { visibility: hidden; }
 .product-detail .detail-footer button > span { font-size: inherit; font-weight: inherit; color: inherit; }
 .detail-body-divider { width: 224px; max-width: 100%; margin: 36px 0; border: 0; border-top: 1px solid #dadddf; }

@@ -35,6 +35,7 @@ export function DeviceFrame({ version, onSwitchVersion, userName, onSwitchUser, 
     }, [userNotice, userName]);
     const stageRef = useRef<HTMLDivElement>(null);
     const deviceRef = useRef<HTMLDivElement>(null);
+    const frameRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         document.documentElement.dataset.seedColorMode = "dark-only";
@@ -43,16 +44,24 @@ export function DeviceFrame({ version, onSwitchVersion, userName, onSwitchUser, 
     useEffect(() => {
         const stage = stageRef.current;
         const device = deviceRef.current;
-        if (!stage || !device) return;
+        const frame = frameRef.current;
+        if (!stage || !device || !frame) return;
         // offsetWidth/Height ignore the transform, so this cannot feed back on itself.
         const fit = () => {
             const scale = Math.min(1, (stage.clientHeight - 48) / device.offsetHeight, (stage.clientWidth - 48) / device.offsetWidth);
-            const bezel = parseFloat(getComputedStyle(device).getPropertyValue("--device-bezel")) * scale;
-            // Snap the screen's top-left edge to a device pixel; a fractional edge antialiases against the layers inside.
-            const snap = (edge: number) => Math.round(edge * devicePixelRatio) / devicePixelRatio - bezel;
+            const style = getComputedStyle(device);
+            const snap = (edge: number) => Math.round(edge * devicePixelRatio) / devicePixelRatio;
             device.style.setProperty("--device-scale", String(scale));
-            device.style.setProperty("--device-left", `${snap((stage.clientWidth - device.offsetWidth * scale) / 2 + bezel)}px`);
-            device.style.setProperty("--device-top", `${snap((stage.clientHeight - device.offsetHeight * scale) / 2 + bezel)}px`);
+            device.style.setProperty("--device-left", `${snap((stage.clientWidth - device.offsetWidth * scale) / 2)}px`);
+            device.style.setProperty("--device-top", `${snap((stage.clientHeight - device.offsetHeight * scale) / 2)}px`);
+
+            const stageRect = stage.getBoundingClientRect();
+            const deviceRect = device.getBoundingClientRect();
+            frame.style.left = `${deviceRect.left - stageRect.left}px`;
+            frame.style.top = `${deviceRect.top - stageRect.top}px`;
+            frame.style.width = `${deviceRect.width}px`;
+            frame.style.height = `${deviceRect.height}px`;
+            frame.style.borderRadius = `${parseFloat(style.getPropertyValue("--device-radius")) * scale}px`;
         };
         const observer = new ResizeObserver(fit);
         observer.observe(stage);
@@ -64,15 +73,18 @@ export function DeviceFrame({ version, onSwitchVersion, userName, onSwitchUser, 
             <div className="device-stage" ref={stageRef}>
             <div className="device" ref={deviceRef}>
                 <div className="device-screen" data-prototype-version={version}>
-                    <button type="button" className="dynamic-island" onClick={onSwitchVersion}
-                        aria-label={version === "current" ? "현안 버전, 신규 기획 버전으로 전환" : "신규 기획 버전, 현안 버전으로 전환"}
-                        aria-pressed={version === "planned"} title={version === "current" ? "현안 → 신규 기획" : "신규 기획 → 현안"} />
-                    <StatusBar userName={userName} onSwitchUser={() => { onSwitchUser(); setUserNotice(true); }} onSwitchGuest={() => { onSwitchGuest(); setUserNotice(true); }} />
-                    {userNotice && <div className="user-switch-notice" role="status">{userName}님으로 전환했어요.</div>}
-                    {children}
-                    {showHomeIndicator && <div className="home-indicator" />}
+                    <div className="device-content">
+                        <button type="button" className="dynamic-island" onClick={onSwitchVersion}
+                            aria-label={version === "current" ? "현안 버전, 신규 기획 버전으로 전환" : "신규 기획 버전, 현안 버전으로 전환"}
+                            aria-pressed={version === "planned"} title={version === "current" ? "현안 → 신규 기획" : "신규 기획 → 현안"} />
+                        <StatusBar userName={userName} onSwitchUser={() => { onSwitchUser(); setUserNotice(true); }} onSwitchGuest={() => { onSwitchGuest(); setUserNotice(true); }} />
+                        {userNotice && <div className="user-switch-notice" role="status">{userName}님으로 전환했어요.</div>}
+                        {children}
+                        {showHomeIndicator && <div className="home-indicator" />}
+                    </div>
                 </div>
             </div>
+            <div className="device-frame" ref={frameRef} aria-hidden="true" />
             </div>
         </div>
     );

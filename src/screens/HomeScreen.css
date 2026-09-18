@@ -178,7 +178,7 @@
 .feed-heading[data-hidden="true"] { transform: translateY(-100%); pointer-events: none; }
 @media (prefers-reduced-motion: reduce) { .feed-heading { transition: none; } }
 
-/* Overlap the header edge so fractional frame scaling cannot expose the feed. */
+/* Overlap the header edge far enough to survive fractional frame scaling. */
 .home-feed::before {
   content: "";
   position: absolute;
@@ -186,7 +186,7 @@
   top: 0;
   left: 0;
   right: 0;
-  height: calc(var(--seed-safe-area-top) + 1px);
+  height: calc(var(--seed-safe-area-top) + 4px);
   background: var(--feed-bg);
   pointer-events: none;
 }
