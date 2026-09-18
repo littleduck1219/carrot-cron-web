@@ -26,7 +26,7 @@ function StatusBar({ userName, onSwitchUser, onSwitchGuest }: { userName: string
 }
 
 /** iPhone 16 Pro Max preview frame, centered in the viewport and scaled to fit. */
-export function DeviceFrame({ version, onSwitchVersion, userName, onSwitchUser, onSwitchGuest, children, showHomeIndicator = true }: { version: "current" | "planned"; userName: string; onSwitchUser: () => void; onSwitchGuest: () => void; onSwitchVersion: () => void; children: ReactNode; showHomeIndicator?: boolean }) {
+export function DeviceFrame({ version, onSwitchVersion, userName, onSwitchUser, onSwitchGuest, children }: { version: "current" | "planned"; userName: string; onSwitchUser: () => void; onSwitchGuest: () => void; onSwitchVersion: () => void; children: ReactNode }) {
     const [userNotice, setUserNotice] = useState(false);
     useEffect(() => {
         if (!userNotice) return;
@@ -80,7 +80,6 @@ export function DeviceFrame({ version, onSwitchVersion, userName, onSwitchUser, 
                         <StatusBar userName={userName} onSwitchUser={() => { onSwitchUser(); setUserNotice(true); }} onSwitchGuest={() => { onSwitchGuest(); setUserNotice(true); }} />
                         {userNotice && <div className="user-switch-notice" role="status">{userName}님으로 전환했어요.</div>}
                         {children}
-                        {showHomeIndicator && <div className="home-indicator" />}
                     </div>
                 </div>
             </div>

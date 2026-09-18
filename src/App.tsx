@@ -131,7 +131,7 @@ export default function App() {
         deletePost(id).catch(() => setPostsError(true));
         if (publishedId === id) { openedFromHome.current = false; window.location.replace(`#${routePrefix}/`); }
     };
-    return <DeviceFrame userName={user.nickname} onSwitchUser={switchUser} onSwitchGuest={switchGuest} version={version} onSwitchVersion={switchVersion} showHomeIndicator={detailOpen}>
+    return <DeviceFrame userName={user.nickname} onSwitchUser={switchUser} onSwitchGuest={switchGuest} version={version} onSwitchVersion={switchVersion}>
         {/* Keep the feed mounted so returning from a product preserves its scroll position. */}
         <div className="prototype-home" ref={homeRef} inert={detailOpen || writing}>
             <HomeScreen key={version} readOnly={isPublicDemo} publishedPosts={versionPosts} postsLoading={postsLoading} postsError={postsError} onOpenPublishedPost={openPublishedPost} onDeletePost={removePost} routePrefix={routePrefix} onOpenWrite={openWrite} onOpenProduct={openProduct} activeNeighborhood={activeNeighborhood.name} secondaryNeighborhood={user.verifiedNeighborhoods.find((item) => item.id !== activeNeighborhood.id)?.name} />
