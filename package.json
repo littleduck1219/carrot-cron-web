@@ -4,9 +4,9 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "VITE_PUBLIC_DEMO=false vite",
+    "dev": "vite",
     "build": "tsc -b && vite build",
-    "build:public": "tsc -b && VITE_PUBLIC_DEMO=false vite build --base=/re-carrot/",
+    "build:public": "tsc -b && vite build --mode public --base=/re-carrot/",
     "lint": "oxlint",
     "preview": "vite preview",
     "figma:export": "node scripts/export-seed-figma.mjs",
