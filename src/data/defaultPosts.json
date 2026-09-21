@@ -22,7 +22,7 @@
       }
     ],
     "giveaway": false,
-    "directBuy": false,
+    "directBuy": true,
     "offers": false,
     "giveawayRequests": false,
     "secondary": false,
@@ -78,7 +78,7 @@
       }
     ],
     "giveaway": false,
-    "directBuy": false,
+    "directBuy": true,
     "offers": false,
     "giveawayRequests": false,
     "secondary": false,
