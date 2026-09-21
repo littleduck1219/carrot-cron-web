@@ -100,7 +100,7 @@
 .detail-pagination { display: flex; justify-content: center; gap: 8px; margin-top: 28px; }
 .detail-pagination i { width: 6px; height: 6px; border-radius: 50%; background: #3e444e; }
 .detail-pagination i.active { background: var(--detail-orange); }
-.detail-footer { position: absolute; z-index: 5; bottom: 0; left: 0; right: 0; display: flex; align-items: flex-start; gap: 8px; box-sizing: border-box; height: 76px; padding: 12px 16px; border-top: 1px solid #292d34; background: #1d2126; }
+.detail-footer { position: absolute; z-index: 5; bottom: 0; left: 0; right: 0; display: flex; align-items: flex-start; gap: 8px; box-sizing: border-box; height: 78px; padding: 12px 30px 13px; border-top: 1px solid #292d34; background: #1d2126; }
 .detail-like { width: 30px; height: 52px; flex: none; display: grid; place-items: center; margin-right: 0; border: 0; padding: 0; background: transparent; color: #858c96; }
 .detail-like svg { width: 26px; height: 26px; }
 .detail-like.is-liked { color: #ff852e; }
