@@ -3,7 +3,7 @@
   position: fixed;
   inset: 0;
   overflow: hidden;
-  background: #1a1c20;
+  background: #16171b;
 }
 
 .device {
@@ -37,7 +37,10 @@
   position: absolute;
   z-index: 1000;
   pointer-events: none;
-  box-shadow: inset 0 0 0 2px #000;
+  box-shadow:
+    inset 0 0 0 2px #000,
+    0 0 0 1px rgb(255 255 255 / 28%),
+    0 18px 48px rgb(0 0 0 / 58%);
 }
 
 .device-screen {
