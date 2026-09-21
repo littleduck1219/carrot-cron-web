@@ -26,7 +26,7 @@
 .chat-actions > button:disabled { color: #f1f2f3; opacity: 1; cursor: default; }
 .chat-actions > button.chat-review-button:disabled { color: #5c606a; border-color: #2c2f36; }
 .chat-actions svg { width: 18px; height: 18px; }
-.chat-messages { position: relative; flex: 1; min-height: 0; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; padding: 12px 16px 60px; scrollbar-width: none; }
+.chat-messages { position: relative; flex: 1; min-height: 0; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; padding: 12px 16px 80px; scrollbar-width: none; }
 .chat-date { align-self: center; margin: 8px 0; color: #a2a5ad; font-size: 14px; }
 .chat-row { display: flex; align-items: flex-end; gap: 6px; max-width: 86%; }
 .chat-theirs { align-self: flex-start; }
@@ -42,7 +42,7 @@
 .chat-mine .chat-bubble { background: #ff6f00; color: #fff; }
 .chat-ai { position: sticky; bottom: 0; align-self: flex-start; display: grid; place-items: center; width: 40px; height: 40px; margin-top: 6px; border: 1px solid #3a3d44; border-radius: 50%; background: #16171b; color: #ff8fd0; }
 .chat-ai:disabled { opacity: 1; }
-.chat-composer { flex: none; display: flex; align-items: center; gap: 10px; padding: 8px 12px 0; }
+.chat-composer { flex: none; display: flex; align-items: center; gap: 10px; padding: 8px var(--device-action-inset-inline) var(--device-action-inset-bottom); }
 .chat-composer > button { display: grid; place-items: center; width: 36px; height: 36px; border: 0; padding: 0; background: transparent; color: #f1f2f3; font-size: 26px; }
 .chat-composer > button:disabled { opacity: 1; }
 .chat-send { color: #a2a5ad; }

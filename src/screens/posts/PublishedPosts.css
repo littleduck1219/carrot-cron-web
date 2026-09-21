@@ -23,9 +23,9 @@
 .published-load-error { padding: 12px 16px; color: #f1c78a; font-size: 13px; }
 .write-submit-error { color: #ffaaa0; font-size: 13px; margin: 0 0 10px; line-height: 18px; }
 
-.published-selling-banner { position: absolute; z-index: 5; bottom: 78px; left: 0; right: 0; height: 40px; padding: 0 16px; display: flex; align-items: center; gap: 8px; background: #202d28; color: #99dbc0; font-size: 13px; }
+.published-selling-banner { position: absolute; z-index: 5; bottom: 85px; left: 0; right: 0; height: 40px; padding: 0 16px; display: flex; align-items: center; gap: 8px; background: #202d28; color: #99dbc0; font-size: 13px; }
 .published-selling-banner button { margin-left: auto; padding: 0; border: 0; background: transparent; color: inherit; font-size: 13px; font-weight: 600; }
-.published-post[data-owner-direct-buy="true"] .detail-scroll { padding-bottom: 134px; }
+.published-post[data-owner-direct-buy="true"] .detail-scroll { padding-bottom: 141px; }
 
 .published-item-name { flex: 1; }
 .published-item > input { flex: none; width: 20px; height: 20px; margin: 0; accent-color: #ff6f00; cursor: pointer; }
@@ -37,10 +37,10 @@
 .purchase-quantity button { width: 32px; height: 32px; border: 0; background: transparent; color: #fff; font-size: 20px; }
 .purchase-quantity button:disabled { color: #60646c; }
 .purchase-quantity output { min-width: 16px; text-align: center; }
-.published-selection-summary { position: absolute; bottom: 78px; left: 0; right: 0; z-index: 5; padding: 12px 16px; display: flex; flex-wrap: wrap; gap: 8px; background: #1d2126; border-top: 1px solid #30333a; font-size: 14px; }
+.published-selection-summary { position: absolute; bottom: 85px; left: 0; right: 0; z-index: 5; padding: 12px 16px; display: flex; flex-wrap: wrap; gap: 8px; background: #1d2126; border-top: 1px solid #30333a; font-size: 14px; }
 .published-selection-summary strong { margin-left: auto; }
 .published-selection-summary small { flex-basis: 100%; color: #a2a5ad; font-size: 12px; }
-.published-post[data-buyer-selection="true"] .detail-scroll { padding-bottom: 162px; }
+.published-post[data-buyer-selection="true"] .detail-scroll { padding-bottom: 169px; }
 .published-order .detail-bar h1 { font-size: 18px; margin: 0; }
 .published-order .detail-scroll { padding: calc(var(--seed-safe-area-top) + 68px) 16px 126px; }
 .published-order h2 { font-size: 19px; }

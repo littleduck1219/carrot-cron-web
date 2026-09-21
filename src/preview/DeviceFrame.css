@@ -59,6 +59,8 @@
   /* Safe areas of the real device, so seed's `safeArea` paddings behave as on-device. */
   --seed-safe-area-top: 62px;
   --seed-safe-area-bottom: 0px;
+  --device-action-inset-inline: 24px;
+  --device-action-inset-bottom: 20px;
 
   position: absolute;
   inset: 0;
