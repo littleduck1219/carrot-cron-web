@@ -9,6 +9,7 @@ import { WritingFlow } from "./screens/write/WritingFlow";
 import { ProductDetail } from "./screens/detail/ProductDetail";
 import { isProductId, type ProductId } from "./screens/detail/productData";
 import { isPublicDemo } from "./data/publicDemo";
+import { defaultPosts } from "./data/defaultPosts";
 
 function subscribeToRoute(notify: () => void) {
     window.addEventListener("hashchange", notify);
@@ -17,7 +18,7 @@ function subscribeToRoute(notify: () => void) {
 function getRoute() { return window.location.hash; }
 
 export default function App() {
-    const [posts, setPosts] = useState<PublishedPost[]>([]);
+    const [posts, setPosts] = useState<PublishedPost[]>(() => defaultPosts.map(post => ({ ...post })));
     const [postsLoading, setPostsLoading] = useState(!isPublicDemo);
     const [postsError, setPostsError] = useState(false);
     useEffect(() => {

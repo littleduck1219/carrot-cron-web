@@ -1,0 +1,291 @@
+[
+  {
+    "createdAt": 1790000000000,
+    "title": "IT기술서, 자기계발서 등 30권",
+    "description": "흑석역 직거래 희망\n\n- Do it 자료구조와 함께 배우는 알고리즘 입문 C언어 - 2천원\n- 엘라스틱 스택 개발부터 운영까지 - 2천원\n- 쿠버네티스 완벽 가이드 - 3천원\n- 쿠버네티스로 만나는 손안의 마이크로서비스 - 3천원\n- 밑바닥부터 시작하는 딥러닝 - 3천원\n- IT엔지니어를 위한 네트워크 입문 - 3천원\n- 토비의 스프링 vol1 - 판매완료\n- 토비의 스프링 vol2 - 판매완료\n- 이벤트 소싱과 마이크로서비스 아키텍처 - 3천원\n- 데이터 지향 프로그래밍 - 3천원\n- 코틀린 인 액션 - 4천원\n- 엔지니어를 위한 선형대수 - 3천원\n- 도메인 주도 설계 첫걸음 - 판매완료\n- 알고리즘 기초 - 3천원\n- 마스터링 이더리움 - 3천원\n- 구글 엔지니어는 이렇게 일한다 - 3천원\n- 컴퓨터구조 원서(미개봉) - 5천원\n- 자료구조 Java 원서 - 3천원\n- 선형대수 원서 - 3천원\n- 그로스해킹 - 2천원\n- 비탈릭부테린 지분증명 - 2천원\n- 부의 인문학 - 2천원\n- 매우 예민한 사람들을 위한 책 - 2천원\n- 나는 아마존에서 미래를 다녔다 - 2천원\n- 무역 공부는 난생 처음입니다만 - 2천원\n- 투자에 대한 생각 - 2천원\n- 대량살상 수학무기 - 2천원\n- 조국의 시간 - 무료나눔\n- 조선왕조실록 - 2천원\n- 그건 쓰레기가 아니라고요 - 2천원",
+    "category": "도서",
+    "photos": [
+      {
+        "id": "book-photo-1",
+        "src": "/reference/it-books/01.jpg",
+        "name": "도서 사진 1"
+      },
+      {
+        "id": "book-photo-2",
+        "src": "/reference/it-books/02.jpg",
+        "name": "도서 사진 2"
+      },
+      {
+        "id": "book-photo-3",
+        "src": "/reference/it-books/03.jpg",
+        "name": "도서 사진 3"
+      }
+    ],
+    "giveaway": false,
+    "directBuy": false,
+    "offers": false,
+    "giveawayRequests": false,
+    "secondary": false,
+    "builtIn": true,
+    "ageLabel": "끌올 1시간 전",
+    "temperature": "39.5°C",
+    "mood": "☺️",
+    "mapPhoto": "/reference/it-books/map.jpg",
+    "chats": 3,
+    "likes": 9,
+    "views": 142,
+    "recommendationKind": "books",
+    "author": {
+      "provinceId": "seoul",
+      "id": "default-turtle-shark",
+      "nickname": "꼬부기상어",
+      "neighborhood": "동작구 흑석동",
+      "secondaryNeighborhood": "",
+      "tradePlace": "흑석역",
+      "pickupAddress": "서울특별시 동작구 흑석동"
+    },
+    "id": "default-it-books-current",
+    "format": "current",
+    "items": [
+      {
+        "id": "book-lot",
+        "name": "IT기술서, 자기계발서 등 30권",
+        "price": 2700,
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "createdAt": 1790000000000,
+    "title": "IT기술서, 자기계발서 등 30권",
+    "description": "흑석역 직거래 희망\n\n- Do it 자료구조와 함께 배우는 알고리즘 입문 C언어 - 2천원\n- 엘라스틱 스택 개발부터 운영까지 - 2천원\n- 쿠버네티스 완벽 가이드 - 3천원\n- 쿠버네티스로 만나는 손안의 마이크로서비스 - 3천원\n- 밑바닥부터 시작하는 딥러닝 - 3천원\n- IT엔지니어를 위한 네트워크 입문 - 3천원\n- 토비의 스프링 vol1 - 판매완료\n- 토비의 스프링 vol2 - 판매완료\n- 이벤트 소싱과 마이크로서비스 아키텍처 - 3천원\n- 데이터 지향 프로그래밍 - 3천원\n- 코틀린 인 액션 - 4천원\n- 엔지니어를 위한 선형대수 - 3천원\n- 도메인 주도 설계 첫걸음 - 판매완료\n- 알고리즘 기초 - 3천원\n- 마스터링 이더리움 - 3천원\n- 구글 엔지니어는 이렇게 일한다 - 3천원\n- 컴퓨터구조 원서(미개봉) - 5천원\n- 자료구조 Java 원서 - 3천원\n- 선형대수 원서 - 3천원\n- 그로스해킹 - 2천원\n- 비탈릭부테린 지분증명 - 2천원\n- 부의 인문학 - 2천원\n- 매우 예민한 사람들을 위한 책 - 2천원\n- 나는 아마존에서 미래를 다녔다 - 2천원\n- 무역 공부는 난생 처음입니다만 - 2천원\n- 투자에 대한 생각 - 2천원\n- 대량살상 수학무기 - 2천원\n- 조국의 시간 - 무료나눔\n- 조선왕조실록 - 2천원\n- 그건 쓰레기가 아니라고요 - 2천원",
+    "category": "도서",
+    "photos": [
+      {
+        "id": "book-photo-1",
+        "src": "/reference/it-books/01.jpg",
+        "name": "도서 사진 1"
+      },
+      {
+        "id": "book-photo-2",
+        "src": "/reference/it-books/02.jpg",
+        "name": "도서 사진 2"
+      },
+      {
+        "id": "book-photo-3",
+        "src": "/reference/it-books/03.jpg",
+        "name": "도서 사진 3"
+      }
+    ],
+    "giveaway": false,
+    "directBuy": false,
+    "offers": false,
+    "giveawayRequests": false,
+    "secondary": false,
+    "builtIn": true,
+    "ageLabel": "끌올 1시간 전",
+    "temperature": "39.5°C",
+    "mood": "☺️",
+    "mapPhoto": "/reference/it-books/map.jpg",
+    "chats": 3,
+    "likes": 9,
+    "views": 142,
+    "recommendationKind": "books",
+    "author": {
+      "provinceId": "seoul",
+      "id": "default-turtle-shark",
+      "nickname": "꼬부기상어",
+      "neighborhood": "동작구 흑석동",
+      "secondaryNeighborhood": "",
+      "tradePlace": "흑석역",
+      "pickupAddress": "서울특별시 동작구 흑석동"
+    },
+    "id": "default-it-books-planned",
+    "format": "planned",
+    "items": [
+      {
+        "id": "book-01",
+        "name": "Do it 자료구조와 함께 배우는 알고리즘 입문 C언어",
+        "price": 2000,
+        "quantity": 1
+      },
+      {
+        "id": "book-02",
+        "name": "엘라스틱 스택 개발부터 운영까지",
+        "price": 2000,
+        "quantity": 1
+      },
+      {
+        "id": "book-03",
+        "name": "쿠버네티스 완벽 가이드",
+        "price": 3000,
+        "quantity": 1
+      },
+      {
+        "id": "book-04",
+        "name": "쿠버네티스로 만나는 손안의 마이크로서비스",
+        "price": 3000,
+        "quantity": 1
+      },
+      {
+        "id": "book-05",
+        "name": "밑바닥부터 시작하는 딥러닝",
+        "price": 3000,
+        "quantity": 1
+      },
+      {
+        "id": "book-06",
+        "name": "IT엔지니어를 위한 네트워크 입문",
+        "price": 3000,
+        "quantity": 1
+      },
+      {
+        "id": "book-07",
+        "name": "토비의 스프링 vol1",
+        "price": 2000,
+        "quantity": 1,
+        "soldOut": true
+      },
+      {
+        "id": "book-08",
+        "name": "토비의 스프링 vol2",
+        "price": 2000,
+        "quantity": 1,
+        "soldOut": true
+      },
+      {
+        "id": "book-09",
+        "name": "이벤트 소싱과 마이크로서비스 아키텍처",
+        "price": 3000,
+        "quantity": 1
+      },
+      {
+        "id": "book-10",
+        "name": "데이터 지향 프로그래밍",
+        "price": 3000,
+        "quantity": 1
+      },
+      {
+        "id": "book-11",
+        "name": "코틀린 인 액션",
+        "price": 4000,
+        "quantity": 1
+      },
+      {
+        "id": "book-12",
+        "name": "엔지니어를 위한 선형대수",
+        "price": 3000,
+        "quantity": 1
+      },
+      {
+        "id": "book-13",
+        "name": "도메인 주도 설계 첫걸음",
+        "price": 3000,
+        "quantity": 1,
+        "soldOut": true
+      },
+      {
+        "id": "book-14",
+        "name": "알고리즘 기초",
+        "price": 3000,
+        "quantity": 1
+      },
+      {
+        "id": "book-15",
+        "name": "마스터링 이더리움",
+        "price": 3000,
+        "quantity": 1
+      },
+      {
+        "id": "book-16",
+        "name": "구글 엔지니어는 이렇게 일한다",
+        "price": 3000,
+        "quantity": 1
+      },
+      {
+        "id": "book-17",
+        "name": "컴퓨터구조 원서(미개봉)",
+        "price": 5000,
+        "quantity": 1
+      },
+      {
+        "id": "book-18",
+        "name": "자료구조 Java 원서",
+        "price": 3000,
+        "quantity": 1
+      },
+      {
+        "id": "book-19",
+        "name": "선형대수 원서",
+        "price": 3000,
+        "quantity": 1
+      },
+      {
+        "id": "book-20",
+        "name": "그로스해킹",
+        "price": 2000,
+        "quantity": 1
+      },
+      {
+        "id": "book-21",
+        "name": "비탈릭부테린 지분증명",
+        "price": 2000,
+        "quantity": 1
+      },
+      {
+        "id": "book-22",
+        "name": "부의 인문학",
+        "price": 2000,
+        "quantity": 1
+      },
+      {
+        "id": "book-23",
+        "name": "매우 예민한 사람들을 위한 책",
+        "price": 2000,
+        "quantity": 1
+      },
+      {
+        "id": "book-24",
+        "name": "나는 아마존에서 미래를 다녔다",
+        "price": 2000,
+        "quantity": 1
+      },
+      {
+        "id": "book-25",
+        "name": "무역 공부는 난생 처음입니다만",
+        "price": 2000,
+        "quantity": 1
+      },
+      {
+        "id": "book-26",
+        "name": "투자에 대한 생각",
+        "price": 2000,
+        "quantity": 1
+      },
+      {
+        "id": "book-27",
+        "name": "대량살상 수학무기",
+        "price": 2000,
+        "quantity": 1
+      },
+      {
+        "id": "book-28",
+        "name": "조국의 시간",
+        "price": 0,
+        "quantity": 1
+      },
+      {
+        "id": "book-29",
+        "name": "조선왕조실록",
+        "price": 2000,
+        "quantity": 1
+      },
+      {
+        "id": "book-30",
+        "name": "그건 쓰레기가 아니라고요",
+        "price": 2000,
+        "quantity": 1
+      }
+    ]
+  }
+]

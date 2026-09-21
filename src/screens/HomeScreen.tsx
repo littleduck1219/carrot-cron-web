@@ -71,11 +71,11 @@ export function HomeScreen({ readOnly = false, publishedPosts = [], postsLoading
                     {publishedPosts.map(post => { const sold = getCompletedBuyer(`post:${post.id}`) !== null || (post.format === 'planned' && isSoldOut(`post:${post.id}`, post.items)); return <li className="feed-item" key={post.id}>
                         <a className="feed-item-link" href={`#${routePrefix}/post/${post.id}`} aria-label={`${post.title} 상세 보기`} onClick={event => { event.preventDefault(); onOpenPublishedPost(post.id); }} />
                         <div className="feed-published-thumbnail">{post.photos[0] ? <img src={post.photos[0].src} alt={post.title} /> : <FeedIcon name="shopping" />}</div>
-                        <div className="feed-item-copy"><Text as="h2" className="feed-item-title feed-published-title">{post.title}</Text><Text as="p" className="feed-item-meta">{post.author.neighborhood} · {postAge(post.createdAt)}</Text><div className="feed-price-row">{sold && <span className="feed-sold-badge">거래완료</span>}<Text as="p" className="feed-item-price">{postPriceLabel(post)}</Text></div>
+                        <div className="feed-item-copy"><Text as="h2" className="feed-item-title feed-published-title">{post.title}</Text><Text as="p" className="feed-item-meta">{post.author.neighborhood} · {post.ageLabel ?? postAge(post.createdAt)}</Text><div className="feed-price-row">{sold && <span className="feed-sold-badge">거래완료</span>}<Text as="p" className="feed-item-price">{postPriceLabel(post)}</Text></div>
                             {post.directBuy && !sold && <Badge tone="brand" variant="weak" size="large" className="feed-buy-badge"><FeedIcon name="shopping" />바로구매</Badge>}
                             {post.items.length > 1 && <div className="feed-item-counts"><span>물품 {post.items.length}종</span></div>}
                         </div>
-                        <PostMenu label={post.title} onDelete={() => onDeletePost(post.id)} />
+                        {post.builtIn ? <button type="button" className="feed-item-more" aria-label={`${post.title} 더 보기`} disabled><FeedIcon name="more" /></button> : <PostMenu label={post.title} onDelete={() => onDeletePost(post.id)} />}
                     </li>; })}
                     {homeItems.map((item) => {
                         const sold = isProductId(item.id) && getCompletedBuyer(`${routePrefix ? 'planned' : 'current'}:${item.id}`) !== null;

@@ -9,6 +9,7 @@ import { ChatRoom } from '../chat/ChatRoom';
 import { Cards, DetailIcon, SourceImage } from '../detail/ProductDetail';
 import { region } from '../detail/productData';
 import { macbookBundle } from '../detail/macbookBundleData';
+import { bookPostSimilar } from '../detail/bookPostData';
 import '../detail/ProductDetail.css';
 import './PublishedPosts.css';
 
@@ -37,7 +38,7 @@ export function PublishedPostDetail({ planned, viewerId, viewerName, viewerAddre
     const [completedBuyer, setCompletedBuyer] = useState(() => getCompletedBuyer(purchaseKey));
     // Planned posts sell per item: paid items become uncheckable 판매완료; the post is sold once every item is.
     const [soldItems, setSoldItems] = useState(() => getSoldItems(purchaseKey));
-    const remaining = (item: { id: string; quantity: number }) => item.quantity - (soldItems[item.id] ?? 0);
+    const remaining = (item: { id: string; quantity: number; soldOut?: boolean }) => item.soldOut ? 0 : item.quantity - (soldItems[item.id] ?? 0);
     // Derived from state, not the store: the React Compiler memoizes this line by its inputs, so a store read here would go stale after a sale.
     const sold = completedBuyer !== null || (!!post && post.items.length > 0 && post.items.every(item => remaining(item) < 1));
     const isBuyer = completedBuyer === viewerId || purchased; // the paying account keeps chat after a sell-out
@@ -66,7 +67,7 @@ export function PublishedPostDetail({ planned, viewerId, viewerName, viewerAddre
     const thumbnail = post?.photos[0] ? <img src={post.photos[0].src} alt="" /> : undefined;
     return <>
     <section className="product-detail published-post" data-closing={closing} inert={closing || checkout || chat} onAnimationEnd={event => { if (event.target === event.currentTarget && closing) onBack(); }} data-buyer-selection={planned && !isOwnPost && selectedItems.length > 0} data-owner-direct-buy={isOwnPost && post?.directBuy} aria-label={post ? `${post.title} 상세페이지` : '게시글 상세'}>
-        <header className="detail-bar"><button type="button" aria-label="뒤로 가기" onClick={close}><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="m15 3-9 9 9 9" fill="none" stroke="currentColor" strokeWidth="1.8" /></svg></button><button type="button" aria-label="홈으로" onClick={close}><FeedIcon name="home" /></button>{post && <><div className="detail-bar-spacer" /><PostMenu label="게시글" onDelete={onDelete} /></>}</header>
+        <header className="detail-bar"><button type="button" aria-label="뒤로 가기" onClick={close}><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="m15 3-9 9 9 9" fill="none" stroke="currentColor" strokeWidth="1.8" /></svg></button><button type="button" aria-label="홈으로" onClick={close}><FeedIcon name="home" /></button>{post && <><div className="detail-bar-spacer" />{post.builtIn ? <button type="button" aria-label="게시글 메뉴" disabled><FeedIcon name="more" /></button> : <PostMenu label="게시글" onDelete={onDelete} />}</>}</header>
         <main className="detail-scroll" tabIndex={0} aria-label="작성한 게시글 내용">
             {!post ? <p className="published-empty" role="status">{error ? '게시글을 불러오지 못했어요. 새로고침 후 다시 확인해주세요.' : '이 브라우저에 저장된 게시글이 없어요.'}</p> : <>
                 {post.photos.length > 0 && <div className="detail-gallery-wrap">
@@ -77,8 +78,8 @@ export function PublishedPostDetail({ planned, viewerId, viewerName, viewerAddre
                     {post.photos.length > 1 && <><button type="button" className="detail-photo-arrow detail-photo-previous" aria-label="이전 상품 사진" disabled={photoIndex === 0} onClick={() => changePhoto(photoIndex - 1)}>‹</button><button type="button" className="detail-photo-arrow detail-photo-next" aria-label="다음 상품 사진" disabled={photoIndex === post.photos.length - 1} onClick={() => changePhoto(photoIndex + 1)}>›</button><span className="detail-photo-count">{photoIndex + 1} / {post.photos.length}</span></>}
                 </div>}
                 {post.directBuy && <div className="detail-delivery"><FeedIcon name="shopping" /><span>바로구매로 등록한 물품이에요.</span></div>}
-                <div className="detail-seller"><div className="detail-avatar"><FeedIcon name="person" /></div><div><strong>{post.author.nickname}</strong><p>{post.author.neighborhood}</p></div>{isOwnPost && <Badge className="published-own" size="medium" tone="neutral" variant="weak">내 게시글</Badge>}</div>
-                <article className="detail-description"><h1 className="detail-title">{sold && <span className="detail-sold-badge">거래완료</span>}{post.title}</h1><p className="detail-price">{postPriceLabel(post)}</p><p className="detail-category"><span>{post.category}</span> · {postAge(post.createdAt)}</p><div className="detail-body-copy"><p>{post.description}</p></div>
+                <div className="detail-seller"><div className="detail-avatar"><FeedIcon name="person" /></div><div><strong>{post.author.nickname}</strong><p>{post.author.neighborhood}</p></div>{post.temperature && <div className="detail-temperature"><strong>{post.temperature} <span>{post.mood}</span></strong><span className="detail-temperature-label">매너온도</span></div>}{isOwnPost && <Badge className="published-own" size="medium" tone="neutral" variant="weak">내 게시글</Badge>}</div>
+                <article className="detail-description"><h1 className="detail-title">{sold && <span className="detail-sold-badge">거래완료</span>}{post.title}</h1><p className="detail-price">{postPriceLabel(post)}</p><p className="detail-category"><span>{post.category}</span> · {post.ageLabel ?? postAge(post.createdAt)}</p><div className="detail-body-copy"><p>{post.description}</p></div>
                     {planned && <section className="published-items" ref={itemsRef} tabIndex={-1} aria-label="구매 물품 선택"><h2>{isOwnPost ? '판매 물품' : '이 게시글의 물품'}{post.items.length > 1 && <> <span>{post.items.length}종</span></>}</h2>
                         {selectionError && <p className="selection-error" role="alert">구매할 물품을 선택해주세요.</p>}
                         {post.items.map(item => <div className="published-item" data-selected={!isOwnPost && !!quantities[item.id]} data-sold-out={remaining(item) < 1} key={item.id}>
@@ -89,10 +90,11 @@ export function PublishedPostDetail({ planned, viewerId, viewerName, viewerAddre
                                     <output aria-label={`${item.name} 구매 수량`}>{quantities[item.id]}</output>
                                     <button type="button" aria-label={`${item.name} 수량 늘리기`} disabled={quantities[item.id] >= remaining(item)} onClick={() => setQuantities(current => ({ ...current, [item.id]: Math.min(remaining(item), current[item.id] + 1) }))}>+</button>
                                 </div>}
-                            </div><b>{post.giveaway ? '나눔' : `${item.price.toLocaleString('ko-KR')}원`}<small>{post.giveaway ? '' : ' /개'}</small></b>
+                            </div><b>{post.giveaway || item.price === 0 ? '나눔' : `${item.price.toLocaleString('ko-KR')}원`}<small>{post.giveaway || item.price === 0 ? '' : ' /개'}</small></b>
                         </div>)}
                     </section>}
-                    <section className="detail-meeting" aria-label="거래 희망 장소"><p><strong>거래 희망 장소</strong> {post.author.tradePlace} <span>›</span></p><SourceImage photo={region("224027335", 16, 272, 408, 120)} label={`${post.author.tradePlace} 거래 희망 장소 지도`} /></section>
+                    <section className="detail-meeting" aria-label="거래 희망 장소"><p><strong>거래 희망 장소</strong> {post.author.tradePlace} <span>›</span></p>{post.mapPhoto ? <img className="published-map" src={post.mapPhoto} alt={`${post.author.tradePlace} 거래 희망 장소 지도`} /> : <SourceImage photo={region("224027335", 16, 272, 408, 120)} label={`${post.author.tradePlace} 거래 희망 장소 지도`} />}</section>
+                    {(post.chats !== undefined || post.likes !== undefined || post.views !== undefined) && <p className="detail-stats">{post.chats !== undefined && <>채팅 {post.chats} · </>}{post.likes !== undefined && <>관심 {post.likes} · </>}{post.views !== undefined && <>조회 {post.views.toLocaleString('ko-KR')}</>}</p>}
                     {post.secondary && <p className="published-setting">함께 올린 동네 <strong>{post.author.secondaryNeighborhood}</strong></p>}
                     {post.offers && <p className="published-setting">가격 제안을 받을 수 있어요.</p>}
                     {post.giveawayRequests && <p className="published-setting">나눔 신청을 받는 물품이에요.</p>}
@@ -104,12 +106,13 @@ export function PublishedPostDetail({ planned, viewerId, viewerName, viewerAddre
                         </div>
                     </section>}
                 </article>
-                {/* Every authored post is a MacBook listing, so the captured MacBook recommendations follow it. */}
-                <section className="detail-section"><h2>{viewerName}님을 위한 새 상품 · 광고 <span className="detail-info">ⓘ</span></h2><Cards items={macbookBundle.topAds} variant="rail" /></section>
-                <section className="detail-section"><h2>보고 있는 물품과 비슷한 물품 <DetailIcon name="chevron" /></h2><Cards items={macbookBundle.similar} /></section>
-                <section className="detail-keyword"><p>이웃들이 <strong>{macbookBundle.keyword}</strong> 게시글을 올리면<br />바로 알려드릴까요?</p><ActionButton variant="neutralWeak" size="small" disabled><FeedIcon name="bell" />알림 받기</ActionButton></section>
-                <section className="detail-section"><h2>{post.author.nickname}님의 판매 물품 <DetailIcon name="chevron" /></h2><Cards items={macbookBundle.sellerItems} /></section>
-                <section className="detail-section detail-bottom-ads"><h2>{viewerName}님을 위한 새 상품 · 광고</h2><Cards items={macbookBundle.bottomAds} variant="ads" /><div className="detail-pagination" aria-hidden="true"><i className="active" /><i />{!post.directBuy && <i />}</div></section>
+                {post.recommendationKind === 'books' ? <section className="detail-section detail-bottom-ads"><h2>보고 있는 물품과 비슷한 물품 <DetailIcon name="chevron" /></h2><Cards items={bookPostSimilar} /></section> : <>
+                    <section className="detail-section"><h2>{viewerName}님을 위한 새 상품 · 광고 <span className="detail-info">ⓘ</span></h2><Cards items={macbookBundle.topAds} variant="rail" /></section>
+                    <section className="detail-section"><h2>보고 있는 물품과 비슷한 물품 <DetailIcon name="chevron" /></h2><Cards items={macbookBundle.similar} /></section>
+                    <section className="detail-keyword"><p>이웃들이 <strong>{macbookBundle.keyword}</strong> 게시글을 올리면<br />바로 알려드릴까요?</p><ActionButton variant="neutralWeak" size="small" disabled><FeedIcon name="bell" />알림 받기</ActionButton></section>
+                    <section className="detail-section"><h2>{post.author.nickname}님의 판매 물품 <DetailIcon name="chevron" /></h2><Cards items={macbookBundle.sellerItems} /></section>
+                    <section className="detail-section detail-bottom-ads"><h2>{viewerName}님을 위한 새 상품 · 광고</h2><Cards items={macbookBundle.bottomAds} variant="ads" /><div className="detail-pagination" aria-hidden="true"><i className="active" /><i />{!post.directBuy && <i />}</div></section>
+                </>}
             </>}
         </main>
         {isOwnPost && post.directBuy && <div className="published-selling-banner">

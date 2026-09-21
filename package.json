@@ -10,7 +10,8 @@
     "lint": "oxlint",
     "preview": "vite preview",
     "figma:export": "node scripts/export-seed-figma.mjs",
-    "figma:check": "node scripts/check-figma-plugin.mjs"
+    "figma:check": "node scripts/check-figma-plugin.mjs",
+    "check:default-post": "node scripts/check-default-book-post.mjs"
   },
   "dependencies": {
     "@seed-design/css": "^2.6.2",

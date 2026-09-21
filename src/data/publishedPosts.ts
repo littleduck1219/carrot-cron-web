@@ -21,13 +21,22 @@ export interface PublishedPost {
     description: string;
     category: string;
     photos: PostInput['photos'];
-    items: { id: string; name: string; price: number; quantity: number }[];
+    items: { id: string; name: string; price: number; quantity: number; soldOut?: boolean }[];
     giveaway: boolean;
     directBuy: boolean;
     offers: boolean;
     giveawayRequests: boolean;
     secondary: boolean;
     chatCount?: number;
+    chats?: number;
+    likes?: number;
+    views?: number;
+    builtIn?: boolean;
+    ageLabel?: string;
+    temperature?: string;
+    mood?: string;
+    mapPhoto?: string;
+    recommendationKind?: 'books';
     author: { provinceId?: string; id?: string; nickname: string; neighborhood: string; secondaryNeighborhood: string; tradePlace: string; pickupAddress: string };
 }
 export function validatePost(input: PostInput): { message: string; target: string } | null {
@@ -58,7 +67,8 @@ export function createPost(input: PostInput, author: PublishedPost['author'], fo
 }
 export function postPriceLabel(post: PublishedPost): string {
     if (post.giveaway) return '나눔';
-    const prices = post.items.map(item => item.price);
+    const activePrices = post.items.filter(item => !item.soldOut && item.price > 0).map(item => item.price);
+    const prices = activePrices.length ? activePrices : post.items.map(item => item.price);
     const min = Math.min(...prices), max = Math.max(...prices);
     return min === max ? `${min.toLocaleString('ko-KR')}원` : `${min.toLocaleString('ko-KR')}~${max.toLocaleString('ko-KR')}원`;
 }
