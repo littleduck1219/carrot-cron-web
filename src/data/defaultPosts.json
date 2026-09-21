@@ -287,5 +287,525 @@
         "quantity": 1
       }
     ]
+  },
+  {
+    "createdAt": 1790100000000,
+    "title": "다양한 분야의 중고 도서 묶음",
+    "description": "다양한 분야 중고 책 판매 합니다.\n\n금액은 각 2,000원 입니다.\n\n구매 원하시는 책 제목 채팅으로 알려주시면 되겠습니다.\n\n1- 2030 축의 전환 - 마우로 기옌\n2- CLAIRE DEWITT AND THE CITY OF THE DEAD - Sara Gran (원서)\n3- GROWTH IQ - 티파니 보바\n4- HARRY POTTER and the Half-Blood Prince - J.K. ROWLING (원서)\n5- life - 이이지마 나미\n6- 고객의 언어 - 이진국\n7- 관점, 다르게 보는 힘 - 최윤규\n8- 관찰의 힘 - 얀 칩체이스, 사이먼 슈타인하트\n9- 그건 내 인생이 아니다 - 서동일\n10- 그들이 말하지 않는 23가지 - 장하준\n11- 그래도 나에겐, 로맨틱 - 하정아\n12- 그래도, 사랑 - 정현주\n13- 기획자의 습관 - 최장순\n14- 깍두기 삼십대 - 조한웅\n15- 나는 실패를 믿지 않는다 - 로빈 웨스턴\n16- 나는 아직, 어른이 되려면 멀었다 - 강세형\n18- 나폴레온 힐의 라이프 체인징 시크릿 1 생각의 힘 - 나폴레온 힐\n19- 낙타가 태양을 피하는 법 - 이지원\n20- 내 마음속의 희망 - 리치 디보스\n21- 내가 알고 있는걸 당신도 알게 된다면 - 칼 필레머\n22- 내일의 부 1 알파편 - 조던 김장섭\n24- 너도 떠나보면 나를 알게될거야 - 김동영\n25- 노르웨이처럼 투자하라 - 클레멘스 봄스도르프\n26- 뇌내혁명 - 하루야마 시게오\n27- 다산의 마지막 공부 - 조윤제\n28- 달빛책방 - 조안나\n29- 당신에게 힘을 보낼게, 반짝 - 밤삼킨별 김효정\n31- 돈의 감각 - 이명로\n32- 디퍼런트 - 문영미\n34- 매직 - 론다 번\n35- 면역에 관하여 - 율라 비스\n36- 물욕 없는 세계 - 스가쓰케 마사노부\n37- 미친듯이 심플 - 켄 시걸\n38- 배움을 돈으로 바꾸는 기술 - 이노우에 히로유키\n39- 부자들의 음모 - 로버트 기요사키\n40- 붓다와 다윈이 만난다면 - 안성두, 우희종, 이한구, 최재천, 홍성욱\n41- 살아온 기적 살아갈 기적 - 장영희\n42- 새로 만든 내몸 사용설명서 - 마이클 로이젠, 메멧 오즈\n43- 새로운 삶을 이끄는 힐링의 힘 - 데일 카네기\n44- 서재 결혼 시키기 - 앤 패디먼\n45- 세상 끝에서 삶을 춤추다 - 박상주\n46- 소란 - 박연준\n47- 슬기로운 수면 생활 - 서진원\n48- 시크릿 - 론다 번\n51- 어떻게 살 것인가 - 유시민\n52- 여자라면 힐러리처럼 - 이지성\n53- 여행하는 인간 - 문요한\n54- 연탄길 - 이철환\n56- 완벽하지 않은 것들에 대한 사랑 - 혜민\n57- 완벽한 공부법 - 고영성, 신영준\n59- 운을 읽는 변호사 - 니시나카 쓰토무\n60- 이 길 위에서 널 만날 수 있을까 - 노지혜\n61- 이기는 대화 - 이서정\n62- 인간은 어떻게 서로를 공감하는가 거울뉴런과 뇌 공감력의 메커니즘 - 크리스티안 케이서스\n63- 인생좌표 - 이케다 다이사쿠\n65- 자기설득 파워 - 백지연\n66- 장영희의 영미시산책 생일 - 장영희\n67- 정원 일의 즐거움 - 헤르만 헤세\n68- 지갑이 마르지 않는 평생부자 - 윤은모\n69- 청소부가 된 어린 왕자 - 박이철\n70- 최고의 팀은 무엇이 다른가 - 대니얼 코일\n71- 췌장암 안내서 - 김송철 외\n72- 침대부터 정리하라 - 윌리엄 H. 맥레이븐\n73- 커피한잔의 명상으로 10억을 번 사람들 - 오시마 준이치\n75- 파는것이 인간이다 - 다니엘 핑크\n76- 프로 컨설턴트 바이블 - 황창환\n77- 프로페셔널의 조건 - 피터 드러커\n78- 하룻밤에 읽는 한국사 - 최용범\n79- 해피로드 - 이케다 다이사쿠\n80- 행동 경제학 - 도모노 노리오\n81- 헬스케어스쿨 - 전종문",
+    "category": "도서",
+    "photos": [
+      {
+        "id": "mixed-book-photo-1",
+        "src": "/reference/mixed-books/01.jpg",
+        "name": "중고 도서 묶음 사진 1"
+      },
+      {
+        "id": "mixed-book-photo-2",
+        "src": "/reference/mixed-books/02.jpg",
+        "name": "중고 도서 묶음 사진 2"
+      }
+    ],
+    "giveaway": false,
+    "directBuy": true,
+    "offers": false,
+    "giveawayRequests": false,
+    "secondary": false,
+    "builtIn": true,
+    "ageLabel": "끌올 2시간 전",
+    "temperature": "38.6°C",
+    "mood": "☺️",
+    "chats": 2,
+    "likes": 2,
+    "views": 302,
+    "recommendationKind": "books",
+    "author": {
+      "provinceId": "ulsan",
+      "id": "default-green",
+      "nickname": "녹색",
+      "neighborhood": "울산광역시 울주군",
+      "secondaryNeighborhood": "",
+      "tradePlace": "울주군",
+      "pickupAddress": "울산광역시 울주군"
+    },
+    "id": "default-mixed-books-current",
+    "format": "current",
+    "items": [
+      {
+        "id": "mixed-book-lot",
+        "name": "다양한 분야의 중고 도서 묶음",
+        "price": 2000,
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "createdAt": 1790100000000,
+    "title": "다양한 분야의 중고 도서 묶음",
+    "description": "다양한 분야 중고 책 판매 합니다.\n\n금액은 각 2,000원 입니다.\n\n구매 원하시는 책 제목 채팅으로 알려주시면 되겠습니다.\n\n1- 2030 축의 전환 - 마우로 기옌\n2- CLAIRE DEWITT AND THE CITY OF THE DEAD - Sara Gran (원서)\n3- GROWTH IQ - 티파니 보바\n4- HARRY POTTER and the Half-Blood Prince - J.K. ROWLING (원서)\n5- life - 이이지마 나미\n6- 고객의 언어 - 이진국\n7- 관점, 다르게 보는 힘 - 최윤규\n8- 관찰의 힘 - 얀 칩체이스, 사이먼 슈타인하트\n9- 그건 내 인생이 아니다 - 서동일\n10- 그들이 말하지 않는 23가지 - 장하준\n11- 그래도 나에겐, 로맨틱 - 하정아\n12- 그래도, 사랑 - 정현주\n13- 기획자의 습관 - 최장순\n14- 깍두기 삼십대 - 조한웅\n15- 나는 실패를 믿지 않는다 - 로빈 웨스턴\n16- 나는 아직, 어른이 되려면 멀었다 - 강세형\n18- 나폴레온 힐의 라이프 체인징 시크릿 1 생각의 힘 - 나폴레온 힐\n19- 낙타가 태양을 피하는 법 - 이지원\n20- 내 마음속의 희망 - 리치 디보스\n21- 내가 알고 있는걸 당신도 알게 된다면 - 칼 필레머\n22- 내일의 부 1 알파편 - 조던 김장섭\n24- 너도 떠나보면 나를 알게될거야 - 김동영\n25- 노르웨이처럼 투자하라 - 클레멘스 봄스도르프\n26- 뇌내혁명 - 하루야마 시게오\n27- 다산의 마지막 공부 - 조윤제\n28- 달빛책방 - 조안나\n29- 당신에게 힘을 보낼게, 반짝 - 밤삼킨별 김효정\n31- 돈의 감각 - 이명로\n32- 디퍼런트 - 문영미\n34- 매직 - 론다 번\n35- 면역에 관하여 - 율라 비스\n36- 물욕 없는 세계 - 스가쓰케 마사노부\n37- 미친듯이 심플 - 켄 시걸\n38- 배움을 돈으로 바꾸는 기술 - 이노우에 히로유키\n39- 부자들의 음모 - 로버트 기요사키\n40- 붓다와 다윈이 만난다면 - 안성두, 우희종, 이한구, 최재천, 홍성욱\n41- 살아온 기적 살아갈 기적 - 장영희\n42- 새로 만든 내몸 사용설명서 - 마이클 로이젠, 메멧 오즈\n43- 새로운 삶을 이끄는 힐링의 힘 - 데일 카네기\n44- 서재 결혼 시키기 - 앤 패디먼\n45- 세상 끝에서 삶을 춤추다 - 박상주\n46- 소란 - 박연준\n47- 슬기로운 수면 생활 - 서진원\n48- 시크릿 - 론다 번\n51- 어떻게 살 것인가 - 유시민\n52- 여자라면 힐러리처럼 - 이지성\n53- 여행하는 인간 - 문요한\n54- 연탄길 - 이철환\n56- 완벽하지 않은 것들에 대한 사랑 - 혜민\n57- 완벽한 공부법 - 고영성, 신영준\n59- 운을 읽는 변호사 - 니시나카 쓰토무\n60- 이 길 위에서 널 만날 수 있을까 - 노지혜\n61- 이기는 대화 - 이서정\n62- 인간은 어떻게 서로를 공감하는가 거울뉴런과 뇌 공감력의 메커니즘 - 크리스티안 케이서스\n63- 인생좌표 - 이케다 다이사쿠\n65- 자기설득 파워 - 백지연\n66- 장영희의 영미시산책 생일 - 장영희\n67- 정원 일의 즐거움 - 헤르만 헤세\n68- 지갑이 마르지 않는 평생부자 - 윤은모\n69- 청소부가 된 어린 왕자 - 박이철\n70- 최고의 팀은 무엇이 다른가 - 대니얼 코일\n71- 췌장암 안내서 - 김송철 외\n72- 침대부터 정리하라 - 윌리엄 H. 맥레이븐\n73- 커피한잔의 명상으로 10억을 번 사람들 - 오시마 준이치\n75- 파는것이 인간이다 - 다니엘 핑크\n76- 프로 컨설턴트 바이블 - 황창환\n77- 프로페셔널의 조건 - 피터 드러커\n78- 하룻밤에 읽는 한국사 - 최용범\n79- 해피로드 - 이케다 다이사쿠\n80- 행동 경제학 - 도모노 노리오\n81- 헬스케어스쿨 - 전종문",
+    "category": "도서",
+    "photos": [
+      {
+        "id": "mixed-book-photo-1",
+        "src": "/reference/mixed-books/01.jpg",
+        "name": "중고 도서 묶음 사진 1"
+      },
+      {
+        "id": "mixed-book-photo-2",
+        "src": "/reference/mixed-books/02.jpg",
+        "name": "중고 도서 묶음 사진 2"
+      }
+    ],
+    "giveaway": false,
+    "directBuy": true,
+    "offers": false,
+    "giveawayRequests": false,
+    "secondary": false,
+    "builtIn": true,
+    "ageLabel": "끌올 2시간 전",
+    "temperature": "38.6°C",
+    "mood": "☺️",
+    "chats": 2,
+    "likes": 2,
+    "views": 302,
+    "recommendationKind": "books",
+    "author": {
+      "provinceId": "ulsan",
+      "id": "default-green",
+      "nickname": "녹색",
+      "neighborhood": "울산광역시 울주군",
+      "secondaryNeighborhood": "",
+      "tradePlace": "울주군",
+      "pickupAddress": "울산광역시 울주군"
+    },
+    "id": "default-mixed-books-planned",
+    "format": "planned",
+    "items": [
+      {
+        "id": "mixed-book-01",
+        "name": "2030 축의 전환 - 마우로 기옌",
+        "price": 2000,
+        "quantity": 1
+      },
+      {
+        "id": "mixed-book-02",
+        "name": "CLAIRE DEWITT AND THE CITY OF THE DEAD - Sara Gran (원서)",
+        "price": 2000,
+        "quantity": 1
+      },
+      {
+        "id": "mixed-book-03",
+        "name": "GROWTH IQ - 티파니 보바",
+        "price": 2000,
+        "quantity": 1
+      },
+      {
+        "id": "mixed-book-04",
+        "name": "HARRY POTTER and the Half-Blood Prince - J.K. ROWLING (원서)",
+        "price": 2000,
+        "quantity": 1
+      },
+      {
+        "id": "mixed-book-05",
+        "name": "life - 이이지마 나미",
+        "price": 2000,
+        "quantity": 1
+      },
+      {
+        "id": "mixed-book-06",
+        "name": "고객의 언어 - 이진국",
+        "price": 2000,
+        "quantity": 1
+      },
+      {
+        "id": "mixed-book-07",
+        "name": "관점, 다르게 보는 힘 - 최윤규",
+        "price": 2000,
+        "quantity": 1
+      },
+      {
+        "id": "mixed-book-08",
+        "name": "관찰의 힘 - 얀 칩체이스, 사이먼 슈타인하트",
+        "price": 2000,
+        "quantity": 1
+      },
+      {
+        "id": "mixed-book-09",
+        "name": "그건 내 인생이 아니다 - 서동일",
+        "price": 2000,
+        "quantity": 1
+      },
+      {
+        "id": "mixed-book-10",
+        "name": "그들이 말하지 않는 23가지 - 장하준",
+        "price": 2000,
+        "quantity": 1
+      },
+      {
+        "id": "mixed-book-11",
+        "name": "그래도 나에겐, 로맨틱 - 하정아",
+        "price": 2000,
+        "quantity": 1
+      },
+      {
+        "id": "mixed-book-12",
+        "name": "그래도, 사랑 - 정현주",
+        "price": 2000,
+        "quantity": 1
+      },
+      {
+        "id": "mixed-book-13",
+        "name": "기획자의 습관 - 최장순",
+        "price": 2000,
+        "quantity": 1
+      },
+      {
+        "id": "mixed-book-14",
+        "name": "깍두기 삼십대 - 조한웅",
+        "price": 2000,
+        "quantity": 1
+      },
+      {
+        "id": "mixed-book-15",
+        "name": "나는 실패를 믿지 않는다 - 로빈 웨스턴",
+        "price": 2000,
+        "quantity": 1
+      },
+      {
+        "id": "mixed-book-16",
+        "name": "나는 아직, 어른이 되려면 멀었다 - 강세형",
+        "price": 2000,
+        "quantity": 1
+      },
+      {
+        "id": "mixed-book-18",
+        "name": "나폴레온 힐의 라이프 체인징 시크릿 1 생각의 힘 - 나폴레온 힐",
+        "price": 2000,
+        "quantity": 1
+      },
+      {
+        "id": "mixed-book-19",
+        "name": "낙타가 태양을 피하는 법 - 이지원",
+        "price": 2000,
+        "quantity": 1
+      },
+      {
+        "id": "mixed-book-20",
+        "name": "내 마음속의 희망 - 리치 디보스",
+        "price": 2000,
+        "quantity": 1
+      },
+      {
+        "id": "mixed-book-21",
+        "name": "내가 알고 있는걸 당신도 알게 된다면 - 칼 필레머",
+        "price": 2000,
+        "quantity": 1
+      },
+      {
+        "id": "mixed-book-22",
+        "name": "내일의 부 1 알파편 - 조던 김장섭",
+        "price": 2000,
+        "quantity": 1
+      },
+      {
+        "id": "mixed-book-24",
+        "name": "너도 떠나보면 나를 알게될거야 - 김동영",
+        "price": 2000,
+        "quantity": 1
+      },
+      {
+        "id": "mixed-book-25",
+        "name": "노르웨이처럼 투자하라 - 클레멘스 봄스도르프",
+        "price": 2000,
+        "quantity": 1
+      },
+      {
+        "id": "mixed-book-26",
+        "name": "뇌내혁명 - 하루야마 시게오",
+        "price": 2000,
+        "quantity": 1
+      },
+      {
+        "id": "mixed-book-27",
+        "name": "다산의 마지막 공부 - 조윤제",
+        "price": 2000,
+        "quantity": 1
+      },
+      {
+        "id": "mixed-book-28",
+        "name": "달빛책방 - 조안나",
+        "price": 2000,
+        "quantity": 1
+      },
+      {
+        "id": "mixed-book-29",
+        "name": "당신에게 힘을 보낼게, 반짝 - 밤삼킨별 김효정",
+        "price": 2000,
+        "quantity": 1
+      },
+      {
+        "id": "mixed-book-31",
+        "name": "돈의 감각 - 이명로",
+        "price": 2000,
+        "quantity": 1
+      },
+      {
+        "id": "mixed-book-32",
+        "name": "디퍼런트 - 문영미",
+        "price": 2000,
+        "quantity": 1
+      },
+      {
+        "id": "mixed-book-34",
+        "name": "매직 - 론다 번",
+        "price": 2000,
+        "quantity": 1
+      },
+      {
+        "id": "mixed-book-35",
+        "name": "면역에 관하여 - 율라 비스",
+        "price": 2000,
+        "quantity": 1
+      },
+      {
+        "id": "mixed-book-36",
+        "name": "물욕 없는 세계 - 스가쓰케 마사노부",
+        "price": 2000,
+        "quantity": 1
+      },
+      {
+        "id": "mixed-book-37",
+        "name": "미친듯이 심플 - 켄 시걸",
+        "price": 2000,
+        "quantity": 1
+      },
+      {
+        "id": "mixed-book-38",
+        "name": "배움을 돈으로 바꾸는 기술 - 이노우에 히로유키",
+        "price": 2000,
+        "quantity": 1
+      },
+      {
+        "id": "mixed-book-39",
+        "name": "부자들의 음모 - 로버트 기요사키",
+        "price": 2000,
+        "quantity": 1
+      },
+      {
+        "id": "mixed-book-40",
+        "name": "붓다와 다윈이 만난다면 - 안성두, 우희종, 이한구, 최재천, 홍성욱",
+        "price": 2000,
+        "quantity": 1
+      },
+      {
+        "id": "mixed-book-41",
+        "name": "살아온 기적 살아갈 기적 - 장영희",
+        "price": 2000,
+        "quantity": 1
+      },
+      {
+        "id": "mixed-book-42",
+        "name": "새로 만든 내몸 사용설명서 - 마이클 로이젠, 메멧 오즈",
+        "price": 2000,
+        "quantity": 1
+      },
+      {
+        "id": "mixed-book-43",
+        "name": "새로운 삶을 이끄는 힐링의 힘 - 데일 카네기",
+        "price": 2000,
+        "quantity": 1
+      },
+      {
+        "id": "mixed-book-44",
+        "name": "서재 결혼 시키기 - 앤 패디먼",
+        "price": 2000,
+        "quantity": 1
+      },
+      {
+        "id": "mixed-book-45",
+        "name": "세상 끝에서 삶을 춤추다 - 박상주",
+        "price": 2000,
+        "quantity": 1
+      },
+      {
+        "id": "mixed-book-46",
+        "name": "소란 - 박연준",
+        "price": 2000,
+        "quantity": 1
+      },
+      {
+        "id": "mixed-book-47",
+        "name": "슬기로운 수면 생활 - 서진원",
+        "price": 2000,
+        "quantity": 1
+      },
+      {
+        "id": "mixed-book-48",
+        "name": "시크릿 - 론다 번",
+        "price": 2000,
+        "quantity": 1
+      },
+      {
+        "id": "mixed-book-51",
+        "name": "어떻게 살 것인가 - 유시민",
+        "price": 2000,
+        "quantity": 1
+      },
+      {
+        "id": "mixed-book-52",
+        "name": "여자라면 힐러리처럼 - 이지성",
+        "price": 2000,
+        "quantity": 1
+      },
+      {
+        "id": "mixed-book-53",
+        "name": "여행하는 인간 - 문요한",
+        "price": 2000,
+        "quantity": 1
+      },
+      {
+        "id": "mixed-book-54",
+        "name": "연탄길 - 이철환",
+        "price": 2000,
+        "quantity": 1
+      },
+      {
+        "id": "mixed-book-56",
+        "name": "완벽하지 않은 것들에 대한 사랑 - 혜민",
+        "price": 2000,
+        "quantity": 1
+      },
+      {
+        "id": "mixed-book-57",
+        "name": "완벽한 공부법 - 고영성, 신영준",
+        "price": 2000,
+        "quantity": 1
+      },
+      {
+        "id": "mixed-book-59",
+        "name": "운을 읽는 변호사 - 니시나카 쓰토무",
+        "price": 2000,
+        "quantity": 1
+      },
+      {
+        "id": "mixed-book-60",
+        "name": "이 길 위에서 널 만날 수 있을까 - 노지혜",
+        "price": 2000,
+        "quantity": 1
+      },
+      {
+        "id": "mixed-book-61",
+        "name": "이기는 대화 - 이서정",
+        "price": 2000,
+        "quantity": 1
+      },
+      {
+        "id": "mixed-book-62",
+        "name": "인간은 어떻게 서로를 공감하는가 거울뉴런과 뇌 공감력의 메커니즘 - 크리스티안 케이서스",
+        "price": 2000,
+        "quantity": 1
+      },
+      {
+        "id": "mixed-book-63",
+        "name": "인생좌표 - 이케다 다이사쿠",
+        "price": 2000,
+        "quantity": 1
+      },
+      {
+        "id": "mixed-book-65",
+        "name": "자기설득 파워 - 백지연",
+        "price": 2000,
+        "quantity": 1
+      },
+      {
+        "id": "mixed-book-66",
+        "name": "장영희의 영미시산책 생일 - 장영희",
+        "price": 2000,
+        "quantity": 1
+      },
+      {
+        "id": "mixed-book-67",
+        "name": "정원 일의 즐거움 - 헤르만 헤세",
+        "price": 2000,
+        "quantity": 1
+      },
+      {
+        "id": "mixed-book-68",
+        "name": "지갑이 마르지 않는 평생부자 - 윤은모",
+        "price": 2000,
+        "quantity": 1
+      },
+      {
+        "id": "mixed-book-69",
+        "name": "청소부가 된 어린 왕자 - 박이철",
+        "price": 2000,
+        "quantity": 1
+      },
+      {
+        "id": "mixed-book-70",
+        "name": "최고의 팀은 무엇이 다른가 - 대니얼 코일",
+        "price": 2000,
+        "quantity": 1
+      },
+      {
+        "id": "mixed-book-71",
+        "name": "췌장암 안내서 - 김송철 외",
+        "price": 2000,
+        "quantity": 1
+      },
+      {
+        "id": "mixed-book-72",
+        "name": "침대부터 정리하라 - 윌리엄 H. 맥레이븐",
+        "price": 2000,
+        "quantity": 1
+      },
+      {
+        "id": "mixed-book-73",
+        "name": "커피한잔의 명상으로 10억을 번 사람들 - 오시마 준이치",
+        "price": 2000,
+        "quantity": 1
+      },
+      {
+        "id": "mixed-book-75",
+        "name": "파는것이 인간이다 - 다니엘 핑크",
+        "price": 2000,
+        "quantity": 1
+      },
+      {
+        "id": "mixed-book-76",
+        "name": "프로 컨설턴트 바이블 - 황창환",
+        "price": 2000,
+        "quantity": 1
+      },
+      {
+        "id": "mixed-book-77",
+        "name": "프로페셔널의 조건 - 피터 드러커",
+        "price": 2000,
+        "quantity": 1
+      },
+      {
+        "id": "mixed-book-78",
+        "name": "하룻밤에 읽는 한국사 - 최용범",
+        "price": 2000,
+        "quantity": 1
+      },
+      {
+        "id": "mixed-book-79",
+        "name": "해피로드 - 이케다 다이사쿠",
+        "price": 2000,
+        "quantity": 1
+      },
+      {
+        "id": "mixed-book-80",
+        "name": "행동 경제학 - 도모노 노리오",
+        "price": 2000,
+        "quantity": 1
+      },
+      {
+        "id": "mixed-book-81",
+        "name": "헬스케어스쿨 - 전종문",
+        "price": 2000,
+        "quantity": 1
+      }
+    ]
   }
 ]
