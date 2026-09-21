@@ -8,6 +8,8 @@ const mixedCurrent = posts.find(post => post.id === 'default-mixed-books-current
 const mixedPlanned = posts.find(post => post.id === 'default-mixed-books-planned');
 const gamesCurrent = posts.find(post => post.id === 'default-switch-games-current');
 const gamesPlanned = posts.find(post => post.id === 'default-switch-games-planned');
+const snsCurrent = posts.find(post => post.id === 'default-sns-books-current');
+const snsPlanned = posts.find(post => post.id === 'default-sns-books-planned');
 
 assert.equal(current?.format, 'current');
 assert.equal(planned?.format, 'planned');
@@ -46,4 +48,19 @@ assert.equal(gamesCurrent?.directBuy, true);
 assert.equal(gamesPlanned?.directBuy, true);
 assert.equal(gamesCurrent?.photos.length, 1);
 assert.equal(gamesPlanned?.photos.length, 1);
+assert.equal(snsCurrent?.format, 'current');
+assert.equal(snsPlanned?.format, 'planned');
+assert.equal(snsCurrent?.title, 'SNS에서 핫한 도서 13권 판매합니다');
+assert.equal(snsPlanned?.title, snsCurrent.title);
+assert.equal(snsCurrent?.items.length, 1);
+assert.equal(snsCurrent?.items[0].price, 6000);
+assert.equal(snsPlanned?.items.length, 12);
+assert.equal(snsPlanned?.items.filter(item => item.soldOut).length, 4);
+assert.equal(snsPlanned?.items.find(item => item.name === '나는 나무처럼 살고싶다')?.price, 13000);
+assert.equal(snsCurrent?.directBuy, true);
+assert.equal(snsPlanned?.directBuy, true);
+assert.equal(snsCurrent?.recommendationKind, 'books');
+assert.equal(snsPlanned?.recommendationKind, 'books');
+assert.equal(snsCurrent?.photos.length, 1);
+assert.equal(snsPlanned?.photos.length, 1);
 console.log('default book posts: ok');

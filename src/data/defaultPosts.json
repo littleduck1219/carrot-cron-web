@@ -1090,5 +1090,163 @@
         "quantity": 1
       }
     ]
+  },
+  {
+    "createdAt": 1790107200000,
+    "title": "SNS에서 핫한 도서 13권 판매합니다",
+    "description": "한번씩만 깨끗하게 읽고 보관해놓은거라 새책같아요\n아닌 것들은 저렴하게 내놓았습니다.\n\n가시고기: 11,000원 (정가:15,000원)\n\n회색인간: 10,000원 (정가:13,000원)\n\n이제야 언니에게: 10,000원 (정가:16,000원)\n\n지구에서 한아뿐: 판매완료\n\n채식주의자: 판매완료\n\n당신을 아름답게 하는 것들: 8,000원 (정가:13,800원)\n\n잘 살아라 그게 최고의 복수다: 판매완료\n\n박준 시집: 6,000원 (정가:10,000원)\n\n나는 나무처럼 살고싶다: 13,000원 (정가:18,000원)\n\n스물아홉생일: 11,000원 (정가:15,800원)\n\n구원에게: 13,000원 (정가:18,000원)\n\n급류: 판매완료\n\n직거래:송파여성문화회관, 석촌역, 송파역",
+    "category": "도서",
+    "photos": [
+      {
+        "id": "sns-book-photo-1",
+        "src": "/reference/sns-books/01.jpg",
+        "name": "SNS에서 핫한 도서 사진"
+      }
+    ],
+    "giveaway": false,
+    "directBuy": true,
+    "offers": false,
+    "giveawayRequests": false,
+    "secondary": false,
+    "builtIn": true,
+    "ageLabel": "끌올 1일 전",
+    "temperature": "39.4°C",
+    "mood": "☺️",
+    "likes": 38,
+    "views": 5535,
+    "recommendationKind": "books",
+    "author": {
+      "provinceId": "seoul",
+      "id": "default-half-delivery",
+      "nickname": "반값택배가능",
+      "neighborhood": "서울 강남구",
+      "secondaryNeighborhood": "",
+      "tradePlace": "송파여성문화회관, 석촌역, 송파역",
+      "pickupAddress": "서울특별시 강남구"
+    },
+    "id": "default-sns-books-current",
+    "format": "current",
+    "items": [
+      {
+        "id": "sns-book-lot",
+        "name": "SNS에서 핫한 도서 13권",
+        "price": 6000,
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "createdAt": 1790107200000,
+    "title": "SNS에서 핫한 도서 13권 판매합니다",
+    "description": "한번씩만 깨끗하게 읽고 보관해놓은거라 새책같아요\n아닌 것들은 저렴하게 내놓았습니다.\n\n가시고기: 11,000원 (정가:15,000원)\n\n회색인간: 10,000원 (정가:13,000원)\n\n이제야 언니에게: 10,000원 (정가:16,000원)\n\n지구에서 한아뿐: 판매완료\n\n채식주의자: 판매완료\n\n당신을 아름답게 하는 것들: 8,000원 (정가:13,800원)\n\n잘 살아라 그게 최고의 복수다: 판매완료\n\n박준 시집: 6,000원 (정가:10,000원)\n\n나는 나무처럼 살고싶다: 13,000원 (정가:18,000원)\n\n스물아홉생일: 11,000원 (정가:15,800원)\n\n구원에게: 13,000원 (정가:18,000원)\n\n급류: 판매완료\n\n직거래:송파여성문화회관, 석촌역, 송파역",
+    "category": "도서",
+    "photos": [
+      {
+        "id": "sns-book-photo-1",
+        "src": "/reference/sns-books/01.jpg",
+        "name": "SNS에서 핫한 도서 사진"
+      }
+    ],
+    "giveaway": false,
+    "directBuy": true,
+    "offers": false,
+    "giveawayRequests": false,
+    "secondary": false,
+    "builtIn": true,
+    "ageLabel": "끌올 1일 전",
+    "temperature": "39.4°C",
+    "mood": "☺️",
+    "likes": 38,
+    "views": 5535,
+    "recommendationKind": "books",
+    "author": {
+      "provinceId": "seoul",
+      "id": "default-half-delivery",
+      "nickname": "반값택배가능",
+      "neighborhood": "서울 강남구",
+      "secondaryNeighborhood": "",
+      "tradePlace": "송파여성문화회관, 석촌역, 송파역",
+      "pickupAddress": "서울특별시 강남구"
+    },
+    "id": "default-sns-books-planned",
+    "format": "planned",
+    "items": [
+      {
+        "id": "sns-book-01",
+        "name": "가시고기",
+        "price": 11000,
+        "quantity": 1
+      },
+      {
+        "id": "sns-book-02",
+        "name": "회색인간",
+        "price": 10000,
+        "quantity": 1
+      },
+      {
+        "id": "sns-book-03",
+        "name": "이제야 언니에게",
+        "price": 10000,
+        "quantity": 1
+      },
+      {
+        "id": "sns-book-04",
+        "name": "지구에서 한아뿐",
+        "price": 0,
+        "quantity": 1,
+        "soldOut": true
+      },
+      {
+        "id": "sns-book-05",
+        "name": "채식주의자",
+        "price": 0,
+        "quantity": 1,
+        "soldOut": true
+      },
+      {
+        "id": "sns-book-06",
+        "name": "당신을 아름답게 하는 것들",
+        "price": 8000,
+        "quantity": 1
+      },
+      {
+        "id": "sns-book-07",
+        "name": "잘 살아라 그게 최고의 복수다",
+        "price": 0,
+        "quantity": 1,
+        "soldOut": true
+      },
+      {
+        "id": "sns-book-08",
+        "name": "박준 시집",
+        "price": 6000,
+        "quantity": 1
+      },
+      {
+        "id": "sns-book-09",
+        "name": "나는 나무처럼 살고싶다",
+        "price": 13000,
+        "quantity": 1
+      },
+      {
+        "id": "sns-book-10",
+        "name": "스물아홉생일",
+        "price": 11000,
+        "quantity": 1
+      },
+      {
+        "id": "sns-book-11",
+        "name": "구원에게",
+        "price": 13000,
+        "quantity": 1
+      },
+      {
+        "id": "sns-book-12",
+        "name": "급류",
+        "price": 0,
+        "quantity": 1,
+        "soldOut": true
+      }
+    ]
   }
 ]
