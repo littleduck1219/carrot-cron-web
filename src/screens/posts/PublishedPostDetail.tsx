@@ -10,6 +10,7 @@ import { Cards, DetailIcon, SourceImage } from '../detail/ProductDetail';
 import { region } from '../detail/productData';
 import { macbookBundle } from '../detail/macbookBundleData';
 import { bookPostSimilar } from '../detail/bookPostData';
+import { gamePostRecommendations } from '../detail/gamePostData';
 import '../detail/ProductDetail.css';
 import './PublishedPosts.css';
 
@@ -65,6 +66,7 @@ export function PublishedPostDetail({ planned, viewerId, viewerName, viewerAddre
     const galleryRef = useRef<HTMLDivElement>(null);
     const changePhoto = (index: number) => galleryRef.current?.scrollTo({ left: index * galleryRef.current.clientWidth, behavior: 'smooth' });
     const thumbnail = post?.photos[0] ? <img src={post.photos[0].src} alt="" /> : undefined;
+    const recommendations = post?.recommendationKind === 'games' ? gamePostRecommendations : macbookBundle;
     return <>
     <section className="product-detail published-post" data-closing={closing} inert={closing || checkout || chat} onAnimationEnd={event => { if (event.target === event.currentTarget && closing) onBack(); }} data-buyer-selection={planned && !isOwnPost && selectedItems.length > 0} data-owner-direct-buy={isOwnPost && post?.directBuy} aria-label={post ? `${post.title} 상세페이지` : '게시글 상세'}>
         <header className="detail-bar"><button type="button" aria-label="뒤로 가기" onClick={close}><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="m15 3-9 9 9 9" fill="none" stroke="currentColor" strokeWidth="1.8" /></svg></button><button type="button" aria-label="홈으로" onClick={close}><FeedIcon name="home" /></button>{post && <><div className="detail-bar-spacer" />{post.builtIn ? <button type="button" aria-label="게시글 메뉴" disabled><FeedIcon name="more" /></button> : <PostMenu label="게시글" onDelete={onDelete} />}</>}</header>
@@ -107,11 +109,11 @@ export function PublishedPostDetail({ planned, viewerId, viewerName, viewerAddre
                     </section>}
                 </article>
                 {post.recommendationKind === 'books' ? <section className="detail-section detail-bottom-ads"><h2>보고 있는 물품과 비슷한 물품 <DetailIcon name="chevron" /></h2><Cards items={bookPostSimilar} /></section> : <>
-                    <section className="detail-section"><h2>{viewerName}님을 위한 새 상품 · 광고 <span className="detail-info">ⓘ</span></h2><Cards items={macbookBundle.topAds} variant="rail" /></section>
-                    <section className="detail-section"><h2>보고 있는 물품과 비슷한 물품 <DetailIcon name="chevron" /></h2><Cards items={macbookBundle.similar} /></section>
-                    <section className="detail-keyword"><p>이웃들이 <strong>{macbookBundle.keyword}</strong> 게시글을 올리면<br />바로 알려드릴까요?</p><ActionButton variant="neutralWeak" size="small" disabled><FeedIcon name="bell" />알림 받기</ActionButton></section>
-                    <section className="detail-section"><h2>{post.author.nickname}님의 판매 물품 <DetailIcon name="chevron" /></h2><Cards items={macbookBundle.sellerItems} /></section>
-                    <section className="detail-section detail-bottom-ads"><h2>{viewerName}님을 위한 새 상품 · 광고</h2><Cards items={macbookBundle.bottomAds} variant="ads" /><div className="detail-pagination" aria-hidden="true"><i className="active" /><i />{!post.directBuy && <i />}</div></section>
+                    <section className="detail-section"><h2>{viewerName}님을 위한 새 상품 · 광고 <span className="detail-info">ⓘ</span></h2><Cards items={recommendations.topAds} variant="rail" /></section>
+                    <section className="detail-section"><h2>보고 있는 물품과 비슷한 물품 <DetailIcon name="chevron" /></h2><Cards items={recommendations.similar} /></section>
+                    <section className="detail-keyword"><p>이웃들이 <strong>{recommendations.keyword}</strong> 게시글을 올리면<br />바로 알려드릴까요?</p><ActionButton variant="neutralWeak" size="small" disabled><FeedIcon name="bell" />알림 받기</ActionButton></section>
+                    <section className="detail-section"><h2>{post.author.nickname}님의 판매 물품 <DetailIcon name="chevron" /></h2><Cards items={recommendations.sellerItems} /></section>
+                    <section className="detail-section detail-bottom-ads"><h2>{viewerName}님을 위한 새 상품 · 광고</h2><Cards items={recommendations.bottomAds} variant="ads" /><div className="detail-pagination" aria-hidden="true"><i className="active" /><i />{!post.directBuy && <i />}</div></section>
                 </>}
             </>}
         </main>

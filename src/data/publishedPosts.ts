@@ -36,7 +36,7 @@ export interface PublishedPost {
     temperature?: string;
     mood?: string;
     mapPhoto?: string;
-    recommendationKind?: 'books';
+    recommendationKind?: 'books' | 'games';
     author: { provinceId?: string; id?: string; nickname: string; neighborhood: string; secondaryNeighborhood: string; tradePlace: string; pickupAddress: string };
 }
 export function validatePost(input: PostInput): { message: string; target: string } | null {
