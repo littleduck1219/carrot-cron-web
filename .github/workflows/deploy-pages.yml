@@ -28,6 +28,7 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run check:default-post
+      - run: npm run check:sales-management
       - run: npm run build -- --base=./
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3

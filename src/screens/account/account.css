@@ -1,0 +1,60 @@
+.account-screen, .sales-screen { --feed-fg: #f1f2f3; position: absolute; z-index: 8; inset: 0; display: flex; flex-direction: column; box-sizing: border-box; padding-top: var(--seed-safe-area-top); background: #000; color: #f1f2f3; }
+.account-screen button, .sales-screen button { font: inherit; color: inherit; cursor: pointer; }
+.account-screen button:disabled, .sales-screen button:disabled { cursor: default; opacity: 1; }
+.account-header { height: 60px; padding: 0 20px; display: flex; align-items: center; flex: none; }
+.account-header h1 { margin: 0; font-size: 24px; }
+.account-header button { margin-left: auto; border: 0; background: transparent; font-size: 27px; }
+.account-scroll, .sales-scroll { flex: 1; min-height: 0; overflow-y: auto; scrollbar-width: none; }
+.account-scroll { padding: 8px 16px 118px; }
+.account-scroll::-webkit-scrollbar, .sales-scroll::-webkit-scrollbar { display: none; }
+.account-profile, .account-pay, .account-services, .account-card { margin-bottom: 14px; border-radius: 16px; background: #17181d; }
+.account-profile { min-height: 72px; padding: 14px 16px; display: flex; align-items: center; gap: 12px; box-sizing: border-box; }
+.account-avatar { width: 48px; height: 48px; display: grid; place-items: center; border-radius: 50%; background: linear-gradient(#91b775,#536b98); }
+.account-avatar svg { width: 34px; height: 34px; }
+.account-profile strong { font-size: 18px; }
+.account-profile small { padding: 3px 7px; border-radius: 10px; color: #ff9b45; background: #3a210c; font-weight: 700; }
+.account-chevron { margin-left: auto; color: #9da0a8; font-size: 30px; }
+.account-pay { padding: 14px 16px; }
+.account-pay > div { display: flex; align-items: center; gap: 18px; }
+.account-pay b { margin-right: auto; font-size: 17px; }
+.account-pay b span { color: #ff6f00; }
+.account-pay button { border: 0; background: transparent; }
+.account-pay p { display: flex; margin: 13px 0 0; padding: 12px; border-radius: 10px; background: #2c2e35; }
+.account-pay p span { flex: 1; text-align: center; color: #c4c6cc; }
+.account-services { display: grid; grid-template-columns: repeat(4, 1fr); padding: 16px 8px; }
+.account-services button { display: flex; flex-direction: column; align-items: center; gap: 7px; min-height: 62px; border: 0; background: transparent; font-size: 12px; }
+.account-services button span { font-size: 24px; color: #ff6f00; }
+.account-card { padding: 14px 16px; }
+.account-card h2 { margin: 0 0 8px; font-size: 14px; }
+.account-card button { width: 100%; min-height: 48px; display: flex; align-items: center; gap: 14px; padding: 0; border: 0; background: transparent; text-align: left; font-size: 16px; }
+.account-card button > span { width: 20px; font-size: 22px; text-align: center; }
+.account-card button i { margin-left: auto; color: #a8abb2; font-size: 26px; font-style: normal; }
+.account-navigation { position: absolute; }
+.sales-header { height: 58px; display: grid; grid-template-columns: 70px 1fr 70px; align-items: center; padding: 0 12px; flex: none; }
+.sales-header h1 { margin: 0; text-align: center; font-size: 19px; }
+.sales-header button { border: 0; background: transparent; font-size: 16px; }
+.sales-header button:first-child { justify-self: start; font-size: 42px; line-height: 1; }
+.sales-header button:last-child { justify-self: end; }
+.sales-tabs { display: flex; gap: 8px; padding: 0 16px 18px; flex: none; }
+.sales-tabs button { min-height: 42px; padding: 0 17px; border: 0; border-radius: 22px; background: #202126; font-weight: 700; }
+.sales-tabs button[aria-selected="true"] { background: #f1f2f3; color: #202126; }
+.sales-scroll { padding: 0 16px 30px; }
+.sales-card { position: relative; margin-bottom: 14px; padding: 18px 16px; border-radius: 16px; background: #17181d; }
+.sales-card-state { font-size: 14px; font-weight: 700; color: #c7c9cf; }
+.sales-card-state em { display: inline-flex; align-items: center; gap: 3px; margin-left: 5px; color: #ff6f00; font-style: normal; }
+.sales-card-state svg { width: 15px; height: 15px; }
+.sales-card-menu { position: absolute; top: 12px; right: 10px; width: 34px; height: 34px; border: 0; background: transparent; }
+.sales-menu { position: absolute; z-index: 2; top: 45px; right: 14px; padding: 6px; border: 1px solid #45474f; border-radius: 10px; background: #2a2c32; box-shadow: 0 8px 20px #0008; }
+.sales-menu button { min-height: 38px; padding: 0 12px; border: 0; background: transparent; white-space: nowrap; }
+.sales-summary { display: flex; gap: 12px; margin-top: 12px; }
+.sales-summary > img, .sales-summary > span { width: 82px; height: 82px; flex: none; border-radius: 8px; object-fit: cover; background: #2a2c32; display: grid; place-items: center; }
+.sales-summary > div { min-width: 0; }
+.sales-summary h2 { margin: 1px 0 5px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 17px; font-weight: 500; }
+.sales-summary p { margin: 0 0 5px; color: #999ca4; font-size: 13px; }
+.sales-summary strong { font-size: 18px; }
+.sales-metrics { display: flex; justify-content: flex-end; gap: 7px; margin-top: -17px; color: #777b85; font-size: 12px; }
+.sales-actions { display: flex; gap: 8px; margin-top: 20px; }
+.sales-actions button, .sales-review { min-height: 44px; border: 0; border-radius: 9px; background: #2c2e35; font-weight: 700; }
+.sales-actions button { flex: 1; }
+.sales-review { width: 100%; margin-top: 20px; }
+.sales-empty { padding: 90px 20px; text-align: center; color: #9b9ea6; }

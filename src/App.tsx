@@ -10,6 +10,8 @@ import { ProductDetail } from "./screens/detail/ProductDetail";
 import { isProductId, type ProductId } from "./screens/detail/productData";
 import { isPublicDemo } from "./data/publicDemo";
 import { defaultPosts } from "./data/defaultPosts";
+import { MyCarrotScreen } from "./screens/account/MyCarrotScreen";
+import { SalesManagementScreen } from "./screens/account/SalesManagementScreen";
 
 function subscribeToRoute(notify: () => void) {
     window.addEventListener("hashchange", notify);
@@ -60,12 +62,15 @@ export default function App() {
     const publishedDetailReady = publishedId !== null && (publishedPost !== undefined || !postsLoading);
     const detailOpen = productId !== null || publishedDetailReady;
     const writing = screenRoute === "#/write";
+    const myCarrot = !planned && screenRoute === "#/my";
+    const salesManagement = !planned && screenRoute === "#/sales";
+    const accountOpen = myCarrot || salesManagement;
     const openedFromHome = useRef(false);
     const homeRef = useRef<HTMLDivElement>(null);
     const feedScrollPosition = useRef({ current: 0, planned: 0 });
     const returnFocusToWrite = useRef(writing);
     useLayoutEffect(() => {
-        if (detailOpen || writing) return;
+        if (detailOpen || writing || accountOpen) return;
         const frame = requestAnimationFrame(() => {
             homeRef.current?.querySelector(".feed-scroll")?.scrollTo({ top: feedScrollPosition.current[version] });
             if (returnFocusToWrite.current) {
@@ -74,7 +79,7 @@ export default function App() {
             }
         });
         return () => cancelAnimationFrame(frame);
-    }, [detailOpen, writing, version]);
+    }, [detailOpen, writing, accountOpen, version]);
     const openProduct = (id: ProductId) => {
         feedScrollPosition.current[version] = homeRef.current?.querySelector(".feed-scroll")?.scrollTop ?? 0;
         openedFromHome.current = true;
@@ -101,6 +106,9 @@ export default function App() {
         openedFromHome.current = true;
         window.location.hash = `${routePrefix}/write`;
     };
+    const openMy = () => { openedFromHome.current = true; window.location.hash = "/my"; };
+    const openSales = () => { window.location.hash = "/sales"; };
+    const openHome = () => { openedFromHome.current = false; window.location.hash = "/"; };
     const closeProduct = () => {
         if (publishedPending.current) {
             const id = publishedPending.current;
@@ -134,9 +142,11 @@ export default function App() {
     };
     return <DeviceFrame userName={user.nickname} onSwitchUser={switchUser} onSwitchGuest={switchGuest} version={version} onSwitchVersion={switchVersion}>
         {/* Keep the feed mounted so returning from a product preserves its scroll position. */}
-        <div className="prototype-home" ref={homeRef} inert={detailOpen || writing}>
-            <HomeScreen key={version} readOnly={isPublicDemo} publishedPosts={versionPosts} postsLoading={postsLoading} postsError={postsError} onOpenPublishedPost={openPublishedPost} onDeletePost={removePost} routePrefix={routePrefix} onOpenWrite={openWrite} onOpenProduct={openProduct} activeNeighborhood={activeNeighborhood.name} secondaryNeighborhood={user.verifiedNeighborhoods.find((item) => item.id !== activeNeighborhood.id)?.name} />
+        <div className="prototype-home" ref={homeRef} inert={detailOpen || writing || accountOpen}>
+            <HomeScreen key={version} readOnly={isPublicDemo} publishedPosts={versionPosts} postsLoading={postsLoading} postsError={postsError} onOpenPublishedPost={openPublishedPost} onDeletePost={removePost} routePrefix={routePrefix} onOpenWrite={openWrite} onOpenMy={openMy} onOpenProduct={openProduct} activeNeighborhood={activeNeighborhood.name} secondaryNeighborhood={user.verifiedNeighborhoods.find((item) => item.id !== activeNeighborhood.id)?.name} />
         </div>
+        {myCarrot && <MyCarrotScreen userName={user.nickname} temperature="40.8°C" onHome={openHome} onOpenSales={openSales} />}
+        {salesManagement && <SalesManagementScreen posts={versionPosts} onBack={() => { window.location.hash = "/my"; }} />}
         {!isPublicDemo && writing && <WritingFlow user={user} key={version} onPublished={onPublished} planned={planned} draftKey={planned ? "re-carrot.write-draft.planned.v1" : "re-carrot.write-draft.v1"} neighborhood={activeNeighborhood.name} secondaryNeighborhood={user.verifiedNeighborhoods.find(item => item.id !== activeNeighborhood.id)?.name} onClose={closeProduct} />}
         {publishedDetailReady && publishedId && <PublishedPostDetail planned={planned} viewerId={user.id} viewerName={user.nickname} viewerAddress={user.pickupAddress} viewerProvinceId={activeNeighborhood.provinceId} key={`${publishedId}-${user.id}`} post={publishedPost} error={postsError} onBack={closeProduct} onDelete={() => removePost(publishedId)} />}
         {productId && <ProductDetail key={`${version}-${productId}`} planned={planned} productId={productId} viewerId={user.id} viewerName={user.nickname} viewerAddress={user.pickupAddress} activeNeighborhood={activeNeighborhood} onBack={closeProduct} />}
