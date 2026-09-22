@@ -37,12 +37,12 @@
     "recommendationKind": "books",
     "author": {
       "provinceId": "seoul",
-      "id": "default-turtle-shark",
-      "nickname": "꼬부기상어",
-      "neighborhood": "동작구 흑석동",
+      "id": "prototype-user-park",
+      "nickname": "박경덕",
+      "neighborhood": "서울특별시",
       "secondaryNeighborhood": "",
-      "tradePlace": "흑석역",
-      "pickupAddress": "서울특별시 동작구 흑석동"
+      "tradePlace": "서울특별시",
+      "pickupAddress": "서울특별시"
     },
     "id": "default-it-books-current",
     "format": "current",
@@ -93,12 +93,12 @@
     "recommendationKind": "books",
     "author": {
       "provinceId": "seoul",
-      "id": "default-turtle-shark",
-      "nickname": "꼬부기상어",
-      "neighborhood": "동작구 흑석동",
+      "id": "prototype-user-park",
+      "nickname": "박경덕",
+      "neighborhood": "서울특별시",
       "secondaryNeighborhood": "",
-      "tradePlace": "흑석역",
-      "pickupAddress": "서울특별시 동작구 흑석동"
+      "tradePlace": "서울특별시",
+      "pickupAddress": "서울특별시"
     },
     "id": "default-it-books-planned",
     "format": "planned",
@@ -319,13 +319,13 @@
     "views": 302,
     "recommendationKind": "books",
     "author": {
-      "provinceId": "ulsan",
-      "id": "default-green",
-      "nickname": "녹색",
-      "neighborhood": "울산광역시 울주군",
+      "provinceId": "seoul",
+      "id": "prototype-user-park",
+      "nickname": "박경덕",
+      "neighborhood": "서울특별시",
       "secondaryNeighborhood": "",
-      "tradePlace": "울주군",
-      "pickupAddress": "울산광역시 울주군"
+      "tradePlace": "서울특별시",
+      "pickupAddress": "서울특별시"
     },
     "id": "default-mixed-books-current",
     "format": "current",
@@ -369,13 +369,13 @@
     "views": 302,
     "recommendationKind": "books",
     "author": {
-      "provinceId": "ulsan",
-      "id": "default-green",
-      "nickname": "녹색",
-      "neighborhood": "울산광역시 울주군",
+      "provinceId": "seoul",
+      "id": "prototype-user-park",
+      "nickname": "박경덕",
+      "neighborhood": "서울특별시",
       "secondaryNeighborhood": "",
-      "tradePlace": "울주군",
-      "pickupAddress": "울산광역시 울주군"
+      "tradePlace": "서울특별시",
+      "pickupAddress": "서울특별시"
     },
     "id": "default-mixed-books-planned",
     "format": "planned",
@@ -834,13 +834,13 @@
     "views": 2843,
     "recommendationKind": "games",
     "author": {
-      "provinceId": "gyeonggi",
-      "id": "default-vanilla",
-      "nickname": "바닐라",
-      "neighborhood": "경기도 화성시 동탄구",
+      "provinceId": "seoul",
+      "id": "prototype-user-park",
+      "nickname": "박경덕",
+      "neighborhood": "서울특별시",
       "secondaryNeighborhood": "",
-      "tradePlace": "동탄구",
-      "pickupAddress": "경기도 화성시 동탄구"
+      "tradePlace": "서울특별시",
+      "pickupAddress": "서울특별시"
     },
     "id": "default-switch-games-current",
     "format": "current",
@@ -879,13 +879,13 @@
     "views": 2843,
     "recommendationKind": "games",
     "author": {
-      "provinceId": "gyeonggi",
-      "id": "default-vanilla",
-      "nickname": "바닐라",
-      "neighborhood": "경기도 화성시 동탄구",
+      "provinceId": "seoul",
+      "id": "prototype-user-park",
+      "nickname": "박경덕",
+      "neighborhood": "서울특별시",
       "secondaryNeighborhood": "",
-      "tradePlace": "동탄구",
-      "pickupAddress": "경기도 화성시 동탄구"
+      "tradePlace": "서울특별시",
+      "pickupAddress": "서울특별시"
     },
     "id": "default-switch-games-planned",
     "format": "planned",
@@ -1117,12 +1117,12 @@
     "recommendationKind": "books",
     "author": {
       "provinceId": "seoul",
-      "id": "default-half-delivery",
-      "nickname": "반값택배가능",
-      "neighborhood": "서울 강남구",
+      "id": "prototype-user-park",
+      "nickname": "박경덕",
+      "neighborhood": "서울특별시",
       "secondaryNeighborhood": "",
-      "tradePlace": "송파여성문화회관, 석촌역, 송파역",
-      "pickupAddress": "서울특별시 강남구"
+      "tradePlace": "서울특별시",
+      "pickupAddress": "서울특별시"
     },
     "id": "default-sns-books-current",
     "format": "current",
@@ -1161,12 +1161,12 @@
     "recommendationKind": "books",
     "author": {
       "provinceId": "seoul",
-      "id": "default-half-delivery",
-      "nickname": "반값택배가능",
-      "neighborhood": "서울 강남구",
+      "id": "prototype-user-park",
+      "nickname": "박경덕",
+      "neighborhood": "서울특별시",
       "secondaryNeighborhood": "",
-      "tradePlace": "송파여성문화회관, 석촌역, 송파역",
-      "pickupAddress": "서울특별시 강남구"
+      "tradePlace": "서울특별시",
+      "pickupAddress": "서울특별시"
     },
     "id": "default-sns-books-planned",
     "format": "planned",

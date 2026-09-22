@@ -2,6 +2,7 @@ import { districts, type DistrictId } from "./neighborhoods";
 
 interface Seller { id: string; nickname: string; districtId: DistrictId }
 export const sellers = {
+    park: { id: "prototype-user-park", nickname: "박경덕", districtId: "seoul" },
     raum: { id: "raum", nickname: "라움", districtId: "gwanak" },
     forapple: { id: "forapple", nickname: "forapple", districtId: "yongsan" },
     dudu: { id: "dudu", nickname: "두두", districtId: "bundang" },
