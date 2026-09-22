@@ -11,7 +11,8 @@
     "preview": "vite preview",
     "figma:export": "node scripts/export-seed-figma.mjs",
     "figma:check": "node scripts/check-figma-plugin.mjs",
-    "check:default-post": "node scripts/check-default-book-post.mjs"
+    "check:default-post": "node scripts/check-default-book-post.mjs",
+    "check:sales-management": "node --experimental-strip-types scripts/check-sales-management.mjs"
   },
   "dependencies": {
     "@seed-design/css": "^2.6.2",

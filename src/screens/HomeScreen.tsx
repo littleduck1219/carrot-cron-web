@@ -21,7 +21,7 @@ const navigation: { label: string; icon: FeedIconName }[] = [
 ];
 
 /** Screenshot reproduction only. Destination screens are built in later steps. */
-export function HomeScreen({ readOnly = false, publishedPosts = [], postsLoading = false, postsError = false, onOpenPublishedPost, onDeletePost, routePrefix = "", onOpenProduct, onOpenWrite, activeNeighborhood, secondaryNeighborhood }: { readOnly?: boolean; publishedPosts?: PublishedPost[]; postsLoading?: boolean; postsError?: boolean; onOpenPublishedPost: (id: string) => void; onDeletePost: (id: string) => void; routePrefix?: string; onOpenWrite: () => void; onOpenProduct: (id: ProductId) => void; activeNeighborhood: string; secondaryNeighborhood?: string }) {
+export function HomeScreen({ readOnly = false, publishedPosts = [], postsLoading = false, postsError = false, onOpenPublishedPost, onDeletePost, routePrefix = "", onOpenProduct, onOpenWrite, onOpenMy, activeNeighborhood, secondaryNeighborhood }: { readOnly?: boolean; publishedPosts?: PublishedPost[]; postsLoading?: boolean; postsError?: boolean; onOpenPublishedPost: (id: string) => void; onDeletePost: (id: string) => void; routePrefix?: string; onOpenWrite: () => void; onOpenMy: () => void; onOpenProduct: (id: ProductId) => void; activeNeighborhood: string; secondaryNeighborhood?: string }) {
     const [isScrolled, setIsScrolled] = useState(false);
     const [headerHidden, setHeaderHidden] = useState(false);
     const lastScrollTop = useRef(0);
@@ -141,7 +141,7 @@ export function HomeScreen({ readOnly = false, publishedPosts = [], postsLoading
             <nav inert={menuOpen} className="feed-navigation" aria-label="하단 내비게이션">
                 {navigation.map(({ label, icon }, index) => (
                     <button key={label} type="button" className="feed-nav-item" aria-current={index === 0 ? "page" : undefined}
-                        disabled={index !== 0} onClick={index === 0 ? () => document.querySelector(".feed-scroll")?.scrollTo({ top: 0, behavior: "smooth" }) : undefined}>
+                        disabled={index !== 0 && (index !== 4 || routePrefix !== "")} onClick={index === 0 ? () => document.querySelector(".feed-scroll")?.scrollTo({ top: 0, behavior: "smooth" }) : index === 4 ? onOpenMy : undefined}>
                         <FeedIcon name={icon} /><span>{label}</span>
                     </button>
                 ))}

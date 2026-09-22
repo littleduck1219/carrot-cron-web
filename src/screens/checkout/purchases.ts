@@ -9,8 +9,9 @@ export const clearPurchase = (id: string) => { const value = read(); delete valu
 // Session-only record of completed deals: item id → buyer id. Set from the chat's hidden partner-name control.
 const DONE = 're-carrot.completed.session.v1';
 const readDone = (): Record<string, string> => { try { return JSON.parse(sessionStorage.getItem(DONE) ?? '{}'); } catch { return {}; } };
+const writeDone = (value: Record<string, string>) => { try { sessionStorage.setItem(DONE, JSON.stringify(value)); } catch { /* Storage can be unavailable in private browsing. */ } };
 export const getCompletedBuyer = (id: string): string | null => readDone()[id] ?? null;
-export const markCompleted = (id: string, buyerId: string) => { try { sessionStorage.setItem(DONE, JSON.stringify({ ...readDone(), [id]: buyerId })); } catch { /* in-memory state still drives this session */ } };
+export const markCompleted = (id: string, buyerId: string) => writeDone({ ...readDone(), [id]: buyerId });
 
 // Session-only per-item sales for planned posts: post key → { itemId: sold quantity }, plus the current (cancellable) order.
 const SALES = 're-carrot.item-sales.session.v1';
@@ -32,3 +33,11 @@ export const cancelOrder = (id: string) => {
     delete orders[id]; writeMap(SALES, { ...sales, [id]: sold }); writeMap(ORDER, orders);
 };
 export const isSoldOut = (id: string, items: { id: string; quantity: number }[]) => { const sold = getSoldItems(id); return items.length > 0 && items.every(item => item.quantity - (sold[item.id] ?? 0) < 1); };
+
+/** Restores a deal to its initial state so the purchase and completion flow can be run again. */
+export const resetDeal = (id: string) => {
+    clearPurchase(id);
+    const completed = readDone(); delete completed[id]; writeDone(completed);
+    const sales = readMap(SALES); delete sales[id]; writeMap(SALES, sales);
+    const orders = readMap(ORDER); delete orders[id]; writeMap(ORDER, orders);
+};
