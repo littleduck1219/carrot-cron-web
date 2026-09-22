@@ -1,21 +1,23 @@
 import { useState } from "react";
-import { postAge, postPriceLabel, type PublishedPost } from "../../data/publishedPosts";
+import type { PublishedPost } from "../../data/publishedPosts";
 import { getCompletedBuyer, resetDeal } from "../checkout/purchases";
 import { FeedIcon } from "../home/FeedIcon";
+import { createSalesListings, type ManagedProduct } from "./salesListings";
 import "./account.css";
 
 type Tab = "selling" | "completed" | "hidden";
 
-export function SalesManagementScreen({ posts, onBack }: { posts: PublishedPost[]; onBack: () => void }) {
+export function SalesManagementScreen({ posts, products, ownerId, onBack }: { posts: PublishedPost[]; products: ManagedProduct[]; ownerId: string; onBack: () => void }) {
     const [tab, setTab] = useState<Tab>("selling");
     const [, setRevision] = useState(0);
-    const [menuId, setMenuId] = useState<string | null>(null);
-    const completed = posts.filter(post => getCompletedBuyer("post:" + post.id) !== null);
-    const grouped = { selling: posts.filter(post => !completed.includes(post)), completed, hidden: [] as PublishedPost[] };
+    const [menuKey, setMenuKey] = useState<string | null>(null);
+    const listings = createSalesListings(posts, products, ownerId);
+    const completed = listings.filter(item => getCompletedBuyer(item.key) !== null);
+    const grouped = { selling: listings.filter(item => !completed.includes(item)), completed, hidden: [] as typeof listings };
     const visible = grouped[tab];
-    const restore = (post: PublishedPost) => {
-        resetDeal("post:" + post.id);
-        setMenuId(null);
+    const restore = (key: string) => {
+        resetDeal(key);
+        setMenuKey(null);
         setRevision(value => value + 1);
     };
     return <div className="sales-screen">
@@ -27,12 +29,12 @@ export function SalesManagementScreen({ posts, onBack }: { posts: PublishedPost[
         </div>
         <main className="sales-scroll">
             {visible.length === 0 && <div className="sales-empty">{tab === "completed" ? "거래완료된 게시글이 없어요." : tab === "hidden" ? "숨긴 게시글이 없어요." : "판매중인 게시글이 없어요."}</div>}
-            {visible.map(post => <article className="sales-card" key={post.id}>
-                <div className="sales-card-state">{tab === "completed" ? "거래완료" : <>판매중 {post.directBuy && <em><FeedIcon name="shopping" />바로구매</em>}</>}</div>
-                <button className="sales-card-menu" type="button" aria-label={post.title + " 메뉴"} aria-expanded={menuId === post.id} onClick={() => setMenuId(value => value === post.id ? null : post.id)}><FeedIcon name="more" /></button>
-                {menuId === post.id && <div className="sales-menu">{tab === "completed" ? <button type="button" onClick={() => restore(post)}>판매중으로 변경</button> : <button type="button" disabled>게시글 관리</button>}</div>}
-                <div className="sales-summary">{post.photos[0] ? <img src={post.photos[0].src} alt="" /> : <span><FeedIcon name="shopping" /></span>}<div><h2>{post.title}</h2><p>{post.author.neighborhood} · {post.ageLabel ?? postAge(post.createdAt)}</p><strong>{postPriceLabel(post)}</strong></div></div>
-                <div className="sales-metrics"><span>◉ {post.views ?? 0}</span><span>● {post.chats ?? post.chatCount ?? 0}</span><span>♥ {post.likes ?? 0}</span></div>
+            {visible.map(item => <article className="sales-card" key={item.key}>
+                <div className="sales-card-state">{tab === "completed" ? "거래완료" : <>판매중 {item.directBuy && <em><FeedIcon name="shopping" />바로구매</em>}</>}</div>
+                <button className="sales-card-menu" type="button" aria-label={item.title + " 메뉴"} aria-expanded={menuKey === item.key} onClick={() => setMenuKey(value => value === item.key ? null : item.key)}><FeedIcon name="more" /></button>
+                {menuKey === item.key && <div className="sales-menu">{tab === "completed" ? <button type="button" onClick={() => restore(item.key)}>판매중으로 변경</button> : <button type="button" disabled>게시글 관리</button>}</div>}
+                <div className="sales-summary">{item.imageSrc ? <img src={item.imageSrc} alt="" /> : <span><FeedIcon name="shopping" /></span>}<div><h2>{item.title}</h2><p>{item.neighborhood} · {item.ageLabel}</p><strong>{item.price}</strong></div></div>
+                <div className="sales-metrics"><span>◉ {item.views}</span><span>● {item.chats}</span><span>♥ {item.likes}</span></div>
                 {tab === "selling" ? <div className="sales-actions"><button disabled>끌어올리기</button><button disabled>홍보하기</button></div> : <button className="sales-review" disabled>받은 후기 보기</button>}
             </article>)}
         </main>

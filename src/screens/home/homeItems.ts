@@ -29,9 +29,9 @@ const capture3 = publicAsset("reference/home-feed-20260911-3.png"); // 222308966
 const capture4 = publicAsset("reference/home-feed-20260911-4.png"); // 222309207
 
 export const homeItems: HomeItem[] = [
-    { id: "backbone", sellerId: "raum", title: "(미개봉백본원 아이폰 게임패드 블랙", meta: "800m · 1주 전", price: "50,000원", imageAlt: "백본원 게임패드 포장 상자", imageY: 188, likes: 2 },
-    { id: "mimikyu", sellerId: "dudu", title: "아주 귀한 따라큐", meta: "7시간 전", price: "31,000원", imageAlt: "따라큐 포켓몬 카드", imageY: 349, likes: 5, directBuy: true },
-    { id: "macbook-bundle", sellerId: "forapple", title: "[일괄판매/개별가능] 마지막 맥북프로 M5 Pro 미개봉 , iPad Pro, Dell U3225QE 모니터", meta: "4km · 21시간 전", price: "650,000원", imageAlt: "맥북프로 모델 선택 화면", imageSource: publicAsset("reference/macbook-bundle/01.jpg"), imageY: 335, likes: 45, chats: 1, directBuy: true },
+    { id: "backbone", sellerId: "park", title: "(미개봉백본원 아이폰 게임패드 블랙", meta: "800m · 1주 전", price: "50,000원", imageAlt: "백본원 게임패드 포장 상자", imageY: 188, likes: 2 },
+    { id: "mimikyu", sellerId: "park", title: "아주 귀한 따라큐", meta: "7시간 전", price: "31,000원", imageAlt: "따라큐 포켓몬 카드", imageY: 349, likes: 5, directBuy: true },
+    { id: "macbook-bundle", sellerId: "park", title: "[일괄판매/개별가능] 마지막 맥북프로 M5 Pro 미개봉 , iPad Pro, Dell U3225QE 모니터", meta: "4km · 21시간 전", price: "650,000원", imageAlt: "맥북프로 모델 선택 화면", imageSource: publicAsset("reference/macbook-bundle/01.jpg"), imageY: 335, likes: 45, chats: 1, directBuy: true },
     { id: "fuji", title: "Fuji x-t50, XF 16-50mm F2.8-4.8 R LM WR 팝니다", meta: "금천구 독산동 · 이웃광고", price: "208만원", imageAlt: "후지필름 카메라와 렌즈", imageY: 510, likes: 2 },
     { id: "sony", title: "소니 a7m5 - a7m4,a7c2,a7cr 교환 원해요!", meta: "경기 고양시 · 28km · 2일 전", price: "200,000원", imageAlt: "소니 카메라와 포장 상자", imageY: 671, likes: 17, chats: 4, directBuy: true },
 

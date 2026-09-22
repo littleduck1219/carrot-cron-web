@@ -12,7 +12,7 @@ const card = (page: number, x: number, y: number, title: string, price: string, 
 });
 
 export const macbookBundle: ProductDetailData = {
-    sellerId: "forapple", directBuy: true,
+    sellerId: "park", directBuy: true,
     title: "[일괄판매/개별가능] 마지막 맥북프로 M5 Pro 미개봉 , iPad Pro, Dell U3225QE 모니터",
     price: "650,000원", extraCost: "18,300원", temperature: "45.8°C", mood: "😚",
     category: "기타 중고물품", updated: "끌올 21시간 전", chats: 1, likes: 45, views: 10844, initiallyLiked: false,

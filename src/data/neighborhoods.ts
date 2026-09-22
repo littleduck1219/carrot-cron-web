@@ -14,6 +14,7 @@ export interface District {
 }
 
 export const districts = {
+    seoul: { id: "seoul", name: "서울특별시", label: "서울특별시", provinceId: "seoul", cityId: null },
     gwanak: { id: "gwanak", name: "관악구", label: "서울특별시 관악구", provinceId: "seoul", cityId: null },
     seocho: { id: "seocho", name: "서초구", label: "서울특별시 서초구", provinceId: "seoul", cityId: null },
     gangnam: { id: "gangnam", name: "강남구", label: "서울특별시 강남구", provinceId: "seoul", cityId: null },

@@ -102,7 +102,7 @@ const mimikyuTopAds: ProductCard[] = [
 export const productDetails: Record<ProductId, ProductDetailData> = {
     "macbook-bundle": macbookBundle,
     backbone: {
-        sellerId: "raum" as SellerId, directBuy: false,
+        sellerId: "park" as SellerId, directBuy: false,
         title:"(미개봉백본원 아이폰 게임패드 블랙", price:"50,000원", temperature:"36.8°C", mood:"🙂", category:"디지털기기", updated:"끌올 1주 전", likes:2, views:31, initiallyLiked:true,
         // The screenshot says 1/2, but the second photo was not supplied.
         photos:[region("224026836",0,0,440,440)], photoTotal:2,
@@ -111,7 +111,7 @@ export const productDetails: Record<ProductId, ProductDetailData> = {
         sellerItems:[card("224029790",16,506,"댄 브라운 비밀의 비밀 1, 2권","8,000원")], keyword:"아이폰 게임패드",
     },
     mimikyu: {
-        sellerId: "dudu" as SellerId, directBuy: true, extraCost: "4,282원",
+        sellerId: "park" as SellerId, directBuy: true, extraCost: "4,282원",
         contentsAnswer: "탑로더 상태로 입니다",
         questions: [{ label: "구성품", answered: true }, { label: "개봉, 하자 여부" }, { label: "정품 여부, 에디션" }, { label: "작동 여부" }, { label: "호환 기종, 언어" }],
         title:"아주 귀한 따라큐",price:"31,000원",temperature:"41.8°C",mood:"😚",category:"취미/게임/음반",updated:"끌올 1일 전",likes:10,views:628,initiallyLiked:false,

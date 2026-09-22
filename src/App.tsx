@@ -7,7 +7,8 @@ import { PublishedPostDetail } from "./screens/posts/PublishedPostDetail";
 import { HomeScreen } from "./screens/HomeScreen";
 import { WritingFlow } from "./screens/write/WritingFlow";
 import { ProductDetail } from "./screens/detail/ProductDetail";
-import { isProductId, type ProductId } from "./screens/detail/productData";
+import { isProductId, productDetails, type ProductId } from "./screens/detail/productData";
+import { getSellerDistrict, sellers } from "./data/sellers";
 import { isPublicDemo } from "./data/publicDemo";
 import { defaultPosts } from "./data/defaultPosts";
 import { MyCarrotScreen } from "./screens/account/MyCarrotScreen";
@@ -56,6 +57,19 @@ export default function App() {
     const productId = isProductId(routeId) ? routeId : null;
     const publishedId = screenRoute.startsWith("#/post/") ? screenRoute.slice("#/post/".length) : null;
     const versionPosts = displayPosts.filter(post => post.format === version || (!post.format && planned));
+    const managedProducts = Object.entries(productDetails).map(([id, product]) => ({
+        id,
+        ownerId: sellers[product.sellerId].id,
+        title: product.title,
+        price: product.price,
+        directBuy: product.directBuy,
+        neighborhood: getSellerDistrict(product.sellerId).label,
+        ageLabel: product.updated,
+        imageSrc: product.photos[0]?.source,
+        chats: product.chats,
+        likes: product.likes,
+        views: product.views,
+    }));
     const publishedPost = publishedId ? versionPosts.find(post => post.id === publishedId) : undefined;
     // Keep the feed visible while IndexedDB/API posts load. The detail slides in only when
     // its data is ready; a completed miss still opens the existing error/empty state.
@@ -146,7 +160,7 @@ export default function App() {
             <HomeScreen key={version} readOnly={isPublicDemo} publishedPosts={versionPosts} postsLoading={postsLoading} postsError={postsError} onOpenPublishedPost={openPublishedPost} onDeletePost={removePost} routePrefix={routePrefix} onOpenWrite={openWrite} onOpenMy={openMy} onOpenProduct={openProduct} activeNeighborhood={activeNeighborhood.name} secondaryNeighborhood={user.verifiedNeighborhoods.find((item) => item.id !== activeNeighborhood.id)?.name} />
         </div>
         {myCarrot && <MyCarrotScreen userName={user.nickname} temperature="40.8°C" onHome={openHome} onOpenSales={openSales} />}
-        {salesManagement && <SalesManagementScreen posts={versionPosts} onBack={() => { window.location.hash = "/my"; }} />}
+        {salesManagement && <SalesManagementScreen posts={versionPosts} products={managedProducts} ownerId={user.id} onBack={() => { window.location.hash = "/my"; }} />}
         {!isPublicDemo && writing && <WritingFlow user={user} key={version} onPublished={onPublished} planned={planned} draftKey={planned ? "re-carrot.write-draft.planned.v1" : "re-carrot.write-draft.v1"} neighborhood={activeNeighborhood.name} secondaryNeighborhood={user.verifiedNeighborhoods.find(item => item.id !== activeNeighborhood.id)?.name} onClose={closeProduct} />}
         {publishedDetailReady && publishedId && <PublishedPostDetail planned={planned} viewerId={user.id} viewerName={user.nickname} viewerAddress={user.pickupAddress} viewerProvinceId={activeNeighborhood.provinceId} key={`${publishedId}-${user.id}`} post={publishedPost} error={postsError} onBack={closeProduct} onDelete={() => removePost(publishedId)} />}
         {productId && <ProductDetail key={`${version}-${productId}`} planned={planned} productId={productId} viewerId={user.id} viewerName={user.nickname} viewerAddress={user.pickupAddress} activeNeighborhood={activeNeighborhood} onBack={closeProduct} />}
