@@ -1,1252 +1,1252 @@
 [
-  {
-    "createdAt": 1790000000000,
-    "title": "IT기술서, 자기계발서 등 30권",
-    "description": "흑석역 직거래 희망\n\n- Do it 자료구조와 함께 배우는 알고리즘 입문 C언어 - 2천원\n- 엘라스틱 스택 개발부터 운영까지 - 2천원\n- 쿠버네티스 완벽 가이드 - 3천원\n- 쿠버네티스로 만나는 손안의 마이크로서비스 - 3천원\n- 밑바닥부터 시작하는 딥러닝 - 3천원\n- IT엔지니어를 위한 네트워크 입문 - 3천원\n- 토비의 스프링 vol1 - 판매완료\n- 토비의 스프링 vol2 - 판매완료\n- 이벤트 소싱과 마이크로서비스 아키텍처 - 3천원\n- 데이터 지향 프로그래밍 - 3천원\n- 코틀린 인 액션 - 4천원\n- 엔지니어를 위한 선형대수 - 3천원\n- 도메인 주도 설계 첫걸음 - 판매완료\n- 알고리즘 기초 - 3천원\n- 마스터링 이더리움 - 3천원\n- 구글 엔지니어는 이렇게 일한다 - 3천원\n- 컴퓨터구조 원서(미개봉) - 5천원\n- 자료구조 Java 원서 - 3천원\n- 선형대수 원서 - 3천원\n- 그로스해킹 - 2천원\n- 비탈릭부테린 지분증명 - 2천원\n- 부의 인문학 - 2천원\n- 매우 예민한 사람들을 위한 책 - 2천원\n- 나는 아마존에서 미래를 다녔다 - 2천원\n- 무역 공부는 난생 처음입니다만 - 2천원\n- 투자에 대한 생각 - 2천원\n- 대량살상 수학무기 - 2천원\n- 조국의 시간 - 무료나눔\n- 조선왕조실록 - 2천원\n- 그건 쓰레기가 아니라고요 - 2천원",
-    "category": "도서",
-    "photos": [
-      {
-        "id": "book-photo-1",
-        "src": "/reference/it-books/01.jpg",
-        "name": "도서 사진 1"
-      },
-      {
-        "id": "book-photo-2",
-        "src": "/reference/it-books/02.jpg",
-        "name": "도서 사진 2"
-      },
-      {
-        "id": "book-photo-3",
-        "src": "/reference/it-books/03.jpg",
-        "name": "도서 사진 3"
-      }
-    ],
-    "giveaway": false,
-    "directBuy": true,
-    "offers": false,
-    "giveawayRequests": false,
-    "secondary": false,
-    "builtIn": true,
-    "ageLabel": "끌올 1시간 전",
-    "temperature": "39.5°C",
-    "mood": "☺️",
-    "mapPhoto": "/reference/it-books/map.jpg",
-    "chats": 3,
-    "likes": 9,
-    "views": 142,
-    "recommendationKind": "books",
-    "author": {
-      "provinceId": "seoul",
-      "id": "default-turtle-shark",
-      "nickname": "꼬부기상어",
-      "neighborhood": "동작구 흑석동",
-      "secondaryNeighborhood": "",
-      "tradePlace": "흑석역",
-      "pickupAddress": "서울특별시 동작구 흑석동"
+    {
+        "createdAt": 1790000000000,
+        "title": "IT기술서, 자기계발서 등 30권",
+        "description": "흑석역 직거래 희망\n\n- Do it 자료구조와 함께 배우는 알고리즘 입문 C언어 - 2천원\n- 엘라스틱 스택 개발부터 운영까지 - 2천원\n- 쿠버네티스 완벽 가이드 - 3천원\n- 쿠버네티스로 만나는 손안의 마이크로서비스 - 3천원\n- 밑바닥부터 시작하는 딥러닝 - 3천원\n- IT엔지니어를 위한 네트워크 입문 - 3천원\n- 토비의 스프링 vol1 - 판매완료\n- 토비의 스프링 vol2 - 판매완료\n- 이벤트 소싱과 마이크로서비스 아키텍처 - 3천원\n- 데이터 지향 프로그래밍 - 3천원\n- 코틀린 인 액션 - 4천원\n- 엔지니어를 위한 선형대수 - 3천원\n- 도메인 주도 설계 첫걸음 - 판매완료\n- 알고리즘 기초 - 3천원\n- 마스터링 이더리움 - 3천원\n- 구글 엔지니어는 이렇게 일한다 - 3천원\n- 컴퓨터구조 원서(미개봉) - 5천원\n- 자료구조 Java 원서 - 3천원\n- 선형대수 원서 - 3천원\n- 그로스해킹 - 2천원\n- 비탈릭부테린 지분증명 - 2천원\n- 부의 인문학 - 2천원\n- 매우 예민한 사람들을 위한 책 - 2천원\n- 나는 아마존에서 미래를 다녔다 - 2천원\n- 무역 공부는 난생 처음입니다만 - 2천원\n- 투자에 대한 생각 - 2천원\n- 대량살상 수학무기 - 2천원\n- 조국의 시간 - 무료나눔\n- 조선왕조실록 - 2천원\n- 그건 쓰레기가 아니라고요 - 2천원",
+        "category": "도서",
+        "photos": [
+            {
+                "id": "book-photo-1",
+                "src": "/reference/it-books/01.jpg",
+                "name": "도서 사진 1"
+            },
+            {
+                "id": "book-photo-2",
+                "src": "/reference/it-books/02.jpg",
+                "name": "도서 사진 2"
+            },
+            {
+                "id": "book-photo-3",
+                "src": "/reference/it-books/03.jpg",
+                "name": "도서 사진 3"
+            }
+        ],
+        "giveaway": false,
+        "directBuy": true,
+        "offers": false,
+        "giveawayRequests": false,
+        "secondary": false,
+        "builtIn": true,
+        "ageLabel": "끌올 1시간 전",
+        "temperature": "39.5°C",
+        "mood": "☺️",
+        "mapPhoto": "/reference/it-books/map.jpg",
+        "chats": 3,
+        "likes": 9,
+        "views": 142,
+        "recommendationKind": "books",
+        "author": {
+            "provinceId": "seoul",
+            "id": "default-turtle-shark",
+            "nickname": "꼬부기상어",
+            "neighborhood": "동작구 흑석동",
+            "secondaryNeighborhood": "",
+            "tradePlace": "흑석역",
+            "pickupAddress": "서울특별시 동작구 흑석동"
+        },
+        "id": "default-it-books-current",
+        "format": "current",
+        "items": [
+            {
+                "id": "book-lot",
+                "name": "IT기술서, 자기계발서 등 30권",
+                "price": 2700,
+                "quantity": 1
+            }
+        ]
     },
-    "id": "default-it-books-current",
-    "format": "current",
-    "items": [
-      {
-        "id": "book-lot",
-        "name": "IT기술서, 자기계발서 등 30권",
-        "price": 2700,
-        "quantity": 1
-      }
-    ]
-  },
-  {
-    "createdAt": 1790000000000,
-    "title": "IT기술서, 자기계발서 등 30권",
-    "description": "흑석역 직거래 희망\n\n- Do it 자료구조와 함께 배우는 알고리즘 입문 C언어 - 2천원\n- 엘라스틱 스택 개발부터 운영까지 - 2천원\n- 쿠버네티스 완벽 가이드 - 3천원\n- 쿠버네티스로 만나는 손안의 마이크로서비스 - 3천원\n- 밑바닥부터 시작하는 딥러닝 - 3천원\n- IT엔지니어를 위한 네트워크 입문 - 3천원\n- 토비의 스프링 vol1 - 판매완료\n- 토비의 스프링 vol2 - 판매완료\n- 이벤트 소싱과 마이크로서비스 아키텍처 - 3천원\n- 데이터 지향 프로그래밍 - 3천원\n- 코틀린 인 액션 - 4천원\n- 엔지니어를 위한 선형대수 - 3천원\n- 도메인 주도 설계 첫걸음 - 판매완료\n- 알고리즘 기초 - 3천원\n- 마스터링 이더리움 - 3천원\n- 구글 엔지니어는 이렇게 일한다 - 3천원\n- 컴퓨터구조 원서(미개봉) - 5천원\n- 자료구조 Java 원서 - 3천원\n- 선형대수 원서 - 3천원\n- 그로스해킹 - 2천원\n- 비탈릭부테린 지분증명 - 2천원\n- 부의 인문학 - 2천원\n- 매우 예민한 사람들을 위한 책 - 2천원\n- 나는 아마존에서 미래를 다녔다 - 2천원\n- 무역 공부는 난생 처음입니다만 - 2천원\n- 투자에 대한 생각 - 2천원\n- 대량살상 수학무기 - 2천원\n- 조국의 시간 - 무료나눔\n- 조선왕조실록 - 2천원\n- 그건 쓰레기가 아니라고요 - 2천원",
-    "category": "도서",
-    "photos": [
-      {
-        "id": "book-photo-1",
-        "src": "/reference/it-books/01.jpg",
-        "name": "도서 사진 1"
-      },
-      {
-        "id": "book-photo-2",
-        "src": "/reference/it-books/02.jpg",
-        "name": "도서 사진 2"
-      },
-      {
-        "id": "book-photo-3",
-        "src": "/reference/it-books/03.jpg",
-        "name": "도서 사진 3"
-      }
-    ],
-    "giveaway": false,
-    "directBuy": true,
-    "offers": false,
-    "giveawayRequests": false,
-    "secondary": false,
-    "builtIn": true,
-    "ageLabel": "끌올 1시간 전",
-    "temperature": "39.5°C",
-    "mood": "☺️",
-    "mapPhoto": "/reference/it-books/map.jpg",
-    "chats": 3,
-    "likes": 9,
-    "views": 142,
-    "recommendationKind": "books",
-    "author": {
-      "provinceId": "seoul",
-      "id": "default-turtle-shark",
-      "nickname": "꼬부기상어",
-      "neighborhood": "동작구 흑석동",
-      "secondaryNeighborhood": "",
-      "tradePlace": "흑석역",
-      "pickupAddress": "서울특별시 동작구 흑석동"
+    {
+        "createdAt": 1790000000000,
+        "title": "IT기술서, 자기계발서 등 30권",
+        "description": "흑석역 직거래 희망\n\n- Do it 자료구조와 함께 배우는 알고리즘 입문 C언어 - 2천원\n- 엘라스틱 스택 개발부터 운영까지 - 2천원\n- 쿠버네티스 완벽 가이드 - 3천원\n- 쿠버네티스로 만나는 손안의 마이크로서비스 - 3천원\n- 밑바닥부터 시작하는 딥러닝 - 3천원\n- IT엔지니어를 위한 네트워크 입문 - 3천원\n- 토비의 스프링 vol1 - 판매완료\n- 토비의 스프링 vol2 - 판매완료\n- 이벤트 소싱과 마이크로서비스 아키텍처 - 3천원\n- 데이터 지향 프로그래밍 - 3천원\n- 코틀린 인 액션 - 4천원\n- 엔지니어를 위한 선형대수 - 3천원\n- 도메인 주도 설계 첫걸음 - 판매완료\n- 알고리즘 기초 - 3천원\n- 마스터링 이더리움 - 3천원\n- 구글 엔지니어는 이렇게 일한다 - 3천원\n- 컴퓨터구조 원서(미개봉) - 5천원\n- 자료구조 Java 원서 - 3천원\n- 선형대수 원서 - 3천원\n- 그로스해킹 - 2천원\n- 비탈릭부테린 지분증명 - 2천원\n- 부의 인문학 - 2천원\n- 매우 예민한 사람들을 위한 책 - 2천원\n- 나는 아마존에서 미래를 다녔다 - 2천원\n- 무역 공부는 난생 처음입니다만 - 2천원\n- 투자에 대한 생각 - 2천원\n- 대량살상 수학무기 - 2천원\n- 조국의 시간 - 무료나눔\n- 조선왕조실록 - 2천원\n- 그건 쓰레기가 아니라고요 - 2천원",
+        "category": "도서",
+        "photos": [
+            {
+                "id": "book-photo-1",
+                "src": "/reference/it-books/01.jpg",
+                "name": "도서 사진 1"
+            },
+            {
+                "id": "book-photo-2",
+                "src": "/reference/it-books/02.jpg",
+                "name": "도서 사진 2"
+            },
+            {
+                "id": "book-photo-3",
+                "src": "/reference/it-books/03.jpg",
+                "name": "도서 사진 3"
+            }
+        ],
+        "giveaway": false,
+        "directBuy": true,
+        "offers": false,
+        "giveawayRequests": false,
+        "secondary": false,
+        "builtIn": true,
+        "ageLabel": "끌올 1시간 전",
+        "temperature": "39.5°C",
+        "mood": "☺️",
+        "mapPhoto": "/reference/it-books/map.jpg",
+        "chats": 3,
+        "likes": 9,
+        "views": 142,
+        "recommendationKind": "books",
+        "author": {
+            "provinceId": "seoul",
+            "id": "default-turtle-shark",
+            "nickname": "꼬부기상어",
+            "neighborhood": "동작구 흑석동",
+            "secondaryNeighborhood": "",
+            "tradePlace": "흑석역",
+            "pickupAddress": "서울특별시 동작구 흑석동"
+        },
+        "id": "default-it-books-planned",
+        "format": "planned",
+        "items": [
+            {
+                "id": "book-01",
+                "name": "Do it 자료구조와 함께 배우는 알고리즘 입문 C언어",
+                "price": 2000,
+                "quantity": 1
+            },
+            {
+                "id": "book-02",
+                "name": "엘라스틱 스택 개발부터 운영까지",
+                "price": 2000,
+                "quantity": 1
+            },
+            {
+                "id": "book-03",
+                "name": "쿠버네티스 완벽 가이드",
+                "price": 3000,
+                "quantity": 1
+            },
+            {
+                "id": "book-04",
+                "name": "쿠버네티스로 만나는 손안의 마이크로서비스",
+                "price": 3000,
+                "quantity": 1
+            },
+            {
+                "id": "book-05",
+                "name": "밑바닥부터 시작하는 딥러닝",
+                "price": 3000,
+                "quantity": 1
+            },
+            {
+                "id": "book-06",
+                "name": "IT엔지니어를 위한 네트워크 입문",
+                "price": 3000,
+                "quantity": 1
+            },
+            {
+                "id": "book-07",
+                "name": "토비의 스프링 vol1",
+                "price": 2000,
+                "quantity": 1,
+                "soldOut": true
+            },
+            {
+                "id": "book-08",
+                "name": "토비의 스프링 vol2",
+                "price": 2000,
+                "quantity": 1,
+                "soldOut": true
+            },
+            {
+                "id": "book-09",
+                "name": "이벤트 소싱과 마이크로서비스 아키텍처",
+                "price": 3000,
+                "quantity": 1
+            },
+            {
+                "id": "book-10",
+                "name": "데이터 지향 프로그래밍",
+                "price": 3000,
+                "quantity": 1
+            },
+            {
+                "id": "book-11",
+                "name": "코틀린 인 액션",
+                "price": 4000,
+                "quantity": 1
+            },
+            {
+                "id": "book-12",
+                "name": "엔지니어를 위한 선형대수",
+                "price": 3000,
+                "quantity": 1
+            },
+            {
+                "id": "book-13",
+                "name": "도메인 주도 설계 첫걸음",
+                "price": 3000,
+                "quantity": 1,
+                "soldOut": true
+            },
+            {
+                "id": "book-14",
+                "name": "알고리즘 기초",
+                "price": 3000,
+                "quantity": 1
+            },
+            {
+                "id": "book-15",
+                "name": "마스터링 이더리움",
+                "price": 3000,
+                "quantity": 1
+            },
+            {
+                "id": "book-16",
+                "name": "구글 엔지니어는 이렇게 일한다",
+                "price": 3000,
+                "quantity": 1
+            },
+            {
+                "id": "book-17",
+                "name": "컴퓨터구조 원서(미개봉)",
+                "price": 5000,
+                "quantity": 1
+            },
+            {
+                "id": "book-18",
+                "name": "자료구조 Java 원서",
+                "price": 3000,
+                "quantity": 1
+            },
+            {
+                "id": "book-19",
+                "name": "선형대수 원서",
+                "price": 3000,
+                "quantity": 1
+            },
+            {
+                "id": "book-20",
+                "name": "그로스해킹",
+                "price": 2000,
+                "quantity": 1
+            },
+            {
+                "id": "book-21",
+                "name": "비탈릭부테린 지분증명",
+                "price": 2000,
+                "quantity": 1
+            },
+            {
+                "id": "book-22",
+                "name": "부의 인문학",
+                "price": 2000,
+                "quantity": 1
+            },
+            {
+                "id": "book-23",
+                "name": "매우 예민한 사람들을 위한 책",
+                "price": 2000,
+                "quantity": 1
+            },
+            {
+                "id": "book-24",
+                "name": "나는 아마존에서 미래를 다녔다",
+                "price": 2000,
+                "quantity": 1
+            },
+            {
+                "id": "book-25",
+                "name": "무역 공부는 난생 처음입니다만",
+                "price": 2000,
+                "quantity": 1
+            },
+            {
+                "id": "book-26",
+                "name": "투자에 대한 생각",
+                "price": 2000,
+                "quantity": 1
+            },
+            {
+                "id": "book-27",
+                "name": "대량살상 수학무기",
+                "price": 2000,
+                "quantity": 1
+            },
+            {
+                "id": "book-28",
+                "name": "조국의 시간",
+                "price": 0,
+                "quantity": 1
+            },
+            {
+                "id": "book-29",
+                "name": "조선왕조실록",
+                "price": 2000,
+                "quantity": 1
+            },
+            {
+                "id": "book-30",
+                "name": "그건 쓰레기가 아니라고요",
+                "price": 2000,
+                "quantity": 1
+            }
+        ]
     },
-    "id": "default-it-books-planned",
-    "format": "planned",
-    "items": [
-      {
-        "id": "book-01",
-        "name": "Do it 자료구조와 함께 배우는 알고리즘 입문 C언어",
-        "price": 2000,
-        "quantity": 1
-      },
-      {
-        "id": "book-02",
-        "name": "엘라스틱 스택 개발부터 운영까지",
-        "price": 2000,
-        "quantity": 1
-      },
-      {
-        "id": "book-03",
-        "name": "쿠버네티스 완벽 가이드",
-        "price": 3000,
-        "quantity": 1
-      },
-      {
-        "id": "book-04",
-        "name": "쿠버네티스로 만나는 손안의 마이크로서비스",
-        "price": 3000,
-        "quantity": 1
-      },
-      {
-        "id": "book-05",
-        "name": "밑바닥부터 시작하는 딥러닝",
-        "price": 3000,
-        "quantity": 1
-      },
-      {
-        "id": "book-06",
-        "name": "IT엔지니어를 위한 네트워크 입문",
-        "price": 3000,
-        "quantity": 1
-      },
-      {
-        "id": "book-07",
-        "name": "토비의 스프링 vol1",
-        "price": 2000,
-        "quantity": 1,
-        "soldOut": true
-      },
-      {
-        "id": "book-08",
-        "name": "토비의 스프링 vol2",
-        "price": 2000,
-        "quantity": 1,
-        "soldOut": true
-      },
-      {
-        "id": "book-09",
-        "name": "이벤트 소싱과 마이크로서비스 아키텍처",
-        "price": 3000,
-        "quantity": 1
-      },
-      {
-        "id": "book-10",
-        "name": "데이터 지향 프로그래밍",
-        "price": 3000,
-        "quantity": 1
-      },
-      {
-        "id": "book-11",
-        "name": "코틀린 인 액션",
-        "price": 4000,
-        "quantity": 1
-      },
-      {
-        "id": "book-12",
-        "name": "엔지니어를 위한 선형대수",
-        "price": 3000,
-        "quantity": 1
-      },
-      {
-        "id": "book-13",
-        "name": "도메인 주도 설계 첫걸음",
-        "price": 3000,
-        "quantity": 1,
-        "soldOut": true
-      },
-      {
-        "id": "book-14",
-        "name": "알고리즘 기초",
-        "price": 3000,
-        "quantity": 1
-      },
-      {
-        "id": "book-15",
-        "name": "마스터링 이더리움",
-        "price": 3000,
-        "quantity": 1
-      },
-      {
-        "id": "book-16",
-        "name": "구글 엔지니어는 이렇게 일한다",
-        "price": 3000,
-        "quantity": 1
-      },
-      {
-        "id": "book-17",
-        "name": "컴퓨터구조 원서(미개봉)",
-        "price": 5000,
-        "quantity": 1
-      },
-      {
-        "id": "book-18",
-        "name": "자료구조 Java 원서",
-        "price": 3000,
-        "quantity": 1
-      },
-      {
-        "id": "book-19",
-        "name": "선형대수 원서",
-        "price": 3000,
-        "quantity": 1
-      },
-      {
-        "id": "book-20",
-        "name": "그로스해킹",
-        "price": 2000,
-        "quantity": 1
-      },
-      {
-        "id": "book-21",
-        "name": "비탈릭부테린 지분증명",
-        "price": 2000,
-        "quantity": 1
-      },
-      {
-        "id": "book-22",
-        "name": "부의 인문학",
-        "price": 2000,
-        "quantity": 1
-      },
-      {
-        "id": "book-23",
-        "name": "매우 예민한 사람들을 위한 책",
-        "price": 2000,
-        "quantity": 1
-      },
-      {
-        "id": "book-24",
-        "name": "나는 아마존에서 미래를 다녔다",
-        "price": 2000,
-        "quantity": 1
-      },
-      {
-        "id": "book-25",
-        "name": "무역 공부는 난생 처음입니다만",
-        "price": 2000,
-        "quantity": 1
-      },
-      {
-        "id": "book-26",
-        "name": "투자에 대한 생각",
-        "price": 2000,
-        "quantity": 1
-      },
-      {
-        "id": "book-27",
-        "name": "대량살상 수학무기",
-        "price": 2000,
-        "quantity": 1
-      },
-      {
-        "id": "book-28",
-        "name": "조국의 시간",
-        "price": 0,
-        "quantity": 1
-      },
-      {
-        "id": "book-29",
-        "name": "조선왕조실록",
-        "price": 2000,
-        "quantity": 1
-      },
-      {
-        "id": "book-30",
-        "name": "그건 쓰레기가 아니라고요",
-        "price": 2000,
-        "quantity": 1
-      }
-    ]
-  },
-  {
-    "createdAt": 1790100000000,
-    "title": "다양한 분야의 중고 도서 묶음",
-    "description": "다양한 분야 중고 책 판매 합니다.\n\n금액은 각 2,000원 입니다.\n\n구매 원하시는 책 제목 채팅으로 알려주시면 되겠습니다.\n\n1- 2030 축의 전환 - 마우로 기옌\n2- CLAIRE DEWITT AND THE CITY OF THE DEAD - Sara Gran (원서)\n3- GROWTH IQ - 티파니 보바\n4- HARRY POTTER and the Half-Blood Prince - J.K. ROWLING (원서)\n5- life - 이이지마 나미\n6- 고객의 언어 - 이진국\n7- 관점, 다르게 보는 힘 - 최윤규\n8- 관찰의 힘 - 얀 칩체이스, 사이먼 슈타인하트\n9- 그건 내 인생이 아니다 - 서동일\n10- 그들이 말하지 않는 23가지 - 장하준\n11- 그래도 나에겐, 로맨틱 - 하정아\n12- 그래도, 사랑 - 정현주\n13- 기획자의 습관 - 최장순\n14- 깍두기 삼십대 - 조한웅\n15- 나는 실패를 믿지 않는다 - 로빈 웨스턴\n16- 나는 아직, 어른이 되려면 멀었다 - 강세형\n18- 나폴레온 힐의 라이프 체인징 시크릿 1 생각의 힘 - 나폴레온 힐\n19- 낙타가 태양을 피하는 법 - 이지원\n20- 내 마음속의 희망 - 리치 디보스\n21- 내가 알고 있는걸 당신도 알게 된다면 - 칼 필레머\n22- 내일의 부 1 알파편 - 조던 김장섭\n24- 너도 떠나보면 나를 알게될거야 - 김동영\n25- 노르웨이처럼 투자하라 - 클레멘스 봄스도르프\n26- 뇌내혁명 - 하루야마 시게오\n27- 다산의 마지막 공부 - 조윤제\n28- 달빛책방 - 조안나\n29- 당신에게 힘을 보낼게, 반짝 - 밤삼킨별 김효정\n31- 돈의 감각 - 이명로\n32- 디퍼런트 - 문영미\n34- 매직 - 론다 번\n35- 면역에 관하여 - 율라 비스\n36- 물욕 없는 세계 - 스가쓰케 마사노부\n37- 미친듯이 심플 - 켄 시걸\n38- 배움을 돈으로 바꾸는 기술 - 이노우에 히로유키\n39- 부자들의 음모 - 로버트 기요사키\n40- 붓다와 다윈이 만난다면 - 안성두, 우희종, 이한구, 최재천, 홍성욱\n41- 살아온 기적 살아갈 기적 - 장영희\n42- 새로 만든 내몸 사용설명서 - 마이클 로이젠, 메멧 오즈\n43- 새로운 삶을 이끄는 힐링의 힘 - 데일 카네기\n44- 서재 결혼 시키기 - 앤 패디먼\n45- 세상 끝에서 삶을 춤추다 - 박상주\n46- 소란 - 박연준\n47- 슬기로운 수면 생활 - 서진원\n48- 시크릿 - 론다 번\n51- 어떻게 살 것인가 - 유시민\n52- 여자라면 힐러리처럼 - 이지성\n53- 여행하는 인간 - 문요한\n54- 연탄길 - 이철환\n56- 완벽하지 않은 것들에 대한 사랑 - 혜민\n57- 완벽한 공부법 - 고영성, 신영준\n59- 운을 읽는 변호사 - 니시나카 쓰토무\n60- 이 길 위에서 널 만날 수 있을까 - 노지혜\n61- 이기는 대화 - 이서정\n62- 인간은 어떻게 서로를 공감하는가 거울뉴런과 뇌 공감력의 메커니즘 - 크리스티안 케이서스\n63- 인생좌표 - 이케다 다이사쿠\n65- 자기설득 파워 - 백지연\n66- 장영희의 영미시산책 생일 - 장영희\n67- 정원 일의 즐거움 - 헤르만 헤세\n68- 지갑이 마르지 않는 평생부자 - 윤은모\n69- 청소부가 된 어린 왕자 - 박이철\n70- 최고의 팀은 무엇이 다른가 - 대니얼 코일\n71- 췌장암 안내서 - 김송철 외\n72- 침대부터 정리하라 - 윌리엄 H. 맥레이븐\n73- 커피한잔의 명상으로 10억을 번 사람들 - 오시마 준이치\n75- 파는것이 인간이다 - 다니엘 핑크\n76- 프로 컨설턴트 바이블 - 황창환\n77- 프로페셔널의 조건 - 피터 드러커\n78- 하룻밤에 읽는 한국사 - 최용범\n79- 해피로드 - 이케다 다이사쿠\n80- 행동 경제학 - 도모노 노리오\n81- 헬스케어스쿨 - 전종문",
-    "category": "도서",
-    "photos": [
-      {
-        "id": "mixed-book-photo-1",
-        "src": "/reference/mixed-books/01.jpg",
-        "name": "중고 도서 묶음 사진 1"
-      },
-      {
-        "id": "mixed-book-photo-2",
-        "src": "/reference/mixed-books/02.jpg",
-        "name": "중고 도서 묶음 사진 2"
-      }
-    ],
-    "giveaway": false,
-    "directBuy": true,
-    "offers": false,
-    "giveawayRequests": false,
-    "secondary": false,
-    "builtIn": true,
-    "ageLabel": "끌올 2시간 전",
-    "temperature": "38.6°C",
-    "mood": "☺️",
-    "chats": 2,
-    "likes": 2,
-    "views": 302,
-    "recommendationKind": "books",
-    "author": {
-      "provinceId": "ulsan",
-      "id": "default-green",
-      "nickname": "녹색",
-      "neighborhood": "울산광역시 울주군",
-      "secondaryNeighborhood": "",
-      "tradePlace": "울주군",
-      "pickupAddress": "울산광역시 울주군"
+    {
+        "createdAt": 1790100000000,
+        "title": "다양한 분야의 중고 도서 묶음",
+        "description": "다양한 분야 중고 책 판매 합니다.\n\n금액은 각 2,000원 입니다.\n\n구매 원하시는 책 제목 채팅으로 알려주시면 되겠습니다.\n\n1- 2030 축의 전환 - 마우로 기옌\n2- CLAIRE DEWITT AND THE CITY OF THE DEAD - Sara Gran (원서)\n3- GROWTH IQ - 티파니 보바\n4- HARRY POTTER and the Half-Blood Prince - J.K. ROWLING (원서)\n5- life - 이이지마 나미\n6- 고객의 언어 - 이진국\n7- 관점, 다르게 보는 힘 - 최윤규\n8- 관찰의 힘 - 얀 칩체이스, 사이먼 슈타인하트\n9- 그건 내 인생이 아니다 - 서동일\n10- 그들이 말하지 않는 23가지 - 장하준\n11- 그래도 나에겐, 로맨틱 - 하정아\n12- 그래도, 사랑 - 정현주\n13- 기획자의 습관 - 최장순\n14- 깍두기 삼십대 - 조한웅\n15- 나는 실패를 믿지 않는다 - 로빈 웨스턴\n16- 나는 아직, 어른이 되려면 멀었다 - 강세형\n18- 나폴레온 힐의 라이프 체인징 시크릿 1 생각의 힘 - 나폴레온 힐\n19- 낙타가 태양을 피하는 법 - 이지원\n20- 내 마음속의 희망 - 리치 디보스\n21- 내가 알고 있는걸 당신도 알게 된다면 - 칼 필레머\n22- 내일의 부 1 알파편 - 조던 김장섭\n24- 너도 떠나보면 나를 알게될거야 - 김동영\n25- 노르웨이처럼 투자하라 - 클레멘스 봄스도르프\n26- 뇌내혁명 - 하루야마 시게오\n27- 다산의 마지막 공부 - 조윤제\n28- 달빛책방 - 조안나\n29- 당신에게 힘을 보낼게, 반짝 - 밤삼킨별 김효정\n31- 돈의 감각 - 이명로\n32- 디퍼런트 - 문영미\n34- 매직 - 론다 번\n35- 면역에 관하여 - 율라 비스\n36- 물욕 없는 세계 - 스가쓰케 마사노부\n37- 미친듯이 심플 - 켄 시걸\n38- 배움을 돈으로 바꾸는 기술 - 이노우에 히로유키\n39- 부자들의 음모 - 로버트 기요사키\n40- 붓다와 다윈이 만난다면 - 안성두, 우희종, 이한구, 최재천, 홍성욱\n41- 살아온 기적 살아갈 기적 - 장영희\n42- 새로 만든 내몸 사용설명서 - 마이클 로이젠, 메멧 오즈\n43- 새로운 삶을 이끄는 힐링의 힘 - 데일 카네기\n44- 서재 결혼 시키기 - 앤 패디먼\n45- 세상 끝에서 삶을 춤추다 - 박상주\n46- 소란 - 박연준\n47- 슬기로운 수면 생활 - 서진원\n48- 시크릿 - 론다 번\n51- 어떻게 살 것인가 - 유시민\n52- 여자라면 힐러리처럼 - 이지성\n53- 여행하는 인간 - 문요한\n54- 연탄길 - 이철환\n56- 완벽하지 않은 것들에 대한 사랑 - 혜민\n57- 완벽한 공부법 - 고영성, 신영준\n59- 운을 읽는 변호사 - 니시나카 쓰토무\n60- 이 길 위에서 널 만날 수 있을까 - 노지혜\n61- 이기는 대화 - 이서정\n62- 인간은 어떻게 서로를 공감하는가 거울뉴런과 뇌 공감력의 메커니즘 - 크리스티안 케이서스\n63- 인생좌표 - 이케다 다이사쿠\n65- 자기설득 파워 - 백지연\n66- 장영희의 영미시산책 생일 - 장영희\n67- 정원 일의 즐거움 - 헤르만 헤세\n68- 지갑이 마르지 않는 평생부자 - 윤은모\n69- 청소부가 된 어린 왕자 - 박이철\n70- 최고의 팀은 무엇이 다른가 - 대니얼 코일\n71- 췌장암 안내서 - 김송철 외\n72- 침대부터 정리하라 - 윌리엄 H. 맥레이븐\n73- 커피한잔의 명상으로 10억을 번 사람들 - 오시마 준이치\n75- 파는것이 인간이다 - 다니엘 핑크\n76- 프로 컨설턴트 바이블 - 황창환\n77- 프로페셔널의 조건 - 피터 드러커\n78- 하룻밤에 읽는 한국사 - 최용범\n79- 해피로드 - 이케다 다이사쿠\n80- 행동 경제학 - 도모노 노리오\n81- 헬스케어스쿨 - 전종문",
+        "category": "도서",
+        "photos": [
+            {
+                "id": "mixed-book-photo-1",
+                "src": "/reference/mixed-books/01.jpg",
+                "name": "중고 도서 묶음 사진 1"
+            },
+            {
+                "id": "mixed-book-photo-2",
+                "src": "/reference/mixed-books/02.jpg",
+                "name": "중고 도서 묶음 사진 2"
+            }
+        ],
+        "giveaway": false,
+        "directBuy": true,
+        "offers": false,
+        "giveawayRequests": false,
+        "secondary": false,
+        "builtIn": true,
+        "ageLabel": "끌올 2시간 전",
+        "temperature": "38.6°C",
+        "mood": "☺️",
+        "chats": 2,
+        "likes": 2,
+        "views": 302,
+        "recommendationKind": "books",
+        "author": {
+            "provinceId": "ulsan",
+            "id": "default-green",
+            "nickname": "녹색",
+            "neighborhood": "울산광역시 울주군",
+            "secondaryNeighborhood": "",
+            "tradePlace": "울주군",
+            "pickupAddress": "울산광역시 울주군"
+        },
+        "id": "default-mixed-books-current",
+        "format": "current",
+        "items": [
+            {
+                "id": "mixed-book-lot",
+                "name": "다양한 분야의 중고 도서 묶음",
+                "price": 2000,
+                "quantity": 1
+            }
+        ]
     },
-    "id": "default-mixed-books-current",
-    "format": "current",
-    "items": [
-      {
-        "id": "mixed-book-lot",
-        "name": "다양한 분야의 중고 도서 묶음",
-        "price": 2000,
-        "quantity": 1
-      }
-    ]
-  },
-  {
-    "createdAt": 1790100000000,
-    "title": "다양한 분야의 중고 도서 묶음",
-    "description": "다양한 분야 중고 책 판매 합니다.\n\n금액은 각 2,000원 입니다.\n\n구매 원하시는 책 제목 채팅으로 알려주시면 되겠습니다.\n\n1- 2030 축의 전환 - 마우로 기옌\n2- CLAIRE DEWITT AND THE CITY OF THE DEAD - Sara Gran (원서)\n3- GROWTH IQ - 티파니 보바\n4- HARRY POTTER and the Half-Blood Prince - J.K. ROWLING (원서)\n5- life - 이이지마 나미\n6- 고객의 언어 - 이진국\n7- 관점, 다르게 보는 힘 - 최윤규\n8- 관찰의 힘 - 얀 칩체이스, 사이먼 슈타인하트\n9- 그건 내 인생이 아니다 - 서동일\n10- 그들이 말하지 않는 23가지 - 장하준\n11- 그래도 나에겐, 로맨틱 - 하정아\n12- 그래도, 사랑 - 정현주\n13- 기획자의 습관 - 최장순\n14- 깍두기 삼십대 - 조한웅\n15- 나는 실패를 믿지 않는다 - 로빈 웨스턴\n16- 나는 아직, 어른이 되려면 멀었다 - 강세형\n18- 나폴레온 힐의 라이프 체인징 시크릿 1 생각의 힘 - 나폴레온 힐\n19- 낙타가 태양을 피하는 법 - 이지원\n20- 내 마음속의 희망 - 리치 디보스\n21- 내가 알고 있는걸 당신도 알게 된다면 - 칼 필레머\n22- 내일의 부 1 알파편 - 조던 김장섭\n24- 너도 떠나보면 나를 알게될거야 - 김동영\n25- 노르웨이처럼 투자하라 - 클레멘스 봄스도르프\n26- 뇌내혁명 - 하루야마 시게오\n27- 다산의 마지막 공부 - 조윤제\n28- 달빛책방 - 조안나\n29- 당신에게 힘을 보낼게, 반짝 - 밤삼킨별 김효정\n31- 돈의 감각 - 이명로\n32- 디퍼런트 - 문영미\n34- 매직 - 론다 번\n35- 면역에 관하여 - 율라 비스\n36- 물욕 없는 세계 - 스가쓰케 마사노부\n37- 미친듯이 심플 - 켄 시걸\n38- 배움을 돈으로 바꾸는 기술 - 이노우에 히로유키\n39- 부자들의 음모 - 로버트 기요사키\n40- 붓다와 다윈이 만난다면 - 안성두, 우희종, 이한구, 최재천, 홍성욱\n41- 살아온 기적 살아갈 기적 - 장영희\n42- 새로 만든 내몸 사용설명서 - 마이클 로이젠, 메멧 오즈\n43- 새로운 삶을 이끄는 힐링의 힘 - 데일 카네기\n44- 서재 결혼 시키기 - 앤 패디먼\n45- 세상 끝에서 삶을 춤추다 - 박상주\n46- 소란 - 박연준\n47- 슬기로운 수면 생활 - 서진원\n48- 시크릿 - 론다 번\n51- 어떻게 살 것인가 - 유시민\n52- 여자라면 힐러리처럼 - 이지성\n53- 여행하는 인간 - 문요한\n54- 연탄길 - 이철환\n56- 완벽하지 않은 것들에 대한 사랑 - 혜민\n57- 완벽한 공부법 - 고영성, 신영준\n59- 운을 읽는 변호사 - 니시나카 쓰토무\n60- 이 길 위에서 널 만날 수 있을까 - 노지혜\n61- 이기는 대화 - 이서정\n62- 인간은 어떻게 서로를 공감하는가 거울뉴런과 뇌 공감력의 메커니즘 - 크리스티안 케이서스\n63- 인생좌표 - 이케다 다이사쿠\n65- 자기설득 파워 - 백지연\n66- 장영희의 영미시산책 생일 - 장영희\n67- 정원 일의 즐거움 - 헤르만 헤세\n68- 지갑이 마르지 않는 평생부자 - 윤은모\n69- 청소부가 된 어린 왕자 - 박이철\n70- 최고의 팀은 무엇이 다른가 - 대니얼 코일\n71- 췌장암 안내서 - 김송철 외\n72- 침대부터 정리하라 - 윌리엄 H. 맥레이븐\n73- 커피한잔의 명상으로 10억을 번 사람들 - 오시마 준이치\n75- 파는것이 인간이다 - 다니엘 핑크\n76- 프로 컨설턴트 바이블 - 황창환\n77- 프로페셔널의 조건 - 피터 드러커\n78- 하룻밤에 읽는 한국사 - 최용범\n79- 해피로드 - 이케다 다이사쿠\n80- 행동 경제학 - 도모노 노리오\n81- 헬스케어스쿨 - 전종문",
-    "category": "도서",
-    "photos": [
-      {
-        "id": "mixed-book-photo-1",
-        "src": "/reference/mixed-books/01.jpg",
-        "name": "중고 도서 묶음 사진 1"
-      },
-      {
-        "id": "mixed-book-photo-2",
-        "src": "/reference/mixed-books/02.jpg",
-        "name": "중고 도서 묶음 사진 2"
-      }
-    ],
-    "giveaway": false,
-    "directBuy": true,
-    "offers": false,
-    "giveawayRequests": false,
-    "secondary": false,
-    "builtIn": true,
-    "ageLabel": "끌올 2시간 전",
-    "temperature": "38.6°C",
-    "mood": "☺️",
-    "chats": 2,
-    "likes": 2,
-    "views": 302,
-    "recommendationKind": "books",
-    "author": {
-      "provinceId": "ulsan",
-      "id": "default-green",
-      "nickname": "녹색",
-      "neighborhood": "울산광역시 울주군",
-      "secondaryNeighborhood": "",
-      "tradePlace": "울주군",
-      "pickupAddress": "울산광역시 울주군"
+    {
+        "createdAt": 1790100000000,
+        "title": "다양한 분야의 중고 도서 묶음",
+        "description": "다양한 분야 중고 책 판매 합니다.\n\n금액은 각 2,000원 입니다.\n\n구매 원하시는 책 제목 채팅으로 알려주시면 되겠습니다.\n\n1- 2030 축의 전환 - 마우로 기옌\n2- CLAIRE DEWITT AND THE CITY OF THE DEAD - Sara Gran (원서)\n3- GROWTH IQ - 티파니 보바\n4- HARRY POTTER and the Half-Blood Prince - J.K. ROWLING (원서)\n5- life - 이이지마 나미\n6- 고객의 언어 - 이진국\n7- 관점, 다르게 보는 힘 - 최윤규\n8- 관찰의 힘 - 얀 칩체이스, 사이먼 슈타인하트\n9- 그건 내 인생이 아니다 - 서동일\n10- 그들이 말하지 않는 23가지 - 장하준\n11- 그래도 나에겐, 로맨틱 - 하정아\n12- 그래도, 사랑 - 정현주\n13- 기획자의 습관 - 최장순\n14- 깍두기 삼십대 - 조한웅\n15- 나는 실패를 믿지 않는다 - 로빈 웨스턴\n16- 나는 아직, 어른이 되려면 멀었다 - 강세형\n18- 나폴레온 힐의 라이프 체인징 시크릿 1 생각의 힘 - 나폴레온 힐\n19- 낙타가 태양을 피하는 법 - 이지원\n20- 내 마음속의 희망 - 리치 디보스\n21- 내가 알고 있는걸 당신도 알게 된다면 - 칼 필레머\n22- 내일의 부 1 알파편 - 조던 김장섭\n24- 너도 떠나보면 나를 알게될거야 - 김동영\n25- 노르웨이처럼 투자하라 - 클레멘스 봄스도르프\n26- 뇌내혁명 - 하루야마 시게오\n27- 다산의 마지막 공부 - 조윤제\n28- 달빛책방 - 조안나\n29- 당신에게 힘을 보낼게, 반짝 - 밤삼킨별 김효정\n31- 돈의 감각 - 이명로\n32- 디퍼런트 - 문영미\n34- 매직 - 론다 번\n35- 면역에 관하여 - 율라 비스\n36- 물욕 없는 세계 - 스가쓰케 마사노부\n37- 미친듯이 심플 - 켄 시걸\n38- 배움을 돈으로 바꾸는 기술 - 이노우에 히로유키\n39- 부자들의 음모 - 로버트 기요사키\n40- 붓다와 다윈이 만난다면 - 안성두, 우희종, 이한구, 최재천, 홍성욱\n41- 살아온 기적 살아갈 기적 - 장영희\n42- 새로 만든 내몸 사용설명서 - 마이클 로이젠, 메멧 오즈\n43- 새로운 삶을 이끄는 힐링의 힘 - 데일 카네기\n44- 서재 결혼 시키기 - 앤 패디먼\n45- 세상 끝에서 삶을 춤추다 - 박상주\n46- 소란 - 박연준\n47- 슬기로운 수면 생활 - 서진원\n48- 시크릿 - 론다 번\n51- 어떻게 살 것인가 - 유시민\n52- 여자라면 힐러리처럼 - 이지성\n53- 여행하는 인간 - 문요한\n54- 연탄길 - 이철환\n56- 완벽하지 않은 것들에 대한 사랑 - 혜민\n57- 완벽한 공부법 - 고영성, 신영준\n59- 운을 읽는 변호사 - 니시나카 쓰토무\n60- 이 길 위에서 널 만날 수 있을까 - 노지혜\n61- 이기는 대화 - 이서정\n62- 인간은 어떻게 서로를 공감하는가 거울뉴런과 뇌 공감력의 메커니즘 - 크리스티안 케이서스\n63- 인생좌표 - 이케다 다이사쿠\n65- 자기설득 파워 - 백지연\n66- 장영희의 영미시산책 생일 - 장영희\n67- 정원 일의 즐거움 - 헤르만 헤세\n68- 지갑이 마르지 않는 평생부자 - 윤은모\n69- 청소부가 된 어린 왕자 - 박이철\n70- 최고의 팀은 무엇이 다른가 - 대니얼 코일\n71- 췌장암 안내서 - 김송철 외\n72- 침대부터 정리하라 - 윌리엄 H. 맥레이븐\n73- 커피한잔의 명상으로 10억을 번 사람들 - 오시마 준이치\n75- 파는것이 인간이다 - 다니엘 핑크\n76- 프로 컨설턴트 바이블 - 황창환\n77- 프로페셔널의 조건 - 피터 드러커\n78- 하룻밤에 읽는 한국사 - 최용범\n79- 해피로드 - 이케다 다이사쿠\n80- 행동 경제학 - 도모노 노리오\n81- 헬스케어스쿨 - 전종문",
+        "category": "도서",
+        "photos": [
+            {
+                "id": "mixed-book-photo-1",
+                "src": "/reference/mixed-books/01.jpg",
+                "name": "중고 도서 묶음 사진 1"
+            },
+            {
+                "id": "mixed-book-photo-2",
+                "src": "/reference/mixed-books/02.jpg",
+                "name": "중고 도서 묶음 사진 2"
+            }
+        ],
+        "giveaway": false,
+        "directBuy": true,
+        "offers": false,
+        "giveawayRequests": false,
+        "secondary": false,
+        "builtIn": true,
+        "ageLabel": "끌올 2시간 전",
+        "temperature": "38.6°C",
+        "mood": "☺️",
+        "chats": 2,
+        "likes": 2,
+        "views": 302,
+        "recommendationKind": "books",
+        "author": {
+            "provinceId": "ulsan",
+            "id": "default-green",
+            "nickname": "녹색",
+            "neighborhood": "울산광역시 울주군",
+            "secondaryNeighborhood": "",
+            "tradePlace": "울주군",
+            "pickupAddress": "울산광역시 울주군"
+        },
+        "id": "default-mixed-books-planned",
+        "format": "planned",
+        "items": [
+            {
+                "id": "mixed-book-01",
+                "name": "2030 축의 전환 - 마우로 기옌",
+                "price": 2000,
+                "quantity": 1
+            },
+            {
+                "id": "mixed-book-02",
+                "name": "CLAIRE DEWITT AND THE CITY OF THE DEAD - Sara Gran (원서)",
+                "price": 2000,
+                "quantity": 1
+            },
+            {
+                "id": "mixed-book-03",
+                "name": "GROWTH IQ - 티파니 보바",
+                "price": 2000,
+                "quantity": 1
+            },
+            {
+                "id": "mixed-book-04",
+                "name": "HARRY POTTER and the Half-Blood Prince - J.K. ROWLING (원서)",
+                "price": 2000,
+                "quantity": 1
+            },
+            {
+                "id": "mixed-book-05",
+                "name": "life - 이이지마 나미",
+                "price": 2000,
+                "quantity": 1
+            },
+            {
+                "id": "mixed-book-06",
+                "name": "고객의 언어 - 이진국",
+                "price": 2000,
+                "quantity": 1
+            },
+            {
+                "id": "mixed-book-07",
+                "name": "관점, 다르게 보는 힘 - 최윤규",
+                "price": 2000,
+                "quantity": 1
+            },
+            {
+                "id": "mixed-book-08",
+                "name": "관찰의 힘 - 얀 칩체이스, 사이먼 슈타인하트",
+                "price": 2000,
+                "quantity": 1
+            },
+            {
+                "id": "mixed-book-09",
+                "name": "그건 내 인생이 아니다 - 서동일",
+                "price": 2000,
+                "quantity": 1
+            },
+            {
+                "id": "mixed-book-10",
+                "name": "그들이 말하지 않는 23가지 - 장하준",
+                "price": 2000,
+                "quantity": 1
+            },
+            {
+                "id": "mixed-book-11",
+                "name": "그래도 나에겐, 로맨틱 - 하정아",
+                "price": 2000,
+                "quantity": 1
+            },
+            {
+                "id": "mixed-book-12",
+                "name": "그래도, 사랑 - 정현주",
+                "price": 2000,
+                "quantity": 1
+            },
+            {
+                "id": "mixed-book-13",
+                "name": "기획자의 습관 - 최장순",
+                "price": 2000,
+                "quantity": 1
+            },
+            {
+                "id": "mixed-book-14",
+                "name": "깍두기 삼십대 - 조한웅",
+                "price": 2000,
+                "quantity": 1
+            },
+            {
+                "id": "mixed-book-15",
+                "name": "나는 실패를 믿지 않는다 - 로빈 웨스턴",
+                "price": 2000,
+                "quantity": 1
+            },
+            {
+                "id": "mixed-book-16",
+                "name": "나는 아직, 어른이 되려면 멀었다 - 강세형",
+                "price": 2000,
+                "quantity": 1
+            },
+            {
+                "id": "mixed-book-18",
+                "name": "나폴레온 힐의 라이프 체인징 시크릿 1 생각의 힘 - 나폴레온 힐",
+                "price": 2000,
+                "quantity": 1
+            },
+            {
+                "id": "mixed-book-19",
+                "name": "낙타가 태양을 피하는 법 - 이지원",
+                "price": 2000,
+                "quantity": 1
+            },
+            {
+                "id": "mixed-book-20",
+                "name": "내 마음속의 희망 - 리치 디보스",
+                "price": 2000,
+                "quantity": 1
+            },
+            {
+                "id": "mixed-book-21",
+                "name": "내가 알고 있는걸 당신도 알게 된다면 - 칼 필레머",
+                "price": 2000,
+                "quantity": 1
+            },
+            {
+                "id": "mixed-book-22",
+                "name": "내일의 부 1 알파편 - 조던 김장섭",
+                "price": 2000,
+                "quantity": 1
+            },
+            {
+                "id": "mixed-book-24",
+                "name": "너도 떠나보면 나를 알게될거야 - 김동영",
+                "price": 2000,
+                "quantity": 1
+            },
+            {
+                "id": "mixed-book-25",
+                "name": "노르웨이처럼 투자하라 - 클레멘스 봄스도르프",
+                "price": 2000,
+                "quantity": 1
+            },
+            {
+                "id": "mixed-book-26",
+                "name": "뇌내혁명 - 하루야마 시게오",
+                "price": 2000,
+                "quantity": 1
+            },
+            {
+                "id": "mixed-book-27",
+                "name": "다산의 마지막 공부 - 조윤제",
+                "price": 2000,
+                "quantity": 1
+            },
+            {
+                "id": "mixed-book-28",
+                "name": "달빛책방 - 조안나",
+                "price": 2000,
+                "quantity": 1
+            },
+            {
+                "id": "mixed-book-29",
+                "name": "당신에게 힘을 보낼게, 반짝 - 밤삼킨별 김효정",
+                "price": 2000,
+                "quantity": 1
+            },
+            {
+                "id": "mixed-book-31",
+                "name": "돈의 감각 - 이명로",
+                "price": 2000,
+                "quantity": 1
+            },
+            {
+                "id": "mixed-book-32",
+                "name": "디퍼런트 - 문영미",
+                "price": 2000,
+                "quantity": 1
+            },
+            {
+                "id": "mixed-book-34",
+                "name": "매직 - 론다 번",
+                "price": 2000,
+                "quantity": 1
+            },
+            {
+                "id": "mixed-book-35",
+                "name": "면역에 관하여 - 율라 비스",
+                "price": 2000,
+                "quantity": 1
+            },
+            {
+                "id": "mixed-book-36",
+                "name": "물욕 없는 세계 - 스가쓰케 마사노부",
+                "price": 2000,
+                "quantity": 1
+            },
+            {
+                "id": "mixed-book-37",
+                "name": "미친듯이 심플 - 켄 시걸",
+                "price": 2000,
+                "quantity": 1
+            },
+            {
+                "id": "mixed-book-38",
+                "name": "배움을 돈으로 바꾸는 기술 - 이노우에 히로유키",
+                "price": 2000,
+                "quantity": 1
+            },
+            {
+                "id": "mixed-book-39",
+                "name": "부자들의 음모 - 로버트 기요사키",
+                "price": 2000,
+                "quantity": 1
+            },
+            {
+                "id": "mixed-book-40",
+                "name": "붓다와 다윈이 만난다면 - 안성두, 우희종, 이한구, 최재천, 홍성욱",
+                "price": 2000,
+                "quantity": 1
+            },
+            {
+                "id": "mixed-book-41",
+                "name": "살아온 기적 살아갈 기적 - 장영희",
+                "price": 2000,
+                "quantity": 1
+            },
+            {
+                "id": "mixed-book-42",
+                "name": "새로 만든 내몸 사용설명서 - 마이클 로이젠, 메멧 오즈",
+                "price": 2000,
+                "quantity": 1
+            },
+            {
+                "id": "mixed-book-43",
+                "name": "새로운 삶을 이끄는 힐링의 힘 - 데일 카네기",
+                "price": 2000,
+                "quantity": 1
+            },
+            {
+                "id": "mixed-book-44",
+                "name": "서재 결혼 시키기 - 앤 패디먼",
+                "price": 2000,
+                "quantity": 1
+            },
+            {
+                "id": "mixed-book-45",
+                "name": "세상 끝에서 삶을 춤추다 - 박상주",
+                "price": 2000,
+                "quantity": 1
+            },
+            {
+                "id": "mixed-book-46",
+                "name": "소란 - 박연준",
+                "price": 2000,
+                "quantity": 1
+            },
+            {
+                "id": "mixed-book-47",
+                "name": "슬기로운 수면 생활 - 서진원",
+                "price": 2000,
+                "quantity": 1
+            },
+            {
+                "id": "mixed-book-48",
+                "name": "시크릿 - 론다 번",
+                "price": 2000,
+                "quantity": 1
+            },
+            {
+                "id": "mixed-book-51",
+                "name": "어떻게 살 것인가 - 유시민",
+                "price": 2000,
+                "quantity": 1
+            },
+            {
+                "id": "mixed-book-52",
+                "name": "여자라면 힐러리처럼 - 이지성",
+                "price": 2000,
+                "quantity": 1
+            },
+            {
+                "id": "mixed-book-53",
+                "name": "여행하는 인간 - 문요한",
+                "price": 2000,
+                "quantity": 1
+            },
+            {
+                "id": "mixed-book-54",
+                "name": "연탄길 - 이철환",
+                "price": 2000,
+                "quantity": 1
+            },
+            {
+                "id": "mixed-book-56",
+                "name": "완벽하지 않은 것들에 대한 사랑 - 혜민",
+                "price": 2000,
+                "quantity": 1
+            },
+            {
+                "id": "mixed-book-57",
+                "name": "완벽한 공부법 - 고영성, 신영준",
+                "price": 2000,
+                "quantity": 1
+            },
+            {
+                "id": "mixed-book-59",
+                "name": "운을 읽는 변호사 - 니시나카 쓰토무",
+                "price": 2000,
+                "quantity": 1
+            },
+            {
+                "id": "mixed-book-60",
+                "name": "이 길 위에서 널 만날 수 있을까 - 노지혜",
+                "price": 2000,
+                "quantity": 1
+            },
+            {
+                "id": "mixed-book-61",
+                "name": "이기는 대화 - 이서정",
+                "price": 2000,
+                "quantity": 1
+            },
+            {
+                "id": "mixed-book-62",
+                "name": "인간은 어떻게 서로를 공감하는가 거울뉴런과 뇌 공감력의 메커니즘 - 크리스티안 케이서스",
+                "price": 2000,
+                "quantity": 1
+            },
+            {
+                "id": "mixed-book-63",
+                "name": "인생좌표 - 이케다 다이사쿠",
+                "price": 2000,
+                "quantity": 1
+            },
+            {
+                "id": "mixed-book-65",
+                "name": "자기설득 파워 - 백지연",
+                "price": 2000,
+                "quantity": 1
+            },
+            {
+                "id": "mixed-book-66",
+                "name": "장영희의 영미시산책 생일 - 장영희",
+                "price": 2000,
+                "quantity": 1
+            },
+            {
+                "id": "mixed-book-67",
+                "name": "정원 일의 즐거움 - 헤르만 헤세",
+                "price": 2000,
+                "quantity": 1
+            },
+            {
+                "id": "mixed-book-68",
+                "name": "지갑이 마르지 않는 평생부자 - 윤은모",
+                "price": 2000,
+                "quantity": 1
+            },
+            {
+                "id": "mixed-book-69",
+                "name": "청소부가 된 어린 왕자 - 박이철",
+                "price": 2000,
+                "quantity": 1
+            },
+            {
+                "id": "mixed-book-70",
+                "name": "최고의 팀은 무엇이 다른가 - 대니얼 코일",
+                "price": 2000,
+                "quantity": 1
+            },
+            {
+                "id": "mixed-book-71",
+                "name": "췌장암 안내서 - 김송철 외",
+                "price": 2000,
+                "quantity": 1
+            },
+            {
+                "id": "mixed-book-72",
+                "name": "침대부터 정리하라 - 윌리엄 H. 맥레이븐",
+                "price": 2000,
+                "quantity": 1
+            },
+            {
+                "id": "mixed-book-73",
+                "name": "커피한잔의 명상으로 10억을 번 사람들 - 오시마 준이치",
+                "price": 2000,
+                "quantity": 1
+            },
+            {
+                "id": "mixed-book-75",
+                "name": "파는것이 인간이다 - 다니엘 핑크",
+                "price": 2000,
+                "quantity": 1
+            },
+            {
+                "id": "mixed-book-76",
+                "name": "프로 컨설턴트 바이블 - 황창환",
+                "price": 2000,
+                "quantity": 1
+            },
+            {
+                "id": "mixed-book-77",
+                "name": "프로페셔널의 조건 - 피터 드러커",
+                "price": 2000,
+                "quantity": 1
+            },
+            {
+                "id": "mixed-book-78",
+                "name": "하룻밤에 읽는 한국사 - 최용범",
+                "price": 2000,
+                "quantity": 1
+            },
+            {
+                "id": "mixed-book-79",
+                "name": "해피로드 - 이케다 다이사쿠",
+                "price": 2000,
+                "quantity": 1
+            },
+            {
+                "id": "mixed-book-80",
+                "name": "행동 경제학 - 도모노 노리오",
+                "price": 2000,
+                "quantity": 1
+            },
+            {
+                "id": "mixed-book-81",
+                "name": "헬스케어스쿨 - 전종문",
+                "price": 2000,
+                "quantity": 1
+            }
+        ]
     },
-    "id": "default-mixed-books-planned",
-    "format": "planned",
-    "items": [
-      {
-        "id": "mixed-book-01",
-        "name": "2030 축의 전환 - 마우로 기옌",
-        "price": 2000,
-        "quantity": 1
-      },
-      {
-        "id": "mixed-book-02",
-        "name": "CLAIRE DEWITT AND THE CITY OF THE DEAD - Sara Gran (원서)",
-        "price": 2000,
-        "quantity": 1
-      },
-      {
-        "id": "mixed-book-03",
-        "name": "GROWTH IQ - 티파니 보바",
-        "price": 2000,
-        "quantity": 1
-      },
-      {
-        "id": "mixed-book-04",
-        "name": "HARRY POTTER and the Half-Blood Prince - J.K. ROWLING (원서)",
-        "price": 2000,
-        "quantity": 1
-      },
-      {
-        "id": "mixed-book-05",
-        "name": "life - 이이지마 나미",
-        "price": 2000,
-        "quantity": 1
-      },
-      {
-        "id": "mixed-book-06",
-        "name": "고객의 언어 - 이진국",
-        "price": 2000,
-        "quantity": 1
-      },
-      {
-        "id": "mixed-book-07",
-        "name": "관점, 다르게 보는 힘 - 최윤규",
-        "price": 2000,
-        "quantity": 1
-      },
-      {
-        "id": "mixed-book-08",
-        "name": "관찰의 힘 - 얀 칩체이스, 사이먼 슈타인하트",
-        "price": 2000,
-        "quantity": 1
-      },
-      {
-        "id": "mixed-book-09",
-        "name": "그건 내 인생이 아니다 - 서동일",
-        "price": 2000,
-        "quantity": 1
-      },
-      {
-        "id": "mixed-book-10",
-        "name": "그들이 말하지 않는 23가지 - 장하준",
-        "price": 2000,
-        "quantity": 1
-      },
-      {
-        "id": "mixed-book-11",
-        "name": "그래도 나에겐, 로맨틱 - 하정아",
-        "price": 2000,
-        "quantity": 1
-      },
-      {
-        "id": "mixed-book-12",
-        "name": "그래도, 사랑 - 정현주",
-        "price": 2000,
-        "quantity": 1
-      },
-      {
-        "id": "mixed-book-13",
-        "name": "기획자의 습관 - 최장순",
-        "price": 2000,
-        "quantity": 1
-      },
-      {
-        "id": "mixed-book-14",
-        "name": "깍두기 삼십대 - 조한웅",
-        "price": 2000,
-        "quantity": 1
-      },
-      {
-        "id": "mixed-book-15",
-        "name": "나는 실패를 믿지 않는다 - 로빈 웨스턴",
-        "price": 2000,
-        "quantity": 1
-      },
-      {
-        "id": "mixed-book-16",
-        "name": "나는 아직, 어른이 되려면 멀었다 - 강세형",
-        "price": 2000,
-        "quantity": 1
-      },
-      {
-        "id": "mixed-book-18",
-        "name": "나폴레온 힐의 라이프 체인징 시크릿 1 생각의 힘 - 나폴레온 힐",
-        "price": 2000,
-        "quantity": 1
-      },
-      {
-        "id": "mixed-book-19",
-        "name": "낙타가 태양을 피하는 법 - 이지원",
-        "price": 2000,
-        "quantity": 1
-      },
-      {
-        "id": "mixed-book-20",
-        "name": "내 마음속의 희망 - 리치 디보스",
-        "price": 2000,
-        "quantity": 1
-      },
-      {
-        "id": "mixed-book-21",
-        "name": "내가 알고 있는걸 당신도 알게 된다면 - 칼 필레머",
-        "price": 2000,
-        "quantity": 1
-      },
-      {
-        "id": "mixed-book-22",
-        "name": "내일의 부 1 알파편 - 조던 김장섭",
-        "price": 2000,
-        "quantity": 1
-      },
-      {
-        "id": "mixed-book-24",
-        "name": "너도 떠나보면 나를 알게될거야 - 김동영",
-        "price": 2000,
-        "quantity": 1
-      },
-      {
-        "id": "mixed-book-25",
-        "name": "노르웨이처럼 투자하라 - 클레멘스 봄스도르프",
-        "price": 2000,
-        "quantity": 1
-      },
-      {
-        "id": "mixed-book-26",
-        "name": "뇌내혁명 - 하루야마 시게오",
-        "price": 2000,
-        "quantity": 1
-      },
-      {
-        "id": "mixed-book-27",
-        "name": "다산의 마지막 공부 - 조윤제",
-        "price": 2000,
-        "quantity": 1
-      },
-      {
-        "id": "mixed-book-28",
-        "name": "달빛책방 - 조안나",
-        "price": 2000,
-        "quantity": 1
-      },
-      {
-        "id": "mixed-book-29",
-        "name": "당신에게 힘을 보낼게, 반짝 - 밤삼킨별 김효정",
-        "price": 2000,
-        "quantity": 1
-      },
-      {
-        "id": "mixed-book-31",
-        "name": "돈의 감각 - 이명로",
-        "price": 2000,
-        "quantity": 1
-      },
-      {
-        "id": "mixed-book-32",
-        "name": "디퍼런트 - 문영미",
-        "price": 2000,
-        "quantity": 1
-      },
-      {
-        "id": "mixed-book-34",
-        "name": "매직 - 론다 번",
-        "price": 2000,
-        "quantity": 1
-      },
-      {
-        "id": "mixed-book-35",
-        "name": "면역에 관하여 - 율라 비스",
-        "price": 2000,
-        "quantity": 1
-      },
-      {
-        "id": "mixed-book-36",
-        "name": "물욕 없는 세계 - 스가쓰케 마사노부",
-        "price": 2000,
-        "quantity": 1
-      },
-      {
-        "id": "mixed-book-37",
-        "name": "미친듯이 심플 - 켄 시걸",
-        "price": 2000,
-        "quantity": 1
-      },
-      {
-        "id": "mixed-book-38",
-        "name": "배움을 돈으로 바꾸는 기술 - 이노우에 히로유키",
-        "price": 2000,
-        "quantity": 1
-      },
-      {
-        "id": "mixed-book-39",
-        "name": "부자들의 음모 - 로버트 기요사키",
-        "price": 2000,
-        "quantity": 1
-      },
-      {
-        "id": "mixed-book-40",
-        "name": "붓다와 다윈이 만난다면 - 안성두, 우희종, 이한구, 최재천, 홍성욱",
-        "price": 2000,
-        "quantity": 1
-      },
-      {
-        "id": "mixed-book-41",
-        "name": "살아온 기적 살아갈 기적 - 장영희",
-        "price": 2000,
-        "quantity": 1
-      },
-      {
-        "id": "mixed-book-42",
-        "name": "새로 만든 내몸 사용설명서 - 마이클 로이젠, 메멧 오즈",
-        "price": 2000,
-        "quantity": 1
-      },
-      {
-        "id": "mixed-book-43",
-        "name": "새로운 삶을 이끄는 힐링의 힘 - 데일 카네기",
-        "price": 2000,
-        "quantity": 1
-      },
-      {
-        "id": "mixed-book-44",
-        "name": "서재 결혼 시키기 - 앤 패디먼",
-        "price": 2000,
-        "quantity": 1
-      },
-      {
-        "id": "mixed-book-45",
-        "name": "세상 끝에서 삶을 춤추다 - 박상주",
-        "price": 2000,
-        "quantity": 1
-      },
-      {
-        "id": "mixed-book-46",
-        "name": "소란 - 박연준",
-        "price": 2000,
-        "quantity": 1
-      },
-      {
-        "id": "mixed-book-47",
-        "name": "슬기로운 수면 생활 - 서진원",
-        "price": 2000,
-        "quantity": 1
-      },
-      {
-        "id": "mixed-book-48",
-        "name": "시크릿 - 론다 번",
-        "price": 2000,
-        "quantity": 1
-      },
-      {
-        "id": "mixed-book-51",
-        "name": "어떻게 살 것인가 - 유시민",
-        "price": 2000,
-        "quantity": 1
-      },
-      {
-        "id": "mixed-book-52",
-        "name": "여자라면 힐러리처럼 - 이지성",
-        "price": 2000,
-        "quantity": 1
-      },
-      {
-        "id": "mixed-book-53",
-        "name": "여행하는 인간 - 문요한",
-        "price": 2000,
-        "quantity": 1
-      },
-      {
-        "id": "mixed-book-54",
-        "name": "연탄길 - 이철환",
-        "price": 2000,
-        "quantity": 1
-      },
-      {
-        "id": "mixed-book-56",
-        "name": "완벽하지 않은 것들에 대한 사랑 - 혜민",
-        "price": 2000,
-        "quantity": 1
-      },
-      {
-        "id": "mixed-book-57",
-        "name": "완벽한 공부법 - 고영성, 신영준",
-        "price": 2000,
-        "quantity": 1
-      },
-      {
-        "id": "mixed-book-59",
-        "name": "운을 읽는 변호사 - 니시나카 쓰토무",
-        "price": 2000,
-        "quantity": 1
-      },
-      {
-        "id": "mixed-book-60",
-        "name": "이 길 위에서 널 만날 수 있을까 - 노지혜",
-        "price": 2000,
-        "quantity": 1
-      },
-      {
-        "id": "mixed-book-61",
-        "name": "이기는 대화 - 이서정",
-        "price": 2000,
-        "quantity": 1
-      },
-      {
-        "id": "mixed-book-62",
-        "name": "인간은 어떻게 서로를 공감하는가 거울뉴런과 뇌 공감력의 메커니즘 - 크리스티안 케이서스",
-        "price": 2000,
-        "quantity": 1
-      },
-      {
-        "id": "mixed-book-63",
-        "name": "인생좌표 - 이케다 다이사쿠",
-        "price": 2000,
-        "quantity": 1
-      },
-      {
-        "id": "mixed-book-65",
-        "name": "자기설득 파워 - 백지연",
-        "price": 2000,
-        "quantity": 1
-      },
-      {
-        "id": "mixed-book-66",
-        "name": "장영희의 영미시산책 생일 - 장영희",
-        "price": 2000,
-        "quantity": 1
-      },
-      {
-        "id": "mixed-book-67",
-        "name": "정원 일의 즐거움 - 헤르만 헤세",
-        "price": 2000,
-        "quantity": 1
-      },
-      {
-        "id": "mixed-book-68",
-        "name": "지갑이 마르지 않는 평생부자 - 윤은모",
-        "price": 2000,
-        "quantity": 1
-      },
-      {
-        "id": "mixed-book-69",
-        "name": "청소부가 된 어린 왕자 - 박이철",
-        "price": 2000,
-        "quantity": 1
-      },
-      {
-        "id": "mixed-book-70",
-        "name": "최고의 팀은 무엇이 다른가 - 대니얼 코일",
-        "price": 2000,
-        "quantity": 1
-      },
-      {
-        "id": "mixed-book-71",
-        "name": "췌장암 안내서 - 김송철 외",
-        "price": 2000,
-        "quantity": 1
-      },
-      {
-        "id": "mixed-book-72",
-        "name": "침대부터 정리하라 - 윌리엄 H. 맥레이븐",
-        "price": 2000,
-        "quantity": 1
-      },
-      {
-        "id": "mixed-book-73",
-        "name": "커피한잔의 명상으로 10억을 번 사람들 - 오시마 준이치",
-        "price": 2000,
-        "quantity": 1
-      },
-      {
-        "id": "mixed-book-75",
-        "name": "파는것이 인간이다 - 다니엘 핑크",
-        "price": 2000,
-        "quantity": 1
-      },
-      {
-        "id": "mixed-book-76",
-        "name": "프로 컨설턴트 바이블 - 황창환",
-        "price": 2000,
-        "quantity": 1
-      },
-      {
-        "id": "mixed-book-77",
-        "name": "프로페셔널의 조건 - 피터 드러커",
-        "price": 2000,
-        "quantity": 1
-      },
-      {
-        "id": "mixed-book-78",
-        "name": "하룻밤에 읽는 한국사 - 최용범",
-        "price": 2000,
-        "quantity": 1
-      },
-      {
-        "id": "mixed-book-79",
-        "name": "해피로드 - 이케다 다이사쿠",
-        "price": 2000,
-        "quantity": 1
-      },
-      {
-        "id": "mixed-book-80",
-        "name": "행동 경제학 - 도모노 노리오",
-        "price": 2000,
-        "quantity": 1
-      },
-      {
-        "id": "mixed-book-81",
-        "name": "헬스케어스쿨 - 전종문",
-        "price": 2000,
-        "quantity": 1
-      }
-    ]
-  },
-  {
-    "createdAt": 1790103600000,
-    "title": "닌텐도 스위치 게임 타이틀 다수",
-    "description": "동물의숲 4.3\n젤다 야숨 4.5 완\n젤다 대재앙의 시대 3.8\n젤다 지혜의 투영 3.8\n젤다 스카이워드 소드 3.8\n닌텐도 스위치 스포츠 3.8\n저스트댄스 2022 3.8\n\n포켓몬 바이올렛 4.2\n포켓몬 브릴리언트 3.8\n폭권(한글 지원x) 4.0\n냥코 대전쟁 2.0\n스플래툰3 3.8\n잇테이크투 4.0\n링피트 세트 2.7\n\n마리오 카트 8 디럭스 (핸드그립 2개포함) 4.5\n마리오 브라더스 원더 4.0\n슈퍼 스매시 브라더스 3.7\n페이퍼 마리오 천년의 문 3.8\n마리오 메이커2 3.5\n낚시 스피릿 3.7\n진 여신전쟁5 1.3\n\n삼국지14 파워업키트 5.0\n드래곤퀘스트 11s 5.0\n제노블레이드 크로니클x 4.0\n나루티밋스톰4 3.7\n해적무쌍4 3.0\n트래비스 스트라이크 어게인 1.3\n아라가미2 1.3\n\n매치 포인트 1.3\nFIFA21 1.3\nFIFA 22 1.8\nFIFA 23 2.5\nFC24 3.3\n\n채팅 가능한 이웃 주민은\n택배 3300 반택 1700도 가능\n\n먼 이웃은\n바로구매로 구매해주세요\n바로구매 누르시고 원하시는 칩 말씀해주시면\n따로 새 게시글을 따로 생성해드려요!\n\n개봉, 하자 여부  칩인식 잘돼요!",
-    "category": "취미/게임/음반",
-    "photos": [
-      {
-        "id": "switch-game-photo-1",
-        "src": "/reference/switch-games/01.jpg",
-        "name": "닌텐도 스위치 게임 타이틀 사진"
-      }
-    ],
-    "giveaway": false,
-    "directBuy": true,
-    "offers": false,
-    "giveawayRequests": false,
-    "secondary": false,
-    "builtIn": true,
-    "ageLabel": "끌올 9시간 전",
-    "temperature": "76.3°C",
-    "mood": "😍",
-    "chats": 13,
-    "likes": 46,
-    "views": 2843,
-    "recommendationKind": "games",
-    "author": {
-      "provinceId": "gyeonggi",
-      "id": "default-vanilla",
-      "nickname": "바닐라",
-      "neighborhood": "경기도 화성시 동탄구",
-      "secondaryNeighborhood": "",
-      "tradePlace": "동탄구",
-      "pickupAddress": "경기도 화성시 동탄구"
+    {
+        "createdAt": 1790103600000,
+        "title": "닌텐도 스위치 게임 타이틀 다수",
+        "description": "동물의숲 4.3\n젤다 야숨 4.5 완\n젤다 대재앙의 시대 3.8\n젤다 지혜의 투영 3.8\n젤다 스카이워드 소드 3.8\n닌텐도 스위치 스포츠 3.8\n저스트댄스 2022 3.8\n\n포켓몬 바이올렛 4.2\n포켓몬 브릴리언트 3.8\n폭권(한글 지원x) 4.0\n냥코 대전쟁 2.0\n스플래툰3 3.8\n잇테이크투 4.0\n링피트 세트 2.7\n\n마리오 카트 8 디럭스 (핸드그립 2개포함) 4.5\n마리오 브라더스 원더 4.0\n슈퍼 스매시 브라더스 3.7\n페이퍼 마리오 천년의 문 3.8\n마리오 메이커2 3.5\n낚시 스피릿 3.7\n진 여신전쟁5 1.3\n\n삼국지14 파워업키트 5.0\n드래곤퀘스트 11s 5.0\n제노블레이드 크로니클x 4.0\n나루티밋스톰4 3.7\n해적무쌍4 3.0\n트래비스 스트라이크 어게인 1.3\n아라가미2 1.3\n\n매치 포인트 1.3\nFIFA21 1.3\nFIFA 22 1.8\nFIFA 23 2.5\nFC24 3.3\n\n채팅 가능한 이웃 주민은\n택배 3300 반택 1700도 가능\n\n먼 이웃은\n바로구매로 구매해주세요\n바로구매 누르시고 원하시는 칩 말씀해주시면\n따로 새 게시글을 따로 생성해드려요!\n\n개봉, 하자 여부  칩인식 잘돼요!",
+        "category": "취미/게임/음반",
+        "photos": [
+            {
+                "id": "switch-game-photo-1",
+                "src": "/reference/switch-games/01.jpg",
+                "name": "닌텐도 스위치 게임 타이틀 사진"
+            }
+        ],
+        "giveaway": false,
+        "directBuy": true,
+        "offers": false,
+        "giveawayRequests": false,
+        "secondary": false,
+        "builtIn": true,
+        "ageLabel": "끌올 9시간 전",
+        "temperature": "76.3°C",
+        "mood": "😍",
+        "chats": 13,
+        "likes": 46,
+        "views": 2843,
+        "recommendationKind": "games",
+        "author": {
+            "provinceId": "gyeonggi",
+            "id": "default-vanilla",
+            "nickname": "바닐라",
+            "neighborhood": "경기도 화성시 동탄구",
+            "secondaryNeighborhood": "",
+            "tradePlace": "동탄구",
+            "pickupAddress": "경기도 화성시 동탄구"
+        },
+        "id": "default-switch-games-current",
+        "format": "current",
+        "items": [
+            {
+                "id": "switch-game-lot",
+                "name": "닌텐도 스위치 게임 타이틀 다수",
+                "price": 123123,
+                "quantity": 1
+            }
+        ]
     },
-    "id": "default-switch-games-current",
-    "format": "current",
-    "items": [
-      {
-        "id": "switch-game-lot",
-        "name": "닌텐도 스위치 게임 타이틀 다수",
-        "price": 13000,
-        "quantity": 1
-      }
-    ]
-  },
-  {
-    "createdAt": 1790103600000,
-    "title": "닌텐도 스위치 게임 타이틀 다수",
-    "description": "동물의숲 4.3\n젤다 야숨 4.5 완\n젤다 대재앙의 시대 3.8\n젤다 지혜의 투영 3.8\n젤다 스카이워드 소드 3.8\n닌텐도 스위치 스포츠 3.8\n저스트댄스 2022 3.8\n\n포켓몬 바이올렛 4.2\n포켓몬 브릴리언트 3.8\n폭권(한글 지원x) 4.0\n냥코 대전쟁 2.0\n스플래툰3 3.8\n잇테이크투 4.0\n링피트 세트 2.7\n\n마리오 카트 8 디럭스 (핸드그립 2개포함) 4.5\n마리오 브라더스 원더 4.0\n슈퍼 스매시 브라더스 3.7\n페이퍼 마리오 천년의 문 3.8\n마리오 메이커2 3.5\n낚시 스피릿 3.7\n진 여신전쟁5 1.3\n\n삼국지14 파워업키트 5.0\n드래곤퀘스트 11s 5.0\n제노블레이드 크로니클x 4.0\n나루티밋스톰4 3.7\n해적무쌍4 3.0\n트래비스 스트라이크 어게인 1.3\n아라가미2 1.3\n\n매치 포인트 1.3\nFIFA21 1.3\nFIFA 22 1.8\nFIFA 23 2.5\nFC24 3.3\n\n채팅 가능한 이웃 주민은\n택배 3300 반택 1700도 가능\n\n먼 이웃은\n바로구매로 구매해주세요\n바로구매 누르시고 원하시는 칩 말씀해주시면\n따로 새 게시글을 따로 생성해드려요!\n\n개봉, 하자 여부  칩인식 잘돼요!",
-    "category": "취미/게임/음반",
-    "photos": [
-      {
-        "id": "switch-game-photo-1",
-        "src": "/reference/switch-games/01.jpg",
-        "name": "닌텐도 스위치 게임 타이틀 사진"
-      }
-    ],
-    "giveaway": false,
-    "directBuy": true,
-    "offers": false,
-    "giveawayRequests": false,
-    "secondary": false,
-    "builtIn": true,
-    "ageLabel": "끌올 9시간 전",
-    "temperature": "76.3°C",
-    "mood": "😍",
-    "chats": 13,
-    "likes": 46,
-    "views": 2843,
-    "recommendationKind": "games",
-    "author": {
-      "provinceId": "gyeonggi",
-      "id": "default-vanilla",
-      "nickname": "바닐라",
-      "neighborhood": "경기도 화성시 동탄구",
-      "secondaryNeighborhood": "",
-      "tradePlace": "동탄구",
-      "pickupAddress": "경기도 화성시 동탄구"
+    {
+        "createdAt": 1790103600000,
+        "title": "닌텐도 스위치 게임 타이틀 다수",
+        "description": "동물의숲 4.3\n젤다 야숨 4.5 완\n젤다 대재앙의 시대 3.8\n젤다 지혜의 투영 3.8\n젤다 스카이워드 소드 3.8\n닌텐도 스위치 스포츠 3.8\n저스트댄스 2022 3.8\n\n포켓몬 바이올렛 4.2\n포켓몬 브릴리언트 3.8\n폭권(한글 지원x) 4.0\n냥코 대전쟁 2.0\n스플래툰3 3.8\n잇테이크투 4.0\n링피트 세트 2.7\n\n마리오 카트 8 디럭스 (핸드그립 2개포함) 4.5\n마리오 브라더스 원더 4.0\n슈퍼 스매시 브라더스 3.7\n페이퍼 마리오 천년의 문 3.8\n마리오 메이커2 3.5\n낚시 스피릿 3.7\n진 여신전쟁5 1.3\n\n삼국지14 파워업키트 5.0\n드래곤퀘스트 11s 5.0\n제노블레이드 크로니클x 4.0\n나루티밋스톰4 3.7\n해적무쌍4 3.0\n트래비스 스트라이크 어게인 1.3\n아라가미2 1.3\n\n매치 포인트 1.3\nFIFA21 1.3\nFIFA 22 1.8\nFIFA 23 2.5\nFC24 3.3\n\n채팅 가능한 이웃 주민은\n택배 3300 반택 1700도 가능\n\n먼 이웃은\n바로구매로 구매해주세요\n바로구매 누르시고 원하시는 칩 말씀해주시면\n따로 새 게시글을 따로 생성해드려요!\n\n개봉, 하자 여부  칩인식 잘돼요!",
+        "category": "취미/게임/음반",
+        "photos": [
+            {
+                "id": "switch-game-photo-1",
+                "src": "/reference/switch-games/01.jpg",
+                "name": "닌텐도 스위치 게임 타이틀 사진"
+            }
+        ],
+        "giveaway": false,
+        "directBuy": true,
+        "offers": false,
+        "giveawayRequests": false,
+        "secondary": false,
+        "builtIn": true,
+        "ageLabel": "끌올 9시간 전",
+        "temperature": "76.3°C",
+        "mood": "😍",
+        "chats": 13,
+        "likes": 46,
+        "views": 2843,
+        "recommendationKind": "games",
+        "author": {
+            "provinceId": "gyeonggi",
+            "id": "default-vanilla",
+            "nickname": "바닐라",
+            "neighborhood": "경기도 화성시 동탄구",
+            "secondaryNeighborhood": "",
+            "tradePlace": "동탄구",
+            "pickupAddress": "경기도 화성시 동탄구"
+        },
+        "id": "default-switch-games-planned",
+        "format": "planned",
+        "items": [
+            {
+                "id": "switch-game-01",
+                "name": "동물의숲",
+                "price": 43000,
+                "quantity": 1
+            },
+            {
+                "id": "switch-game-02",
+                "name": "젤다 야숨",
+                "price": 45000,
+                "quantity": 1,
+                "soldOut": true
+            },
+            {
+                "id": "switch-game-03",
+                "name": "젤다 대재앙의 시대",
+                "price": 38000,
+                "quantity": 1
+            },
+            {
+                "id": "switch-game-04",
+                "name": "젤다 지혜의 투영",
+                "price": 38000,
+                "quantity": 1
+            },
+            {
+                "id": "switch-game-05",
+                "name": "젤다 스카이워드 소드",
+                "price": 38000,
+                "quantity": 1
+            },
+            {
+                "id": "switch-game-06",
+                "name": "닌텐도 스위치 스포츠",
+                "price": 38000,
+                "quantity": 1
+            },
+            {
+                "id": "switch-game-07",
+                "name": "저스트댄스 2022",
+                "price": 38000,
+                "quantity": 1
+            },
+            {
+                "id": "switch-game-08",
+                "name": "포켓몬 바이올렛",
+                "price": 42000,
+                "quantity": 1
+            },
+            {
+                "id": "switch-game-09",
+                "name": "포켓몬 브릴리언트",
+                "price": 38000,
+                "quantity": 1
+            },
+            {
+                "id": "switch-game-10",
+                "name": "폭권(한글 지원x)",
+                "price": 40000,
+                "quantity": 1
+            },
+            {
+                "id": "switch-game-11",
+                "name": "냥코 대전쟁",
+                "price": 20000,
+                "quantity": 1
+            },
+            {
+                "id": "switch-game-12",
+                "name": "스플래툰3",
+                "price": 38000,
+                "quantity": 1
+            },
+            {
+                "id": "switch-game-13",
+                "name": "잇테이크투",
+                "price": 40000,
+                "quantity": 1
+            },
+            {
+                "id": "switch-game-14",
+                "name": "링피트 세트",
+                "price": 27000,
+                "quantity": 1
+            },
+            {
+                "id": "switch-game-15",
+                "name": "마리오 카트 8 디럭스 (핸드그립 2개포함)",
+                "price": 45000,
+                "quantity": 1
+            },
+            {
+                "id": "switch-game-16",
+                "name": "마리오 브라더스 원더",
+                "price": 40000,
+                "quantity": 1
+            },
+            {
+                "id": "switch-game-17",
+                "name": "슈퍼 스매시 브라더스",
+                "price": 37000,
+                "quantity": 1
+            },
+            {
+                "id": "switch-game-18",
+                "name": "페이퍼 마리오 천년의 문",
+                "price": 38000,
+                "quantity": 1
+            },
+            {
+                "id": "switch-game-19",
+                "name": "마리오 메이커2",
+                "price": 35000,
+                "quantity": 1
+            },
+            {
+                "id": "switch-game-20",
+                "name": "낚시 스피릿",
+                "price": 37000,
+                "quantity": 1
+            },
+            {
+                "id": "switch-game-21",
+                "name": "진 여신전쟁5",
+                "price": 13000,
+                "quantity": 1
+            },
+            {
+                "id": "switch-game-22",
+                "name": "삼국지14 파워업키트",
+                "price": 50000,
+                "quantity": 1
+            },
+            {
+                "id": "switch-game-23",
+                "name": "드래곤퀘스트 11s",
+                "price": 50000,
+                "quantity": 1
+            },
+            {
+                "id": "switch-game-24",
+                "name": "제노블레이드 크로니클x",
+                "price": 40000,
+                "quantity": 1
+            },
+            {
+                "id": "switch-game-25",
+                "name": "나루티밋스톰4",
+                "price": 37000,
+                "quantity": 1
+            },
+            {
+                "id": "switch-game-26",
+                "name": "해적무쌍4",
+                "price": 30000,
+                "quantity": 1
+            },
+            {
+                "id": "switch-game-27",
+                "name": "트래비스 스트라이크 어게인",
+                "price": 13000,
+                "quantity": 1
+            },
+            {
+                "id": "switch-game-28",
+                "name": "아라가미2",
+                "price": 13000,
+                "quantity": 1
+            },
+            {
+                "id": "switch-game-29",
+                "name": "매치 포인트",
+                "price": 13000,
+                "quantity": 1
+            },
+            {
+                "id": "switch-game-30",
+                "name": "FIFA21",
+                "price": 13000,
+                "quantity": 1
+            },
+            {
+                "id": "switch-game-31",
+                "name": "FIFA 22",
+                "price": 18000,
+                "quantity": 1
+            },
+            {
+                "id": "switch-game-32",
+                "name": "FIFA 23",
+                "price": 25000,
+                "quantity": 1
+            },
+            {
+                "id": "switch-game-33",
+                "name": "FC24",
+                "price": 33000,
+                "quantity": 1
+            }
+        ]
     },
-    "id": "default-switch-games-planned",
-    "format": "planned",
-    "items": [
-      {
-        "id": "switch-game-01",
-        "name": "동물의숲",
-        "price": 43000,
-        "quantity": 1
-      },
-      {
-        "id": "switch-game-02",
-        "name": "젤다 야숨",
-        "price": 45000,
-        "quantity": 1,
-        "soldOut": true
-      },
-      {
-        "id": "switch-game-03",
-        "name": "젤다 대재앙의 시대",
-        "price": 38000,
-        "quantity": 1
-      },
-      {
-        "id": "switch-game-04",
-        "name": "젤다 지혜의 투영",
-        "price": 38000,
-        "quantity": 1
-      },
-      {
-        "id": "switch-game-05",
-        "name": "젤다 스카이워드 소드",
-        "price": 38000,
-        "quantity": 1
-      },
-      {
-        "id": "switch-game-06",
-        "name": "닌텐도 스위치 스포츠",
-        "price": 38000,
-        "quantity": 1
-      },
-      {
-        "id": "switch-game-07",
-        "name": "저스트댄스 2022",
-        "price": 38000,
-        "quantity": 1
-      },
-      {
-        "id": "switch-game-08",
-        "name": "포켓몬 바이올렛",
-        "price": 42000,
-        "quantity": 1
-      },
-      {
-        "id": "switch-game-09",
-        "name": "포켓몬 브릴리언트",
-        "price": 38000,
-        "quantity": 1
-      },
-      {
-        "id": "switch-game-10",
-        "name": "폭권(한글 지원x)",
-        "price": 40000,
-        "quantity": 1
-      },
-      {
-        "id": "switch-game-11",
-        "name": "냥코 대전쟁",
-        "price": 20000,
-        "quantity": 1
-      },
-      {
-        "id": "switch-game-12",
-        "name": "스플래툰3",
-        "price": 38000,
-        "quantity": 1
-      },
-      {
-        "id": "switch-game-13",
-        "name": "잇테이크투",
-        "price": 40000,
-        "quantity": 1
-      },
-      {
-        "id": "switch-game-14",
-        "name": "링피트 세트",
-        "price": 27000,
-        "quantity": 1
-      },
-      {
-        "id": "switch-game-15",
-        "name": "마리오 카트 8 디럭스 (핸드그립 2개포함)",
-        "price": 45000,
-        "quantity": 1
-      },
-      {
-        "id": "switch-game-16",
-        "name": "마리오 브라더스 원더",
-        "price": 40000,
-        "quantity": 1
-      },
-      {
-        "id": "switch-game-17",
-        "name": "슈퍼 스매시 브라더스",
-        "price": 37000,
-        "quantity": 1
-      },
-      {
-        "id": "switch-game-18",
-        "name": "페이퍼 마리오 천년의 문",
-        "price": 38000,
-        "quantity": 1
-      },
-      {
-        "id": "switch-game-19",
-        "name": "마리오 메이커2",
-        "price": 35000,
-        "quantity": 1
-      },
-      {
-        "id": "switch-game-20",
-        "name": "낚시 스피릿",
-        "price": 37000,
-        "quantity": 1
-      },
-      {
-        "id": "switch-game-21",
-        "name": "진 여신전쟁5",
-        "price": 13000,
-        "quantity": 1
-      },
-      {
-        "id": "switch-game-22",
-        "name": "삼국지14 파워업키트",
-        "price": 50000,
-        "quantity": 1
-      },
-      {
-        "id": "switch-game-23",
-        "name": "드래곤퀘스트 11s",
-        "price": 50000,
-        "quantity": 1
-      },
-      {
-        "id": "switch-game-24",
-        "name": "제노블레이드 크로니클x",
-        "price": 40000,
-        "quantity": 1
-      },
-      {
-        "id": "switch-game-25",
-        "name": "나루티밋스톰4",
-        "price": 37000,
-        "quantity": 1
-      },
-      {
-        "id": "switch-game-26",
-        "name": "해적무쌍4",
-        "price": 30000,
-        "quantity": 1
-      },
-      {
-        "id": "switch-game-27",
-        "name": "트래비스 스트라이크 어게인",
-        "price": 13000,
-        "quantity": 1
-      },
-      {
-        "id": "switch-game-28",
-        "name": "아라가미2",
-        "price": 13000,
-        "quantity": 1
-      },
-      {
-        "id": "switch-game-29",
-        "name": "매치 포인트",
-        "price": 13000,
-        "quantity": 1
-      },
-      {
-        "id": "switch-game-30",
-        "name": "FIFA21",
-        "price": 13000,
-        "quantity": 1
-      },
-      {
-        "id": "switch-game-31",
-        "name": "FIFA 22",
-        "price": 18000,
-        "quantity": 1
-      },
-      {
-        "id": "switch-game-32",
-        "name": "FIFA 23",
-        "price": 25000,
-        "quantity": 1
-      },
-      {
-        "id": "switch-game-33",
-        "name": "FC24",
-        "price": 33000,
-        "quantity": 1
-      }
-    ]
-  },
-  {
-    "createdAt": 1790107200000,
-    "title": "SNS에서 핫한 도서 13권 판매합니다",
-    "description": "한번씩만 깨끗하게 읽고 보관해놓은거라 새책같아요\n아닌 것들은 저렴하게 내놓았습니다.\n\n가시고기: 11,000원 (정가:15,000원)\n\n회색인간: 10,000원 (정가:13,000원)\n\n이제야 언니에게: 10,000원 (정가:16,000원)\n\n지구에서 한아뿐: 판매완료\n\n채식주의자: 판매완료\n\n당신을 아름답게 하는 것들: 8,000원 (정가:13,800원)\n\n잘 살아라 그게 최고의 복수다: 판매완료\n\n박준 시집: 6,000원 (정가:10,000원)\n\n나는 나무처럼 살고싶다: 13,000원 (정가:18,000원)\n\n스물아홉생일: 11,000원 (정가:15,800원)\n\n구원에게: 13,000원 (정가:18,000원)\n\n급류: 판매완료\n\n직거래:송파여성문화회관, 석촌역, 송파역",
-    "category": "도서",
-    "photos": [
-      {
-        "id": "sns-book-photo-1",
-        "src": "/reference/sns-books/01.jpg",
-        "name": "SNS에서 핫한 도서 사진"
-      }
-    ],
-    "giveaway": false,
-    "directBuy": true,
-    "offers": false,
-    "giveawayRequests": false,
-    "secondary": false,
-    "builtIn": true,
-    "ageLabel": "끌올 1일 전",
-    "temperature": "39.4°C",
-    "mood": "☺️",
-    "likes": 38,
-    "views": 5535,
-    "recommendationKind": "books",
-    "author": {
-      "provinceId": "seoul",
-      "id": "default-half-delivery",
-      "nickname": "반값택배가능",
-      "neighborhood": "서울 강남구",
-      "secondaryNeighborhood": "",
-      "tradePlace": "송파여성문화회관, 석촌역, 송파역",
-      "pickupAddress": "서울특별시 강남구"
+    {
+        "createdAt": 1790107200000,
+        "title": "SNS에서 핫한 도서 13권 판매합니다",
+        "description": "한번씩만 깨끗하게 읽고 보관해놓은거라 새책같아요\n아닌 것들은 저렴하게 내놓았습니다.\n\n가시고기: 11,000원 (정가:15,000원)\n\n회색인간: 10,000원 (정가:13,000원)\n\n이제야 언니에게: 10,000원 (정가:16,000원)\n\n지구에서 한아뿐: 판매완료\n\n채식주의자: 판매완료\n\n당신을 아름답게 하는 것들: 8,000원 (정가:13,800원)\n\n잘 살아라 그게 최고의 복수다: 판매완료\n\n박준 시집: 6,000원 (정가:10,000원)\n\n나는 나무처럼 살고싶다: 13,000원 (정가:18,000원)\n\n스물아홉생일: 11,000원 (정가:15,800원)\n\n구원에게: 13,000원 (정가:18,000원)\n\n급류: 판매완료\n\n직거래:송파여성문화회관, 석촌역, 송파역",
+        "category": "도서",
+        "photos": [
+            {
+                "id": "sns-book-photo-1",
+                "src": "/reference/sns-books/01.jpg",
+                "name": "SNS에서 핫한 도서 사진"
+            }
+        ],
+        "giveaway": false,
+        "directBuy": true,
+        "offers": false,
+        "giveawayRequests": false,
+        "secondary": false,
+        "builtIn": true,
+        "ageLabel": "끌올 1일 전",
+        "temperature": "39.4°C",
+        "mood": "☺️",
+        "likes": 38,
+        "views": 5535,
+        "recommendationKind": "books",
+        "author": {
+            "provinceId": "seoul",
+            "id": "default-half-delivery",
+            "nickname": "반값택배가능",
+            "neighborhood": "서울 강남구",
+            "secondaryNeighborhood": "",
+            "tradePlace": "송파여성문화회관, 석촌역, 송파역",
+            "pickupAddress": "서울특별시 강남구"
+        },
+        "id": "default-sns-books-current",
+        "format": "current",
+        "items": [
+            {
+                "id": "sns-book-lot",
+                "name": "SNS에서 핫한 도서 13권",
+                "price": 6000,
+                "quantity": 1
+            }
+        ]
     },
-    "id": "default-sns-books-current",
-    "format": "current",
-    "items": [
-      {
-        "id": "sns-book-lot",
-        "name": "SNS에서 핫한 도서 13권",
-        "price": 6000,
-        "quantity": 1
-      }
-    ]
-  },
-  {
-    "createdAt": 1790107200000,
-    "title": "SNS에서 핫한 도서 13권 판매합니다",
-    "description": "한번씩만 깨끗하게 읽고 보관해놓은거라 새책같아요\n아닌 것들은 저렴하게 내놓았습니다.\n\n가시고기: 11,000원 (정가:15,000원)\n\n회색인간: 10,000원 (정가:13,000원)\n\n이제야 언니에게: 10,000원 (정가:16,000원)\n\n지구에서 한아뿐: 판매완료\n\n채식주의자: 판매완료\n\n당신을 아름답게 하는 것들: 8,000원 (정가:13,800원)\n\n잘 살아라 그게 최고의 복수다: 판매완료\n\n박준 시집: 6,000원 (정가:10,000원)\n\n나는 나무처럼 살고싶다: 13,000원 (정가:18,000원)\n\n스물아홉생일: 11,000원 (정가:15,800원)\n\n구원에게: 13,000원 (정가:18,000원)\n\n급류: 판매완료\n\n직거래:송파여성문화회관, 석촌역, 송파역",
-    "category": "도서",
-    "photos": [
-      {
-        "id": "sns-book-photo-1",
-        "src": "/reference/sns-books/01.jpg",
-        "name": "SNS에서 핫한 도서 사진"
-      }
-    ],
-    "giveaway": false,
-    "directBuy": true,
-    "offers": false,
-    "giveawayRequests": false,
-    "secondary": false,
-    "builtIn": true,
-    "ageLabel": "끌올 1일 전",
-    "temperature": "39.4°C",
-    "mood": "☺️",
-    "likes": 38,
-    "views": 5535,
-    "recommendationKind": "books",
-    "author": {
-      "provinceId": "seoul",
-      "id": "default-half-delivery",
-      "nickname": "반값택배가능",
-      "neighborhood": "서울 강남구",
-      "secondaryNeighborhood": "",
-      "tradePlace": "송파여성문화회관, 석촌역, 송파역",
-      "pickupAddress": "서울특별시 강남구"
-    },
-    "id": "default-sns-books-planned",
-    "format": "planned",
-    "items": [
-      {
-        "id": "sns-book-01",
-        "name": "가시고기",
-        "price": 11000,
-        "quantity": 1
-      },
-      {
-        "id": "sns-book-02",
-        "name": "회색인간",
-        "price": 10000,
-        "quantity": 1
-      },
-      {
-        "id": "sns-book-03",
-        "name": "이제야 언니에게",
-        "price": 10000,
-        "quantity": 1
-      },
-      {
-        "id": "sns-book-04",
-        "name": "지구에서 한아뿐",
-        "price": 0,
-        "quantity": 1,
-        "soldOut": true
-      },
-      {
-        "id": "sns-book-05",
-        "name": "채식주의자",
-        "price": 0,
-        "quantity": 1,
-        "soldOut": true
-      },
-      {
-        "id": "sns-book-06",
-        "name": "당신을 아름답게 하는 것들",
-        "price": 8000,
-        "quantity": 1
-      },
-      {
-        "id": "sns-book-07",
-        "name": "잘 살아라 그게 최고의 복수다",
-        "price": 0,
-        "quantity": 1,
-        "soldOut": true
-      },
-      {
-        "id": "sns-book-08",
-        "name": "박준 시집",
-        "price": 6000,
-        "quantity": 1
-      },
-      {
-        "id": "sns-book-09",
-        "name": "나는 나무처럼 살고싶다",
-        "price": 13000,
-        "quantity": 1
-      },
-      {
-        "id": "sns-book-10",
-        "name": "스물아홉생일",
-        "price": 11000,
-        "quantity": 1
-      },
-      {
-        "id": "sns-book-11",
-        "name": "구원에게",
-        "price": 13000,
-        "quantity": 1
-      },
-      {
-        "id": "sns-book-12",
-        "name": "급류",
-        "price": 0,
-        "quantity": 1,
-        "soldOut": true
-      }
-    ]
-  }
+    {
+        "createdAt": 1790107200000,
+        "title": "SNS에서 핫한 도서 13권 판매합니다",
+        "description": "한번씩만 깨끗하게 읽고 보관해놓은거라 새책같아요\n아닌 것들은 저렴하게 내놓았습니다.\n\n가시고기: 11,000원 (정가:15,000원)\n\n회색인간: 10,000원 (정가:13,000원)\n\n이제야 언니에게: 10,000원 (정가:16,000원)\n\n지구에서 한아뿐: 판매완료\n\n채식주의자: 판매완료\n\n당신을 아름답게 하는 것들: 8,000원 (정가:13,800원)\n\n잘 살아라 그게 최고의 복수다: 판매완료\n\n박준 시집: 6,000원 (정가:10,000원)\n\n나는 나무처럼 살고싶다: 13,000원 (정가:18,000원)\n\n스물아홉생일: 11,000원 (정가:15,800원)\n\n구원에게: 13,000원 (정가:18,000원)\n\n급류: 판매완료\n\n직거래:송파여성문화회관, 석촌역, 송파역",
+        "category": "도서",
+        "photos": [
+            {
+                "id": "sns-book-photo-1",
+                "src": "/reference/sns-books/01.jpg",
+                "name": "SNS에서 핫한 도서 사진"
+            }
+        ],
+        "giveaway": false,
+        "directBuy": true,
+        "offers": false,
+        "giveawayRequests": false,
+        "secondary": false,
+        "builtIn": true,
+        "ageLabel": "끌올 1일 전",
+        "temperature": "39.4°C",
+        "mood": "☺️",
+        "likes": 38,
+        "views": 5535,
+        "recommendationKind": "books",
+        "author": {
+            "provinceId": "seoul",
+            "id": "default-half-delivery",
+            "nickname": "반값택배가능",
+            "neighborhood": "서울 강남구",
+            "secondaryNeighborhood": "",
+            "tradePlace": "송파여성문화회관, 석촌역, 송파역",
+            "pickupAddress": "서울특별시 강남구"
+        },
+        "id": "default-sns-books-planned",
+        "format": "planned",
+        "items": [
+            {
+                "id": "sns-book-01",
+                "name": "가시고기",
+                "price": 11000,
+                "quantity": 1
+            },
+            {
+                "id": "sns-book-02",
+                "name": "회색인간",
+                "price": 10000,
+                "quantity": 1
+            },
+            {
+                "id": "sns-book-03",
+                "name": "이제야 언니에게",
+                "price": 10000,
+                "quantity": 1
+            },
+            {
+                "id": "sns-book-04",
+                "name": "지구에서 한아뿐",
+                "price": 0,
+                "quantity": 1,
+                "soldOut": true
+            },
+            {
+                "id": "sns-book-05",
+                "name": "채식주의자",
+                "price": 0,
+                "quantity": 1,
+                "soldOut": true
+            },
+            {
+                "id": "sns-book-06",
+                "name": "당신을 아름답게 하는 것들",
+                "price": 8000,
+                "quantity": 1
+            },
+            {
+                "id": "sns-book-07",
+                "name": "잘 살아라 그게 최고의 복수다",
+                "price": 0,
+                "quantity": 1,
+                "soldOut": true
+            },
+            {
+                "id": "sns-book-08",
+                "name": "박준 시집",
+                "price": 6000,
+                "quantity": 1
+            },
+            {
+                "id": "sns-book-09",
+                "name": "나는 나무처럼 살고싶다",
+                "price": 13000,
+                "quantity": 1
+            },
+            {
+                "id": "sns-book-10",
+                "name": "스물아홉생일",
+                "price": 11000,
+                "quantity": 1
+            },
+            {
+                "id": "sns-book-11",
+                "name": "구원에게",
+                "price": 13000,
+                "quantity": 1
+            },
+            {
+                "id": "sns-book-12",
+                "name": "급류",
+                "price": 0,
+                "quantity": 1,
+                "soldOut": true
+            }
+        ]
+    }
 ]
