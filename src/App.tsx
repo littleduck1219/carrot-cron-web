@@ -11,6 +11,7 @@ import { isProductId, productDetails, type ProductId } from "./screens/detail/pr
 import { getSellerDistrict, sellers } from "./data/sellers";
 import { isPublicDemo } from "./data/publicDemo";
 import { defaultPosts } from "./data/defaultPosts";
+import { resetAllDeals } from "./screens/checkout/purchases";
 import { MyCarrotScreen } from "./screens/account/MyCarrotScreen";
 import { SalesManagementScreen } from "./screens/account/SalesManagementScreen";
 import { accountHash } from "./screens/account/accountRoutes";
@@ -34,6 +35,9 @@ export default function App() {
         return () => { active = false; };
     }, []);
     const { user, activeNeighborhood, switchUser, switchGuest } = usePrototypeUser();
+    // Bumped by the clock reset so every screen remounts and rereads the cleared session records.
+    const [dealsRevision, setDealsRevision] = useState(0);
+    const resetDeals = () => { resetAllDeals(); setDealsRevision(value => value + 1); };
     // Existing local posts also follow their author's newly fixed account location.
     const displayPosts = posts.map(post => {
         const author = prototypeUsers.find(account => account.id === post.author.id);
@@ -155,15 +159,15 @@ export default function App() {
         deletePost(id).catch(() => setPostsError(true));
         if (publishedId === id) { openedFromHome.current = false; window.location.replace(`#${routePrefix}/`); }
     };
-    return <DeviceFrame userName={user.nickname} onSwitchUser={switchUser} onSwitchGuest={switchGuest} version={version} onSwitchVersion={switchVersion}>
+    return <DeviceFrame userName={user.nickname} onSwitchUser={switchUser} onSwitchGuest={switchGuest} onResetDeals={resetDeals} version={version} onSwitchVersion={switchVersion}>
         {/* Keep the feed mounted so returning from a product preserves its scroll position. */}
         <div className="prototype-home" ref={homeRef} inert={detailOpen || writing || accountOpen}>
-            <HomeScreen key={version} readOnly={isPublicDemo} publishedPosts={versionPosts} postsLoading={postsLoading} postsError={postsError} onOpenPublishedPost={openPublishedPost} onDeletePost={removePost} routePrefix={routePrefix} onOpenWrite={openWrite} onOpenMy={openMy} onOpenProduct={openProduct} activeNeighborhood={activeNeighborhood.name} secondaryNeighborhood={user.verifiedNeighborhoods.find((item) => item.id !== activeNeighborhood.id)?.name} />
+            <HomeScreen key={`${version}-${dealsRevision}`} readOnly={isPublicDemo} publishedPosts={versionPosts} postsLoading={postsLoading} postsError={postsError} onOpenPublishedPost={openPublishedPost} onDeletePost={removePost} routePrefix={routePrefix} onOpenWrite={openWrite} onOpenMy={openMy} onOpenProduct={openProduct} activeNeighborhood={activeNeighborhood.name} secondaryNeighborhood={user.verifiedNeighborhoods.find((item) => item.id !== activeNeighborhood.id)?.name} />
         </div>
         {myCarrot && <MyCarrotScreen userName={user.nickname} temperature="40.8°C" onHome={openHome} onOpenSales={openSales} />}
-        {salesManagement && <SalesManagementScreen posts={versionPosts} products={managedProducts} ownerId={user.id} productVersion={version} onBack={() => { window.location.hash = accountHash(routePrefix, "my"); }} />}
+        {salesManagement && <SalesManagementScreen key={dealsRevision} posts={versionPosts} products={managedProducts} ownerId={user.id} productVersion={version} onBack={() => { window.location.hash = accountHash(routePrefix, "my"); }} />}
         {!isPublicDemo && writing && <WritingFlow user={user} key={version} onPublished={onPublished} planned={planned} draftKey={planned ? "re-carrot.write-draft.planned.v1" : "re-carrot.write-draft.v1"} neighborhood={activeNeighborhood.name} secondaryNeighborhood={user.verifiedNeighborhoods.find(item => item.id !== activeNeighborhood.id)?.name} onClose={closeProduct} />}
-        {publishedDetailReady && publishedId && <PublishedPostDetail planned={planned} viewerId={user.id} viewerName={user.nickname} viewerAddress={user.pickupAddress} viewerProvinceId={activeNeighborhood.provinceId} key={`${publishedId}-${user.id}`} post={publishedPost} error={postsError} onBack={closeProduct} onDelete={() => removePost(publishedId)} />}
-        {productId && <ProductDetail key={`${version}-${productId}`} planned={planned} productId={productId} viewerId={user.id} viewerName={user.nickname} viewerAddress={user.pickupAddress} activeNeighborhood={activeNeighborhood} onBack={closeProduct} />}
+        {publishedDetailReady && publishedId && <PublishedPostDetail planned={planned} viewerId={user.id} viewerName={user.nickname} viewerAddress={user.pickupAddress} viewerProvinceId={activeNeighborhood.provinceId} key={`${publishedId}-${user.id}-${dealsRevision}`} post={publishedPost} error={postsError} onBack={closeProduct} onDelete={() => removePost(publishedId)} />}
+        {productId && <ProductDetail key={`${version}-${productId}-${dealsRevision}`} planned={planned} productId={productId} viewerId={user.id} viewerName={user.nickname} viewerAddress={user.pickupAddress} activeNeighborhood={activeNeighborhood} onBack={closeProduct} />}
     </DeviceFrame>;
 }

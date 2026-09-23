@@ -46,3 +46,6 @@ export const resetDeal = (id: string) => {
     const sales = readMap(SALES); delete sales[id]; writeMap(SALES, sales);
     const orders = readMap(ORDER); delete orders[id]; writeMap(ORDER, orders);
 };
+
+/** Clears every session sales record (purchases, completions, item sales, orders). Bound to the status-bar clock. */
+export const resetAllDeals = () => { for (const key of [KEY, DONE, SALES, ORDER]) { try { sessionStorage.removeItem(key); } catch { /* nothing to clear */ } } };

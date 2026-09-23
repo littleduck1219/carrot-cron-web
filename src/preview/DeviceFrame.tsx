@@ -1,10 +1,11 @@
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import "./DeviceFrame.css";
 
-function StatusBar({ userName, onSwitchUser, onSwitchGuest }: { userName: string; onSwitchUser: () => void; onSwitchGuest: () => void }) {
+function StatusBar({ userName, onSwitchUser, onSwitchGuest, onResetDeals }: { userName: string; onSwitchUser: () => void; onSwitchGuest: () => void; onResetDeals: () => void }) {
     return (
         <div className="status-bar">
-            <span>9:41</span>
+            {/* Hidden control: the clock resets every session sales record (2026-09-23). */}
+            <button type="button" className="status-clock" onClick={onResetDeals} aria-label="판매·구매 기록 초기화" title="판매·구매 기록 초기화">9:41</button>
             <span className="status-bar-icons">
                 <svg width="18" height="12" viewBox="0 0 18 12" fill="currentColor" aria-hidden>
                     <rect x="0" y="8" width="3" height="4" rx="1" />
@@ -26,13 +27,13 @@ function StatusBar({ userName, onSwitchUser, onSwitchGuest }: { userName: string
 }
 
 /** iPhone 16 Pro Max preview frame, centered in the viewport and scaled to fit. */
-export function DeviceFrame({ version, onSwitchVersion, userName, onSwitchUser, onSwitchGuest, children }: { version: "current" | "planned"; userName: string; onSwitchUser: () => void; onSwitchGuest: () => void; onSwitchVersion: () => void; children: ReactNode }) {
-    const [userNotice, setUserNotice] = useState(false);
+export function DeviceFrame({ version, onSwitchVersion, userName, onSwitchUser, onSwitchGuest, onResetDeals, children }: { version: "current" | "planned"; userName: string; onSwitchUser: () => void; onSwitchGuest: () => void; onResetDeals: () => void; onSwitchVersion: () => void; children: ReactNode }) {
+    const [notice, setNotice] = useState<string | null>(null);
     useEffect(() => {
-        if (!userNotice) return;
-        const timer = setTimeout(() => setUserNotice(false), 1800);
+        if (!notice) return;
+        const timer = setTimeout(() => setNotice(null), 1800);
         return () => clearTimeout(timer);
-    }, [userNotice, userName]);
+    }, [notice]);
     const stageRef = useRef<HTMLDivElement>(null);
     const deviceRef = useRef<HTMLDivElement>(null);
     const frameRef = useRef<HTMLDivElement>(null);
@@ -77,8 +78,8 @@ export function DeviceFrame({ version, onSwitchVersion, userName, onSwitchUser, 
                         <button type="button" className="dynamic-island" onClick={onSwitchVersion}
                             aria-label={version === "current" ? "현안 버전, 신규 기획 버전으로 전환" : "신규 기획 버전, 현안 버전으로 전환"}
                             aria-pressed={version === "planned"} title={version === "current" ? "현안 → 신규 기획" : "신규 기획 → 현안"} />
-                        <StatusBar userName={userName} onSwitchUser={() => { onSwitchUser(); setUserNotice(true); }} onSwitchGuest={() => { onSwitchGuest(); setUserNotice(true); }} />
-                        {userNotice && <div className="user-switch-notice" role="status">{userName}님으로 전환했어요.</div>}
+                        <StatusBar userName={userName} onSwitchUser={() => { onSwitchUser(); setNotice('switch'); }} onSwitchGuest={() => { onSwitchGuest(); setNotice('switch'); }} onResetDeals={() => { onResetDeals(); setNotice('판매·구매 기록을 초기화했어요.'); }} />
+                        {notice && <div className="user-switch-notice" role="status">{notice === 'switch' ? `${userName}님으로 전환했어요.` : notice}</div>}
                         {children}
                     </div>
                 </div>

@@ -130,4 +130,6 @@
 .status-battery:focus-visible { outline: 2px solid #ff6f00; border-radius: 6px; }
 /* Wi-Fi is the 아무개 account control; narrower than the battery hit area. */
 .status-battery.status-wifi { width: 24px; margin: 0; }
+.status-clock { padding: 0 6px; border: 0; background: transparent; color: inherit; font: inherit; cursor: pointer; pointer-events: auto; }
+.status-clock:focus-visible { outline: 2px solid #ff6f00; border-radius: 6px; }
 .user-switch-notice { position: absolute; z-index: 100; top: 66px; left: 50%; transform: translateX(-50%); padding: 10px 16px; border-radius: 22px; background: #36373b; color: #fff; font-size: 14px; white-space: nowrap; pointer-events: none; box-shadow: 0 3px 12px #0004; }
