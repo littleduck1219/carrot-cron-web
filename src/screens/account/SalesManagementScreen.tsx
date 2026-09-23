@@ -1,6 +1,6 @@
 import { useState } from "react";
 import type { PublishedPost } from "../../data/publishedPosts";
-import { getCompletedBuyer, resetDeal } from "../checkout/purchases";
+import { getCompletedBuyer, hasSales, isSoldOut, resetDeal } from "../checkout/purchases";
 import { FeedIcon } from "../home/FeedIcon";
 import { createSalesListings, type ManagedProduct } from "./salesListings";
 import "./account.css";
@@ -12,8 +12,12 @@ export function SalesManagementScreen({ posts, products, ownerId, productVersion
     const [, setRevision] = useState(0);
     const [menuKey, setMenuKey] = useState<string | null>(null);
     const listings = createSalesListings(posts, products, ownerId, productVersion);
-    const completed = listings.filter(item => getCompletedBuyer(item.key) !== null);
-    const grouped = { selling: listings.filter(item => !completed.includes(item)), completed, hidden: [] as typeof listings };
+    // 거래완료: chat completion, a paid single-item sale, or any paid item on a planned post (2026-09-23).
+    // 판매중 keeps a planned post while items remain, so a partially sold post shows in both tabs.
+    const postByKey = new Map(posts.map(post => ['post:' + post.id, post]));
+    const completed = listings.filter(item => getCompletedBuyer(item.key) !== null || hasSales(item.key));
+    const stillSelling = (key: string) => { const post = postByKey.get(key); return getCompletedBuyer(key) === null && (post ? !isSoldOut(key, post.items) : !hasSales(key)); };
+    const grouped = { selling: listings.filter(item => stillSelling(item.key)), completed, hidden: [] as typeof listings };
     const visible = grouped[tab];
     const restore = (key: string) => {
         resetDeal(key);

@@ -33,6 +33,8 @@ export const cancelOrder = (id: string) => {
     for (const [item, qty] of Object.entries(order)) sold[item] = Math.max(0, (sold[item] ?? 0) - qty);
     delete orders[id]; writeMap(SALES, { ...sales, [id]: sold }); writeMap(ORDER, orders);
 };
+/** Any paid item on a planned post counts as a sale for the seller's 판매관리, even while other items remain. */
+export const hasSales = (id: string) => Object.values(getSoldItems(id)).some(qty => qty > 0);
 export const isSoldOut = (id: string, items: { id: string; quantity: number }[]) => { const sold = getSoldItems(id); return items.length > 0 && items.every(item => item.quantity - (sold[item.id] ?? 0) < 1); };
 
 /** Restores a deal to its initial state so the purchase and completion flow can be run again. */
