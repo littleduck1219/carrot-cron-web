@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { FeedIcon } from "../home/FeedIcon";
 import { productDetails, region, type ProductCard, type ProductId, type SourceRegion } from "./productData";
 import { CurrentDirectBuyFlow } from "../checkout/CurrentDirectBuyFlow";
-import { clearPurchase, getCompletedBuyer, isPurchased, markCompleted, markPurchased } from "../checkout/purchases";
+import { clearCompleted, clearPurchase, getCompletedBuyer, isPurchased, markCompleted, markPurchased } from "../checkout/purchases";
 import { ChatRoom } from "../chat/ChatRoom";
 import "./ProductDetail.css";
 
@@ -144,7 +144,7 @@ export function ProductDetail({ productId, onBack, viewerId, viewerName, viewerA
 
         <footer className="detail-footer">
             <button type="button" className={`detail-like ${liked ? "is-liked" : ""}`} aria-label="관심 상품" aria-pressed={liked} onClick={() => setLiked(!liked)}><DetailIcon name="heart" /></button>
-            {sold ? <ActionButton variant="brandSolid" size="large" className="detail-primary detail-sold" disabled={!isBuyer} onClick={() => setChat(true)}>채팅하기</ActionButton> : directBuy ? <>
+            {sold && !purchased ? <ActionButton variant="brandSolid" size="large" className="detail-primary detail-sold" disabled={!isBuyer} onClick={() => setChat(true)}>채팅하기</ActionButton> : directBuy ? <>
                 {canChat
                     ? <ActionButton variant="neutralWeak" size="large" className="detail-question-button" onClick={() => setChat(true)}>채팅하기</ActionButton>
                     : <ActionButton variant="neutralWeak" size="large" className="detail-question-button" disabled={!product.questions} onClick={() => { questionsRef.current?.scrollIntoView({ behavior: "smooth", block: "start" }); questionsRef.current?.focus({ preventScroll: true }); }}>질문하기</ActionButton>}
@@ -152,7 +152,7 @@ export function ProductDetail({ productId, onBack, viewerId, viewerName, viewerA
             </> : <ActionButton variant="brandSolid" size="large" className="detail-primary" onClick={() => setChat(true)}>채팅하기</ActionButton>}
         </footer>
     </section>
-    {checkout && directBuy && <CurrentDirectBuyFlow product={{ title: product.title, price: Number(product.price.replace(/\D/g, '')), category: product.category, thumbnail }} buyerName={viewerName} address={viewerAddress} onClose={() => setCheckout(false)} purchasable initialStep={purchased ? 'status' : 'address'} onPaid={() => { markPurchased(purchaseKey, viewerId); setPurchased(true); }} onCancelled={() => { clearPurchase(purchaseKey); setPurchased(false); }} />}
+    {checkout && directBuy && <CurrentDirectBuyFlow product={{ title: product.title, price: Number(product.price.replace(/\D/g, '')), category: product.category, thumbnail }} buyerName={viewerName} address={viewerAddress} onClose={() => setCheckout(false)} purchasable initialStep={purchased ? 'status' : 'address'} onPaid={() => { markPurchased(purchaseKey, viewerId); setPurchased(true); markCompleted(purchaseKey, viewerId); setCompletedBuyer(viewerId); }} onCancelled={() => { clearPurchase(purchaseKey); setPurchased(false); clearCompleted(purchaseKey); setCompletedBuyer(null); }} />}
     {chat && <ChatRoom partner={{ nickname: seller.nickname, temperature: product.temperature, neighborhood: sellerDistrict.label }} product={{ title: product.title, price: product.price, thumbnail, offers: !directBuy }} viewerName={viewerName} completed={sold || purchased} onComplete={() => { markCompleted(purchaseKey, viewerId); setCompletedBuyer(viewerId); }} onClose={() => setChat(false)} />}
     </>;
 }

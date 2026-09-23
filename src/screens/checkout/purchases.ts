@@ -12,6 +12,7 @@ const readDone = (): Record<string, string> => { try { return JSON.parse(session
 const writeDone = (value: Record<string, string>) => { try { sessionStorage.setItem(DONE, JSON.stringify(value)); } catch { /* Storage can be unavailable in private browsing. */ } };
 export const getCompletedBuyer = (id: string): string | null => readDone()[id] ?? null;
 export const markCompleted = (id: string, buyerId: string) => writeDone({ ...readDone(), [id]: buyerId });
+export const clearCompleted = (id: string) => { const value = readDone(); delete value[id]; writeDone(value); };
 
 // Session-only per-item sales for planned posts: post key → { itemId: sold quantity }, plus the current (cancellable) order.
 const SALES = 're-carrot.item-sales.session.v1';
