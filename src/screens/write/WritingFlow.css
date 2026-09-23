@@ -134,3 +134,8 @@
 .sale-quantity-control .sale-item-quantity { width: 94px; }
 
 .write-description textarea[data-auto-grow="true"] { overflow-y: hidden; }
+
+/* Planned: the description head carries the 판매 물품 가져오기 button. */
+.write-field-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.write-import-items { padding: 6px 10px; border: 1px solid #454951; border-radius: 8px; background: transparent; color: #f1f2f3; font-size: 13px; font-weight: 600; cursor: pointer; }
+.write-import-items:active { background: #2a2d33; }

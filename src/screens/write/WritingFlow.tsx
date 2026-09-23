@@ -145,6 +145,24 @@ export function WritingFlow({ user, onPublished, planned = false, draftKey, neig
         onPublished(post);
         setClosing(true);
     };
+    // Planned version (feedback 2026-09-19): items are entered once in the cards above the description, and this button copies them into the text so name and price are never typed twice.
+    const importItems = () => {
+        const lines = (draft.items ?? []).filter(item => item.name.trim() && (draft.giveaway || (/^\d+$/.test(item.price) && Number(item.price) > 0)))
+            .map(item => `${item.name.trim()} · ${draft.giveaway ? '나눔' : `${Number(item.price).toLocaleString('ko-KR')}원`} · ${item.quantity ?? 1}개`);
+        if (!lines.length) { setNotice('물품 이름과 가격을 먼저 입력해주세요.'); return; }
+        const input = descriptionRef.current; const text = draft.description;
+        const at = input ? input.selectionStart : text.length;
+        const before = text.slice(0, at); const after = text.slice(at);
+        const block = (before && !before.endsWith('\n') ? '\n' : '') + lines.join('\n') + '\n' + (after && !after.startsWith('\n') ? '\n' : '');
+        setNotice('');
+        update('description', before + block + after);
+        requestAnimationFrame(() => { const el = descriptionRef.current; if (!el) return; el.focus(); const pos = before.length + block.length; el.setSelectionRange(pos, pos); });
+    };
+    const priceSection = <fieldset className="write-price"><legend>{planned ? "판매 물품" : "가격"}</legend>
+                    <div className="write-price-chips"><button type="button" aria-pressed={!draft.giveaway} onClick={() => update('giveaway', false)}>판매하기</button><button type="button" aria-pressed={draft.giveaway} onClick={() => setDraft(current => ({ ...current, giveaway: true, directBuy: false }))}>나눔하기</button></div>
+                    {planned ? <PlannedSaleItems items={draft.items!} giveaway={draft.giveaway} onChange={items => update('items', items)} /> : <input id="sale-price-current" aria-label="가격" inputMode="numeric" disabled={draft.giveaway} value={draft.giveaway ? '₩ 0' : draft.price ? Number(draft.price).toLocaleString('ko-KR') : ''} onChange={event => update('price', event.target.value.replace(/\D/g, '').slice(0, 12))} placeholder="₩ 가격을 입력해주세요." />}
+                    {draft.giveaway ? <div className="write-offers"><label><input type="checkbox" checked={draft.giveawayRequests} onChange={event => update('giveawayRequests', event.target.checked)} />나눔 신청 받기</label><button type="button" disabled>알아보기</button></div> : <label className="write-offers"><input type="checkbox" checked={draft.offers} onChange={event => update('offers', event.target.checked)} />가격 제안 받기</label>}
+                </fieldset>;
     const album = [...imports, ...demoAlbum];
     const pickerVisible = picker === 'open' || picker === 'closing';
     return <div className="writing-flow">
@@ -165,13 +183,10 @@ export function WritingFlow({ user, onPublished, planned = false, draftKey, neig
                     {categories.map(category => <button type="button" key={category} aria-pressed={draft.category === category} onClick={() => update('category', category)}>{category}</button>)}
                     <span className="write-category-more"><span aria-hidden="true">›</span><select aria-label="카테고리 선택" value={draft.category ?? ''} onChange={event => update('category', event.target.value as Category)}><option value="" disabled>카테고리 선택</option>{categories.map(category => <option key={category}>{category}</option>)}</select></span>
                 </div>}
-                <label className="write-field write-description" data-category={draft.category}>자세한 설명<textarea id="write-description" ref={descriptionRef} data-auto-grow="true" value={draft.description} onChange={event => update('description', event.target.value)} placeholder={draft.category === '디지털기기' ? "모델명, 구성품, 구매처, 구매 시기, 사용감(흠집, 파손 여부), 수리 여부 등 물품 설명을 최대한 자세히 적어주세요.\n\n· 안전한 거래를 위해 'KC인증마크' 등 제품안전정보가 보이는 사진을 포함해주세요.\n· 신뢰할 수 있는 거래를 위해 과학기술정보통신부, 한국인터넷진흥원과 함께 해요." : `${neighborhood}에 올릴 게시글 내용을 작성해 주세요. (판매 금지 물품은 게시가 제한될 수 있어요.)\n\n신뢰할 수 있는 거래를 위해 자세히 적어주세요. 과학기술정보통신부, 한국 인터넷진흥원과 함께 해요.`} /></label>
+                {planned && priceSection}
+                <label className="write-field write-description" data-category={draft.category}><span className="write-field-head">자세한 설명{planned && <button type="button" className="write-import-items" onClick={importItems}>판매 물품 가져오기</button>}</span><textarea id="write-description" ref={descriptionRef} data-auto-grow="true" value={draft.description} onChange={event => update('description', event.target.value)} placeholder={(planned ? '물품 이름과 가격은 위에서 입력한 판매 물품을 가져올 수 있어요. 상태, 구성품, 구매 시기 등을 적어주세요.\n\n' : '') + (draft.category === '디지털기기' ? "모델명, 구성품, 구매처, 구매 시기, 사용감(흠집, 파손 여부), 수리 여부 등 물품 설명을 최대한 자세히 적어주세요.\n\n· 안전한 거래를 위해 'KC인증마크' 등 제품안전정보가 보이는 사진을 포함해주세요.\n· 신뢰할 수 있는 거래를 위해 과학기술정보통신부, 한국인터넷진흥원과 함께 해요." : `${neighborhood}에 올릴 게시글 내용을 작성해 주세요. (판매 금지 물품은 게시가 제한될 수 있어요.)\n\n신뢰할 수 있는 거래를 위해 자세히 적어주세요. 과학기술정보통신부, 한국 인터넷진흥원과 함께 해요.`)} /></label>
                 <button type="button" className="write-phrases" disabled>자주 쓰는 문구</button>
-                <fieldset className="write-price"><legend>{planned ? "판매 물품" : "가격"}</legend>
-                    <div className="write-price-chips"><button type="button" aria-pressed={!draft.giveaway} onClick={() => update('giveaway', false)}>판매하기</button><button type="button" aria-pressed={draft.giveaway} onClick={() => setDraft(current => ({ ...current, giveaway: true, directBuy: false }))}>나눔하기</button></div>
-                    {planned ? <PlannedSaleItems items={draft.items!} giveaway={draft.giveaway} onChange={items => update('items', items)} /> : <input id="sale-price-current" aria-label="가격" inputMode="numeric" disabled={draft.giveaway} value={draft.giveaway ? '₩ 0' : draft.price ? Number(draft.price).toLocaleString('ko-KR') : ''} onChange={event => update('price', event.target.value.replace(/\D/g, '').slice(0, 12))} placeholder="₩ 가격을 입력해주세요." />}
-                    {draft.giveaway ? <div className="write-offers"><label><input type="checkbox" checked={draft.giveawayRequests} onChange={event => update('giveawayRequests', event.target.checked)} />나눔 신청 받기</label><button type="button" disabled>알아보기</button></div> : <label className="write-offers"><input type="checkbox" checked={draft.offers} onChange={event => update('offers', event.target.checked)} />가격 제안 받기</label>}
-                </fieldset>
+                {!planned && priceSection}
                 <fieldset className="write-trade"><legend>거래 설정</legend>
                     <div className="write-trade-row"><strong>거래 희망 장소</strong><span>{user.tradePlace}</span></div>
                     {secondaryNeighborhood && <div className="write-trade-row"><strong>{secondaryNeighborhood}에도 올리기</strong><Toggle label={`${secondaryNeighborhood}에도 올리기`} checked={draft.secondary} onChange={() => update('secondary', !draft.secondary)} /></div>}
