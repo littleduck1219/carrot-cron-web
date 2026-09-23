@@ -31,6 +31,7 @@ jobs:
       - run: npm run check:sales-management
       - run: npm run check:post-sellers
       - run: npm run check:sales-ownership
+      - run: npm run check:account-routes
       - run: npm run build -- --base=./
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3

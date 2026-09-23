@@ -141,7 +141,7 @@ export function HomeScreen({ readOnly = false, publishedPosts = [], postsLoading
             <nav inert={menuOpen} className="feed-navigation" aria-label="하단 내비게이션">
                 {navigation.map(({ label, icon }, index) => (
                     <button key={label} type="button" className="feed-nav-item" aria-current={index === 0 ? "page" : undefined}
-                        disabled={index !== 0 && (index !== 4 || routePrefix !== "")} onClick={index === 0 ? () => document.querySelector(".feed-scroll")?.scrollTo({ top: 0, behavior: "smooth" }) : index === 4 ? onOpenMy : undefined}>
+                        disabled={index !== 0 && index !== 4} onClick={index === 0 ? () => document.querySelector(".feed-scroll")?.scrollTo({ top: 0, behavior: "smooth" }) : index === 4 ? onOpenMy : undefined}>
                         <FeedIcon name={icon} /><span>{label}</span>
                     </button>
                 ))}

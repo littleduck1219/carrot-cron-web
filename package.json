@@ -14,7 +14,8 @@
     "check:default-post": "node scripts/check-default-book-post.mjs",
     "check:sales-management": "node --experimental-strip-types scripts/check-sales-management.mjs",
     "check:post-sellers": "node scripts/check-post-sellers.mjs",
-    "check:sales-ownership": "node --experimental-strip-types scripts/check-sales-ownership.mjs"
+    "check:sales-ownership": "node --experimental-strip-types scripts/check-sales-ownership.mjs",
+    "check:account-routes": "node --experimental-strip-types scripts/check-account-routes.mjs"
   },
   "dependencies": {
     "@seed-design/css": "^2.6.2",

@@ -47,7 +47,7 @@ function postPrice(post: SalesPost) {
     return min === max ? min.toLocaleString('ko-KR') + '원' : min.toLocaleString('ko-KR') + '~' + max.toLocaleString('ko-KR') + '원';
 }
 
-export function createSalesListings(posts: SalesPost[], products: ManagedProduct[], ownerId: string): SalesListing[] {
+export function createSalesListings(posts: SalesPost[], products: ManagedProduct[], ownerId: string, productVersion: 'current' | 'planned' = 'current'): SalesListing[] {
     const ownedPosts = posts.filter(post => post.author.id === ownerId).map(post => ({
         key: 'post:' + post.id,
         title: post.title,
@@ -61,7 +61,7 @@ export function createSalesListings(posts: SalesPost[], products: ManagedProduct
         views: post.views ?? 0,
     }));
     const ownedProducts = products.filter(product => product.ownerId === ownerId).map(product => ({
-        key: 'current:' + product.id,
+        key: productVersion + ':' + product.id,
         title: product.title,
         price: product.price,
         directBuy: product.directBuy,

@@ -13,6 +13,7 @@ import { isPublicDemo } from "./data/publicDemo";
 import { defaultPosts } from "./data/defaultPosts";
 import { MyCarrotScreen } from "./screens/account/MyCarrotScreen";
 import { SalesManagementScreen } from "./screens/account/SalesManagementScreen";
+import { accountHash } from "./screens/account/accountRoutes";
 
 function subscribeToRoute(notify: () => void) {
     window.addEventListener("hashchange", notify);
@@ -76,8 +77,8 @@ export default function App() {
     const publishedDetailReady = publishedId !== null && (publishedPost !== undefined || !postsLoading);
     const detailOpen = productId !== null || publishedDetailReady;
     const writing = screenRoute === "#/write";
-    const myCarrot = !planned && screenRoute === "#/my";
-    const salesManagement = !planned && screenRoute === "#/sales";
+    const myCarrot = screenRoute === "#/my";
+    const salesManagement = screenRoute === "#/sales";
     const accountOpen = myCarrot || salesManagement;
     const openedFromHome = useRef(false);
     const homeRef = useRef<HTMLDivElement>(null);
@@ -120,9 +121,9 @@ export default function App() {
         openedFromHome.current = true;
         window.location.hash = `${routePrefix}/write`;
     };
-    const openMy = () => { openedFromHome.current = true; window.location.hash = "/my"; };
-    const openSales = () => { window.location.hash = "/sales"; };
-    const openHome = () => { openedFromHome.current = false; window.location.hash = "/"; };
+    const openMy = () => { openedFromHome.current = true; window.location.hash = accountHash(routePrefix, "my"); };
+    const openSales = () => { window.location.hash = accountHash(routePrefix, "sales"); };
+    const openHome = () => { openedFromHome.current = false; window.location.hash = `${routePrefix}/`; };
     const closeProduct = () => {
         if (publishedPending.current) {
             const id = publishedPending.current;
@@ -160,7 +161,7 @@ export default function App() {
             <HomeScreen key={version} readOnly={isPublicDemo} publishedPosts={versionPosts} postsLoading={postsLoading} postsError={postsError} onOpenPublishedPost={openPublishedPost} onDeletePost={removePost} routePrefix={routePrefix} onOpenWrite={openWrite} onOpenMy={openMy} onOpenProduct={openProduct} activeNeighborhood={activeNeighborhood.name} secondaryNeighborhood={user.verifiedNeighborhoods.find((item) => item.id !== activeNeighborhood.id)?.name} />
         </div>
         {myCarrot && <MyCarrotScreen userName={user.nickname} temperature="40.8°C" onHome={openHome} onOpenSales={openSales} />}
-        {salesManagement && <SalesManagementScreen posts={versionPosts} products={managedProducts} ownerId={user.id} onBack={() => { window.location.hash = "/my"; }} />}
+        {salesManagement && <SalesManagementScreen posts={versionPosts} products={managedProducts} ownerId={user.id} productVersion={version} onBack={() => { window.location.hash = accountHash(routePrefix, "my"); }} />}
         {!isPublicDemo && writing && <WritingFlow user={user} key={version} onPublished={onPublished} planned={planned} draftKey={planned ? "re-carrot.write-draft.planned.v1" : "re-carrot.write-draft.v1"} neighborhood={activeNeighborhood.name} secondaryNeighborhood={user.verifiedNeighborhoods.find(item => item.id !== activeNeighborhood.id)?.name} onClose={closeProduct} />}
         {publishedDetailReady && publishedId && <PublishedPostDetail planned={planned} viewerId={user.id} viewerName={user.nickname} viewerAddress={user.pickupAddress} viewerProvinceId={activeNeighborhood.provinceId} key={`${publishedId}-${user.id}`} post={publishedPost} error={postsError} onBack={closeProduct} onDelete={() => removePost(publishedId)} />}
         {productId && <ProductDetail key={`${version}-${productId}`} planned={planned} productId={productId} viewerId={user.id} viewerName={user.nickname} viewerAddress={user.pickupAddress} activeNeighborhood={activeNeighborhood} onBack={closeProduct} />}

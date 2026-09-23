@@ -34,3 +34,9 @@ assert.deepEqual(new Set(parkInventory.map(item => item.key)), new Set([
   'current:macbook-bundle',
 ]));
 console.log('park sales inventory: 7 listings');
+
+const plannedInventory = createSalesListings(defaultPosts, staticDetails, park, 'planned');
+assert.equal(plannedInventory.length, 7);
+assert.ok(plannedInventory.some(item => item.key === 'planned:backbone'));
+assert.equal(plannedInventory.some(item => item.key === 'current:backbone'), false);
+console.log('planned sales inventory: 7 listings');

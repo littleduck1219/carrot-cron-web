@@ -7,11 +7,11 @@ import "./account.css";
 
 type Tab = "selling" | "completed" | "hidden";
 
-export function SalesManagementScreen({ posts, products, ownerId, onBack }: { posts: PublishedPost[]; products: ManagedProduct[]; ownerId: string; onBack: () => void }) {
+export function SalesManagementScreen({ posts, products, ownerId, productVersion, onBack }: { posts: PublishedPost[]; products: ManagedProduct[]; ownerId: string; productVersion: 'current' | 'planned'; onBack: () => void }) {
     const [tab, setTab] = useState<Tab>("selling");
     const [, setRevision] = useState(0);
     const [menuKey, setMenuKey] = useState<string | null>(null);
-    const listings = createSalesListings(posts, products, ownerId);
+    const listings = createSalesListings(posts, products, ownerId, productVersion);
     const completed = listings.filter(item => getCompletedBuyer(item.key) !== null);
     const grouped = { selling: listings.filter(item => !completed.includes(item)), completed, hidden: [] as typeof listings };
     const visible = grouped[tab];
