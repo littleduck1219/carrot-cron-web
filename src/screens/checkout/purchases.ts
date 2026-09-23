@@ -3,6 +3,8 @@ const KEY = 're-carrot.purchases.session.v2';
 const read = (): Record<string, string> => { try { return JSON.parse(sessionStorage.getItem(KEY) ?? '{}'); } catch { return {}; } };
 const write = (value: Record<string, string>) => { try { sessionStorage.setItem(KEY, JSON.stringify(value)); } catch { /* The in-memory state still drives this session. */ } };
 export const isPurchased = (id: string, buyerId: string) => read()[id] === buyerId;
+/** Any buyer's paid record; the seller's 판매관리 treats it as a completed sale even without a completion record (older sessions). */
+export const hasPurchase = (id: string) => id in read();
 export const markPurchased = (id: string, buyerId: string) => write({ ...read(), [id]: buyerId });
 export const clearPurchase = (id: string) => { const value = read(); delete value[id]; write(value); };
 
