@@ -59,6 +59,7 @@ export function ProductDetail({ productId, onBack, viewerId, viewerName, viewerA
     const [atTop, setAtTop] = useState(true);
     const [checkout, setCheckout] = useState(false);
     const [chat, setChat] = useState(false);
+    const [notice, setNotice] = useState('');
     // Leaving slides the screen back out to the right; onBack runs once that animation ends.
     const [closing, setClosing] = useState(false);
     const close = () => setClosing(true);
@@ -77,7 +78,7 @@ export function ProductDetail({ productId, onBack, viewerId, viewerName, viewerA
             <button type="button" aria-label="뒤로 가기" onClick={close}><DetailIcon name="back" /></button>
             <button type="button" aria-label="홈으로" onClick={close}><DetailIcon name="home" /></button>
             <div className="detail-bar-spacer" />
-            <button type="button" aria-label="공유" disabled><DetailIcon name="share" /></button>
+            <button type="button" aria-label={sold ? '공유' : '공유, 누르면 게시글을 거래완료로 처리'} onClick={() => { if (sold) return; markCompleted(purchaseKey, viewerId); setCompletedBuyer(viewerId); setNotice('게시글을 거래완료로 처리했어요.'); }}><DetailIcon name="share" /></button>
             <button type="button" aria-label="게시글 메뉴" disabled><FeedIcon name="more" /></button>
         </header>
         <main className="detail-scroll" aria-label="상품 상세 내용" tabIndex={0} onScroll={(event) => setAtTop(event.currentTarget.scrollTop < 1)}>
@@ -153,6 +154,7 @@ export function ProductDetail({ productId, onBack, viewerId, viewerName, viewerA
         </footer>
     </section>
     {checkout && directBuy && <CurrentDirectBuyFlow product={{ title: product.title, price: Number(product.price.replace(/\D/g, '')), category: product.category, thumbnail }} buyerName={viewerName} address={viewerAddress} onClose={() => setCheckout(false)} purchasable initialStep={purchased ? 'status' : 'address'} onPaid={() => { recordOrder({ postKey: purchaseKey, version: planned ? 'planned' : 'current', title: product.title, imageSrc: product.photos[0]?.source, buyerId: viewerId, buyerName: viewerName, buyerNeighborhood: activeNeighborhood.name, sellerId: seller.id, sellerName: seller.nickname, sellerNeighborhood: sellerDistrict.label, items: [{ id: productId, name: product.title, quantity: 1, price: Number(product.price.replace(/\D/g, '')) }] }); markPurchased(purchaseKey, viewerId); setPurchased(true); markCompleted(purchaseKey, viewerId); setCompletedBuyer(viewerId); }} onCancelled={() => { cancelBuyerOrders(purchaseKey, viewerId); clearPurchase(purchaseKey); setPurchased(false); clearCompleted(purchaseKey); setCompletedBuyer(null); }} />}
-    {chat && <ChatRoom partner={{ nickname: seller.nickname, temperature: product.temperature, neighborhood: sellerDistrict.label }} product={{ title: product.title, price: product.price, thumbnail, offers: !directBuy }} viewerName={viewerName} completed={sold || purchased} onComplete={() => { markCompleted(purchaseKey, viewerId); setCompletedBuyer(viewerId); }} onClose={() => setChat(false)} />}
+    {chat && <ChatRoom partner={{ nickname: seller.nickname, temperature: product.temperature, neighborhood: sellerDistrict.label }} product={{ title: product.title, price: product.price, thumbnail, offers: !directBuy }} viewerName={viewerName} completed={sold || purchased} onComplete={() => { recordOrder({ kind: 'direct', postKey: purchaseKey, version: planned ? 'planned' : 'current', title: product.title, imageSrc: product.photos[0]?.source, buyerId: viewerId, buyerName: viewerName, buyerNeighborhood: activeNeighborhood.name, sellerId: seller.id, sellerName: seller.nickname, sellerNeighborhood: sellerDistrict.label, items: [{ id: productId, name: product.title, quantity: 1, price: Number(product.price.replace(/\D/g, '')) }] }); markCompleted(purchaseKey, viewerId); setCompletedBuyer(viewerId); }} onClose={() => setChat(false)} />}
+    {notice && <div className="detail-notice" role="status" onClick={() => setNotice('')}>{notice}</div>}
     </>;
 }

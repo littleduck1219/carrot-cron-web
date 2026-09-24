@@ -19,7 +19,7 @@ export function PurchaseHistoryScreen({ viewerId, viewerName, onBack, onOpenPost
         <main className="sales-scroll">
             {orders.length === 0 && <div className="sales-empty">구매한 물품이 없어요.</div>}
             {orders.map(order => <article className="sales-card purchase-card" key={order.id}>
-                <div className="sales-card-state">{order.status === 'cancelled' ? '거래취소' : '거래완료'} <em><FeedIcon name="shopping" />바로구매</em><small>{day(order.createdAt)} 거래</small></div>
+                <div className="sales-card-state">{order.status === 'cancelled' ? '거래취소' : '거래완료'} {order.kind === 'direct' ? <em className="purchase-direct">직거래</em> : <em><FeedIcon name="shopping" />바로구매</em>}<small>{day(order.createdAt)} 거래</small></div>
                 <button type="button" className="sales-summary purchase-summary" onClick={() => onOpenPost(order)}>{order.imageSrc ? <img src={order.imageSrc} alt="" /> : <span><FeedIcon name="shopping" /></span>}<div><h2>{order.title}</h2><p>{order.sellerNeighborhood}{order.items.length > 1 ? ` · 물품 ${order.items.length}종` : ''}</p><strong>{won(order.goods)}</strong></div></button>
                 {order.status === 'paid' && <button type="button" className="sales-review purchase-review" onClick={() => setReview(order)}><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M3 17.25V21h3.75L17.8 9.94l-3.75-3.75L3 17.25Zm17.7-10.2-2.35-2.35a1 1 0 0 0-1.4 0l-1.85 1.85 3.75 3.75 1.85-1.85a1 1 0 0 0 0-1.4Z" /></svg>후기 보내기</button>}
             </article>)}

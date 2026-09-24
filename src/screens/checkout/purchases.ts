@@ -57,6 +57,8 @@ export type DealOrder = {
     buyerId: string; buyerName: string; buyerNeighborhood: string; sellerId: string; sellerName: string; sellerNeighborhood: string;
     items: { id: string; name: string; quantity: number; price: number }[];
     goods: number; fee: number; shipping: number; total: number; createdAt: number; status: 'paid' | 'cancelled';
+    /** purchase: paid through 바로구매 (fee + shipping). direct: completed from chat (직거래, no fee). */
+    kind?: 'purchase' | 'direct';
 };
 const LEDGER = 're-carrot.orders.session.v1';
 const readOrders = (): DealOrder[] => { try { return JSON.parse(sessionStorage.getItem(LEDGER) ?? '[]'); } catch { return []; } };
@@ -64,7 +66,8 @@ const writeOrders = (orders: DealOrder[]) => { try { sessionStorage.setItem(LEDG
 /** Captured checkout math: 2.2% buyer-protection fee, 3,600원 shipping. */
 export const recordOrder = (input: Omit<DealOrder, 'id' | 'goods' | 'fee' | 'shipping' | 'total' | 'createdAt' | 'status'>): DealOrder => {
     const goods = input.items.reduce((sum, item) => sum + item.price * item.quantity, 0);
-    const fee = Math.round(goods * 0.022); const shipping = 3600;
+    const direct = input.kind === 'direct';
+    const fee = direct ? 0 : Math.round(goods * 0.022); const shipping = direct ? 0 : 3600;
     const order: DealOrder = { ...input, id: `order-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`, goods, fee, shipping, total: goods + fee + shipping, createdAt: Date.now(), status: 'paid' };
     writeOrders([...readOrders(), order]); return order;
 };

@@ -4,7 +4,7 @@ import { ReviewFlow } from '../review/ReviewFlow';
 import './ChatRoom.css';
 
 export type ChatPartner = { nickname: string; temperature?: string; neighborhood?: string };
-export type ChatProduct = { title: string; price: string; thumbnail?: ReactNode; offers?: boolean };
+export type ChatProduct = { title: string; price: string; thumbnail?: ReactNode; offers?: boolean; /** Planned: the items this chat is about, shown instead of the post price. */ dealLabel?: string };
 
 function Icon({ name }: { name: 'chevron' | 'phone' | 'more' | 'calendar' | 'won' | 'pen' | 'spark' | 'smile' | 'send' | 'person' }) {
     return <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
@@ -31,15 +31,17 @@ const MESSAGES = (place: string) => [
 ];
 
 /** Static chat room styled after the captured room. The partner name is a hidden control that marks the deal complete, which enables 후기 보내기. */
-export function ChatRoom({ partner, product, viewerName, completed = false, onComplete, onClose }: { partner: ChatPartner; product: ChatProduct; viewerName: string; completed?: boolean; onComplete?: () => void; onClose: () => void }) {
+export function ChatRoom({ partner, product, viewerName, completed = false, onComplete, blockedMessage, onClose }: { partner: ChatPartner; product: ChatProduct; viewerName: string; completed?: boolean; onComplete?: () => void; /** Shown when the name is tapped but completion is not allowed (e.g. no items selected). */ blockedMessage?: string; onClose: () => void }) {
     const ref = useRef<HTMLElement>(null);
     const [review, setReview] = useState(false);
+    const [notice, setNotice] = useState('');
     useDialogControls(ref, !review, onClose);
+    const tapName = () => { if (completed) return; if (onComplete) onComplete(); else if (blockedMessage) setNotice(blockedMessage); };
     return <>
     <section ref={ref} className="chat-room" role="dialog" aria-modal="true" aria-label={`${partner.nickname}님과의 채팅`} tabIndex={-1} inert={review}>
         <header className="chat-header">
             <button type="button" aria-label="뒤로 가기" onClick={onClose}><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="m15 3-9 9 9 9" fill="none" stroke="currentColor" strokeWidth="1.8" /></svg></button>
-            <button type="button" className="chat-partner" aria-label={completed ? `${partner.nickname}, 거래 완료됨` : `${partner.nickname}, 누르면 거래 완료 처리`} onClick={completed ? undefined : onComplete}>
+            <button type="button" className="chat-partner" aria-label={completed ? `${partner.nickname}, 거래 완료됨` : `${partner.nickname}, 누르면 거래 완료 처리`} onClick={tapName}>
                 <span className="chat-partner-name"><strong>{partner.nickname}</strong>{partner.temperature && <em>{partner.temperature}</em>}</span>
                 <small>{[partner.neighborhood, '보통 10분 이내 응답'].filter(Boolean).join(', ')}</small>
             </button>
@@ -49,7 +51,7 @@ export function ChatRoom({ partner, product, viewerName, completed = false, onCo
             {product.thumbnail && <div className="chat-thumbnail">{product.thumbnail}</div>}
             <div>
                 <p className="chat-product-title"><b className="chat-status">{completed ? '거래완료' : '판매중'}<Icon name="chevron" /></b>{product.title}</p>
-                <p className="chat-product-price"><strong>{product.price}</strong>{product.offers === false && <span>(가격 제안 불가)</span>}</p>
+                <p className="chat-product-price"><strong>{product.dealLabel ?? product.price}</strong>{!product.dealLabel && product.offers === false && <span>(가격 제안 불가)</span>}</p>
             </div>
         </div>
         <div className="chat-actions">
@@ -66,6 +68,7 @@ export function ChatRoom({ partner, product, viewerName, completed = false, onCo
             </div>)}
             <button type="button" className="chat-ai" aria-label="AI 답장 추천" disabled><Icon name="spark" /></button>
         </main>
+        {notice && <div className="chat-notice" role="status" onClick={() => setNotice('')}>{notice}</div>}
         <footer className="chat-composer">
             <button type="button" aria-label="첨부" disabled>＋</button>
             <div className="chat-input"><input type="text" placeholder="메시지 보내기" aria-label="메시지" disabled /><Icon name="smile" /></div>

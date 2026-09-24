@@ -129,3 +129,5 @@
 /* Captured details contain their own status icons; keep the account hit target active. */
 .device-screen:has(.product-detail[data-at-top="true"]) .status-battery { visibility: visible; }
 .device-screen:has(.product-detail[data-at-top="true"]) .status-battery > svg { visibility: hidden; }
+
+.detail-notice { position: absolute; z-index: 6; bottom: 120px; left: 20px; right: 20px; padding: 14px 18px; border-radius: 10px; background: #3d414a; box-shadow: 0 3px 16px #0006; color: #fff; font-size: 14px; text-align: center; }

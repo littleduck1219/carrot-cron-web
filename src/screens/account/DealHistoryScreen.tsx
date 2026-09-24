@@ -17,6 +17,7 @@ export function DealHistoryScreen({ postKey, title, imageSrc, post, viewerName, 
         const buyerId = getPurchaseBuyer(postKey) ?? getCompletedBuyer(postKey);
         if (!buyerId || recorded.some(order => order.buyerId === buyerId)) return recorded;
         const buyer = prototypeUsers.find(user => user.id === buyerId);
+        if (buyerId === 'owner') return [{ id: `legacy-${postKey}`, postKey, version: post?.format === 'planned' ? 'planned' : 'current', title, imageSrc, buyerId, buyerName: '', buyerNeighborhood: '', sellerId: '', sellerName: '', sellerNeighborhood: '', items: [], goods: 0, fee: 0, shipping: 0, total: 0, createdAt: 0, status: 'paid' as const }, ...recorded];
         const sold = getSoldItems(postKey);
         const items = post ? post.items.filter(item => (sold[item.id] ?? 0) > 0).map(item => ({ id: item.id, name: item.name, quantity: sold[item.id], price: item.price })) : [];
         const fallbackItems = items.length ? items : post && post.format !== 'planned' && post.items[0] ? [{ id: post.items[0].id, name: post.items[0].name, quantity: 1, price: post.items[0].price }] : [];
@@ -41,10 +42,10 @@ export function DealHistoryScreen({ postKey, title, imageSrc, post, viewerName, 
             </section>
             {orders.length === 0 && <div className="sales-empty">아직 거래가 없어요.</div>}
             {orders.map(order => <article className="order-card" key={order.id} data-cancelled={order.status === 'cancelled'}>
-                <div className="order-head"><strong>{order.buyerName}</strong><span>{order.buyerNeighborhood}</span><em>{order.status === 'cancelled' ? '거래취소' : '거래완료'}</em></div>
-                <p className="order-when">{order.createdAt ? `${when(order.createdAt)} 결제` : order.items.length ? '결제 시각 기록 없음' : '채팅으로 거래 완료'}</p>
+                <div className="order-head"><strong>{order.buyerId === 'owner' ? '판매자 직접 완료' : order.buyerName}</strong><span>{order.buyerNeighborhood}</span>{order.kind === 'direct' && <i className="order-kind">직거래</i>}<em>{order.status === 'cancelled' ? '거래취소' : '거래완료'}</em></div>
+                <p className="order-when">{order.createdAt ? `${when(order.createdAt)} ${order.kind === 'direct' ? '거래 완료' : '결제'}` : order.items.length ? '결제 시각 기록 없음' : '게시글에서 거래완료 처리'}</p>
                 <ul className="order-items">{order.items.map(item => <li key={item.id}><span>{item.name}</span><b>{item.quantity}개 · {won(item.price * item.quantity)}</b></li>)}</ul>
-                <button type="button" className="order-total" aria-expanded={open === order.id} onClick={() => setOpen(value => value === order.id ? null : order.id)}><span>결제 금액</span><strong>{won(order.total)}</strong><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" data-open={open === order.id}><path d="m6 9 6 6 6-6" /></svg></button>
+                <button type="button" className="order-total" aria-expanded={open === order.id} onClick={() => setOpen(value => value === order.id ? null : order.id)}><span>{order.kind === 'direct' ? '거래 금액' : '결제 금액'}</span><strong>{won(order.total)}</strong><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" data-open={open === order.id}><path d="m6 9 6 6 6-6" /></svg></button>
                 {open === order.id && <dl className="order-breakdown"><div><dt>물품 금액</dt><dd>{won(order.goods)}</dd></div><div><dt>구매자 보호 수수료</dt><dd>{won(order.fee)}</dd></div><div><dt>배송비</dt><dd>{won(order.shipping)}</dd></div><div className="order-settle"><dt>정산 예정액</dt><dd>{won(order.goods)}</dd></div></dl>}
                 <div className="order-actions"><button type="button" onClick={() => setChat(order)}>채팅하기</button><button type="button" disabled>받은 후기 보기</button></div>
             </article>)}

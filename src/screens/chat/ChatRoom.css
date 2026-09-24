@@ -50,3 +50,5 @@
 .chat-input input { flex: 1; min-width: 0; border: 0; background: transparent; color: inherit; font: inherit; font-size: 16px; }
 .chat-input svg { flex: none; width: 24px; height: 24px; color: #d2d3d7; }
 @media (prefers-reduced-motion: reduce) { .chat-room { animation-duration: 1ms; } }
+
+.chat-notice { position: absolute; z-index: 3; bottom: 90px; left: 20px; right: 20px; padding: 14px 18px; border-radius: 10px; background: #3d414a; box-shadow: 0 3px 16px #0006; color: #fff; font-size: 14px; text-align: center; }
