@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { FeedIcon } from "../home/FeedIcon";
 import { productDetails, region, type ProductCard, type ProductId, type SourceRegion } from "./productData";
 import { CurrentDirectBuyFlow } from "../checkout/CurrentDirectBuyFlow";
-import { clearCompleted, clearPurchase, getCompletedBuyer, isPurchased, markCompleted, markPurchased } from "../checkout/purchases";
+import { cancelBuyerOrders, clearCompleted, clearPurchase, getCompletedBuyer, isPurchased, markCompleted, markPurchased, recordOrder } from "../checkout/purchases";
 import { ChatRoom } from "../chat/ChatRoom";
 import "./ProductDetail.css";
 
@@ -152,7 +152,7 @@ export function ProductDetail({ productId, onBack, viewerId, viewerName, viewerA
             </> : <ActionButton variant="brandSolid" size="large" className="detail-primary" onClick={() => setChat(true)}>채팅하기</ActionButton>}
         </footer>
     </section>
-    {checkout && directBuy && <CurrentDirectBuyFlow product={{ title: product.title, price: Number(product.price.replace(/\D/g, '')), category: product.category, thumbnail }} buyerName={viewerName} address={viewerAddress} onClose={() => setCheckout(false)} purchasable initialStep={purchased ? 'status' : 'address'} onPaid={() => { markPurchased(purchaseKey, viewerId); setPurchased(true); markCompleted(purchaseKey, viewerId); setCompletedBuyer(viewerId); }} onCancelled={() => { clearPurchase(purchaseKey); setPurchased(false); clearCompleted(purchaseKey); setCompletedBuyer(null); }} />}
+    {checkout && directBuy && <CurrentDirectBuyFlow product={{ title: product.title, price: Number(product.price.replace(/\D/g, '')), category: product.category, thumbnail }} buyerName={viewerName} address={viewerAddress} onClose={() => setCheckout(false)} purchasable initialStep={purchased ? 'status' : 'address'} onPaid={() => { recordOrder({ postKey: purchaseKey, version: planned ? 'planned' : 'current', title: product.title, imageSrc: product.photos[0]?.source, buyerId: viewerId, buyerName: viewerName, buyerNeighborhood: activeNeighborhood.name, sellerId: seller.id, sellerName: seller.nickname, sellerNeighborhood: sellerDistrict.label, items: [{ id: productId, name: product.title, quantity: 1, price: Number(product.price.replace(/\D/g, '')) }] }); markPurchased(purchaseKey, viewerId); setPurchased(true); markCompleted(purchaseKey, viewerId); setCompletedBuyer(viewerId); }} onCancelled={() => { cancelBuyerOrders(purchaseKey, viewerId); clearPurchase(purchaseKey); setPurchased(false); clearCompleted(purchaseKey); setCompletedBuyer(null); }} />}
     {chat && <ChatRoom partner={{ nickname: seller.nickname, temperature: product.temperature, neighborhood: sellerDistrict.label }} product={{ title: product.title, price: product.price, thumbnail, offers: !directBuy }} viewerName={viewerName} completed={sold || purchased} onComplete={() => { markCompleted(purchaseKey, viewerId); setCompletedBuyer(viewerId); }} onClose={() => setChat(false)} />}
     </>;
 }

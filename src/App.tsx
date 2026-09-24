@@ -14,7 +14,10 @@ import { defaultPosts } from "./data/defaultPosts";
 import { resetAllDeals } from "./screens/checkout/purchases";
 import { MyCarrotScreen } from "./screens/account/MyCarrotScreen";
 import { SalesManagementScreen } from "./screens/account/SalesManagementScreen";
-import { accountHash } from "./screens/account/accountRoutes";
+import { DealHistoryScreen } from "./screens/account/DealHistoryScreen";
+import { PurchaseHistoryScreen } from "./screens/account/PurchaseHistoryScreen";
+import type { DealOrder } from "./screens/checkout/purchases";
+import { accountHash, historyHash, historyKeyFromRoute } from "./screens/account/accountRoutes";
 
 function subscribeToRoute(notify: () => void) {
     window.addEventListener("hashchange", notify);
@@ -83,7 +86,9 @@ export default function App() {
     const writing = screenRoute === "#/write";
     const myCarrot = screenRoute === "#/my";
     const salesManagement = screenRoute === "#/sales";
-    const accountOpen = myCarrot || salesManagement;
+    const purchaseHistory = screenRoute === "#/purchases";
+    const historyKey = historyKeyFromRoute(screenRoute);
+    const accountOpen = myCarrot || salesManagement || purchaseHistory || historyKey !== null;
     const openedFromHome = useRef(false);
     const homeRef = useRef<HTMLDivElement>(null);
     const feedScrollPosition = useRef({ current: 0, planned: 0 });
@@ -127,6 +132,14 @@ export default function App() {
     };
     const openMy = () => { openedFromHome.current = true; window.location.hash = accountHash(routePrefix, "my"); };
     const openSales = () => { window.location.hash = accountHash(routePrefix, "sales"); };
+    const openPurchases = () => { window.location.hash = accountHash(routePrefix, "purchases"); };
+    const openHistory = (key: string) => { window.location.hash = historyHash(routePrefix, key); };
+    // Listing keys: post:<id> lives in the current version; <version>:<productId> carries its own version.
+    const hashForKey = (key: string, keyVersion: 'current' | 'planned' = version) => key.startsWith('post:') ? `${keyVersion === 'planned' ? '/planned' : ''}/post/${key.slice(5)}` : `${key.startsWith('planned:') ? '/planned' : ''}/product/${key.slice(key.indexOf(':') + 1)}`;
+    const openOrderPost = (order: DealOrder) => { openedFromHome.current = false; window.location.hash = hashForKey(order.postKey, order.version); };
+    const historyPost = historyKey?.startsWith('post:') ? versionPosts.find(item => item.id === historyKey.slice(5)) : undefined;
+    const historyProduct = historyKey && !historyKey.startsWith('post:') ? managedProducts.find(item => `${version}:${item.id}` === historyKey) : undefined;
+    const historyListing = historyPost ? { title: historyPost.title, imageSrc: historyPost.photos[0]?.src, post: historyPost } : historyProduct ? { title: historyProduct.title, imageSrc: historyProduct.imageSrc, post: undefined } : null;
     const openHome = () => { openedFromHome.current = false; window.location.hash = `${routePrefix}/`; };
     const closeProduct = () => {
         if (publishedPending.current) {
@@ -164,10 +177,12 @@ export default function App() {
         <div className="prototype-home" ref={homeRef} inert={detailOpen || writing || accountOpen}>
             <HomeScreen key={`${version}-${dealsRevision}`} readOnly={isPublicDemo} publishedPosts={versionPosts} postsLoading={postsLoading} postsError={postsError} onOpenPublishedPost={openPublishedPost} onDeletePost={removePost} routePrefix={routePrefix} onOpenWrite={openWrite} onOpenMy={openMy} onOpenProduct={openProduct} activeNeighborhood={activeNeighborhood.name} secondaryNeighborhood={user.verifiedNeighborhoods.find((item) => item.id !== activeNeighborhood.id)?.name} />
         </div>
-        {myCarrot && <MyCarrotScreen userName={user.nickname} temperature="40.8°C" onHome={openHome} onOpenSales={openSales} />}
-        {salesManagement && <SalesManagementScreen key={dealsRevision} posts={versionPosts} products={managedProducts} ownerId={user.id} productVersion={version} onBack={() => { window.location.hash = accountHash(routePrefix, "my"); }} />}
+        {myCarrot && <MyCarrotScreen userName={user.nickname} temperature="40.8°C" onHome={openHome} onOpenSales={openSales} onOpenPurchases={openPurchases} />}
+        {salesManagement && <SalesManagementScreen key={dealsRevision} posts={versionPosts} products={managedProducts} ownerId={user.id} productVersion={version} onBack={() => { window.location.hash = accountHash(routePrefix, "my"); }} onOpenHistory={openHistory} />}
+        {purchaseHistory && <PurchaseHistoryScreen key={`${user.id}-${dealsRevision}`} viewerId={user.id} viewerName={user.nickname} onBack={() => { window.location.hash = accountHash(routePrefix, "my"); }} onOpenPost={openOrderPost} />}
+        {historyKey && historyListing && <DealHistoryScreen key={`${historyKey}-${dealsRevision}`} postKey={historyKey} title={historyListing.title} imageSrc={historyListing.imageSrc} post={historyListing.post} viewerName={user.nickname} onBack={() => { window.location.hash = accountHash(routePrefix, "sales"); }} onOpenPost={() => { openedFromHome.current = false; window.location.hash = hashForKey(historyKey); }} />}
         {!isPublicDemo && writing && <WritingFlow user={user} key={version} onPublished={onPublished} planned={planned} draftKey={planned ? "re-carrot.write-draft.planned.v1" : "re-carrot.write-draft.v1"} neighborhood={activeNeighborhood.name} secondaryNeighborhood={user.verifiedNeighborhoods.find(item => item.id !== activeNeighborhood.id)?.name} onClose={closeProduct} />}
-        {publishedDetailReady && publishedId && <PublishedPostDetail planned={planned} viewerId={user.id} viewerName={user.nickname} viewerAddress={user.pickupAddress} viewerProvinceId={activeNeighborhood.provinceId} key={`${publishedId}-${user.id}-${dealsRevision}`} post={publishedPost} error={postsError} onBack={closeProduct} onDelete={() => removePost(publishedId)} />}
+        {publishedDetailReady && publishedId && <PublishedPostDetail planned={planned} viewerId={user.id} viewerName={user.nickname} viewerAddress={user.pickupAddress} viewerProvinceId={activeNeighborhood.provinceId} key={`${publishedId}-${user.id}-${dealsRevision}`} post={publishedPost} error={postsError} onBack={closeProduct} onDelete={() => removePost(publishedId)} onOpenHistory={() => openHistory(`post:${publishedId}`)} />}
         {productId && <ProductDetail key={`${version}-${productId}-${dealsRevision}`} planned={planned} productId={productId} viewerId={user.id} viewerName={user.nickname} viewerAddress={user.pickupAddress} activeNeighborhood={activeNeighborhood} onBack={closeProduct} />}
     </DeviceFrame>;
 }

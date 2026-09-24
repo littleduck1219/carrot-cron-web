@@ -58,3 +58,38 @@
 .sales-actions button { flex: 1; }
 .sales-review { width: 100%; margin-top: 20px; }
 .sales-empty { padding: 90px 20px; text-align: center; color: #9b9ea6; }
+
+/* 거래내역 / 구매내역 (2026-09-24). */
+.history-screen .sales-header > button:last-child { font-size: 14px; color: #f1f2f3; }
+.history-summary { display: flex; gap: 14px; align-items: center; margin-bottom: 18px; padding: 16px; border-radius: 16px; background: #17181d; }
+.history-summary img, .history-summary > span { flex: none; width: 56px; height: 56px; border-radius: 8px; object-fit: cover; background: #292c32; display: grid; place-items: center; }
+.history-summary h2 { margin: 0 0 4px; font-size: 16px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.history-summary p { margin: 0; font-size: 14px; color: #c7c9cf; }
+.history-summary small { display: block; margin-top: 4px; font-size: 13px; color: #ff8a3d; }
+.order-card { margin-bottom: 12px; padding: 16px; border-radius: 16px; background: #17181d; }
+.order-card[data-cancelled="true"] { opacity: .55; }
+.order-head { display: flex; align-items: center; gap: 8px; font-size: 15px; }
+.order-head span { color: #a2a5ad; font-size: 13px; }
+.order-head em { margin-left: auto; padding: 3px 7px; border-radius: 5px; background: #d9dbe0; color: #212225; font-size: 12px; font-style: normal; font-weight: 700; }
+.order-card[data-cancelled="true"] .order-head em { background: #3a3d44; color: #c7c9cf; }
+.order-when { margin: 4px 0 10px; font-size: 13px; color: #8d9099; }
+.order-items { margin: 0; padding: 0; list-style: none; }
+.order-items li { display: flex; justify-content: space-between; gap: 12px; padding: 4px 0; font-size: 14px; }
+.order-items li span { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.order-items li b { flex: none; font-weight: 500; color: #c7c9cf; }
+.order-total { display: flex; align-items: center; gap: 8px; width: 100%; margin-top: 10px; padding: 10px 0 0; border: 0; border-top: 1px solid #292b30; background: transparent; color: inherit; font: inherit; font-size: 15px; cursor: pointer; }
+.order-total strong { margin-left: auto; font-size: 16px; }
+.order-total svg { color: #a2a5ad; transition: transform 180ms ease; }
+.order-total svg[data-open="true"] { transform: rotate(180deg); }
+.order-breakdown { margin: 8px 0 0; padding-left: 12px; border-left: 3px solid #30333a; }
+.order-breakdown > div { display: flex; justify-content: space-between; padding: 3px 0; font-size: 13px; color: #a8abb2; }
+.order-breakdown dd { margin: 0; }
+.order-breakdown .order-settle { margin-top: 4px; padding-top: 6px; border-top: 1px solid #292b30; color: #f1f2f3; font-weight: 600; }
+.order-actions { display: flex; gap: 8px; margin-top: 14px; }
+.order-actions button { flex: 1; height: 42px; border: 0; border-radius: 10px; background: #2a2d33; color: #f1f2f3; font-size: 15px; font-weight: 700; cursor: pointer; }
+.order-actions button:disabled { color: #6b6f78; cursor: default; }
+.purchase-filters button { white-space: nowrap; }
+.purchase-card .sales-card-state small { margin-left: 8px; font-size: 13px; font-weight: 400; color: #a2a5ad; }
+.purchase-summary { width: 100%; padding: 0; border: 0; background: transparent; color: inherit; font: inherit; text-align: left; cursor: pointer; }
+.purchase-review { display: flex; align-items: center; justify-content: center; gap: 8px; cursor: pointer; }
+.purchase-review:disabled { cursor: default; }

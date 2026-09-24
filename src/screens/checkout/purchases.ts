@@ -48,4 +48,26 @@ export const resetDeal = (id: string) => {
 };
 
 /** Clears every session sales record (purchases, completions, item sales, orders). Bound to the status-bar clock. */
-export const resetAllDeals = () => { for (const key of [KEY, DONE, SALES, ORDER]) { try { sessionStorage.removeItem(key); } catch { /* nothing to clear */ } } };
+export const resetAllDeals = () => { for (const key of [KEY, DONE, SALES, ORDER, 're-carrot.orders.session.v1']) { try { sessionStorage.removeItem(key); } catch { /* nothing to clear */ } } };
+
+// Order ledger (2026-09-24): one record per payment, kept through cancellation as status, so sellers see 거래내역 and buyers see 구매내역.
+export type DealOrder = {
+    id: string; postKey: string; version: 'current' | 'planned'; title: string; imageSrc?: string;
+    buyerId: string; buyerName: string; buyerNeighborhood: string; sellerId: string; sellerName: string; sellerNeighborhood: string;
+    items: { id: string; name: string; quantity: number; price: number }[];
+    goods: number; fee: number; shipping: number; total: number; createdAt: number; status: 'paid' | 'cancelled';
+};
+const LEDGER = 're-carrot.orders.session.v1';
+const readOrders = (): DealOrder[] => { try { return JSON.parse(sessionStorage.getItem(LEDGER) ?? '[]'); } catch { return []; } };
+const writeOrders = (orders: DealOrder[]) => { try { sessionStorage.setItem(LEDGER, JSON.stringify(orders)); } catch { /* in-memory state still drives this session */ } };
+/** Captured checkout math: 2.2% buyer-protection fee, 3,600원 shipping. */
+export const recordOrder = (input: Omit<DealOrder, 'id' | 'goods' | 'fee' | 'shipping' | 'total' | 'createdAt' | 'status'>): DealOrder => {
+    const goods = input.items.reduce((sum, item) => sum + item.price * item.quantity, 0);
+    const fee = Math.round(goods * 0.022); const shipping = 3600;
+    const order: DealOrder = { ...input, id: `order-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`, goods, fee, shipping, total: goods + fee + shipping, createdAt: Date.now(), status: 'paid' };
+    writeOrders([...readOrders(), order]); return order;
+};
+export const cancelBuyerOrders = (postKey: string, buyerId: string) => writeOrders(readOrders().map(order => order.postKey === postKey && order.buyerId === buyerId && order.status === 'paid' ? { ...order, status: 'cancelled' } : order));
+export const ordersForPost = (postKey: string) => readOrders().filter(order => order.postKey === postKey).sort((a, b) => b.createdAt - a.createdAt);
+export const ordersForBuyer = (buyerId: string) => readOrders().filter(order => order.buyerId === buyerId).sort((a, b) => b.createdAt - a.createdAt);
+export const resetOrderLedger = () => { try { sessionStorage.removeItem(LEDGER); } catch { /* nothing to clear */ } };

@@ -5,7 +5,7 @@ const services = ["중고거래", "스토리", "알바", "스토어", "동네걷
 const activity = ["알바 지원내역", "선생님 프로필 관리", "내 커뮤니티 글", "후기 및 제안한 장소"];
 const settings = ["내 동네 설정", "동네 인증하기", "QR 코드 스캔", "앱 설정"];
 
-export function MyCarrotScreen({ userName, temperature, onHome, onOpenSales }: { userName: string; temperature: string; onHome: () => void; onOpenSales: () => void }) {
+export function MyCarrotScreen({ userName, temperature, onHome, onOpenSales, onOpenPurchases }: { userName: string; temperature: string; onHome: () => void; onOpenSales: () => void; onOpenPurchases: () => void }) {
     return <div className="account-screen">
         <header className="account-header"><h1>나의 당근</h1><button type="button" aria-label="설정" disabled>⚙</button></header>
         <main className="account-scroll">
@@ -13,7 +13,7 @@ export function MyCarrotScreen({ userName, temperature, onHome, onOpenSales }: {
             <section className="account-pay"><div><b><span>●</span>pay</b><button disabled>충전</button><button disabled>송금</button><button disabled>결제</button></div><p><span>머니 <b>54원</b> ›</span><span>포인트 <b>15p</b> ›</span></p></section>
             <section className="account-services">{services.map((service, index) => <button key={service} disabled><span>{["🛍", "▶", "Q", "🛒", "👟", "👕", "🥕", "›"][index]}</span>{service}</button>)}</section>
             <section className="account-card account-quick"><h2>자주 사용</h2><button type="button" onClick={onOpenSales}><span>▧</span>판매관리<i>›</i></button><button disabled><span>✣</span>내 물건 가격 찾기<i>›</i></button></section>
-            <section className="account-card"><h2>나의 거래</h2><button type="button" onClick={onOpenSales}><span>▧</span>판매관리<i>›</i></button><button disabled><span>▱</span>구매내역<i>›</i></button><button disabled><span />내 물건 가격 찾기</button><button disabled><span />중고거래 가계부</button></section>
+            <section className="account-card"><h2>나의 거래</h2><button type="button" onClick={onOpenSales}><span>▧</span>판매관리<i>›</i></button><button type="button" onClick={onOpenPurchases}><span>▱</span>구매내역<i>›</i></button><button disabled><span />내 물건 가격 찾기</button><button disabled><span />중고거래 가계부</button></section>
             <section className="account-card"><h2>나의 관심</h2><button disabled><span>♡</span>관심목록<i>›</i></button><button disabled><span>◇</span>키워드 알림 설정<i>›</i></button><button disabled><span>▱</span>내 단골 목록<i>›</i></button></section>
             <section className="account-card"><h2>나의 활동</h2>{activity.map(item => <button key={item} disabled><span>○</span>{item}<i>›</i></button>)}</section>
             <section className="account-card"><h2>설정</h2>{settings.map(item => <button key={item} disabled><span>◉</span>{item}<i>›</i></button>)}</section>

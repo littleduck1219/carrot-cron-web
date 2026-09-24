@@ -4,7 +4,7 @@ import { postAge, postPriceLabel, type PublishedPost } from '../../data/publishe
 import { FeedIcon } from '../home/FeedIcon';
 import { PostMenu } from './PostMenu';
 import { CurrentDirectBuyFlow } from '../checkout/CurrentDirectBuyFlow';
-import { addOrder, cancelOrder, clearCompleted, clearPurchase, getCompletedBuyer, getSoldItems, isPurchased, isSoldOut, markCompleted, markPurchased } from '../checkout/purchases';
+import { addOrder, cancelBuyerOrders, cancelOrder, clearCompleted, clearPurchase, getCompletedBuyer, getSoldItems, isPurchased, isSoldOut, markCompleted, markPurchased, recordOrder } from '../checkout/purchases';
 import { ChatRoom } from '../chat/ChatRoom';
 import { Cards, DetailIcon, SourceImage } from '../detail/ProductDetail';
 import { region } from '../detail/productData';
@@ -14,7 +14,7 @@ import { gamePostRecommendations } from '../detail/gamePostData';
 import '../detail/ProductDetail.css';
 import './PublishedPosts.css';
 
-export function PublishedPostDetail({ planned, viewerId, viewerName, viewerAddress, viewerProvinceId, post, error, onBack, onDelete }: { planned: boolean; viewerId: string; viewerName: string; viewerAddress: string; viewerProvinceId: string; post?: PublishedPost; error: boolean; onBack: () => void; onDelete: () => void }) {
+export function PublishedPostDetail({ planned, viewerId, viewerName, viewerAddress, viewerProvinceId, post, error, onBack, onDelete, onOpenHistory }: { planned: boolean; viewerId: string; viewerName: string; viewerAddress: string; viewerProvinceId: string; post?: PublishedPost; error: boolean; onBack: () => void; onDelete: () => void; onOpenHistory?: () => void }) {
     const isOwnPost = !!post && post.author.id === viewerId;
     const [likedBy, setLikedBy] = useState<string[]>([]);
     const liked = likedBy.includes(viewerId);
@@ -120,7 +120,7 @@ export function PublishedPostDetail({ planned, viewerId, viewerName, viewerAddre
         </main>
         {isOwnPost && post.directBuy && <div className="published-selling-banner">
             <svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M3 2h5v7h4V2h5a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1Z"/><path fill="currentColor" d="M9 2h2v5H9z"/></svg>
-            <span>바로구매로 판매중이에요.</span><button type="button" disabled>설정 정보 보기</button>
+            <span>바로구매로 판매중이에요.</span><button type="button" onClick={onOpenHistory} disabled={!onOpenHistory}>판매 현황</button>
         </div>}
         {planned && !isOwnPost && selectedItems.length > 0 && <div className="published-selection-summary" aria-live="polite"><span>선택한 물품 {selectedItems.length}종 · {selectedCount}개</span><strong>{post?.giveaway ? '나눔' : `${total.toLocaleString('ko-KR')}원`}</strong><small>{post?.directBuy ? '물품 합계 · 배송비와 수수료 별도' : '거래 조건은 채팅으로 확인'}</small></div>}
         <footer className="detail-footer">{isOwnPost ? <>
@@ -135,7 +135,7 @@ export function PublishedPostDetail({ planned, viewerId, viewerName, viewerAddre
             {post.directBuy && <ActionButton className="detail-primary" variant="brandSolid" size="large" onClick={planned ? buy : () => setCheckout(true)}>바로구매</ActionButton>}
         </> : <ActionButton className="published-home" variant="brandSolid" size="large" onClick={close}>홈으로 돌아가기</ActionButton>}</footer>
     </section>
-    {checkout && post && !isOwnPost && <CurrentDirectBuyFlow product={{ title: post.title, price: planned ? total : post.items[0]?.price ?? 0, category: planned ? `선택 물품 ${selectedItems.length}종 · ${selectedCount}개` : post.category, thumbnail, items: planned ? selectedItems.map(item => ({ name: item.name, quantity: quantities[item.id], price: item.price })) : undefined }} buyerName={viewerName} address={viewerAddress} onClose={planned && !purchased ? returnToSelection : () => setCheckout(false)} purchasable initialStep={purchased ? 'status' : 'address'} onPaid={() => { markPurchased(purchaseKey, viewerId); setPurchased(true); if (planned) { addOrder(purchaseKey, Object.fromEntries(selectedItems.map(item => [item.id, quantities[item.id]]))); setSoldItems(getSoldItems(purchaseKey)); setQuantities({}); } /* A paid single-item post, or a planned post whose last item just sold, is a completed sale for the seller's 판매관리 (2026-09-23). */ if (!planned || isSoldOut(purchaseKey, post.items)) { markCompleted(purchaseKey, viewerId); setCompletedBuyer(viewerId); } }} onCancelled={() => { clearPurchase(purchaseKey); setPurchased(false); if (planned) { cancelOrder(purchaseKey); setSoldItems(getSoldItems(purchaseKey)); } clearCompleted(purchaseKey); setCompletedBuyer(null); }} />}
+    {checkout && post && !isOwnPost && <CurrentDirectBuyFlow product={{ title: post.title, price: planned ? total : post.items[0]?.price ?? 0, category: planned ? `선택 물품 ${selectedItems.length}종 · ${selectedCount}개` : post.category, thumbnail, items: planned ? selectedItems.map(item => ({ name: item.name, quantity: quantities[item.id], price: item.price })) : undefined }} buyerName={viewerName} address={viewerAddress} onClose={planned && !purchased ? returnToSelection : () => setCheckout(false)} purchasable initialStep={purchased ? 'status' : 'address'} onPaid={() => { recordOrder({ postKey: purchaseKey, version: planned ? 'planned' : 'current', title: post.title, imageSrc: post.photos[0]?.src, buyerId: viewerId, buyerName: viewerName, buyerNeighborhood: viewerAddress, sellerId: post.author.id ?? '', sellerName: post.author.nickname, sellerNeighborhood: post.author.neighborhood, items: planned ? selectedItems.map(item => ({ id: item.id, name: item.name, quantity: quantities[item.id], price: item.price })) : post.items.slice(0, 1).map(item => ({ id: item.id, name: item.name, quantity: 1, price: item.price })) }); markPurchased(purchaseKey, viewerId); setPurchased(true); if (planned) { addOrder(purchaseKey, Object.fromEntries(selectedItems.map(item => [item.id, quantities[item.id]]))); setSoldItems(getSoldItems(purchaseKey)); setQuantities({}); } /* A paid single-item post, or a planned post whose last item just sold, is a completed sale for the seller's 판매관리 (2026-09-23). */ if (!planned || isSoldOut(purchaseKey, post.items)) { markCompleted(purchaseKey, viewerId); setCompletedBuyer(viewerId); } }} onCancelled={() => { cancelBuyerOrders(purchaseKey, viewerId); clearPurchase(purchaseKey); setPurchased(false); if (planned) { cancelOrder(purchaseKey); setSoldItems(getSoldItems(purchaseKey)); } clearCompleted(purchaseKey); setCompletedBuyer(null); }} />}
     {chat && post && <ChatRoom partner={{ nickname: post.author.nickname, neighborhood: post.author.neighborhood }} product={{ title: post.title, price: postPriceLabel(post), thumbnail, offers: post.offers }} viewerName={viewerName} completed={sold || purchased} onComplete={() => { markCompleted(purchaseKey, viewerId); setCompletedBuyer(viewerId); }} onClose={() => setChat(false)} />}
     </>;
 }
