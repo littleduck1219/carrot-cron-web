@@ -7,7 +7,7 @@ import "./account.css";
 
 type Tab = "selling" | "completed" | "hidden";
 
-export function SalesManagementScreen({ posts, products, ownerId, productVersion, onBack, onOpenHistory }: { posts: PublishedPost[]; products: ManagedProduct[]; ownerId: string; productVersion: 'current' | 'planned'; onBack: () => void; onOpenHistory: (key: string) => void }) {
+export function SalesManagementScreen({ posts, products, ownerId, productVersion, onBack, onOpenHistory, onOpenListing }: { posts: PublishedPost[]; products: ManagedProduct[]; ownerId: string; productVersion: 'current' | 'planned'; onBack: () => void; onOpenHistory: (key: string) => void; onOpenListing: (key: string) => void }) {
     const [tab, setTab] = useState<Tab>("selling");
     const [, setRevision] = useState(0);
     const [menuKey, setMenuKey] = useState<string | null>(null);
@@ -37,8 +37,8 @@ export function SalesManagementScreen({ posts, products, ownerId, productVersion
                 <div className="sales-card-state">{tab === "completed" ? "거래완료" : <>판매중 {item.directBuy && <em><FeedIcon name="shopping" />바로구매</em>}</>}</div>
                 <button className="sales-card-menu" type="button" aria-label={item.title + " 메뉴"} aria-expanded={menuKey === item.key} onClick={() => setMenuKey(value => value === item.key ? null : item.key)}><FeedIcon name="more" /></button>
                 {menuKey === item.key && <div className="sales-menu">{tab === "completed" ? <button type="button" onClick={() => restore(item.key)}>판매중으로 변경</button> : <button type="button" disabled>게시글 관리</button>}</div>}
-                {/* 거래완료 card opens the deal history instead of the post (2026-09-24). */}
-                {tab === "completed" ? <button type="button" className="sales-summary purchase-summary" onClick={() => onOpenHistory(item.key)}>{item.imageSrc ? <img src={item.imageSrc} alt="" /> : <span><FeedIcon name="shopping" /></span>}<div><h2>{item.title}</h2><p>{item.neighborhood} · {item.ageLabel}</p><strong>{item.price}</strong></div></button> : <div className="sales-summary">{item.imageSrc ? <img src={item.imageSrc} alt="" /> : <span><FeedIcon name="shopping" /></span>}<div><h2>{item.title}</h2><p>{item.neighborhood} · {item.ageLabel}</p><strong>{item.price}</strong></div></div>}
+                {/* 판매중 card opens the post; 거래완료 card opens the deal history (planned) or the post (current) via onOpenHistory (2026-09-24). */}
+                <button type="button" className="sales-summary purchase-summary" onClick={() => (tab === "completed" ? onOpenHistory : onOpenListing)(item.key)}>{item.imageSrc ? <img src={item.imageSrc} alt="" /> : <span><FeedIcon name="shopping" /></span>}<div><h2>{item.title}</h2><p>{item.neighborhood} · {item.ageLabel}</p><strong>{item.price}</strong></div></button>
                 <div className="sales-metrics"><span>◉ {item.views}</span><span>● {item.chats}</span><span>♥ {item.likes}</span></div>
                 {tab === "selling" ? <div className="sales-actions"><button disabled>끌어올리기</button><button disabled>홍보하기</button></div> : <button className="sales-review" disabled>받은 후기 보기</button>}
             </article>)}
