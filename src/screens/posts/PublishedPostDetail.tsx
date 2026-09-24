@@ -120,7 +120,7 @@ export function PublishedPostDetail({ planned, viewerId, viewerName, viewerAddre
         </main>
         {isOwnPost && post.directBuy && <div className="published-selling-banner">
             <svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M3 2h5v7h4V2h5a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1Z"/><path fill="currentColor" d="M9 2h2v5H9z"/></svg>
-            <span>바로구매로 판매중이에요.</span><button type="button" onClick={onOpenHistory} disabled={!onOpenHistory}>판매 현황</button>
+            <span>바로구매로 판매중이에요.</span>{planned && onOpenHistory ? <button type="button" onClick={onOpenHistory}>판매 현황</button> : <button type="button" disabled>설정 정보 보기</button>}
         </div>}
         {planned && !isOwnPost && selectedItems.length > 0 && <div className="published-selection-summary" aria-live="polite"><span>선택한 물품 {selectedItems.length}종 · {selectedCount}개</span><strong>{post?.giveaway ? '나눔' : `${total.toLocaleString('ko-KR')}원`}</strong><small>{post?.directBuy ? '물품 합계 · 배송비와 수수료 별도' : '거래 조건은 채팅으로 확인'}</small></div>}
         <footer className="detail-footer">{isOwnPost ? <>

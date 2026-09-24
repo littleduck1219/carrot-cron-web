@@ -133,9 +133,10 @@ export default function App() {
     const openMy = () => { openedFromHome.current = true; window.location.hash = accountHash(routePrefix, "my"); };
     const openSales = () => { window.location.hash = accountHash(routePrefix, "sales"); };
     const openPurchases = () => { window.location.hash = accountHash(routePrefix, "purchases"); };
-    const openHistory = (key: string) => { window.location.hash = historyHash(routePrefix, key); };
     // Listing keys: post:<id> lives in the current version; <version>:<productId> carries its own version.
     const hashForKey = (key: string, keyVersion: 'current' | 'planned' = version) => key.startsWith('post:') ? `${keyVersion === 'planned' ? '/planned' : ''}/post/${key.slice(5)}` : `${key.startsWith('planned:') ? '/planned' : ''}/product/${key.slice(key.indexOf(':') + 1)}`;
+    // 현안: a completed listing is the post itself, so the card opens the post (like the real app). 기획안: the card opens the per-order 거래내역.
+    const openHistory = (key: string) => { openedFromHome.current = false; window.location.hash = planned ? historyHash(routePrefix, key) : hashForKey(key); };
     const openOrderPost = (order: DealOrder) => { openedFromHome.current = false; window.location.hash = hashForKey(order.postKey, order.version); };
     const historyPost = historyKey?.startsWith('post:') ? versionPosts.find(item => item.id === historyKey.slice(5)) : undefined;
     const historyProduct = historyKey && !historyKey.startsWith('post:') ? managedProducts.find(item => `${version}:${item.id}` === historyKey) : undefined;
