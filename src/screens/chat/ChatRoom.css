@@ -5,8 +5,7 @@
 .chat-header-actions { display: flex; justify-content: flex-end; }
 .chat-header-actions > button:disabled { opacity: 1; }
 .chat-header-actions svg { width: 22px; height: 22px; }
-/* The name is a hidden control (looks like plain text); overrides the icon-button size above. */
-.chat-header > button.chat-partner { display: flex; flex-direction: column; align-items: center; gap: 2px; width: 100%; height: auto; min-width: 0; font: inherit; white-space: nowrap; cursor: pointer; }
+.chat-partner { display: flex; flex-direction: column; align-items: center; gap: 2px; min-width: 0; white-space: nowrap; }
 .chat-partner-name { display: inline-flex; align-items: center; gap: 6px; font-size: 18px; font-weight: 700; }
 .chat-partner-name em { padding: 2px 7px; border-radius: 10px; background: #4a2a12; color: #ff8a3d; font-size: 12px; font-style: normal; font-weight: 700; }
 .chat-partner > small { color: #a2a5ad; font-size: 13px; }
@@ -16,7 +15,8 @@
 .chat-product > div:last-child { min-width: 0; }
 .chat-product p { margin: 0; }
 .chat-product-title { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 15px; line-height: 20px; }
-.chat-status { display: inline-flex; align-items: center; gap: 2px; margin-right: 6px; font-weight: 700; }
+.chat-status { display: inline-flex; align-items: center; gap: 2px; margin-right: 6px; padding: 0; border: 0; background: transparent; color: inherit; font: inherit; font-weight: 700; cursor: pointer; }
+.chat-status:disabled { cursor: default; color: inherit; }
 .chat-status svg { width: 14px; height: 14px; color: #a2a5ad; }
 .chat-product-price { margin-top: 2px; font-size: 15px; }
 .chat-product-price strong { margin-right: 6px; }
@@ -51,4 +51,15 @@
 .chat-input svg { flex: none; width: 24px; height: 24px; color: #d2d3d7; }
 @media (prefers-reduced-motion: reduce) { .chat-room { animation-duration: 1ms; } }
 
-.chat-notice { position: absolute; z-index: 3; bottom: 90px; left: 20px; right: 20px; padding: 14px 18px; border-radius: 10px; background: #3d414a; box-shadow: 0 3px 16px #0006; color: #fff; font-size: 14px; text-align: center; }
+
+/* Status sheet: bottom sheet over the chat, like the app's status dropdown. */
+.chat-sheet-backdrop { position: absolute; inset: 0; z-index: 4; display: flex; align-items: flex-end; background: #0009; animation: chat-sheet-dim 160ms ease both; }
+.chat-status-sheet { width: 100%; box-sizing: border-box; padding: 20px 16px calc(var(--seed-safe-area-bottom) + 20px); border-radius: 20px 20px 0 0; background: #1e2126; animation: chat-sheet-up 240ms cubic-bezier(.22,1,.36,1) both; }
+.chat-status-sheet h2 { margin: 0 0 12px; font-size: 17px; }
+.chat-status-sheet > button { display: flex; align-items: center; justify-content: space-between; width: 100%; min-height: 52px; padding: 8px 4px; border: 0; background: transparent; color: #f1f2f3; font-size: 17px; text-align: left; cursor: pointer; }
+.chat-status-sheet > button[aria-checked="true"] { color: #ff8a3d; }
+.chat-status-sheet > button:disabled { color: #5c606a; cursor: default; }
+.chat-status-sheet > button small { display: block; margin-top: 2px; font-size: 12px; color: #8d9099; }
+@keyframes chat-sheet-up { from { transform: translateY(100%); } to { transform: none; } }
+@keyframes chat-sheet-dim { from { opacity: 0; } to { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .chat-sheet-backdrop, .chat-status-sheet { animation: none; } }

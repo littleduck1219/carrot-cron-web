@@ -34,23 +34,27 @@ const MESSAGES = (place: string) => [
 export function ChatRoom({ partner, product, viewerName, completed = false, onComplete, blockedMessage, onClose }: { partner: ChatPartner; product: ChatProduct; viewerName: string; completed?: boolean; onComplete?: () => void; /** Shown when the name is tapped but completion is not allowed (e.g. no items selected). */ blockedMessage?: string; onClose: () => void }) {
     const ref = useRef<HTMLElement>(null);
     const [review, setReview] = useState(false);
-    const [notice, setNotice] = useState('');
-    useDialogControls(ref, !review, onClose);
-    const tapName = () => { if (completed) return; if (onComplete) onComplete(); else if (blockedMessage) setNotice(blockedMessage); };
+    // Status sheet (판매중 / 예약중 / 거래완료), after the real app's status dropdown on the product row (2026-09-24). 거래완료 runs onComplete.
+    const [sheet, setSheet] = useState(false);
+    const [reserved, setReserved] = useState(false);
+    const sheetRef = useRef<HTMLDivElement>(null);
+    useDialogControls(ref, !review && !sheet, onClose);
+    useDialogControls(sheetRef, sheet, () => setSheet(false));
+    const status = completed ? '거래완료' : reserved ? '예약중' : '판매중';
     return <>
     <section ref={ref} className="chat-room" role="dialog" aria-modal="true" aria-label={`${partner.nickname}님과의 채팅`} tabIndex={-1} inert={review}>
         <header className="chat-header">
             <button type="button" aria-label="뒤로 가기" onClick={onClose}><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="m15 3-9 9 9 9" fill="none" stroke="currentColor" strokeWidth="1.8" /></svg></button>
-            <button type="button" className="chat-partner" aria-label={completed ? `${partner.nickname}, 거래 완료됨` : `${partner.nickname}, 누르면 거래 완료 처리`} onClick={tapName}>
+            <div className="chat-partner">
                 <span className="chat-partner-name"><strong>{partner.nickname}</strong>{partner.temperature && <em>{partner.temperature}</em>}</span>
                 <small>{[partner.neighborhood, '보통 10분 이내 응답'].filter(Boolean).join(', ')}</small>
-            </button>
+            </div>
             <div className="chat-header-actions"><button type="button" aria-label="통화" disabled><Icon name="phone" /></button><button type="button" aria-label="채팅방 메뉴" disabled><Icon name="more" /></button></div>
         </header>
         <div className="chat-product">
             {product.thumbnail && <div className="chat-thumbnail">{product.thumbnail}</div>}
             <div>
-                <p className="chat-product-title"><b className="chat-status">{completed ? '거래완료' : '판매중'}<Icon name="chevron" /></b>{product.title}</p>
+                <p className="chat-product-title"><button type="button" className="chat-status" aria-haspopup="dialog" aria-expanded={sheet} disabled={completed} onClick={() => setSheet(true)}>{status}<Icon name="chevron" /></button>{product.title}</p>
                 <p className="chat-product-price"><strong>{product.dealLabel ?? product.price}</strong>{!product.dealLabel && product.offers === false && <span>(가격 제안 불가)</span>}</p>
             </div>
         </div>
@@ -68,7 +72,15 @@ export function ChatRoom({ partner, product, viewerName, completed = false, onCo
             </div>)}
             <button type="button" className="chat-ai" aria-label="AI 답장 추천" disabled><Icon name="spark" /></button>
         </main>
-        {notice && <div className="chat-notice" role="status" onClick={() => setNotice('')}>{notice}</div>}
+        {sheet && <div className="chat-sheet-backdrop" onClick={() => setSheet(false)}><div ref={sheetRef} className="chat-status-sheet" role="dialog" aria-modal="true" aria-label="거래 상태 변경" tabIndex={-1} onClick={event => event.stopPropagation()}>
+            <h2>거래 상태 변경</h2>
+            {(['판매중', '예약중', '거래완료'] as const).map(option => {
+                const blocked = option === '거래완료' && !onComplete;
+                return <button type="button" key={option} role="menuitemradio" aria-checked={status === option} disabled={blocked} onClick={() => { if (option === '거래완료') { onComplete?.(); } else setReserved(option === '예약중'); setSheet(false); }}>
+                    <span>{option}{blocked && blockedMessage && <small>{blockedMessage}</small>}</span>{status === option && <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="m5 12 5 5 9-10" /></svg>}
+                </button>;
+            })}
+        </div></div>}
         <footer className="chat-composer">
             <button type="button" aria-label="첨부" disabled>＋</button>
             <div className="chat-input"><input type="text" placeholder="메시지 보내기" aria-label="메시지" disabled /><Icon name="smile" /></div>
