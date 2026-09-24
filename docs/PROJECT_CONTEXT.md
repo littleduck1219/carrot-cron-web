@@ -21,6 +21,7 @@
 - 2026-09-17 추가: 채팅방(`ChatRoom.tsx`)의 `후기 보내기` 버튼이 `src/screens/review/ReviewFlow.tsx`의 선호도·칭찬 → 작성 → 완료 흐름을 연다. 보낸 후기는 저장하지 않는다.
 - 2026-09-17 추가: 기획안 게시글은 물품 단위로 팔린다(`purchases.ts`의 item-sales/item-order 세션 저장). 팔린 물품은 체크 불가·`판매완료`, 완판이면 게시글 거래완료. 결제 기록은 구매자 ID 기준(v2). 렌더 중 sessionStorage를 직접 읽어 파생값을 만들면 React Compiler 메모화로 갱신되지 않으니 상태에서 파생한다.
 - 2026-09-23 추가: 기획안 글쓰기는 판매 물품 카드가 카테고리 아래에 오고, 설명 라벨의 `판매 물품 가져오기` 버튼이 카드의 이름·가격·수량을 줄 단위 텍스트로 설명 커서 위치에 넣는다(중복 입력 피드백 대응). 현안 글쓰기 순서는 그대로.
+- 2026-09-24 추가: 결제마다 `purchases.ts`의 주문 원장(`re-carrot.orders.session.v1`)에 기록. 판매관리 거래완료 카드 → `DealHistoryScreen`(`#/sales/history/<키>`), 내 게시글 배너 `판매 현황`도 같은 페이지. 나의 당근 구매내역 → `PurchaseHistoryScreen`(`#/purchases`), 후기 보내기 연결. 상태바 시계는 모든 세션 기록 초기화.
 <!-- CURRENT_HANDOFF:END -->
 
 갱신: 2026-09-16
