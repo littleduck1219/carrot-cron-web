@@ -39,7 +39,8 @@ export function PublishedPostDetail({ planned, viewerId, viewerName, viewerAddre
     const [completedBuyer, setCompletedBuyer] = useState(() => getCompletedBuyer(purchaseKey));
     // Planned posts sell per item: paid items become uncheckable 판매완료; the post is sold once every item is.
     const [soldItems, setSoldItems] = useState(() => getSoldItems(purchaseKey));
-    const remaining = (item: { id: string; quantity: number; soldOut?: boolean }) => item.soldOut ? 0 : item.quantity - (soldItems[item.id] ?? 0);
+    // Sold-out flag, or a zero price on a non-giveaway post, means the item is already sold (user rule 2026-09-24: never show it as 나눔).
+    const remaining = (item: { id: string; quantity: number; price: number; soldOut?: boolean }) => (item.soldOut || (!post?.giveaway && item.price === 0)) ? 0 : item.quantity - (soldItems[item.id] ?? 0);
     // Derived from state, not the store: the React Compiler memoizes this line by its inputs, so a store read here would go stale after a sale.
     const sold = completedBuyer !== null || (!!post && post.items.length > 0 && post.items.every(item => remaining(item) < 1));
     const isBuyer = completedBuyer === viewerId || purchased; // the paying account keeps chat after a sell-out
@@ -92,7 +93,7 @@ export function PublishedPostDetail({ planned, viewerId, viewerName, viewerAddre
                                     <output aria-label={`${item.name} 구매 수량`}>{quantities[item.id]}</output>
                                     <button type="button" aria-label={`${item.name} 수량 늘리기`} disabled={quantities[item.id] >= remaining(item)} onClick={() => setQuantities(current => ({ ...current, [item.id]: Math.min(remaining(item), current[item.id] + 1) }))}>+</button>
                                 </div>}
-                            </div><b>{post.giveaway || item.price === 0 ? '나눔' : `${item.price.toLocaleString('ko-KR')}원`}<small>{post.giveaway || item.price === 0 ? '' : ' /개'}</small></b>
+                            </div><b>{post.giveaway ? '나눔' : item.price === 0 ? '판매완료' : `${item.price.toLocaleString('ko-KR')}원`}<small>{post.giveaway || item.price === 0 ? '' : ' /개'}</small></b>
                         </div>)}
                     </section>}
                     <section className="detail-meeting" aria-label="거래 희망 장소"><p><strong>거래 희망 장소</strong> {post.author.tradePlace} <span>›</span></p>{post.mapPhoto ? <img className="published-map" src={post.mapPhoto} alt={`${post.author.tradePlace} 거래 희망 장소 지도`} /> : <SourceImage photo={region("224027335", 16, 272, 408, 120)} label={`${post.author.tradePlace} 거래 희망 장소 지도`} />}</section>
