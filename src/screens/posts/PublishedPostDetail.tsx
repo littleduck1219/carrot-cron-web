@@ -91,13 +91,13 @@ export function PublishedPostDetail({ planned, viewerId, viewerName, viewerAddre
                         {selectionError && <p className="selection-error" role="alert">구매할 물품을 선택해주세요.</p>}
                         {post.items.map(item => <div className="published-item" data-selected={!isOwnPost && !!quantities[item.id]} data-sold-out={remaining(item) < 1} key={item.id}>
                             {!isOwnPost && <input type="checkbox" aria-label={`${item.name} 선택`} checked={!!quantities[item.id]} disabled={remaining(item) < 1} onChange={event => { setQuantities(current => ({ ...current, [item.id]: event.target.checked ? 1 : 0 })); setSelectionError(false); }} />}
-                            <div className="published-item-name"><strong>{item.name}</strong><p>{remaining(item) < 1 ? '판매완료' : `수량 ${remaining(item)}개`}</p>
+                            <div className="published-item-name"><strong>{item.name}</strong>{remaining(item) > 0 && <p>수량 {remaining(item)}개</p>}
                                 {!isOwnPost && !!quantities[item.id] && remaining(item) > 1 && <div className="purchase-quantity" aria-label="구매 수량">
                                     <button type="button" aria-label={`${item.name} 수량 줄이기`} disabled={quantities[item.id] <= 1} onClick={() => setQuantities(current => ({ ...current, [item.id]: Math.max(1, current[item.id] - 1) }))}>−</button>
                                     <output aria-label={`${item.name} 구매 수량`}>{quantities[item.id]}</output>
                                     <button type="button" aria-label={`${item.name} 수량 늘리기`} disabled={quantities[item.id] >= remaining(item)} onClick={() => setQuantities(current => ({ ...current, [item.id]: Math.min(remaining(item), current[item.id] + 1) }))}>+</button>
                                 </div>}
-                            </div><b>{post.giveaway ? '나눔' : `${item.price.toLocaleString('ko-KR')}원`}<small>{post.giveaway ? '' : ' /개'}</small></b>
+                            </div><b>{remaining(item) < 1 ? '판매완료' : post.giveaway ? '나눔' : `${item.price.toLocaleString('ko-KR')}원`}<small>{post.giveaway || remaining(item) < 1 ? '' : ' /개'}</small></b>
                         </div>)}
                     </section>}
                     <section className="detail-meeting" aria-label="거래 희망 장소"><p><strong>거래 희망 장소</strong> {post.author.tradePlace} <span>›</span></p>{post.mapPhoto ? <img className="published-map" src={post.mapPhoto} alt={`${post.author.tradePlace} 거래 희망 장소 지도`} /> : <SourceImage photo={region("224027335", 16, 272, 408, 120)} label={`${post.author.tradePlace} 거래 희망 장소 지도`} />}</section>
