@@ -45,7 +45,9 @@
 .sales-card-state svg { width: 15px; height: 15px; }
 .sales-card-menu { position: absolute; top: 12px; right: 10px; width: 34px; height: 34px; border: 0; background: transparent; }
 .sales-menu { position: absolute; z-index: 2; top: 45px; right: 14px; padding: 6px; border: 1px solid #45474f; border-radius: 10px; background: #2a2c32; box-shadow: 0 8px 20px #0008; }
-.sales-menu button { min-height: 38px; padding: 0 12px; border: 0; background: transparent; white-space: nowrap; }
+.sales-menu button { display: block; width: 100%; min-height: 38px; padding: 0 12px; border: 0; background: transparent; color: #f1f2f3; text-align: left; white-space: nowrap; cursor: pointer; }
+.sales-menu button:disabled { color: #6b6f78; cursor: default; }
+.sales-menu .sales-menu-delete:not(:disabled) { color: #ff6b6b; }
 .sales-summary { display: flex; gap: 12px; margin-top: 12px; }
 .sales-summary > img, .sales-summary > span { width: 82px; height: 82px; flex: none; border-radius: 8px; object-fit: cover; background: #2a2c32; display: grid; place-items: center; }
 .sales-summary > div { min-width: 0; }
