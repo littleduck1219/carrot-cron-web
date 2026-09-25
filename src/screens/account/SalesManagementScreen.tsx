@@ -38,8 +38,8 @@ export function SalesManagementScreen({ posts, products, ownerId, productVersion
                 <button className="sales-card-menu" type="button" aria-label={item.title + " 메뉴"} aria-expanded={menuKey === item.key} onClick={() => setMenuKey(value => value === item.key ? null : item.key)}><FeedIcon name="more" /></button>
                 {menuKey === item.key && <div className="sales-menu">{tab === "completed" ? <button type="button" onClick={() => restore(item.key)}>판매중으로 변경</button> : <>
                     <button type="button" disabled>게시글 관리</button>
-                    {/* Only authored posts can be deleted; built-in samples and static products stay. */}
-                    {(() => { const post = postByKey.get(item.key); const deletable = !!post && !post.builtIn && !!onDelete; return <button type="button" className="sales-menu-delete" disabled={!deletable} onClick={() => { setMenuKey(null); if (deletable && window.confirm('게시글을 삭제할까요?')) onDelete(post.id); }}>삭제하기</button>; })()}
+                    {/* Posts (written or built-in samples) can be deleted; static products stay. */}
+                    {(() => { const post = postByKey.get(item.key); const deletable = !!post && !!onDelete; return <button type="button" className="sales-menu-delete" disabled={!deletable} onClick={() => { setMenuKey(null); if (deletable && window.confirm('게시글을 삭제할까요?')) onDelete(post.id); }}>삭제하기</button>; })()}
                 </>}</div>}
                 {/* 판매중 card opens the post; 거래완료 card opens the deal history (planned) or the post (current) via onOpenHistory (2026-09-24). */}
                 <button type="button" className="sales-summary purchase-summary" onClick={() => (tab === "completed" ? onOpenHistory : onOpenListing)(item.key)}>{item.imageSrc ? <img src={item.imageSrc} alt="" /> : <span><FeedIcon name="shopping" /></span>}<div><h2>{item.title}</h2><p>{item.neighborhood} · {item.ageLabel}</p><strong>{item.price}</strong></div></button>
