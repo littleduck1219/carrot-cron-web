@@ -271,8 +271,9 @@
             {
                 "id": "book-28",
                 "name": "조국의 시간",
-                "price": 0,
-                "quantity": 1
+                "price": 3000,
+                "quantity": 1,
+                "soldOut": true
             },
             {
                 "id": "book-29",
@@ -1192,14 +1193,14 @@
             {
                 "id": "sns-book-04",
                 "name": "지구에서 한아뿐",
-                "price": 0,
+                "price": 9000,
                 "quantity": 1,
                 "soldOut": true
             },
             {
                 "id": "sns-book-05",
                 "name": "채식주의자",
-                "price": 0,
+                "price": 8000,
                 "quantity": 1,
                 "soldOut": true
             },
@@ -1212,7 +1213,7 @@
             {
                 "id": "sns-book-07",
                 "name": "잘 살아라 그게 최고의 복수다",
-                "price": 0,
+                "price": 9000,
                 "quantity": 1,
                 "soldOut": true
             },
@@ -1243,7 +1244,7 @@
             {
                 "id": "sns-book-12",
                 "name": "급류",
-                "price": 0,
+                "price": 11000,
                 "quantity": 1,
                 "soldOut": true
             }

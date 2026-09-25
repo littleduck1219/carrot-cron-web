@@ -31,7 +31,7 @@ export function DealHistoryScreen({ postKey, title, imageSrc, post, viewerName, 
     const itemCount = paid.reduce((sum, order) => sum + order.items.reduce((n, item) => n + item.quantity, 0), 0);
     const goods = paid.reduce((sum, order) => sum + order.goods, 0);
     const sold = getSoldItems(postKey);
-    const remaining = post ? post.items.filter(item => !(item.soldOut || (!post.giveaway && item.price === 0)) && item.quantity - (sold[item.id] ?? 0) > 0).length : 0;
+    const remaining = post ? post.items.filter(item => !item.soldOut && item.quantity - (sold[item.id] ?? 0) > 0).length : 0;
     return <>
     <div className="sales-screen history-screen" inert={chat !== null}>
         <header className="sales-header"><button type="button" aria-label="뒤로" onClick={onBack}><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="m15 3-9 9 9 9" fill="none" stroke="currentColor" strokeWidth="1.8" /></svg></button><h1>거래내역</h1><button type="button" onClick={onOpenPost}>게시글 보기</button></header>

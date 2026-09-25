@@ -38,7 +38,7 @@ export const cancelOrder = (id: string) => {
 };
 /** Any paid item on a planned post counts as a sale for the seller's 판매관리, even while other items remain. */
 export const hasSales = (id: string) => Object.values(getSoldItems(id)).some(qty => qty > 0);
-export const isSoldOut = (id: string, items: { id: string; quantity: number; price?: number; soldOut?: boolean }[]) => { const sold = getSoldItems(id); return items.length > 0 && items.every(item => item.soldOut || item.price === 0 || item.quantity - (sold[item.id] ?? 0) < 1); };
+export const isSoldOut = (id: string, items: { id: string; quantity: number; price?: number; soldOut?: boolean }[]) => { const sold = getSoldItems(id); return items.length > 0 && items.every(item => item.soldOut || item.quantity - (sold[item.id] ?? 0) < 1); };
 
 /** Restores a deal to its initial state so the purchase and completion flow can be run again. */
 export const resetDeal = (id: string) => {
