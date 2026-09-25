@@ -6,6 +6,7 @@ import { PostMenu } from './PostMenu';
 import { CurrentDirectBuyFlow } from '../checkout/CurrentDirectBuyFlow';
 import { addOrder, cancelBuyerOrders, cancelOrder, clearCompleted, clearPurchase, getCompletedBuyer, getSoldItems, isPurchased, isSoldOut, markCompleted, markPurchased, recordOrder } from '../checkout/purchases';
 import { ChatRoom } from '../chat/ChatRoom';
+import { postChats } from '../chat/postChats';
 import { Cards, DetailIcon, SourceImage } from '../detail/ProductDetail';
 import { region } from '../detail/productData';
 import { macbookBundle } from '../detail/macbookBundleData';
@@ -149,6 +150,6 @@ export function PublishedPostDetail({ planned, viewerId, viewerName, viewerAddre
             setDealDone(true);
             if (!planned || isSoldOut(purchaseKey, post.items)) { markCompleted(purchaseKey, viewerId); setCompletedBuyer(viewerId); }
         }}
-        blockedMessage={planned ? '거래할 물품을 먼저 선택해 주세요.' : undefined} onClose={() => setChat(false)} />}
+        blockedMessage={planned ? '거래할 물품을 먼저 선택해 주세요.' : undefined} messages={postChats[post.id]} onClose={() => setChat(false)} />}
     </>;
 }

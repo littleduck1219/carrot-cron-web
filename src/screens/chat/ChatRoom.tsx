@@ -1,6 +1,7 @@
 import { useRef, useState, type ReactNode } from 'react';
 import { useDialogControls } from '../write/useDialogControls';
 import { ReviewFlow } from '../review/ReviewFlow';
+import type { ChatMessage } from './postChats';
 import './ChatRoom.css';
 
 export type ChatPartner = { nickname: string; temperature?: string; neighborhood?: string };
@@ -22,7 +23,7 @@ function Icon({ name }: { name: 'chevron' | 'phone' | 'more' | 'calendar' | 'won
 }
 
 // Sample exchange shaped after the captured chat (2026-09-17), written from the buyer's side; nothing is sent.
-const MESSAGES = (place: string) => [
+const MESSAGES = (place: string): ChatMessage[] => [
     { mine: true, text: '안녕하세요. 혹시 직거래 장소는 어디인가요?', time: '오전 9:51' },
     { mine: false, text: `${place} 근처에서 가능합니다`, time: '오전 10:04' },
     { mine: true, text: '구매가 언제셨을까요', time: '오전 10:14' },
@@ -31,7 +32,7 @@ const MESSAGES = (place: string) => [
 ];
 
 /** Static chat room styled after the captured room. The partner name is a hidden control that marks the deal complete, which enables 후기 보내기. */
-export function ChatRoom({ partner, product, viewerName, completed = false, onComplete, blockedMessage, onClose }: { partner: ChatPartner; product: ChatProduct; viewerName: string; completed?: boolean; onComplete?: () => void; /** Shown when the name is tapped but completion is not allowed (e.g. no items selected). */ blockedMessage?: string; onClose: () => void }) {
+export function ChatRoom({ partner, product, viewerName, completed = false, onComplete, blockedMessage, messages, onClose }: { partner: ChatPartner; product: ChatProduct; viewerName: string; completed?: boolean; onComplete?: () => void; /** Shown when the name is tapped but completion is not allowed (e.g. no items selected). */ blockedMessage?: string; /** Post-specific conversation; falls back to the generic exchange. */ messages?: ChatMessage[]; onClose: () => void }) {
     const ref = useRef<HTMLElement>(null);
     const [review, setReview] = useState(false);
     // Status sheet (판매중 / 예약중 / 거래완료), after the real app's status dropdown on the product row (2026-09-24). 거래완료 runs onComplete.
@@ -65,7 +66,7 @@ export function ChatRoom({ partner, product, viewerName, completed = false, onCo
         </div>
         <main className="chat-messages" aria-label="대화 내용">
             <p className="chat-date">{new Date().toLocaleDateString('ko-KR', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
-            {MESSAGES(partner.neighborhood ?? '거래 희망 장소').map((message, index) => <div className={`chat-row ${message.mine ? 'chat-mine' : 'chat-theirs'}`} key={index}>
+            {(messages ?? MESSAGES(partner.neighborhood ?? '거래 희망 장소')).map((message, index) => <div className={`chat-row ${message.mine ? 'chat-mine' : 'chat-theirs'}`} key={index}>
                 {!message.mine && <span className="chat-avatar"><Icon name="person" /></span>}
                 <span className="chat-meta">{message.read && <b>읽음</b>}<time>{message.time}</time></span>
                 <p className="chat-bubble">{message.text}</p>
