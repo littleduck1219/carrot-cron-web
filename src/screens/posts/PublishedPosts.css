@@ -5,7 +5,8 @@
 .published-items { border-top: 1px solid #30333a; padding-top: 20px; margin-bottom: 24px; }
 .published-items h2 { font-size: 16px; margin: 0 0 12px; }
 .published-items h2 span { color: #a2a5ad; font-weight: 400; }
-.published-item { display: flex; align-items: center; gap: 12px; justify-content: space-between; margin-bottom: 8px; padding: 14px 16px; border: 1px solid #30333a; border-radius: 12px; transition: background 160ms ease, border-color 160ms ease; }
+.published-item { display: flex; align-items: center; gap: 12px; justify-content: space-between; box-sizing: border-box; min-height: 75px; margin-bottom: 8px; padding: 14px 16px; border: 1px solid #30333a; border-radius: 12px; transition: background 160ms ease, border-color 160ms ease; }
+/* Sold-out cards drop the quantity line; min-height keeps every card the same height. */
 .published-item > div { min-width: 0; overflow-wrap: anywhere; }
 .published-item strong { font-size: 16px; }
 .published-item p { margin: 6px 0 0; font-size: 13px; color: #a2a5ad; }
