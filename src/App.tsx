@@ -10,7 +10,7 @@ import { ProductDetail } from "./screens/detail/ProductDetail";
 import { isProductId, productDetails, type ProductId } from "./screens/detail/productData";
 import { getSellerDistrict, sellers } from "./data/sellers";
 import { isPublicDemo } from "./data/publicDemo";
-import { defaultPosts, hideBuiltIn, restoreBuiltIns, visibleDefaultPosts } from "./data/defaultPosts";
+import { defaultPosts } from "./data/defaultPosts";
 import { resetAllDeals } from "./screens/checkout/purchases";
 import { MyCarrotScreen } from "./screens/account/MyCarrotScreen";
 import { SalesManagementScreen } from "./screens/account/SalesManagementScreen";
@@ -26,7 +26,7 @@ function subscribeToRoute(notify: () => void) {
 function getRoute() { return window.location.hash; }
 
 export default function App() {
-    const [posts, setPosts] = useState<PublishedPost[]>(() => visibleDefaultPosts().map(post => ({ ...post })));
+    const [posts, setPosts] = useState<PublishedPost[]>(() => defaultPosts.map(post => ({ ...post })));
     const [postsLoading, setPostsLoading] = useState(!isPublicDemo);
     const [postsError, setPostsError] = useState(false);
     useEffect(() => {
@@ -40,7 +40,7 @@ export default function App() {
     const { user, activeNeighborhood, switchUser, switchGuest } = usePrototypeUser();
     // Bumped by the clock reset so every screen remounts and rereads the cleared session records.
     const [dealsRevision, setDealsRevision] = useState(0);
-    const resetDeals = () => { resetAllDeals(); restoreBuiltIns(); setPosts(current => [...visibleDefaultPosts().filter(post => !current.some(item => item.id === post.id)).map(post => ({ ...post })), ...current]); setDealsRevision(value => value + 1); };
+    const resetDeals = () => { resetAllDeals(); setDealsRevision(value => value + 1); };
     // Existing local posts also follow their author's newly fixed account location.
     const displayPosts = posts.map(post => {
         const author = prototypeUsers.find(account => account.id === post.author.id);
@@ -169,9 +169,8 @@ export default function App() {
     };
     const removePost = (id: string) => {
         if (isPublicDemo) return;
-        // Built-in samples are hidden (restored by the clock reset); written posts are deleted from storage.
-        if (defaultPosts.some(post => post.id === id)) hideBuiltIn(id); else deletePost(id).catch(() => setPostsError(true));
         setPosts(current => current.filter(post => post.id !== id));
+        deletePost(id).catch(() => setPostsError(true));
         if (publishedId === id) { openedFromHome.current = false; window.location.replace(`#${routePrefix}/`); }
     };
     return <DeviceFrame userName={user.nickname} onSwitchUser={switchUser} onSwitchGuest={switchGuest} onResetDeals={resetDeals} version={version} onSwitchVersion={switchVersion}>
