@@ -77,8 +77,8 @@ export function DeviceFrame({ version, onSwitchVersion, userName, onSwitchUser, 
                 <p className="stage-guide-lead">화면 상단의 상태바 요소가 숨은 버튼이에요.</p>
                 <dl>
                     <dt>다이나믹 아일랜드</dt><dd>현안 ↔ 신규 기획 전환 <span>신규일 때 연두 점</span></dd>
-                    <dt>배터리</dt><dd>박경덕(서울, 판매자) ↔ 유주연(경상북도)</dd>
-                    <dt>와이파이</dt><dd>아무개(서울) 계정으로 전환</dd>
+                    <dt>배터리</dt><dd>박경덕(서울, 판매자) ↔ 유주연(경상북도, 구매자)</dd>
+                    <dt>와이파이</dt><dd>아무개(서울, 구매자) 계정으로 전환</dd>
                     <dt>시계</dt><dd>판매·구매 기록 초기화</dd>
                 </dl>
                 <h3>이렇게 따라 해 보세요</h3>
