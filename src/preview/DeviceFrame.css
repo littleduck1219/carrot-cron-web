@@ -111,6 +111,39 @@
 
 .device-stage { position: absolute; inset: 0; }
 
+/* Usage guide beside the device; only when the stage is wide enough that it stays clear of the frame. */
+.stage-guide {
+  position: absolute;
+  z-index: 2;
+  left: 32px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 300px;
+  max-height: calc(100vh - 48px);
+  overflow: auto;
+  padding: 22px 24px;
+  border-radius: 16px;
+  background: #1f2126;
+  border: 1px solid #2e3138;
+  color: #b0b3ba;
+  font-size: 14px;
+  line-height: 1.55;
+  display: none;
+}
+@media (min-width: 1180px) { .stage-guide { display: block; } }
+.stage-guide h2 { margin: 0 0 4px; font-size: 17px; font-weight: 700; color: #fff; }
+.stage-guide h3 { margin: 18px 0 8px; font-size: 13px; font-weight: 700; color: #ff6600; }
+.stage-guide-lead { margin: 0 0 14px; font-size: 13px; color: #8a8e96; }
+.stage-guide dl { margin: 0; display: grid; grid-template-columns: 92px 1fr; gap: 6px 10px; }
+.stage-guide dt { font-weight: 700; color: #fff; }
+.stage-guide dd { margin: 0; }
+.stage-guide dd span { display: block; font-size: 12px; color: #8a8e96; }
+.stage-guide ol { margin: 0; padding-left: 20px; }
+.stage-guide ol li { margin: 0 0 6px; }
+.stage-guide b { color: #ff6600; font-weight: 700; }
+.stage-guide-notes { margin: 16px 0 0; padding: 12px 0 0; border-top: 1px solid #2e3138; list-style: none; font-size: 12.5px; color: #8a8e96; }
+.stage-guide-notes li { margin: 0 0 4px; }
+
 .dynamic-island:focus-visible { outline: 2px solid #ff6f00; outline-offset: 3px; }
 
 .dynamic-island[aria-pressed="true"]::after {

@@ -18,8 +18,9 @@ assert.equal(planned?.title, current.title);
 assert.equal(current?.items.length, 1);
 assert.equal(current?.items[0].price, 2700);
 assert.equal(planned?.items.length, 30);
-assert.equal(planned.items.filter(item => item.soldOut).length, 3);
-assert.equal(planned.items.find(item => item.name === '조국의 시간')?.price, 0);
+// 71696f3: sold items keep an assumed price instead of 0; 조국의 시간 is the fourth sold-out book.
+assert.equal(planned.items.filter(item => item.soldOut).length, 4);
+assert.equal(planned.items.find(item => item.name === '조국의 시간')?.price, 3000);
 assert.equal(current?.directBuy, true);
 assert.equal(planned?.directBuy, true);
 assert.equal(current?.photos.length, 3);

@@ -71,6 +71,31 @@ export function DeviceFrame({ version, onSwitchVersion, userName, onSwitchUser, 
 
     return (
         <div className="stage">
+            {/* Usage guide in the empty stage area, for people trying the prototype without a walkthrough. Hidden on narrow viewports. */}
+            <aside className="stage-guide" aria-label="프로토타입 사용법">
+                <h2>프로토타입 사용법</h2>
+                <p className="stage-guide-lead">화면 상단의 상태바 요소가 숨은 버튼이에요.</p>
+                <dl>
+                    <dt>다이나믹 아일랜드</dt><dd>현안 ↔ 신규 기획 전환 <span>신규일 때 연두 점</span></dd>
+                    <dt>배터리</dt><dd>박경덕(서울, 판매자) ↔ 유주연(경상북도)</dd>
+                    <dt>와이파이</dt><dd>아무개(서울) 계정으로 전환</dd>
+                    <dt>시계</dt><dd>판매·구매 기록 초기화</dd>
+                </dl>
+                <h3>이렇게 따라 해 보세요</h3>
+                <ol>
+                    <li>다이나믹 아일랜드로 <b>신규 기획</b>으로 전환</li>
+                    <li>도서 게시글을 열고 물품을 체크 → 하단에 합계</li>
+                    <li><b>바로구매</b> → 배송지 → 결제</li>
+                    <li>게시글로 돌아오면 산 물품이 <b>판매완료</b></li>
+                    <li>배터리로 판매자 전환 → 나의 당근 → 판매관리 → <b>거래내역</b></li>
+                    <li>채팅하기 → 상단 상태 칩 → 거래완료 → <b>후기 보내기</b></li>
+                </ol>
+                <ul className="stage-guide-notes">
+                    <li>같은 시·도면 채팅하기, 다르면 질문하기가 떠요.</li>
+                    <li>수수료·배송비·적립은 캡처를 재현한 값이에요.</li>
+                    <li>기록은 이 브라우저에만 남아요.</li>
+                </ul>
+            </aside>
             <div className="device-stage" ref={stageRef}>
             <div className="device" ref={deviceRef}>
                 <div className="device-screen" data-prototype-version={version}>
