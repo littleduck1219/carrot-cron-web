@@ -32,7 +32,10 @@ jobs:
       - run: npm run check:post-sellers
       - run: npm run check:sales-ownership
       - run: npm run check:account-routes
+      # Public demo allows writing; posts persist only in the visitor's browser (no /api/posts on Pages).
       - run: npm run build -- --base=./
+        env:
+          VITE_PUBLIC_DEMO: "false"
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
