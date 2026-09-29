@@ -134,7 +134,7 @@
 .stage-guide h2 { margin: 0 0 4px; font-size: 17px; font-weight: 700; color: #fff; }
 .stage-guide h3 { margin: 18px 0 8px; font-size: 13px; font-weight: 700; color: #ff6600; }
 .stage-guide-lead { margin: 0 0 14px; font-size: 13px; color: #8a8e96; }
-.stage-guide dl { margin: 0; display: grid; grid-template-columns: 92px 1fr; gap: 6px 10px; }
+.stage-guide dl { margin: 0; display: grid; grid-template-columns: 112px 1fr; gap: 6px 10px; }
 .stage-guide dt { font-weight: 700; color: #fff; }
 .stage-guide dd { margin: 0; }
 .stage-guide dd span { display: block; font-size: 12px; color: #8a8e96; }
